@@ -16,8 +16,8 @@ namespace FutureStage.Models
         public string ProcessDescription { get; set; }
 
         //SchoolStandard
+        [ForeignKey("SchoolStandard")]
         public int SchoolStandardID { get; set; }
-        [ForeignKey("SchoolStandardID")]
-        public List<SchoolStandard> SchoolStandards { get; set; }
+        public virtual SchoolStandard SchoolStandards { get; set; }
     }
 }

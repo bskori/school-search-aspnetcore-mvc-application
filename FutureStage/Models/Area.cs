@@ -15,12 +15,12 @@ namespace FutureStage.Models
         public string AreaName { get; set; }
 
         //Relationships
-        public List<School> Schools { get; set; }
+        public virtual List<School> Schools { get; set; }
 
 
         //City
+        [ForeignKey("City")]
         public int CityID { get; set; }
-        [ForeignKey("CityID")]
-        public City City { get; set; }
+        public virtual City City { get; set; }
     }
 }

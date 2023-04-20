@@ -16,16 +16,16 @@ namespace FutureStage.Models
         public DateTime EnquiryDate { get; set; }
 
         //Relationships
-        public List<GeneralEnquiryReply> GeneralEnquiryReplies { get; set; }
+        public virtual List<GeneralEnquiryReply> GeneralEnquiryReplies { get; set; }
 
         //Parent
+        [ForeignKey("Parent")]
         public int ParentID { get; set; }
-        [ForeignKey("ParentID")]
-        public Parent Parent { get; set; }
+        public virtual Parent Parent { get; set; }
 
         //School
+        [ForeignKey("School")]
         public int SchoolID { get; set; }
-        [ForeignKey("SchoolID")]
-        public School School { get; set; }
+        public virtual School School { get; set; }
     }
 }

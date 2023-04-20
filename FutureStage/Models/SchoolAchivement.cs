@@ -17,9 +17,9 @@ namespace FutureStage.Models
         public DateTime AchivementDate { get; set; }
 
         //School
+        [ForeignKey("School")]
         public int SchoolID { get; set; }
-        [ForeignKey("SchoolID")]
-        public School School { get; set; }
+        public virtual School School { get; set; }
 
     }
 }

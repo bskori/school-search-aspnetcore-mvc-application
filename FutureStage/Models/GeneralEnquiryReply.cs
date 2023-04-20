@@ -16,8 +16,8 @@ namespace FutureStage.Models
         public DateTime ReplyDescription { get; set; }
 
         //Enquiry
+        [ForeignKey("Enquiry")]
         public int EnquiryID { get; set; }
-        [ForeignKey("EnquiryID")]
-        public Enquiry Enquiry { get; set; }
+        public virtual Enquiry Enquiry { get; set; }
     }
 }

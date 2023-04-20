@@ -16,6 +16,6 @@ namespace FutureStage.Models
         public string QuotoDescription { get; set; }
 
         //Relationships
-        public List<StandardSeatQuoto> StandardSeatQuotos { get; set; }
+        public virtual List<StandardSeatQuoto> StandardSeatQuotos { get; set; }
     }
 }

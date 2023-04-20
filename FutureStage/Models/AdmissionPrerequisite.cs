@@ -16,8 +16,8 @@ namespace FutureStage.Models
         public string PrerequisiteDescription { get; set; }
 
         //SchoolStandard
+        [ForeignKey("SchoolStandard")]
         public int SchoolStandardID { get; set; }
-        [ForeignKey("SchoolStandardID")]
-        public SchoolStandard SchoolStandard { get; set; }
+        public virtual SchoolStandard SchoolStandard { get; set; }
     }
 }

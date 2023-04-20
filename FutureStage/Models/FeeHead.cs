@@ -16,6 +16,6 @@ namespace FutureStage.Models
         public string FeeHeadDescription { get; set; }
 
         //Relationships
-        public List<StandardFees> StandardFees { get; set; }
+        public virtual List<StandardFees> StandardFees { get; set; }
     }
 }

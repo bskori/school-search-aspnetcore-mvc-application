@@ -15,13 +15,13 @@ namespace FutureStage.Models
         public int Amount { get; set; }
 
         //SchoolStandard
+        [ForeignKey("SchoolStandard")]
         public int SchoolStandardID { get; set; }
-        [ForeignKey("SchoolStandardID")]
-        public SchoolStandard SchoolStandard { get; set; }
+        public virtual SchoolStandard SchoolStandard { get; set; }
 
         //FeeHead
+        [ForeignKey("FeeHead")]
         public int FeeHeadID { get; set; }
-        [ForeignKey("FeeHeadID")]
-        public FeeHead FeeHead { get; set; }
+        public virtual FeeHead FeeHead { get; set; }
     }
 }

@@ -15,6 +15,6 @@ namespace FutureStage.Models
         public string CountryName { get; set; }
 
         //Relationships
-        public List<State> States { get; set; }
+        public virtual List<State> States { get; set; }
     }
 }

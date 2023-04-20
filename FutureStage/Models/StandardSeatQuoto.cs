@@ -15,13 +15,13 @@ namespace FutureStage.Models
         public int NumberOfSeats { get; set; }
 
         //SchoolStandard
+        [ForeignKey("SchoolStandard")]
         public int SchoolStandardID { get; set; }
-        [ForeignKey("SchoolStandardID")]
-        public SchoolStandard SchoolStandard { get; set; }
+        public virtual SchoolStandard SchoolStandard { get; set; }
 
         //Quoto
+        [ForeignKey("Quoto")]
         public int QuotoID { get; set; }
-        [ForeignKey("QuotoID")]
-        public Quoto Quoto { get; set; }
+        public virtual Quoto Quoto { get; set; }
     }
 }

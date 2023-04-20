@@ -16,6 +16,6 @@ namespace FutureStage.Models
         public string StandardDescription { get; set; }
 
         //Relationships
-        public List<SchoolStandard> SchoolStandards { get; set; }
+        public virtual List<SchoolStandard> SchoolStandards { get; set; }
     }
 }

@@ -16,8 +16,8 @@ namespace FutureStage.Models
         public bool Remark { get; set; }
 
         //AdmissionEnquiry
+        [ForeignKey("AdmissionEnquiry")]
         public int AdmissionEnquiryID { get; set; }
-        [ForeignKey("AdmissionEnquiryID")]
-        public AdmissionEnquiry AdmissionEnquiry { get; set; }
+        public virtual AdmissionEnquiry AdmissionEnquiry { get; set; }
     }
 }

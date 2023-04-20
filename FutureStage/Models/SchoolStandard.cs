@@ -15,21 +15,21 @@ namespace FutureStage.Models
         public int IntakeCapacity { get; set; }
 
         //Relationships
-        public List<StandardSeatQuoto> StandardSeatQuotos { get; set; }
-        public List<StandardFees> StandardFees { get; set; }
-        public List<FeeHead> FeeHeads { get; set; }
-        public List<AdmissionPrerequisite> AdmissionPrerequisites { get; set; }
-        public List<AdmissionProcess> AdmissionProcesses { get; set; }
-        public List<AdmissionEnquiry> AdmissionEnquiries { get; set; }
+        public virtual List<StandardSeatQuoto> StandardSeatQuotos { get; set; }
+        public virtual List<StandardFees> StandardFees { get; set; }
+        public virtual List<FeeHead> FeeHeads { get; set; }
+        public virtual List<AdmissionPrerequisite> AdmissionPrerequisites { get; set; }
+        public virtual List<AdmissionProcess> AdmissionProcesses { get; set; }
+        public virtual List<AdmissionEnquiry> AdmissionEnquiries { get; set; }
 
         //Standard
+        [ForeignKey("Standard")]
         public int StandardID { get; set; }
-        [ForeignKey("StandardID")]
-        public Standard Standard { get; set; }
+        public virtual Standard Standard { get; set; }
 
         //School
+        [ForeignKey("School")]
         public int SchoolID { get; set; }
-        [ForeignKey("SchoolID")]
-        public School School { get; set; }
+        public virtual School School { get; set; }
     }
 }

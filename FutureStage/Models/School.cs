@@ -19,16 +19,16 @@ namespace FutureStage.Models
         public DateTime EstablishmentDate { get; set; }
 
         //Relationships
-        public List<SchoolFacility> SchoolFacilities { get; set; }
-        public List<SchoolAchivement> SchoolAchivements { get; set; }
-        public List<School> Schools { get; set; }
-        public List<Enquiry> Enquiries { get; set; }
-        public List<SchoolStandard> SchoolStandards { get; set; }
+        public virtual List<SchoolFacility> SchoolFacilities { get; set; }
+        public virtual List<SchoolAchivement> SchoolAchivements { get; set; }
+        public virtual List<School> Schools { get; set; }
+        public virtual List<Enquiry> Enquiries { get; set; }
+        public virtual List<SchoolStandard> SchoolStandards { get; set; }
 
         //Area
+        [ForeignKey("Area")]
         public int AreaID { get; set; }
-        [ForeignKey("AreaID")]
-        public Area Area { get; set; }
+        public virtual Area Area { get; set; }
 
     }
 }

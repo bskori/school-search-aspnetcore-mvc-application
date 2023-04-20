@@ -15,13 +15,13 @@ namespace FutureStage.Models
         public string FacilityDescription { get; set; }
 
         //School
+        [ForeignKey("School")]
         public int SchoolID { get; set; }
-        [ForeignKey("SchoolID")]
-        public School School { get; set; }
+        public virtual School School { get; set; }
 
         //Facility
+        [ForeignKey("Facility")]
         public int FacilityID { get; set; }
-        [ForeignKey("FacilityID")]
-        public Facility Facility { get; set; }
+        public virtual Facility Facility { get; set; }
     }
 }

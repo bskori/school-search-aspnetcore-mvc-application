@@ -19,8 +19,8 @@ namespace FutureStage.Models
         public string Password { get; set; }
 
         //Relationships
-        public List<AdmissionEnquiry> AdmissionEnquiries { get; set; }
-        public List<Parent> Parents { get; set; }
+        public virtual List<AdmissionEnquiry> AdmissionEnquiries { get; set; }
+        public virtual List<Parent> Parents { get; set; }
 
     }
 }
