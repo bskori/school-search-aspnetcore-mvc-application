@@ -464,6 +464,33 @@ namespace FutureStage.Migrations
                     b.ToTable("SchoolStandardTbl");
                 });
 
+            modelBuilder.Entity("FutureStage.Models.SiteAdmin", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("SiteAdminTbl");
+                });
+
             modelBuilder.Entity("FutureStage.Models.Standard", b =>
                 {
                     b.Property<int>("ID")

@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data;
+using FutureStage.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,23 @@ namespace FutureStage.Controllers
         public IActionResult doLogin()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult doLogin(SiteAdmin siteAdmin)
+        {
+            if (ModelState.IsValid)
+            {
+                SiteAdmin data =  _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == siteAdmin.EmailAddress && n.Password == siteAdmin.Password);
+                if (data != null)
+                {
+                    TempData["Success"] = "Succesfully login.";
+                    return View();
+                }
+                TempData["Error"] = "Wrong credentials. Please, try again!";
+            }
+
+            return View(siteAdmin);   
         }
 
 

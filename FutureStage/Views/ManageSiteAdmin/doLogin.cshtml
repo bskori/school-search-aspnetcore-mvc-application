@@ -1,17 +1,36 @@
 ﻿@model SiteAdmin
 
-    <head>
-        <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-        <script src="~/lib/bootstrap/js/bootstrap.js"></script>
-    </head>
-    <body class="bg-secondary bg-opacity-25">
+<head>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+</head>
+    <body>
         <div class="container my-5">
-
             <div class="row align-items-center">
-                <div class="col-md-4 offset-4">
+                <div class="col-md-6">
+                    <p>
+                        <h1 class="text-success shadow display-1 font-monospace"><i class="bi bi-buildings"></i>FUTURESTAGE</h1>
+                    </p>
+                </div>
+                <div class="col-md-4 offset-1 shadow">
                     <p>
                         <h3 class="shadow p-2 bg-info text-white text-center">Site admin login</h3>
                     </p>
+                    @if(TempData["Error"] != null)
+            {
+                <div class="col-md-8 offset-2 alert alert-danger my-3">
+                    <span><b>Sorry!</b> - @TempData["Error"]</span>
+                </div>
+            }
+                    @if (TempData["Success"] != null)
+            {
+                <div class="col-md-8 offset-2 alert alert-success my-3">
+                    <span> @TempData["Success"] </span>
+                </div>
+            }
                     <form asp-action="doLogin">
 
                         <div class="mb-3">
