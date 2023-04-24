@@ -26,6 +26,8 @@ namespace FutureStage
         {
             //DbContext configuration
             services.AddDbContextPool<AppDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(this.Configuration.GetConnectionString("DefaultConnectionString")));
+
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,16 +37,17 @@ namespace FutureStage
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
+
+            
         }
     }
 }
