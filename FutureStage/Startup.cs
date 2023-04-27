@@ -1,4 +1,5 @@
 using FutureStage.Data;
+using FutureStage.Data.Services.SiteAdminServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -27,6 +28,9 @@ namespace FutureStage
             //DbContext configuration
             services.AddDbContextPool<AppDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(this.Configuration.GetConnectionString("DefaultConnectionString")));
 
+            //Services configuration
+            services.AddScoped<ICountryService, CountryService>();
+
             services.AddControllersWithViews();
         }
 
@@ -44,10 +48,15 @@ namespace FutureStage
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "arearoute",
+                    pattern: "{area:exists}/{controller=Home}/{action=index}/{id?}"
+                    );
                 endpoints.MapDefaultControllerRoute();
             });
 
-            
+            //Seed Database
+            AppDbInitializer.Seed(app);
         }
     }
 }

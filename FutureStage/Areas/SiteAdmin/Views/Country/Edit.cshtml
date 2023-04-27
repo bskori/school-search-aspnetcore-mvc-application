@@ -1,0 +1,28 @@
+﻿@model Country
+
+@{       
+    ViewData["Title"] = "Update country";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="text-success text-center shadow py-2 my-5">Update country</h2>
+    </div>
+    <div class="col-md-4 offset-md-4">
+        <form asp-action="Edit">
+            <div class="text-dark" asp-validation-summary="ModelOnly"></div>
+            <div>
+                <input asp-for="ID" type="hidden" />
+            </div>
+            <div class="form-group pb-3">
+                <label class="form-label" asp-for="CountryName"></label>
+                <input class="form-control" asp-for="CountryName" />
+                <span class="text-danger" asp-validation-for="CountryName"></span>
+            </div>
+            <div class="form-group">
+                <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                <input class="btn btn-outline-primary float-end" type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</div>
