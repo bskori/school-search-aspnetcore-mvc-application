@@ -13,6 +13,9 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
+        [Display(Name ="State Name")]
+        [Required(ErrorMessage ="State name required")]
         public string StateName { get; set; }
 
         //Relationships

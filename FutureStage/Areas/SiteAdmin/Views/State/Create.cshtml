@@ -1,0 +1,32 @@
+﻿@model State
+
+@{ 
+    ViewData["Title"] = "Add new State";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="text-center text-success shadow my-5 py-3">Add new State</h2>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="StateName"></label>
+                <input class="form-control" asp-for="StateName" />
+                <span class="text-danger" asp-validation-for="StateName"></span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" asp-for="Country.CountryName"></label>
+                <select class="form-control" asp-for="CountryID" asp-items="@ViewBag.States">
+                    <option value=""> - Select Country -</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Country.CountryName"></span>
+            </div>
+            <div class="mb-3">
+                <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                <input class="btn btn-outline-success float-end" value="Create" type="submit">
+            </div>
+        </form>
+    </div>
+</div>

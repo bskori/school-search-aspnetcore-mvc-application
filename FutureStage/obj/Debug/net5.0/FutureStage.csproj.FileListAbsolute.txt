@@ -153,3 +153,7 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Country\Create.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Country\Edit.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Country\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\State\Index.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\State\Create.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\State\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\State\Edit.cshtml.g.cs

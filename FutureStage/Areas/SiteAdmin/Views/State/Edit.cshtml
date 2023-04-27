@@ -1,0 +1,32 @@
+﻿@model State
+
+@{ 
+    ViewData["Title"] = "Update State";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="text-center text-primary shadow my-5 py-3">Update State</h2>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="StateName"></label>
+                <input class="form-control" asp-for="StateName" />
+                <span class="text-danger" asp-validation-for="StateName"></span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" asp-for="Country.CountryName"></label>
+                <select class="form-control" asp-items="@ViewBag.States" asp-for="CountryID">
+                    <option value="">- Select Country -</option>
+                </select>
+                <span class="text-danger" asp-validation-for="Country.CountryName"></span>
+            </div>
+            <div class="mb-3">
+                <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                <input class="btn btn-outline-primary float-end" type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</div>

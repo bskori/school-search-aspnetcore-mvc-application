@@ -25,7 +25,7 @@ namespace FutureStage.Data
                     {
                         new Country()
                         {
-                            CountryName = "India"
+                            CountryName = "India",
                         },
                         new Country()
                         {
@@ -62,6 +62,50 @@ namespace FutureStage.Data
                         new Country()
                         {
                             CountryName = "Germany"
+                        },
+                    });
+                    context.SaveChanges();
+                }
+
+                //State
+                if (!context.States.Any())
+                {
+                    context.States.AddRange(new List<State>() 
+                    { 
+                        new State()
+                        {
+                            StateName = "Maharashtra",
+                            CountryID = 11
+                        },
+                        new State()
+                        {
+                            StateName = "Uttar Pradesh",
+                            CountryID = 11
+                        },
+                        new State()
+                        {
+                            StateName = "Madhya Pradesh",
+                            CountryID = 11
+                        },
+                        new State()
+                        {
+                            StateName = "Banglore",
+                            CountryID = 11
+                        },
+                        new State()
+                        {
+                            StateName = "Karnatka",
+                            CountryID = 11
+                        },
+                        new State()
+                        {
+                            StateName = "Hyderabad",
+                            CountryID = 11
+                        },
+                        new State()
+                        {
+                            StateName = "Rajasthan",
+                            CountryID = 11
                         },
                     });
                     context.SaveChanges();
