@@ -110,6 +110,54 @@ namespace FutureStage.Data
                     });
                     context.SaveChanges();
                 }
+
+                //City
+                if (!context.Cities.Any())
+                {
+                    context.Cities.AddRange(new List<City>() { 
+                        new City()
+                        {
+                            CityName = "Mumbai",
+                            StateID = 1
+                        },
+                        new City()
+                        {
+                            CityName = "Banglore",
+                            StateID = 5
+                        },
+                        new City()
+                        {
+                            CityName = "Pune",
+                            StateID = 1
+                        },
+                        new City()
+                        {
+                            CityName = "Lucknow",
+                            StateID = 2
+                        },
+                        new City()
+                        {
+                            CityName = "Ghaziabad",
+                            StateID = 2
+                        },
+                        new City()
+                        {
+                            CityName = "Kanpur",
+                            StateID = 2
+                        },
+                        new City()
+                        {
+                            CityName = "Indore",
+                            StateID = 3
+                        },
+                        new City()
+                        {
+                            CityName = "Bhopal",
+                            StateID = 3
+                        },
+                    });
+                    context.SaveChanges();
+                }
             }
         }
     }

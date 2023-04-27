@@ -1,0 +1,28 @@
+﻿@model  City
+
+@{ 
+    ViewData["Title"] = "Remove City";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="alert alert-danger text-center py-3 my-5">Are you sure, you want to delete?</h2>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <div class="mb-3">
+            <label class="form-label" asp-for="CityName"></label>
+            <input class="form-control" asp-for="CityName" readonly />
+        </div>
+        <div class="mb-4">
+            <label class="form-label" asp-for="State.StateName"></label>
+            <input class="form-control" asp-for="State.StateName" readonly />
+        </div>
+        <div class="mb-3">
+            <form asp-action="Delete">
+                <input asp-for="ID" hidden />
+                <a class="btn btn-outline-secondary" asp-action="Index">Back to List</a>
+                <input class="btn btn-danger text-white float-end"  type="submit" value="Confirm" />
+            </form>
+        </div>
+    </div>
+</div>

@@ -18,7 +18,7 @@
             </div>
             <div class="mb-4">
                 <label class="form-label" asp-for="Country.CountryName"></label>
-                <select class="form-control" asp-items="@ViewBag.States" asp-for="CountryID">
+                <select class="form-control" asp-items="@ViewBag.Countries" asp-for="CountryID">
                     <option value="">- Select Country -</option>
                 </select>
                 <span class="text-danger" asp-validation-for="Country.CountryName"></span>

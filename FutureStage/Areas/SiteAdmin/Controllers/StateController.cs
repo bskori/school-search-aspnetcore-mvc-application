@@ -29,7 +29,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
 
         public async Task<IActionResult> Create()
         {
-            ViewBag.States = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
+            ViewBag.Countries = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
             return View();
         }
 
@@ -38,7 +38,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.States = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
+                ViewBag.Countries = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
                 return View(state);
             }
             await _service.AddAsync(state);
@@ -49,7 +49,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             var state = await _service.GetByIdAsync(id);
             if (state == null) return View("NotFound");
-            ViewBag.States = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
+            ViewBag.Countries = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
             return View(state);
         }
 
@@ -58,7 +58,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.States = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
+                ViewBag.Countries = new SelectList(await _countryService.GetAllAsync(), "ID", "CountryName");
                 return View(state);
             }
             await _service.UpdateAsync(state);

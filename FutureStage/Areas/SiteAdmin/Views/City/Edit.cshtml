@@ -1,0 +1,30 @@
+﻿@model City
+
+@{ 
+    ViewData["Title"] = "Update City";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h2 class="text-primary text-center shadow py-3 my-5">Update City</h2>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="CityName"></label>
+                <input class="form-control" asp-for="CityName" />
+                <span class="text-danger" asp-validation-for="CityName"></span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" asp-for="State.StateName"></label>
+                <select class="form-control" asp-for="StateID" asp-items="@ViewBag.States"></select>
+                <span class="text-dark" asp-validation-for="State.StateName"></span>
+            </div>
+            <div class="mb-3">
+                <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                <input class="btn btn-outline-primary float-end"  type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</div>
