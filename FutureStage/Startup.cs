@@ -31,6 +31,7 @@ namespace FutureStage
             //Services configuration
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IStateService, StateService>();
+            services.AddScoped<ICityService, CityService>();
 
             services.AddControllersWithViews();
         }
