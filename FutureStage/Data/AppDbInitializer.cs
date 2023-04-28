@@ -158,6 +158,70 @@ namespace FutureStage.Data
                     });
                     context.SaveChanges();
                 }
+
+                //Area
+                if (!context.Areas.Any())
+                {
+                    context.Areas.AddRange(new List<Area>()
+                    {
+                        new Area()
+                        {
+                            AreaName = "Pimpri-Chinchwad",
+                            CityID = 3
+                        },
+                        new Area()
+                        {
+                            AreaName = "Hadapsar",
+                            CityID = 3
+                        },
+                        new Area()
+                        {
+                            AreaName = "Viman Nagar",
+                            CityID = 3
+                        },
+                        new Area()
+                        {
+                            AreaName = "Andheri",
+                            CityID = 1
+                        },
+                        new Area()
+                        {
+                            AreaName = "Bandra",
+                            CityID = 1
+                        },
+                        new Area()
+                        {
+                            AreaName = "Goregaon",
+                            CityID = 1
+                        },
+                        new Area()
+                        {
+                            AreaName = "Whitefield",
+                            CityID = 2
+                        },
+                        new Area()
+                        {
+                            AreaName = "Indiranagar",
+                            CityID = 2
+                        },
+                        new Area()
+                        {
+                            AreaName = "Hazratganj",
+                            CityID = 4
+                        },
+                        new Area()
+                        {
+                            AreaName = "Gomti Nagar",
+                            CityID = 4
+                        },
+                        new Area()
+                        {
+                            AreaName = "Vijay Nagar",
+                            CityID = 3
+                        },
+                    });
+                    context.SaveChanges();
+                }
             }
         }
     }

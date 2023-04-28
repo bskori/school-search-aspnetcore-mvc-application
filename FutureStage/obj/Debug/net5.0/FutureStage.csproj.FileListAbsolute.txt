@@ -161,3 +161,7 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\City\Delete.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\City\Edit.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\City\Index.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Area\Create.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Area\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Area\Edit.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Area\Index.cshtml.g.cs

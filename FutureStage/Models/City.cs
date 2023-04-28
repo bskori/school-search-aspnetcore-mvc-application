@@ -13,6 +13,7 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
         [Display(Name ="City Name")]
         [Required(ErrorMessage ="City name required")]
         public string CityName { get; set; }

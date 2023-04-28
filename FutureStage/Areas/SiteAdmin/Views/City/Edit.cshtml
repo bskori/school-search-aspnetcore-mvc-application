@@ -19,7 +19,7 @@
             <div class="mb-4">
                 <label class="form-label" asp-for="State.StateName"></label>
                 <select class="form-control" asp-for="StateID" asp-items="@ViewBag.States"></select>
-                <span class="text-dark" asp-validation-for="State.StateName"></span>
+                <span class="text-danger" asp-validation-for="State.StateName"></span>
             </div>
             <div class="mb-3">
                 <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
