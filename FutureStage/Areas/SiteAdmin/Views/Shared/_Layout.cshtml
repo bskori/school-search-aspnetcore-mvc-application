@@ -4,41 +4,53 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Admin - Future Stage</title>
+    <title> Future Stage - Site Admin</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="~/SiteAdminAssets/img/favicon.png" />
+
     <!-- Bootstrap CSS -->
     <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/SiteAdminAssets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
 </head>
 <body>
 
     <div class="wrapper">
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h2>BootStrap Header</h2>
+                <h4 class="shadow py-2"> <img class="bg-white shadow p-1" src="~/SiteAdminAssets/img/logo1.png" height="30" /> 
+                   futureStage
+                </h4>
             </div>
-
             <ul class="list-unstyled components">
-                <p>Code4Education</p>
+                <p>Welcome - Admin</p>
                 <li>
-                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home </a>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle font-weight-bold">
+                         Config <i class="fa-solid fa-gear ms-1"></i> </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
-                            <a href="#">home1</a>
+                            <a asp-action="Index" asp-controller="Country" asp-area="SiteAdmin">
+                                  Country</a>
                         </li>
                         <li>
-                            <a href="#">home2</a>
+                            <a asp-action="Index" asp-controller="State" asp-area="SiteAdmin">State</a>
                         </li>
                         <li>
-                            <a href="#">home3</a>
+                            <a asp-action="Index" asp-controller="City" asp-area="SiteAdmin">
+                                  City</a>
                         </li>
+                        <li>
+                            <a asp-action="Index" asp-controller="Area" asp-area="SiteAdmin">Area</a>
+                        </li>
+
                     </ul>
                 </li>
                 <li>
                     <a href="#">About</a>
                 </li>
                 <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home </a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">  App Config <i class="fa-solid fa-gears ms-1"></i> </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="#">page1</a>
@@ -61,9 +73,9 @@
         </nav>
 
         <div id="content">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-light">
 
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <button type="button" id="sidebarCollapse" class="btn">
                     <i class="fa fa-align-justify"></i>
                 </button>
 
@@ -71,19 +83,12 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
+                
+
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item active">
-                            <a href="#" class="nav-link">Home <span class="sr-only">(current)</span> </a>
-                        </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Pricing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link disabled">Disabled</a>
+                            <a href="#" class="nav-link text-primary">SITE ADMIN</a>
                         </li>
                     </ul>
                 </div>
