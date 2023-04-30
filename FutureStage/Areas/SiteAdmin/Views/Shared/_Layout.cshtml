@@ -1,15 +1,113 @@
 ﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Future Stage</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Admin - Future Stage</title>
+    <!-- Bootstrap CSS -->
     <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="~/SiteAdminAssets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
-            @RenderBody();
-        </main>
+
+    <div class="wrapper">
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h2>BootStrap Header</h2>
+            </div>
+
+            <ul class="list-unstyled components">
+                <p>Code4Education</p>
+                <li>
+                    <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home </a>
+                    <ul class="collapse list-unstyled" id="homeSubmenu">
+                        <li>
+                            <a href="#">home1</a>
+                        </li>
+                        <li>
+                            <a href="#">home2</a>
+                        </li>
+                        <li>
+                            <a href="#">home3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
+                </li>
+                <li>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">Home </a>
+                    <ul class="collapse list-unstyled" id="pageSubmenu">
+                        <li>
+                            <a href="#">page1</a>
+                        </li>
+                        <li>
+                            <a href="#">page2</a>
+                        </li>
+                        <li>
+                            <a href="#">page3</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Service</a>
+                </li>
+                <li>
+                    <a href="#">Contact</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div id="content">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fa fa-align-justify"></i>
+                </button>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item active">
+                            <a href="#" class="nav-link">Home <span class="sr-only">(current)</span> </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link disabled">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="container-fluid">
+                @RenderBody()
+
+            </div>
+            
+        </div>
     </div>
+
+    <!-- optional javascript -->
+    <!-- jQuery first, Popper.js, then BootStrap JS -->
+    <script src="~/lib/jquery/jquery.slim.min.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>-->
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#sidebarCollapse").on('click', function () {
+                $("#sidebar").toggleClass('active');
+            })
+        })
+    </script>
 </body>
+</html>
