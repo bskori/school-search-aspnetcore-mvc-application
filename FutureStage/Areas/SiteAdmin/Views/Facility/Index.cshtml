@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Facility>
+
+@{ 
+    ViewData["Title"] = "List of facilities";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-md-2 mt-5">
+        <h2 class="text-success text-center py-3 my-5 shadow">List of facilities</h2>
+    </div>
+    <div class="col-md-8 offset-md-2">
+        <table class="table">
+            <thead>
+                <tr class="text-center">
+                    <th class="align-middle">@Html.DisplayNameFor(m => m.FacilityTitle)</th>
+                    <th class="align-middle">@Html.DisplayNameFor(m => m.FacilityDescription)</th>
+                    <th class="align-middle">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="text-center">
+                        <td class="align-middle">@item.FacilityTitle</td>
+                        <td class="align-middle">@item.FacilityDescription</td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">
+                            <i class="fa-regular fa-pen-to-square"></i>
+                            </a>
+                            |
+                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn text-white btn-danger">
+                            <i class="fa-regular fa-trash-can"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@await Html.PartialAsync("_CreateItem", "Facility")

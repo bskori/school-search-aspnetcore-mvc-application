@@ -222,6 +222,101 @@ namespace FutureStage.Data
                     });
                     context.SaveChanges();
                 }
+
+                //Facility
+                if (!context.Facilities.Any())
+                {
+                    context.Facilities.AddRange(new List<Facility>()
+                    {
+                        new Facility()
+                        {
+                            FacilityTitle = "AC Classes",
+                            FacilityDescription = "AC Classes"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Wifi",
+                            FacilityDescription = "Wifi"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Smart Classes",
+                            FacilityDescription = "Smart Classes"
+                            
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Boys Hostel",
+                            FacilityDescription = "Boys Hostel"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Girls Hostel",
+                            FacilityDescription = "Girls Hostel"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Indoor Sports",
+                            FacilityDescription = "Indoor Sports"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Outdoor Sports",
+                            FacilityDescription = "Outdoor Sports"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Transportation",
+                            FacilityDescription = "Transportation"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Gym",
+                            FacilityDescription = "Gym"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Cafeteria/Canteen",
+                            FacilityDescription="Cafeteria/Canteen"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Computer Lab",
+                            FacilityDescription="Computer Lab"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Science Lab",
+                            FacilityDescription="Science Lab"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "CCTV",
+                            FacilityDescription = "CCTV"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Playground",
+                            FacilityDescription = "Playground"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Library/Reading Room",
+                            FacilityDescription = "Library/Reading Room"
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Day Care",
+                            FacilityDescription = "Day Care" 
+                        },
+                        new Facility()
+                        {
+                            FacilityTitle = "Dance",
+                            FacilityDescription = "Dance"
+                        },
+                    });
+                    context.SaveChanges();
+                }
             }
         }
     }

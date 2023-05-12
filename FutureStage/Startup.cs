@@ -34,6 +34,7 @@ namespace FutureStage
             services.AddScoped<ICityService, CityService>();
             services.AddScoped<IAreaService, AreaService>();
             services.AddScoped<IMediumService, MediumService>();
+            services.AddScoped<IFacilityService, FacilityService>();
 
             services.AddControllersWithViews();
         }

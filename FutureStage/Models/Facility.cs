@@ -13,7 +13,14 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
+        [Required(ErrorMessage ="Title is required")]
+        [Display(Name ="Title")]
         public string FacilityTitle { get; set; }
+
+
+        [Required(ErrorMessage ="Description is required")]
+        [Display(Name ="Description")]
         public string FacilityDescription { get; set; }
 
         //Relationships
