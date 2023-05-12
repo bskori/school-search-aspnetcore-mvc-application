@@ -30,8 +30,7 @@ namespace FutureStage.Controllers
                 SiteAdmin data =  _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == siteAdmin.EmailAddress && n.Password == siteAdmin.Password);
                 if (data != null)
                 {
-                    TempData["Success"] = "Succesfully login.";
-                    return View();
+                    return RedirectToAction("Index","Home", new { area= "SiteAdmin"});
                 }
                 TempData["Error"] = "Wrong credentials. Please, try again!";
             }

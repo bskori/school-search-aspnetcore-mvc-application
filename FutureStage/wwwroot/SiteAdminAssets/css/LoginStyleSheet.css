@@ -1,0 +1,32 @@
+﻿body {
+    margin:0;
+    padding:0;
+}
+
+
+.login-container{
+    margin: 10rem 0;
+}
+
+h1{
+    font-size:5rem;
+}
+
+@media (max-width:1208px){
+    h1{
+        font-size:4rem;
+    }
+}
+
+@media (max-width:991px) {
+    .login-container {
+        margin: 35rem 0;
+    }
+}
+
+
+
+
+
+
+
