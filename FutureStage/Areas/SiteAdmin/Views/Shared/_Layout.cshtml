@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,18 +28,21 @@
                 <p>Welcome - Admin</p>
                 <li>
                     <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle font-weight-bold">
-                         Config <i class="fa-solid fa-gear ms-1"></i> </a>
+                        Config <i class="fa-solid fa-gear ms-1"></i>
+                    </a>
                     <ul class="collapse list-unstyled" id="homeSubmenu">
                         <li>
                             <a asp-action="Index" asp-controller="Country" asp-area="SiteAdmin">
-                                  Country</a>
+                                Country
+                            </a>
                         </li>
                         <li>
                             <a asp-action="Index" asp-controller="State" asp-area="SiteAdmin">State</a>
                         </li>
                         <li>
                             <a asp-action="Index" asp-controller="City" asp-area="SiteAdmin">
-                                  City</a>
+                                City
+                            </a>
                         </li>
                         <li>
                             <a asp-action="Index" asp-controller="Area" asp-area="SiteAdmin">Area</a>
@@ -46,11 +50,9 @@
 
                     </ul>
                 </li>
+
                 <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">  App Config <i class="fa-solid fa-gears ms-1"></i> </a>
+                    <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle font-weight-bold">  App Config <i class="fa-solid fa-gears ms-1"></i> </a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a asp-action="Index" asp-controller="Facility" asp-area="SiteAdmin">Facility</a>
@@ -62,6 +64,9 @@
                             <a asp-action="Index" asp-controller="EducationBoard" asp-area="SiteAdmin">Education Board</a>
                         </li>
                     </ul>
+                </li>
+                <li>
+                    <a href="#">About</a>
                 </li>
                 <li>
                     <a href="#">Service</a>

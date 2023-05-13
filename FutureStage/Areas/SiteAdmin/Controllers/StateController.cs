@@ -1,4 +1,5 @@
-﻿using FutureStage.Data.Services.SiteAdminServices;
+﻿using FutureStage.Data.CustomFilter;
+using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
+    [SiteAdminAuthorization]
     public class StateController : Controller
     {
         private readonly IStateService _service;

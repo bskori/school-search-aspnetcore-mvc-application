@@ -39,6 +39,13 @@ namespace FutureStage
             services.AddScoped<IEducationBoardService, EducationBoardService>();
 
             services.AddControllersWithViews();
+
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.IsEssential = true;
+                options.Cookie.HttpOnly = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,9 @@ namespace FutureStage
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseSession();
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 

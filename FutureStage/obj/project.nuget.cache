@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DRNclEMDTbrWQxDQP4i86Wg/XX4ysoQxYIcyXvv2SesPtOzvrYjQRw7hRW6+/qfUN31wlRJUk6RtJMg/CfW+wg==",
+  "dgSpecHash": "UOMFuXIsnSZEp4QSL6SFyxupnFB+OpITa2QnWn87QgqWwOtwGV816ZGwitF6FZZCYhbh26sV0wE5FNVxVw/qmg==",
   "success": true,
   "projectFilePath": "D:\\PROJECTS\\FutureStage\\FutureStage\\FutureStage.csproj",
   "expectedPackageFiles": [
@@ -37,6 +37,7 @@
     "C:\\Users\\Bipin Kori\\.nuget\\packages\\microsoft.aspnetcore.responsecaching.abstractions\\2.2.0\\microsoft.aspnetcore.responsecaching.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\Bipin Kori\\.nuget\\packages\\microsoft.aspnetcore.routing\\2.2.0\\microsoft.aspnetcore.routing.2.2.0.nupkg.sha512",
     "C:\\Users\\Bipin Kori\\.nuget\\packages\\microsoft.aspnetcore.routing.abstractions\\2.2.0\\microsoft.aspnetcore.routing.abstractions.2.2.0.nupkg.sha512",
+    "C:\\Users\\Bipin Kori\\.nuget\\packages\\microsoft.aspnetcore.session\\2.2.0\\microsoft.aspnetcore.session.2.2.0.nupkg.sha512",
     "C:\\Users\\Bipin Kori\\.nuget\\packages\\microsoft.aspnetcore.webutilities\\2.2.0\\microsoft.aspnetcore.webutilities.2.2.0.nupkg.sha512",
     "C:\\Users\\Bipin Kori\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\Bipin Kori\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.0.0\\microsoft.codeanalysis.analyzers.3.0.0.nupkg.sha512",
