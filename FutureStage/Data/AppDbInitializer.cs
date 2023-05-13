@@ -355,6 +355,39 @@ namespace FutureStage.Data
                     });
                     context.SaveChanges();
                 }
+
+                //EducationBoard
+                if (!context.EducationBoards.Any())
+                {
+                    context.EducationBoards.AddRange(new List<EducationBoard>() { 
+                        new EducationBoard()
+                        {
+                            EducationBoardTitle = "CBSE",
+                            EducationBoardDescription = "CBSE"
+                        },
+                        new EducationBoard()
+                        {
+                            EducationBoardTitle = "ICSE",
+                            EducationBoardDescription = "ICSE"
+                        },
+                        new EducationBoard()
+                        {
+                            EducationBoardTitle = "State Board",
+                            EducationBoardDescription = "State Board"
+                        },
+                        new EducationBoard()
+                        {
+                            EducationBoardTitle = "CISCE",
+                            EducationBoardDescription = "CISCE"
+                        },
+                        new EducationBoard()
+                        {
+                            EducationBoardTitle = "IB Board",
+                            EducationBoardDescription = "IB Board"
+                        },
+                    });
+                    context.SaveChanges();
+                }
             }
         }
     }

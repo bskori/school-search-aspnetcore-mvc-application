@@ -174,3 +174,7 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Standard\Delete.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Standard\Edit.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Standard\Index.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\EducationBoard\Create.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\EducationBoard\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\EducationBoard\Edit.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\EducationBoard\Index.cshtml.g.cs
