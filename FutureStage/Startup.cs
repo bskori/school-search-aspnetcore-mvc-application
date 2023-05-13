@@ -36,6 +36,7 @@ namespace FutureStage
             services.AddScoped<IMediumService, MediumService>();
             services.AddScoped<IFacilityService, FacilityService>();
             services.AddScoped<IStandardService, StandardService>();
+            services.AddScoped<IEducationBoardService, EducationBoardService>();
 
             services.AddControllersWithViews();
         }

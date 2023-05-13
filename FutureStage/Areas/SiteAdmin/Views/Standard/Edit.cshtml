@@ -1,0 +1,30 @@
+﻿@model Standard
+
+@{ 
+    ViewData["Title"] = "Update standard details";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-5">
+        <h2 class="text-primary text-center py-3 my-5 shadow">Update standard details</h2>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="StandardTitle"></label>
+                <input class="form-control" asp-for="StandardTitle" />
+                <span class="text-danger" asp-validation-for="StandardTitle"> </span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" asp-for="StandardDescription"></label>
+                <textarea class="form-control" asp-for="StandardDescription"></textarea>
+                <span class="text-danger" asp-validation-for="StandardDescription"></span>
+            </div>
+            <div class="mb-3">
+                <a class="btn btn-outline-secondary" asp-action="Index">Show All</a>
+                <input class="btn btn-outline-primary float-right" type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</div>

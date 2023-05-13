@@ -317,6 +317,44 @@ namespace FutureStage.Data
                     });
                     context.SaveChanges();
                 }
+
+                //Standard
+                if (!context.Standards.Any())
+                {
+                    context.Standards.AddRange(new List<Standard>() { 
+                        new Standard()
+                        {
+                            StandardTitle = "Pre Nursery",
+                            StandardDescription = "Pre Nursery"
+                        },
+                        new Standard()
+                        {
+                            StandardTitle = "LKG",
+                            StandardDescription = "LKG"
+                        },
+                        new Standard()
+                        {
+                            StandardTitle = "UKG",
+                            StandardDescription = "UKG"
+                        },
+                        new Standard()
+                        {
+                            StandardTitle = "Class 1",
+                            StandardDescription = "Class 1"
+                        },
+                        new Standard()
+                        {
+                            StandardTitle = "Class 2",
+                            StandardDescription = "Class 2"
+                        },
+                        new Standard()
+                        {
+                            StandardTitle = "Class 3",
+                            StandardDescription = "Class 3"
+                        },
+                    });
+                    context.SaveChanges();
+                }
             }
         }
     }
