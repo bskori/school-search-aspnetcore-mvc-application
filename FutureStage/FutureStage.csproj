@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Data\Enums\SiteAdminEnums\" />
     <Folder Include="wwwroot\SiteAdminAssets\img\" />
   </ItemGroup>
 
