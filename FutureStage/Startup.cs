@@ -40,6 +40,7 @@ namespace FutureStage
 
             services.AddControllersWithViews();
 
+            services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(10);

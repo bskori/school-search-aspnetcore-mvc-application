@@ -1,5 +1,6 @@
 ﻿using FutureStage.Data;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,7 @@ namespace FutureStage.Controllers
                 SiteAdmin data =  _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == siteAdmin.EmailAddress && n.Password == siteAdmin.Password);
                 if (data != null)
                 {
+                    HttpContext.Session.SetString("ID", data.ID.ToString());
                     return RedirectToAction("Index","Home", new { area= "SiteAdmin"});
                 }
                 TempData["Error"] = "Wrong credentials. Please, try again!";
