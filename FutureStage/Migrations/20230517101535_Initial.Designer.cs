@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FutureStage.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230420170515_Initial")]
+    [Migration("20230517101535_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -131,6 +131,7 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("AreaName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("CityID")
@@ -140,7 +141,7 @@ namespace FutureStage.Migrations
 
                     b.HasIndex("CityID");
 
-                    b.ToTable("Area");
+                    b.ToTable("AreaTbl");
                 });
 
             modelBuilder.Entity("FutureStage.Models.City", b =>
@@ -151,6 +152,7 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("CityName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("StateID")
@@ -171,6 +173,7 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("CountryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -232,9 +235,11 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("FacilityDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FacilityTitle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -378,6 +383,9 @@ namespace FutureStage.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("SchoolID")
                         .HasColumnType("int");
 
@@ -466,6 +474,35 @@ namespace FutureStage.Migrations
                     b.ToTable("SchoolStandardTbl");
                 });
 
+            modelBuilder.Entity("FutureStage.Models.SiteAdmin", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MobileNo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("SiteAdminTbl");
+                });
+
             modelBuilder.Entity("FutureStage.Models.Standard", b =>
                 {
                     b.Property<int>("ID")
@@ -474,9 +511,11 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("StandardDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StandardTitle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -545,6 +584,7 @@ namespace FutureStage.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("StateName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

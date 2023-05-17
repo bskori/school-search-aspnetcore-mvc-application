@@ -118,42 +118,42 @@ namespace FutureStage.Data
                         new City()
                         {
                             CityName = "Mumbai",
-                            StateID = 2
+                            StateID = 7
                         },
                         new City()
                         {
                             CityName = "Banglore",
-                            StateID = 5
+                            StateID = 4
                         },
                         new City()
                         {
                             CityName = "Pune",
-                            StateID = 2
+                            StateID = 1
                         },
                         new City()
                         {
                             CityName = "Lucknow",
-                            StateID = 3
+                            StateID = 6
                         },
                         new City()
                         {
                             CityName = "Ghaziabad",
-                            StateID = 3
+                            StateID = 6
                         },
                         new City()
                         {
                             CityName = "Kanpur",
-                            StateID = 3
+                            StateID = 6
                         },
                         new City()
                         {
                             CityName = "Indore",
-                            StateID = 4
+                            StateID = 5
                         },
                         new City()
                         {
                             CityName = "Bhopal",
-                            StateID = 4
+                            StateID = 5
                         },
                     });
                     context.SaveChanges();
@@ -167,32 +167,32 @@ namespace FutureStage.Data
                         new Area()
                         {
                             AreaName = "Pimpri-Chinchwad",
-                            CityID = 8
+                            CityID = 6
                         },
                         new Area()
                         {
                             AreaName = "Hadapsar",
-                            CityID = 8
+                            CityID = 6
                         },
                         new Area()
                         {
                             AreaName = "Viman Nagar",
-                            CityID = 8
+                            CityID = 6
                         },
                         new Area()
                         {
                             AreaName = "Andheri",
-                            CityID = 6
+                            CityID = 8
                         },
                         new Area()
                         {
                             AreaName = "Bandra",
-                            CityID = 6
+                            CityID = 8
                         },
                         new Area()
                         {
                             AreaName = "Goregaon",
-                            CityID = 6
+                            CityID = 8
                         },
                         new Area()
                         {
@@ -202,22 +202,22 @@ namespace FutureStage.Data
                         new Area()
                         {
                             AreaName = "Indiranagar",
-                            CityID = 12
+                            CityID = 2
                         },
                         new Area()
                         {
                             AreaName = "Hazratganj",
-                            CityID = 12
+                            CityID = 3
                         },
                         new Area()
                         {
                             AreaName = "Gomti Nagar",
-                            CityID = 11
+                            CityID = 2
                         },
                         new Area()
                         {
                             AreaName = "Vijay Nagar",
-                            CityID = 11
+                            CityID = 3
                         },
                     });
                     context.SaveChanges();

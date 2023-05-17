@@ -13,7 +13,7 @@ namespace FutureStage.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CountryName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    CountryName = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -40,8 +40,8 @@ namespace FutureStage.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    FacilityTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    FacilityDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    FacilityTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FacilityDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -100,13 +100,30 @@ namespace FutureStage.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "SiteAdminTbl",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Address = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    EmailAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MobileNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SiteAdminTbl", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "StandardTbl",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StandardTitle = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StandardDescription = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    StandardTitle = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    StandardDescription = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -119,7 +136,7 @@ namespace FutureStage.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    StateName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    StateName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CountryID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -139,7 +156,7 @@ namespace FutureStage.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CityName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    CityName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     StateID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -154,19 +171,19 @@ namespace FutureStage.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Area",
+                name: "AreaTbl",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    AreaName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    AreaName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CityID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Area", x => x.ID);
+                    table.PrimaryKey("PK_AreaTbl", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Area_CityTbl_CityID",
+                        name: "FK_AreaTbl_CityTbl_CityID",
                         column: x => x.CityID,
                         principalTable: "CityTbl",
                         principalColumn: "ID",
@@ -184,6 +201,7 @@ namespace FutureStage.Migrations
                     EmailID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ContactNo = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     EstablishmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AreaID = table.Column<int>(type: "int", nullable: false),
                     SchoolID = table.Column<int>(type: "int", nullable: true)
                 },
@@ -191,9 +209,9 @@ namespace FutureStage.Migrations
                 {
                     table.PrimaryKey("PK_SchoolTbl", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_SchoolTbl_Area_AreaID",
+                        name: "FK_SchoolTbl_AreaTbl_AreaID",
                         column: x => x.AreaID,
-                        principalTable: "Area",
+                        principalTable: "AreaTbl",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
@@ -533,8 +551,8 @@ namespace FutureStage.Migrations
                 column: "SchoolStandardID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Area_CityID",
-                table: "Area",
+                name: "IX_AreaTbl_CityID",
+                table: "AreaTbl",
                 column: "CityID");
 
             migrationBuilder.CreateIndex(
@@ -655,6 +673,9 @@ namespace FutureStage.Migrations
                 name: "SchoolFacilityTbl");
 
             migrationBuilder.DropTable(
+                name: "SiteAdminTbl");
+
+            migrationBuilder.DropTable(
                 name: "StandardFeesTbl");
 
             migrationBuilder.DropTable(
@@ -688,7 +709,7 @@ namespace FutureStage.Migrations
                 name: "StandardTbl");
 
             migrationBuilder.DropTable(
-                name: "Area");
+                name: "AreaTbl");
 
             migrationBuilder.DropTable(
                 name: "CityTbl");

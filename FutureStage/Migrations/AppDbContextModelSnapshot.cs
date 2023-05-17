@@ -233,9 +233,11 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("FacilityDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FacilityTitle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -379,6 +381,9 @@ namespace FutureStage.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int?>("SchoolID")
                         .HasColumnType("int");
 
@@ -504,9 +509,11 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("StandardDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StandardTitle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");

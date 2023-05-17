@@ -1,11 +1,11 @@
-﻿@model LoginVM
+﻿@model School
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Login - Future Stage</title>
+    <title>School Register - Future Stage</title>
     <link rel="stylesheet" href="/SchoolsAssets/css/bootstrap.css">
     <link rel="stylesheet" href="/SchoolsAssets/css/loginstyle.css">
 </head>
@@ -17,10 +17,10 @@
 
         <!-- -------------------------------------Login Container----------------------- -->
 
-        <div class="row p-3 bg-white shadow box-area" style="border-radius: 30px;">
+        <div class="row p-3 bg-white shadow box-area m-lg-5" style="border-radius: 30px;">
 
             <!-- ---------------------------------------Left Box---------------------------- -->
-            
+
             <div class="col-md-6 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe; border-radius: 15px; ">
                 <div class="featured-image mb-3">
                     <img src="~/SchoolsAssets/img/1.png" class="img-fluid" style="width:250px">
@@ -33,28 +33,37 @@
 
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
-                    @if(TempData["Error"] != null)
-            {
-                        <div class="alert alert-danger">
-                            <h2>@TempData["Error"]</h2>
-                        </div>
-            }
+                    
                     <div class="header-text mb-4">
-                        <p>Hello, School</p>
-                        <p>We are happy to back you</p>
+                        <h5 class="text-center">Register</h5>
                     </div>
-                    <form asp-action="doLogin">
+                    <form asp-action="Register">
                         <div class="input-group mb-3">
-                            <input asp-for="EmailAddress" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
-                        </div>
-                        <div class="input-group mb-5">
-                            <input asp-for="Password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="password">
+                            <input asp-for="Name" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="School name">
                         </div>
                         <div class="input-group mb-3">
-                            <input class="btn btn-lg btn-primary w-100 fs-6" type="submit" value="Login" />
+                            <input asp-for="EmailID" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="ContactNo" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Contact no">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="Address" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Address">
+                        </div>
+                        <div class="input-group mb-3">
+                            <select asp-for="AreaID" asp-items="@ViewBag.Areas" class="form-control form-control-lg bg-light fs-6" placeholder="Email address"></select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <input asp-for="EstablishmentDate" type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Establishment date">
+                        </div>
+                        <div class="input-group mb-4">
+                            <input asp-for="Password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input class="btn btn-lg btn-primary w-100 fs-6" type="submit" value="Register" />
                         </div>
                         <div class="row">
-                            <small>Don't have account? <a asp-action="Register">Register</a></small>
+                            <small>Aready Have an account? <a asp-action="Register" class="fs-6">Log In</a></small>
                         </div>
                     </form>
                 </div>

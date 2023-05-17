@@ -17,6 +17,7 @@ namespace FutureStage.Models
         public string EmailID { get; set; }
         public string ContactNo { get; set; }
         public DateTime EstablishmentDate { get; set; }
+        public string Password { get; set; }
 
         //Relationships
         public virtual List<SchoolFacility> SchoolFacilities { get; set; }

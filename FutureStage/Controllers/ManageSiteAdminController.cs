@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data;
+using FutureStage.Data.ViewModels;
 using FutureStage.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -24,20 +25,20 @@ namespace FutureStage.Controllers
         }
 
         [HttpPost]
-        public IActionResult doLogin(SiteAdmin siteAdmin)
+        public IActionResult doLogin(LoginVM loginVM)
         {
             if (ModelState.IsValid)
             {
-                SiteAdmin data =  _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == siteAdmin.EmailAddress && n.Password == siteAdmin.Password);
-                if (data != null)
+                SiteAdmin record =  _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == loginVM.EmailAddress && n.Password == loginVM.Password);
+                if (record != null)
                 {
-                    HttpContext.Session.SetString("ID", data.ID.ToString());
+                    HttpContext.Session.SetString("ID", record.ID.ToString());
                     return RedirectToAction("Index","Home", new { area= "SiteAdmin"});
                 }
                 TempData["Error"] = "Wrong credentials. Please, try again!";
             }
 
-            return View(siteAdmin);   
+            return View(loginVM);   
         }
 
 

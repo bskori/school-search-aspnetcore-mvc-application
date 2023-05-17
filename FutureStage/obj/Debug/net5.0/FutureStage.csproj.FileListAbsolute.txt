@@ -183,3 +183,4 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\_
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\_ViewImports.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Shared\_SchoolsLayout.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\ManageSchools\doLogin.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\ManageSchools\Register.cshtml.g.cs
