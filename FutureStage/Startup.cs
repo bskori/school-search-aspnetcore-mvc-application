@@ -1,4 +1,5 @@
 using FutureStage.Data;
+using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -29,6 +30,7 @@ namespace FutureStage
             services.AddDbContextPool<AppDbContext>(options => options.UseLazyLoadingProxies().UseSqlServer(this.Configuration.GetConnectionString("DefaultConnectionString")));
 
             //Services configuration
+                //SiteAdmin services
             services.AddScoped<ICountryService, CountryService>();
             services.AddScoped<IStateService, StateService>();
             services.AddScoped<ICityService, CityService>();
@@ -37,6 +39,8 @@ namespace FutureStage
             services.AddScoped<IFacilityService, FacilityService>();
             services.AddScoped<IStandardService, StandardService>();
             services.AddScoped<IEducationBoardService, EducationBoardService>();
+            //Schools services
+            services.AddScoped<ISchoolService, SchoolService>();
 
             services.AddControllersWithViews();
 

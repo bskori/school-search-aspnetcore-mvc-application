@@ -49,5 +49,14 @@ namespace FutureStage.Controllers
             ViewBag.Areas = new SelectList(await _areaService.GetAllAsync(), "ID", "AreaName");
             return View();
         }
+
+        //[HttpPost]
+        //public async Task<IActionResult> Register(School school)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return View(school);
+        //    }
+        //}
     }
 }
