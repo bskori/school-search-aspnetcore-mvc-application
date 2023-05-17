@@ -18,55 +18,6 @@ namespace FutureStage.Data
 
                 context.Database.EnsureCreated();
 
-                //Country
-                if (!context.Countries.Any())
-                {
-                    context.Countries.AddRange(new List<Country>()
-                    {
-                        new Country()
-                        {
-                            CountryName = "India",
-                        },
-                        new Country()
-                        {
-                            CountryName = "USA"
-                        },
-                        new Country()
-                        {
-                            CountryName = "China"
-                        },
-                        new Country()
-                        {
-                            CountryName = "Australia"
-                        },
-                        new Country()
-                        {
-                            CountryName = "China"
-                        },
-                        new Country()
-                        {
-                            CountryName = "Japan"
-                        },
-                        new Country()
-                        {
-                            CountryName = "Indonesia"
-                        },
-                        new Country()
-                        {
-                            CountryName = "Africa"
-                        },
-                        new Country()
-                        {
-                            CountryName = "Brazil"
-                        },
-                        new Country()
-                        {
-                            CountryName = "Germany"
-                        },
-                    });
-                    context.SaveChanges();
-                }
-
                 //State
                 if (!context.States.Any())
                 {
@@ -74,38 +25,32 @@ namespace FutureStage.Data
                     { 
                         new State()
                         {
-                            StateName = "Maharashtra",
-                            CountryID = 1
+                            StateName = "Maharashtra"
                         },
                         new State()
                         {
-                            StateName = "Uttar Pradesh",
-                            CountryID = 1
+                            StateName = "Uttar Pradesh"
                         },
                         new State()
                         {
-                            StateName = "Madhya Pradesh",
-                            CountryID = 1
+                            StateName = "Madhya Pradesh"
                         },
                         new State()
                         {
-                            StateName = "Banglore",
-                            CountryID = 1
+                            StateName = "Banglore"
                         },
                         new State()
                         {
-                            StateName = "Karnatka",
-                            CountryID = 1
+                            StateName = "Karnatka"
                         },
                         new State()
                         {
-                            StateName = "Hyderabad",
-                            CountryID = 1
+                            StateName = "Hyderabad"
                         },
                         new State()
                         {
-                            StateName = "Rajasthan",
-                            CountryID = 1
+                            StateName = "Rajasthan"
+
                         },
                     });
                     context.SaveChanges();

@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data;
+using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Data.ViewModels;
 using FutureStage.Models;
@@ -15,10 +16,12 @@ namespace FutureStage.Controllers
     {
         private readonly AppDbContext _context;
         private readonly IAreaService _areaService;
-        public ManageSchoolsController(AppDbContext context, IAreaService areaService)
+        private readonly ISchoolService _schoolService;
+        public ManageSchoolsController(AppDbContext context, IAreaService areaService, ISchoolService schoolService)
         {
             _context = context;
             _areaService = areaService;
+            _schoolService = schoolService;
         }
 
         public IActionResult doLogin()
@@ -50,13 +53,19 @@ namespace FutureStage.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> Register(School school)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View(school);
-        //    }
-        //}
+        [HttpPost]
+        public async Task<IActionResult> Register(School school)
+        {
+            if (!ModelState.IsValid)
+            {
+                ViewBag.Areas = new SelectList(await _areaService.GetAllAsync(), "ID", "AreaName");
+                return View(school);
+            }
+
+            
+            await _schoolService.AddAsync(school);
+            return RedirectToAction(nameof(doLogin));
+        }
+
     }
 }

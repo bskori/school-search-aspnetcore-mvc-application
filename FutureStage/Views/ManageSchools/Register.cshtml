@@ -33,31 +33,59 @@
 
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
-                    
+
                     <div class="header-text mb-4">
                         <h5 class="text-center">Register</h5>
                     </div>
                     <form asp-action="Register">
-                        <div class="input-group mb-3">
-                            <input asp-for="Name" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="School name">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input asp-for="Name" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="School name">
+                            </div>
+                            <span class="text-danger" asp-validation-for="Name"></span>
                         </div>
-                        <div class="input-group mb-3">
-                            <input asp-for="EmailID" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input asp-for="EmailID" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                            </div>
+                            <span class="text-danger" asp-validation-for="EmailID"></span>
                         </div>
-                        <div class="input-group mb-3">
-                            <input asp-for="ContactNo" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Contact no">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input asp-for="ContactNo" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Contact no">
+                            </div>
+                            <span class="text-danger" asp-validation-for="ContactNo"></span>
                         </div>
-                        <div class="input-group mb-3">
-                            <input asp-for="Address" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Address">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input asp-for="Address" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Address">
+                            </div>
+                            <span class="text-danger" asp-validation-for="Address"></span>
                         </div>
-                        <div class="input-group mb-3">
-                            <select asp-for="AreaID" asp-items="@ViewBag.Areas" class="form-control form-control-lg bg-light fs-6" placeholder="Email address"></select>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <select asp-for="AreaID" asp-items="@ViewBag.Areas" class="form-control form-control-lg bg-light fs-6">
+                                </select>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Area.AreaName"></span>
                         </div>
-                        <div class="input-group mb-3">
-                            <input asp-for="EstablishmentDate" type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Establishment date">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input asp-for="EstablishmentDate" type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Establishment date">
+                            </div>
+                            <span class="text-danger" asp-validation-for="EstablishmentDate"></span>
                         </div>
-                        <div class="input-group mb-4">
-                            <input asp-for="Password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input asp-for="Password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
+                            </div>
+                            <span class="text-danger" asp-validation-for="Password"></span>
+                        </div>
+                        <div class="mb-5">
+                            <div class="input-group">
+                                <input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm password">
+                            </div>
+                            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
                         </div>
                         <div class="input-group mb-3">
                             <input class="btn btn-lg btn-primary w-100 fs-6" type="submit" value="Register" />
@@ -75,3 +103,7 @@
 
 </body>
 </html>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

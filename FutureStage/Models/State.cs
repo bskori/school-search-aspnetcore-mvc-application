@@ -21,10 +21,6 @@ namespace FutureStage.Models
         //Relationships
         public virtual List<City> Cities { get; set; }
 
-        //Country
-        [ForeignKey("Country")]
-        public int CountryID { get; set; }
-        public virtual Country Country { get; set; }
 
     }
 }

@@ -24,7 +24,6 @@ namespace FutureStage.Data
 
         //site admin models
         public DbSet<SiteAdmin> SiteAdmins { get; set; }
-        public DbSet<Country> Countries { get; set; }
         public DbSet<State> States { get; set; }
         public DbSet<City> Cities { get; set; }
         public DbSet<Area> Areas { get; set; }
