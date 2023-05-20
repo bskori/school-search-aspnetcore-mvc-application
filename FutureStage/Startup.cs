@@ -38,7 +38,8 @@ namespace FutureStage
             services.AddScoped<IFacilityService, FacilityService>();
             services.AddScoped<IStandardService, StandardService>();
             services.AddScoped<IEducationBoardService, EducationBoardService>();
-                //Schools services
+            services.AddScoped<IQuotaService, QuotaService>();
+            //Schools services
             services.AddScoped<ISchoolService, SchoolService>();
             services.AddScoped<IFeeHeadService, FeeHeadService>();
             services.AddScoped<ISchoolStandardService, SchoolStandardService>();

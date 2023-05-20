@@ -183,3 +183,11 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\F
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\FeeHead\Create.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\FeeHead\Edit.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\FeeHead\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\SchoolStandard\Create.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\SchoolStandard\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\SchoolStandard\Edit.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\SchoolStandard\Index.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Quota\Create.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Quota\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Quota\Edit.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views\Quota\Index.cshtml.g.cs
