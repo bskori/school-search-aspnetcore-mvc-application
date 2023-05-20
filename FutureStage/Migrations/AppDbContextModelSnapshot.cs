@@ -163,22 +163,6 @@ namespace FutureStage.Migrations
                     b.ToTable("CityTbl");
                 });
 
-            modelBuilder.Entity("FutureStage.Models.Country", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("CountryName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("CountyTbl");
-                });
-
             modelBuilder.Entity("FutureStage.Models.EducationBoard", b =>
                 {
                     b.Property<int>("ID")
@@ -587,16 +571,11 @@ namespace FutureStage.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("CountryID")
-                        .HasColumnType("int");
-
                     b.Property<string>("StateName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("CountryID");
 
                     b.ToTable("StateTbl");
                 });
@@ -832,17 +811,6 @@ namespace FutureStage.Migrations
                     b.Navigation("SchoolStandard");
                 });
 
-            modelBuilder.Entity("FutureStage.Models.State", b =>
-                {
-                    b.HasOne("FutureStage.Models.Country", "Country")
-                        .WithMany("States")
-                        .HasForeignKey("CountryID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Country");
-                });
-
             modelBuilder.Entity("FutureStage.Models.AdmissionEnquiry", b =>
                 {
                     b.Navigation("AdmissionConfirmations");
@@ -856,11 +824,6 @@ namespace FutureStage.Migrations
             modelBuilder.Entity("FutureStage.Models.City", b =>
                 {
                     b.Navigation("Areas");
-                });
-
-            modelBuilder.Entity("FutureStage.Models.Country", b =>
-                {
-                    b.Navigation("States");
                 });
 
             modelBuilder.Entity("FutureStage.Models.Enquiry", b =>

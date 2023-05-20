@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿@using Microsoft.AspNetCore.Http
+<!doctype html>
 <html lang="en">
 <head>
     <!-- Required meta tags -->
@@ -7,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>crud dashboard</title>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="./SchoolsAssets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css">
     <!----css3---->
-    <link rel="stylesheet" href="./SchoolsAssets/css/custom.css">
+    <link rel="stylesheet" href="~/SchoolsAssets/css/custom.css">
 
 
     <!--google fonts -->
@@ -34,7 +35,7 @@
 
         <div id="sidebar">
             <div class="sidebar-header">
-                <h3><img src="./SchoolsAssets/img/logo1.png" class="img-fluid" /><span>Future Stage</span></h3>
+                <h3><img src="~/SchoolsAssets/img/logo1.png" class="img-fluid" /><span>Future Stage</span></h3>
             </div>
             <ul class="list-unstyled component m-0">
                 <li class="active">
@@ -55,8 +56,28 @@
                 </li>
 
                 <li class="">
+                    <a href="#" class=""><i class="material-icons">date_range</i>FeeHead </a>
+                </li>
+                <li class="">
+                    <a href="#" class=""><i class="material-icons">date_range</i>School Standard </a>
+                </li>
+                <li class="">
+                    <a href="#" class=""><i class="material-icons">date_range</i>Facility </a>
+                </li>
+                <li class="">
+                    <a href="#" class=""><i class="material-icons">date_range</i>Achivements </a>
+                </li>
+                <li class="">
+                    <a href="#" class=""><i class="material-icons">date_range</i>Standard Fees</a>
+                </li>
+                <li class="">
+                    <a href="#" class=""><i class="material-icons">date_range</i>Admissions </a>
+                </li>
+
+                <li class="">
                     <a href="#" class=""><i class="material-icons">date_range</i>copy </a>
                 </li>
+
                 <li class="">
                     <a href="#" class=""><i class="material-icons">library_books</i>calender </a>
                 </li>
@@ -83,7 +104,7 @@
                         <div class="col-10 col-md-11 col-lg-11 order-1 order-md-3">
                             <div class="xp-profilebar text-right">
                                 <nav class="navbar p-0">
-                                    <ul class="nav navbar-nav flex-row ml-auto">
+                                    <ul class="nav navbar-nav flex-row ms-auto">
 
                                         <li class="dropdown nav-item">
                                             <a class="nav-link" href="#" data-toggle="dropdown">
@@ -93,19 +114,19 @@
                                             </a>
                                             <ul class="dropdown-menu small-menu">
                                                 <li>
-                                                    <a href="#">
+                                                    <a asp-action="SchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
                                                         <span class="material-icons">person_outline</span>
-                                                        Profile
+                                                        My Profile
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a asp-action="ChangePassword" asp-controller="ManageSchools" asp-area="">
                                                         <span class="material-icons">settings</span>
                                                         Settings
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a href="#">
+                                                    <a asp-action="Logout" asp-controller="ManageSchools" asp-area="">
                                                         <span class="material-icons">logout</span>
                                                         Logout
                                                     </a>
@@ -126,10 +147,15 @@
             </div>
             <!------top-navbar-end----------->
             <!------main-content-start----------->
-            
+
+
+
             <div class="main-content">
                 <div class="row">
                     <div class="col-md-12">
+
+                        @RenderBody()
+
                         <div class="table-wrapper">
 
                             <div class="table-title">
@@ -150,7 +176,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @RenderBody()
+
                             <table class="table table-striped table-hover">
                                 <thead>
                                     <tr>
@@ -427,10 +453,10 @@
     <!-------complete html----------->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="./SchoolsAssets/js/jquery-3.3.1.slim.min.js"></script>
-    <script src="./SchoolsAssets/js/popper.min.js"></script>
-    <script src="./SchoolsAssets/js/bootstrap.min.js"></script>
-    <script src="./SchoolsAssets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/lib/jquery/jquery.slim.min.js"></script>
+    <script src="~/SchoolsAssets/js/popper.min.js"></script>
+    <script src="~/SchoolsAssets/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
 
 
     <script type="text/javascript">

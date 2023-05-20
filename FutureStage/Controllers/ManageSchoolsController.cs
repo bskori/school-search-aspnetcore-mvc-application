@@ -3,6 +3,7 @@ using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Data.ViewModels;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -38,6 +39,7 @@ namespace FutureStage.Controllers
                 
                 if(record != null)
                 {
+                    HttpContext.Session.SetString("ID", record.ID.ToString());
                     return RedirectToAction("Index", "Home", new { area = "Schools" });
                 }
 
@@ -64,6 +66,12 @@ namespace FutureStage.Controllers
 
             
             await _schoolService.AddAsync(school);
+            return RedirectToAction(nameof(doLogin));
+        }
+
+        public  IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
             return RedirectToAction(nameof(doLogin));
         }
 

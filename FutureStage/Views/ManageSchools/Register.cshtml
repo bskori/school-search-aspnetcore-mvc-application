@@ -58,13 +58,13 @@
                         </div>
                         <div class="mb-3">
                             <div class="input-group">
-                                <input asp-for="Address" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Address">
+                                <textarea asp-for="Address" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Address"></textarea>
                             </div>
                             <span class="text-danger" asp-validation-for="Address"></span>
                         </div>
                         <div class="mb-3">
                             <div class="input-group">
-                                <select asp-for="AreaID" asp-items="@ViewBag.Areas" class="form-control form-control-lg bg-light fs-6">
+                                <select asp-for="AreaID" asp-items="@ViewBag.Areas" class="form-select form-select-lg bg-light fs-6">
                                 </select>
                             </div>
                             <span class="text-danger" asp-validation-for="Area.AreaName"></span>
@@ -91,7 +91,7 @@
                             <input class="btn btn-lg btn-primary w-100 fs-6" type="submit" value="Register" />
                         </div>
                         <div class="row">
-                            <small>Aready Have an account? <a asp-action="Register" class="fs-6">Log In</a></small>
+                            <small>Aready Have an account? <a asp-action="doLogin" class="fs-6">Log In</a></small>
                         </div>
                     </form>
                 </div>

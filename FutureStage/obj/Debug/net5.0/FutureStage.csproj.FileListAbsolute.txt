@@ -177,3 +177,5 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\S
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\ManageSchools\doLogin.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\ManageSchools\Register.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Home\SchoolProfile.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Home\UpdateSchoolProfile.cshtml.g.cs

@@ -15,6 +15,7 @@ namespace FutureStage.Models
         public int ID { get; set; }
 
         [Required(ErrorMessage ="School name is required")]
+        [Display(Name ="School Name")]
         public string Name { get; set; }
 
         [Required(ErrorMessage ="Address is required")]
@@ -22,13 +23,16 @@ namespace FutureStage.Models
 
         [Required(ErrorMessage = "Email address is required")]
         [DataType(DataType.EmailAddress, ErrorMessage ="Please enter a valid Email address")]
+        [Display(Name ="Email Address")]
         public string EmailID { get; set; }
 
         [Required(ErrorMessage ="Contact no is required")]
         [RegularExpression(@"^\d{10}$",ErrorMessage ="Please enter a 10-digit valid Contact Number")]
+        [Display(Name ="Contact No.")]
         public string ContactNo { get; set; }
 
         [Required(ErrorMessage = "Establishment date is equired")]
+        [Display(Name="Establishment Date")]
         public DateTime EstablishmentDate { get; set; }
 
         [Required(ErrorMessage ="Password is required")]
