@@ -333,6 +333,41 @@ namespace FutureStage.Data
                     });
                     context.SaveChanges();
                 }
+
+                //Scools ----------------------------
+
+                //FeeHead
+                if (!context.FeeHeads.Any())
+                {
+                    context.FeeHeads.AddRange(new List<FeeHead>() { 
+                        new FeeHead()
+                        {
+                            FeeHeadTitle = "Tuition Fees",
+                            FeeHeadDescription ="These are the basic fees charged for attending the school and receiving educational instruction. Tuition fees can vary based on factors such as grade level, curriculum, and whether the school is public or private."
+                        },
+                        new FeeHead()
+                        {
+                            FeeHeadTitle = "Registration/Admission Fees",
+                            FeeHeadDescription ="This fee is usually charged when a student initially enrolls in the school. It covers administrative costs associated with processing the application and securing a spot for the student."
+                        },
+                         new FeeHead()
+                        {
+                            FeeHeadTitle = "Examination Fees",
+                            FeeHeadDescription ="Schools often charge fees for conducting examinations, including midterm exams, final exams, or external assessments like standardized tests or board examinations."
+                        }, new FeeHead()
+                        {
+                            FeeHeadTitle = "Activity/Extracurricular Fees",
+                            FeeHeadDescription ="These fees are associated with participation in extracurricular activities such as sports teams, clubs, field trips, or special events. They may cover equipment, uniforms, transportation, or other related expenses."
+                        }, new FeeHead()
+                        {
+                            FeeHeadTitle = "Laboratory Fees",
+                            FeeHeadDescription =" If a school offers science or computer laboratories, they may charge additional fees to cover the maintenance, supplies, and equipment required for practical experiments or hands-on learning."
+                        },
+                    });
+                    context.SaveChanges();
+                }
+
+
             }
         }
     }
