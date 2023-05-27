@@ -44,6 +44,7 @@ namespace FutureStage
             services.AddScoped<IFeeHeadService, FeeHeadService>();
             services.AddScoped<ISchoolStandardService, SchoolStandardService>();
             services.AddScoped<ISchoolFacilityService, SchoolFacilityService>();
+            services.AddScoped<ISchoolAchivementService, SchoolAchivementService>();
 
             services.AddControllersWithViews();
 
