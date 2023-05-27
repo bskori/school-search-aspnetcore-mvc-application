@@ -20,7 +20,7 @@ using FutureStage.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ade028946f2203f7164d2bb3c30422f80ffb19ab", @"/Areas/Schools/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"c55aefca1a6dda43d2fce964597a250032fe1d9f", @"/Areas/Schools/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"90c965113ea0f80bd69bbe5df76f7b317e2e5d78", @"/Areas/Schools/Views/_ViewImports.cshtml")]
     public class Areas_Schools_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

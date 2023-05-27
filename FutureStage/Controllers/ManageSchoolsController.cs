@@ -3,11 +3,13 @@ using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Data.ViewModels;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -18,11 +20,14 @@ namespace FutureStage.Controllers
         private readonly AppDbContext _context;
         private readonly IAreaService _areaService;
         private readonly ISchoolService _schoolService;
-        public ManageSchoolsController(AppDbContext context, IAreaService areaService, ISchoolService schoolService)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public ManageSchoolsController(AppDbContext context, IAreaService areaService, ISchoolService schoolService, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _areaService = areaService;
             _schoolService = schoolService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult doLogin()
@@ -64,7 +69,21 @@ namespace FutureStage.Controllers
                 return View(school);
             }
 
-            
+            if(school.Image != null)
+            {
+                if(school.Image.Length > 0)
+                {
+                    string folderpath = "Images/SchoolsImage/";
+                    folderpath += Guid.NewGuid().ToString() + "_" + school.Image.FileName;
+
+                    school.ImagePath = "/"+folderpath;
+
+                    string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folderpath);
+
+                    await school.Image.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+                }
+            }
+            school.EstablishmentDate = school.EstablishmentDate.Date;
             await _schoolService.AddAsync(school);
             return RedirectToAction(nameof(doLogin));
         }

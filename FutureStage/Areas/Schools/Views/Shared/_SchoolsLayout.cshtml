@@ -13,14 +13,24 @@
     <link rel="stylesheet" href="~/SchoolsAssets/css/custom.css">
 
 
+
     <!--google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 
+
+
     <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+
+    <!-------complete html----------->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="~/lib/jquery/jquery.slim.min.js"></script>
+    <script src="~/SchoolsAssets/js/popper.min.js"></script>
+    <script src="~/SchoolsAssets/js/bootstrap.min.js"></script>
 
 </head>
 <body>
@@ -59,7 +69,7 @@
                     <a asp-action="Index" asp-controller="FeeHead" asp-area="Schools"><i class="material-icons">date_range</i>FeeHead </a>
                 </li>
                 <li class="">
-                    <a asp-action="Create" asp-controller="FeeHead" asp-area="Schools"><i class="material-icons">date_range</i>School Standard </a>
+                    <a asp-action="Index" asp-controller="SchoolStandard" asp-area="Schools"><i class="material-icons">date_range</i>School Standard </a>
                 </li>
                 <li class="">
                     <a href="#" class=""><i class="material-icons">date_range</i>Facility </a>
@@ -181,13 +191,8 @@
 
 
 
-    <!-------complete html----------->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="~/lib/jquery/jquery.slim.min.js"></script>
-    <script src="~/SchoolsAssets/js/popper.min.js"></script>
-    <script src="~/SchoolsAssets/js/bootstrap.min.js"></script>
-    <script src="~/lib/jquery/jquery.min.js"></script>
+    
+
 
 
     <script type="text/javascript">
@@ -209,6 +214,8 @@
 
 
 </body>
+
+
 
 </html>
 

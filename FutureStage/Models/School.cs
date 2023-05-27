@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data.Base;
+using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,9 +15,16 @@ namespace FutureStage.Models
         [Key]
         public int ID { get; set; }
 
-        [Required(ErrorMessage ="School name is required")]
-        [Display(Name ="School Name")]
+        [Required(ErrorMessage = "School name is required")]
+        [Display(Name = "School Name")]
         public string Name { get; set; }
+
+        public string ImagePath { get; set; }
+
+        [Display(Name = "Choose Image")]
+        [Required(ErrorMessage = "School Image is required")]
+        [NotMapped]
+        public IFormFile Image { get; set; }
 
         [Required(ErrorMessage ="Address is required")]
         public string Address { get; set; }
@@ -48,11 +56,10 @@ namespace FutureStage.Models
         public virtual List<School> Schools { get; set; }
         public virtual List<Enquiry> Enquiries { get; set; }
         public virtual List<SchoolStandard> SchoolStandards { get; set; }
-
+        
         //Area
         [ForeignKey("Area")]
         public int AreaID { get; set; }
         public virtual Area Area { get; set; }
-
     }
 }

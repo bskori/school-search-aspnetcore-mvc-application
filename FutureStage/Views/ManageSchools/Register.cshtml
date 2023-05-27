@@ -1,4 +1,8 @@
 ﻿@model School
+
+@{ 
+    Layout = null;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,9 +39,9 @@
                 <div class="row align-items-center">
 
                     <div class="header-text mb-4">
-                        <h5 class="text-center">Register</h5>
+                        <h5 class="text-center">School Register</h5>
                     </div>
-                    <form asp-action="Register">
+                    <form asp-action="Register" enctype="multipart/form-data">
                         <div class="mb-3">
                             <div class="input-group">
                                 <input asp-for="Name" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="School name">
@@ -74,6 +78,12 @@
                                 <input asp-for="EstablishmentDate" type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Establishment date">
                             </div>
                             <span class="text-danger" asp-validation-for="EstablishmentDate"></span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <input asp-for="Image" type="file" class="form-control form-control-lg bg-light fs-6" placeholder="Choose image">
+                            </div>
+                            <span class="text-danger" asp-validation-for="Image"></span>
                         </div>
                         <div class="mb-3">
                             <div class="input-group">

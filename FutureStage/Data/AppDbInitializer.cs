@@ -367,7 +367,114 @@ namespace FutureStage.Data
                     context.SaveChanges();
                 }
 
+                //Quota
+                if (!context.Quotos.Any())
+                {
+                    context.Quotos.AddRange(new List<Quoto>()
+                    {
+                        new Quoto()
+                        {
+                            QuotoTitle = "General/Open Category",
+                            QuotoDescription = "This category comprises applicants who do not fall under any specific reserved category. They compete for admission based on general merit or specific admission criteria set by the institution."
+                        },
+                        new Quoto()
+                        {
+                            QuotoTitle = "Scheduled Castes (SC)",
+                            QuotoDescription = "Reserved for individuals belonging to historically disadvantaged castes or Dalits in India."
+                        },
+                         new Quoto()
+                        {
+                            QuotoTitle = "Scheduled Tribes (ST)",
+                            QuotoDescription = "Reserved for individuals belonging to specific indigenous or tribal communities in India."
+                        },
+                          new Quoto()
+                        {
+                            QuotoTitle = "Economically Weaker Section (EWS)",
+                            QuotoDescription = "Introduced in some countries to provide reservations for economically disadvantaged sections of society, irrespective of their caste or ethnicity."
+                        },
+                           new Quoto()
+                        {
+                            QuotoTitle = "Other Backward Classes (OBC)",
+                            QuotoDescription = "Reserved for individuals belonging to socially and educationally disadvantaged groups, excluding SCs and STs, in India"
+                        },
+                            new Quoto()
+                        {
+                            QuotoTitle = "Persons with Disabilities (PWD)",
+                            QuotoDescription = "Reserved for individuals with physical or mental disabilities, with appropriate provisions for accessibility and support."
+                        },
 
+                    });
+                    context.SaveChanges();
+                }
+
+                //School
+                if (!context.Schools.Any())
+                {
+                    context.Schools.AddRange(new List<School>()
+                    {
+                        new School()
+                        {
+                            Name = "Elpro International School",
+                            Address = "Elpro Compound, Near Shridhar Nagar, Pimpri Chinchwad, Pune, Maharashtra - 411017",
+                            EmailID = "admissions@elproschools.edu.in",
+                            ContactNo = "1234567891",
+                            EstablishmentDate = Convert.ToDateTime("2009-08-23"),
+                            Password = "demo@1234",
+                            ConfirmPassword = "demo@1234",
+                            ImagePath = "/Images/SchoolsImage/demo_img.jpg",
+                            AreaID = 8
+                        },
+                        new School()
+                        {
+                            Name = "Empros International School",
+                            Address = "IBMR Campus MIDC C Block, Behind Double Hilton By Tree Hotel, Chinchwad, Pimpri Chinchwad, Pune, Maharashtra - 411017",
+                            EmailID = " empros@asmedu.org",
+                            ContactNo = "1234567891",
+                            EstablishmentDate = Convert.ToDateTime("2011-08-3"),
+                            Password = "demo@1234",
+                            ConfirmPassword = "demo@1234",
+                            ImagePath = "/Images/SchoolsImage/demo_img.jpg",
+                            AreaID = 8
+                        },
+                        new School()
+                        {
+                            Name = "Global Talent International School",
+                            Address = "plot no 1, Pimpri Chinchwad, Pune, Maharashtra - 411017",
+                            EmailID = "globaltalenthm@gmail.com",
+                            ContactNo = "1234567891",
+                            EstablishmentDate = Convert.ToDateTime("2013-05-13"),
+                            Password = "demo@1234",
+                            ConfirmPassword = "demo@1234",
+                            ImagePath = "/Images/SchoolsImage/demo_img.jpg",
+                            AreaID = 8
+                        },
+                        new School()
+                        {
+                            Name = "Orchids The International Schoo",
+                            Address = "Next to Luxury Living, Near Yashopuram Housing Society, Gawade Nagar Chinchwad, Pimpri-Chinchwad, Pimpri Chinchwad, Pune, Maharashtra - 411017",
+                            EmailID = "marketing.chinchwad@orchids.edu.in",
+                            ContactNo = "1234567891",
+                            EstablishmentDate = Convert.ToDateTime("2004-08-3"),
+                            Password = "demo@1234",
+                            ConfirmPassword = "demo@1234",
+                            ImagePath = "/Images/SchoolsImage/demo_img.jpg",
+                            AreaID = 8
+                        },
+                        new School()
+                        {
+                            Name = "VIBGYOR Rise School",
+                            Address = " CTS No. 4780, Survey No. 127/1A/1A/A (Part) Opposite Hilton Double Tree, Akurdi, Pimpri Chinchwad, Pune, Maharashtra - 411017",
+                            EmailID = "helpdesk.vi10216@vibgyorrise.com",
+                            ContactNo = "1234567891",
+                            EstablishmentDate = Convert.ToDateTime("2009-08-23"),
+                            Password = "demo@1234",
+                            ConfirmPassword = "demo@1234",
+                            ImagePath = "/Images/SchoolsImage/demo_img.jpg",
+                            AreaID = 8
+                        }
+                    });
+                    context.SaveChanges(); 
+                }
             }
         }
     }

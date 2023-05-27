@@ -32,7 +32,7 @@ namespace FutureStage.Data
         public DbSet<Medium> Mediums { get; set; }
         public DbSet<Facility> Facilities { get; set; }
 
-        //school admin models
+        //schools models
         public DbSet<School> Schools { get; set; }
         public DbSet<AdmissionEnquiry> AdmissionEnquiries { get; set; }
         public DbSet<AdmissionConfirmation> AdmissionConfirmations { get; set; }

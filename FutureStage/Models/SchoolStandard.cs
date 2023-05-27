@@ -17,6 +17,10 @@ namespace FutureStage.Models
 
         //Relationships
         public virtual List<StandardSeatQuoto> StandardSeatQuotos { get; set; }
+        public SchoolStandard()
+        {
+            StandardSeatQuotos = new List<StandardSeatQuoto>();
+        }
         public virtual List<StandardFees> StandardFees { get; set; }
         public virtual List<FeeHead> FeeHeads { get; set; }
         public virtual List<AdmissionPrerequisite> AdmissionPrerequisites { get; set; }

@@ -13,7 +13,13 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
+        [Display(Name ="Quota Title")]
+        [Required(ErrorMessage ="Quota Title is required")]
         public string QuotoTitle { get; set; }
+
+        [Display(Name ="Quota Description")]
+        [Required(ErrorMessage ="Quota Description is required")]
         public string QuotoDescription { get; set; }
 
         //Relationships

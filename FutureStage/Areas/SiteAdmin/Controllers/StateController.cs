@@ -28,7 +28,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
             return View(allStates);
         }
 
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             return View();
         }
