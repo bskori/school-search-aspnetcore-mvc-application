@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FutureStage.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Models
 {
     [Table("StandardFeesTbl")]
-    public class StandardFees
+    public class StandardFees : IEntityBase
     {
         [Key]
         public int ID { get; set; }
