@@ -211,3 +211,7 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\S
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\StandardFees\Create.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\StandardFees\Edit.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\StandardFees\Delete.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Admission\Create.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Admission\Index.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Admission\Edit.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Admission\Delete.cshtml.g.cs

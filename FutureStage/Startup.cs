@@ -46,6 +46,8 @@ namespace FutureStage
             services.AddScoped<ISchoolFacilityService, SchoolFacilityService>();
             services.AddScoped<ISchoolAchivementService, SchoolAchivementService>();
             services.AddScoped<IStandardFeesService, StandardFeesService>();
+            services.AddScoped<IAdmissionPrerequisiteService, AdmissionPrerequisiteService>();
+            services.AddScoped<IAdmissionProcessService, AdmissionProcessService>();
 
             services.AddControllersWithViews();
 

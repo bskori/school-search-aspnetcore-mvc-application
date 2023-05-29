@@ -19,8 +19,15 @@ using FutureStage.Models;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "D:\PROJECTS\FutureStage\FutureStage\Areas\Schools\Views\_ViewImports.cshtml"
+using FutureStage.Data.ViewModels;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ade028946f2203f7164d2bb3c30422f80ffb19ab", @"/Areas/Schools/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"90c965113ea0f80bd69bbe5df76f7b317e2e5d78", @"/Areas/Schools/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3d7c6c4a54d62771218cf4adefb37d61a05f87d4", @"/Areas/Schools/Views/_ViewImports.cshtml")]
     public class Areas_Schools_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
