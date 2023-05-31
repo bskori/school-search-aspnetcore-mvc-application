@@ -15,5 +15,7 @@ namespace FutureStage.Models
         public int ID { get; set; }
         public string EducationBoardTitle { get; set; }
         public string EducationBoardDescription { get; set; }
+        public virtual List<School_EducationBoard> School_EducationBoards { get; set; }
+
     }
 }

@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Enums\SiteAdminEnums\" />
+    <Folder Include="Data\Enums\" />
     <Folder Include="wwwroot\SiteAdminAssets\img\" />
   </ItemGroup>
 

@@ -50,13 +50,17 @@ namespace FutureStage.Models
         [Required(ErrorMessage ="Confirm password is required")]
         public string ConfirmPassword { get; set; }
 
+        [NotMapped]
+        public List<int> EducationBoardID { get; set; }
+
         //Relationships
         public virtual List<SchoolFacility> SchoolFacilities { get; set; }
         public virtual List<SchoolAchivement> SchoolAchivements { get; set; }
         public virtual List<School> Schools { get; set; }
         public virtual List<Enquiry> Enquiries { get; set; }
         public virtual List<SchoolStandard> SchoolStandards { get; set; }
-        
+        public virtual List<School_EducationBoard> School_EducationBoards { get; set; }
+
         //Area
         [ForeignKey("Area")]
         public int AreaID { get; set; }

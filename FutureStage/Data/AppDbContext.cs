@@ -16,10 +16,21 @@ namespace FutureStage.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            foreach(var relation in modelBuilder.Model.GetEntityTypes().SelectMany(n => n.GetForeignKeys()))
+            foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(n => n.GetForeignKeys()))
             {
                 relation.DeleteBehavior = DeleteBehavior.Restrict;
             }
+
+            modelBuilder.Entity<School_EducationBoard>().HasKey(p => new
+            {
+                p.SchoolID,
+                p.EducationBoardID
+            });
+
+            modelBuilder.Entity<School_EducationBoard>().HasOne(p => p.School).WithMany(p => p.School_EducationBoards).HasForeignKey(p => p.SchoolID);
+            modelBuilder.Entity<School_EducationBoard>().HasOne(p => p.EducationBoard).WithMany(p => p.School_EducationBoards).HasForeignKey(p => p.EducationBoardID);
+
+            base.OnModelCreating(modelBuilder);
         }
 
         //site admin models
@@ -46,6 +57,7 @@ namespace FutureStage.Data
         public DbSet<SchoolStandard> SchoolStandards { get; set; }
         public DbSet<StandardFees> StandardFees { get; set; }
         public DbSet<StandardSeatQuoto> StandardSeatQuotos { get; set; }
+        public DbSet<School_EducationBoard> School_EducationBoards { get; set; }
 
         //Parent
         public DbSet<Parent> Parents { get; set; }

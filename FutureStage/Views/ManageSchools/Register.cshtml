@@ -68,7 +68,14 @@
                         </div>
                         <div class="mb-3">
                             <div class="input-group">
-                                <select asp-for="AreaID" asp-items="@ViewBag.Areas" class="form-select form-select-lg bg-light fs-6">
+                                <select asp-for="AreaID" asp-items="ViewBag.Areas" class="form-select form-select-lg bg-light fs-6">
+                                </select>
+                            </div>
+                            <span class="text-danger" asp-validation-for="Area.AreaName"></span>
+                        </div>
+                        <div class="mb-3">
+                            <div class="input-group">
+                                <select asp-for="EducationBoardID" asp-items="ViewBag.EducationBoards" class="form-select form-select-lg bg-light fs-6" multiple>
                                 </select>
                             </div>
                             <span class="text-danger" asp-validation-for="Area.AreaName"></span>

@@ -20,13 +20,15 @@ namespace FutureStage.Controllers
         private readonly AppDbContext _context;
         private readonly IAreaService _areaService;
         private readonly ISchoolService _schoolService;
+        private readonly IEducationBoardService _educationBoardService;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ManageSchoolsController(AppDbContext context, IAreaService areaService, ISchoolService schoolService, IWebHostEnvironment webHostEnvironment)
+        public ManageSchoolsController(AppDbContext context, IAreaService areaService, ISchoolService schoolService, IWebHostEnvironment webHostEnvironment, IEducationBoardService educationBoardService)
         {
             _context = context;
             _areaService = areaService;
             _schoolService = schoolService;
+            _educationBoardService = educationBoardService;
             _webHostEnvironment = webHostEnvironment;
         }
 
@@ -57,6 +59,7 @@ namespace FutureStage.Controllers
         public async Task<IActionResult> Register()
         {
             ViewBag.Areas = new SelectList(await _areaService.GetAllAsync(), "ID", "AreaName");
+            ViewBag.EducationBoards = new SelectList(await _educationBoardService.GetAllAsync(), "ID", "EducationBoardTitle");
             return View();
         }
 
@@ -66,6 +69,8 @@ namespace FutureStage.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.Areas = new SelectList(await _areaService.GetAllAsync(), "ID", "AreaName");
+                ViewBag.EducationBoards = new SelectList(await _educationBoardService.GetAllAsync(), "ID", "EducationBoardTitle");
+
                 return View(school);
             }
 
@@ -85,6 +90,18 @@ namespace FutureStage.Controllers
             }
             school.EstablishmentDate = school.EstablishmentDate.Date;
             await _schoolService.AddAsync(school);
+
+            foreach(int educationBoardID in school.EducationBoardID)
+            {
+                School_EducationBoard school_EducationBoard = new School_EducationBoard()
+                {
+                    SchoolID = school.ID,
+                    EducationBoardID = educationBoardID
+                };
+                await _context.School_EducationBoards.AddAsync(school_EducationBoard);
+            }
+            await _context.SaveChangesAsync();
+
             return RedirectToAction(nameof(doLogin));
         }
 
