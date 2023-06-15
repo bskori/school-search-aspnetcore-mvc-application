@@ -1,0 +1,26 @@
+﻿@model SchoolFacility
+
+<div class="row">
+    
+    <div class="col-md-8 offset-md-2">
+        <h3 class="alert alert-primary text-center my-5 p-0">Add new School Facility</h3>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Create">
+            <div class="mb-5">
+                <label class="form-label">Select Facility</label>
+                <select class="form-select" asp-for="FacilityID" asp-items="ViewBag.Facilities"></select>
+            </div>
+            <div class="mb-5">
+                <label class="form-label" asp-for="FacilityDescription"></label>
+                <input class="form-control" asp-for="FacilityDescription" />
+                <span class="text-danger" asp-validation-for="FacilityDescription"></span>
+            </div>
+            <div class="mb-3">
+                <a asp-action="Index" class="btn btn-outline-secondary">Show All</a>
+                <input type="submit" class="btn btn-outline-success float-end" value="Create" />
+            </div>
+        </form>
+    </div>
+    
+</div>

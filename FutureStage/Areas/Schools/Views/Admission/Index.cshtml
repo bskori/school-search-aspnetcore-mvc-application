@@ -1,0 +1,89 @@
+﻿@model IEnumerable<AdmissionPrerequisite>
+
+
+@{
+    ViewData["Title"] = "List of AdmissionPrerequisite";
+}
+
+<div class="table-wrapper">
+
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                <h2 class="ml-lg-2">Manage School Admission Prerequisite</h2>
+            </div>
+
+            <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
+                <a asp-action="Create" class="btn btn-success">
+                    <i class="material-icons">&#xE147;</i>
+                    <span>Add New </span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>
+                    Sr. No
+                </th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Standard</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{ int no = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <th>
+                            @no
+                        </th>
+                        <th>@item.PrerequisiteTitle</th>
+                        <th>@item.PrerequisiteDescription</th>
+                        <th>@item.SchoolStandard.Standard.StandardTitle</th>
+                        <th>
+                            <a asp-action="Edit" asp-route-id="@item.SchoolStandardID" class="edit text-primary">
+                                <i class="material-icons" title="Edit">&#xE254;</i>
+                            </a>
+
+                            <a asp-action="Delete" asp-route-id="@item.SchoolStandardID" class="delete text-danger">
+                                <i class="material-icons" title="Delete">&#xE872;</i>
+                            </a>
+                        </th>
+                    </tr>
+
+                    no++;
+                }
+            }
+        </tbody>
+
+
+    </table>
+
+    <div class="clearfix">
+        <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
+        <ul class="pagination">
+            <li class="page-item disabled"><a href="#">Previous</a></li>
+            <li class="page-item "><a href="#" class="page-link">1</a></li>
+            <li class="page-item "><a href="#" class="page-link">2</a></li>
+            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+            <li class="page-item "><a href="#" class="page-link">4</a></li>
+            <li class="page-item "><a href="#" class="page-link">5</a></li>
+            <li class="page-item "><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </div>
+
+
+
+
+
+
+
+
+
+</div>

@@ -1,0 +1,39 @@
+﻿@model SchoolAchivement
+
+@{ 
+    ViewData["Title"] = "Update School Achivement";
+}
+
+<div class="row">
+
+    <div class="col-md-8 offset-md-2">
+        <h3 class="alert alert-primary text-center my-5 p-0">Update School Achivement</h3>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit">
+            <div>
+                <input asp-for="SchoolID" type="hidden" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="AchivementTitle"></label>
+                <input class="form-control" asp-for="AchivementTitle" />
+                <span class="text-danger" asp-validation-for="AchivementTitle"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label" asp-for="AchivementDate"></label>
+                <input class="form-control" type="date" asp-for="AchivementDate" />
+                <span class="text-danger" asp-validation-for="AchivementDate"></span>
+            </div>
+            <div class="mb-5">
+                <label class="form-label" asp-for="AchivementDescription"></label>
+                <input class="form-control" asp-for="AchivementDescription" />
+                <span class="text-danger" asp-validation-for="AchivementDescription"></span>
+            </div>
+            <div class="mb-3">
+                <a asp-action="Index" class="btn btn-outline-secondary">Show All</a>
+                <input type="submit" class="btn btn-outline-primary float-end" value="Update" />
+            </div>
+        </form>
+    </div>
+
+</div>

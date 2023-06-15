@@ -1,0 +1,31 @@
+﻿@model Quoto
+
+@{ 
+    ViewData["Title"] = "Update facility";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-5">
+        <h2 class="text-primary text-center py-3 my-5">Update Quota</h2>
+    </div>
+    <div class="col-md-6 offset-md-3">
+        <form asp-action="Edit">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+            <input type="hidden" asp-for="ID" />
+            <div class="mb-3">
+                <label class="form-label" asp-for="QuotoTitle"></label>
+                <input class="form-control" asp-for="QuotoTitle" />
+                <span class="text-danger" asp-validation-for="QuotoTitle"></span>
+            </div>
+            <div class="mb-4">
+                <label class="form-label" asp-for="QuotoDescription"></label>
+                <input class="form-control" asp-for="QuotoDescription" />
+                <span class="text-danger" asp-validation-for="QuotoDescription"></span>
+            </div>
+            <div class="mb-3">
+                <a class="btn btn-outline-secondary" asp-action="Index"> Show All</a>
+                <input class="btn btn-outline-primary float-end" type="submit" value="Update" />
+            </div>
+        </form>
+    </div>
+</div>

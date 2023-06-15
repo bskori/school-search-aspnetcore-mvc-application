@@ -311,15 +311,10 @@ namespace FutureStage.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ParentID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Password")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("ParentID");
 
                     b.ToTable("ParentTbl");
                 });
@@ -470,6 +465,21 @@ namespace FutureStage.Migrations
                     b.HasIndex("StandardID");
 
                     b.ToTable("SchoolStandardTbl");
+                });
+
+            modelBuilder.Entity("FutureStage.Models.School_EducationBoard", b =>
+                {
+                    b.Property<int>("SchoolID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EducationBoardID")
+                        .HasColumnType("int");
+
+                    b.HasKey("SchoolID", "EducationBoardID");
+
+                    b.HasIndex("EducationBoardID");
+
+                    b.ToTable("School_EducationBoards");
                 });
 
             modelBuilder.Entity("FutureStage.Models.SiteAdmin", b =>
@@ -707,14 +717,6 @@ namespace FutureStage.Migrations
                     b.Navigation("Enquiry");
                 });
 
-            modelBuilder.Entity("FutureStage.Models.Parent", b =>
-                {
-                    b.HasOne("FutureStage.Models.Parent", null)
-                        .WithMany("Parents")
-                        .HasForeignKey("ParentID")
-                        .OnDelete(DeleteBehavior.Restrict);
-                });
-
             modelBuilder.Entity("FutureStage.Models.School", b =>
                 {
                     b.HasOne("FutureStage.Models.Area", "Area")
@@ -780,6 +782,25 @@ namespace FutureStage.Migrations
                     b.Navigation("Standard");
                 });
 
+            modelBuilder.Entity("FutureStage.Models.School_EducationBoard", b =>
+                {
+                    b.HasOne("FutureStage.Models.EducationBoard", "EducationBoard")
+                        .WithMany("School_EducationBoards")
+                        .HasForeignKey("EducationBoardID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FutureStage.Models.School", "School")
+                        .WithMany("School_EducationBoards")
+                        .HasForeignKey("SchoolID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("EducationBoard");
+
+                    b.Navigation("School");
+                });
+
             modelBuilder.Entity("FutureStage.Models.StandardFees", b =>
                 {
                     b.HasOne("FutureStage.Models.FeeHead", "FeeHead")
@@ -833,6 +854,11 @@ namespace FutureStage.Migrations
                     b.Navigation("Areas");
                 });
 
+            modelBuilder.Entity("FutureStage.Models.EducationBoard", b =>
+                {
+                    b.Navigation("School_EducationBoards");
+                });
+
             modelBuilder.Entity("FutureStage.Models.Enquiry", b =>
                 {
                     b.Navigation("GeneralEnquiryReplies");
@@ -851,8 +877,6 @@ namespace FutureStage.Migrations
             modelBuilder.Entity("FutureStage.Models.Parent", b =>
                 {
                     b.Navigation("AdmissionEnquiries");
-
-                    b.Navigation("Parents");
                 });
 
             modelBuilder.Entity("FutureStage.Models.Quoto", b =>
@@ -863,6 +887,8 @@ namespace FutureStage.Migrations
             modelBuilder.Entity("FutureStage.Models.School", b =>
                 {
                     b.Navigation("Enquiries");
+
+                    b.Navigation("School_EducationBoards");
 
                     b.Navigation("SchoolAchivements");
 

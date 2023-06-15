@@ -1,0 +1,21 @@
+﻿@model FeeHead
+
+@{
+    ViewData["Title"] = "Remove FeeHead";
+}
+
+
+
+<div class="p-2 col-md-8 offset-md-2">
+    <h3 class="alert alert-danger text-center p-2 mb-5">Are you sure, you want to delete?</h3>
+
+    <form asp-action="Delete">
+        
+        <div class="col-md-6 offset-md-3">
+            <input asp-for="ID" type="hidden" />
+            <a asp-action="Index" class="btn btn-outline-secondary w-25">Cancel</a>
+            <input type="submit" value="Confirm" class="btn btn-danger float-end w-25" />
+        </div>
+    </form>
+</div>
+

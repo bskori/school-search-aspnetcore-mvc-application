@@ -16,6 +16,7 @@ namespace FutureStage.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(n => n.GetForeignKeys()))
             {
                 relation.DeleteBehavior = DeleteBehavior.Restrict;
@@ -31,6 +32,7 @@ namespace FutureStage.Data
             modelBuilder.Entity<School_EducationBoard>().HasOne(p => p.EducationBoard).WithMany(p => p.School_EducationBoards).HasForeignKey(p => p.EducationBoardID);
 
             base.OnModelCreating(modelBuilder);
+
         }
 
         //site admin models

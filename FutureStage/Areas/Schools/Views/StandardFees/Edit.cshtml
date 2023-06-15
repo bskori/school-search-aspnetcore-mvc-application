@@ -1,0 +1,26 @@
+﻿@model StandardFees
+
+<div class="col-md-8 offset-md-2 bg-dark text-center">
+    <h3 class="text-white">Update Standard Fees</h3>
+</div>
+<div class="col-md-8 offset-md-2">
+    <form asp-action="Edit">
+        <div class="mb-3">
+            <label class="form-label">Select Standard</label>
+            <select class="form-select" asp-for="SchoolStandardID" asp-items="ViewBag.SchoolStandards"></select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Select Fee Head</label>
+            <select class="form-select" asp-for="FeeHeadID" asp-items="ViewBag.FeeHeads"></select>
+        </div>
+        <div class="mb-5">
+            <label class="form-label" asp-for="Amount"></label>
+            <input class="form-control" asp-for="Amount" />
+            <span class="text-danger" asp-validation-for="Amount"></span>
+        </div>
+        <div class="mb-3">
+            <a asp-action="Index" class="btn btn-outline-secondary">Show All</a>
+            <input type="submit" class="btn btn-outline-primary float-end" value="Update" />
+        </div>
+    </form>
+</div>

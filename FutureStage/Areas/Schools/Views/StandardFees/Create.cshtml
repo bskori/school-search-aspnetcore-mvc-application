@@ -1,0 +1,28 @@
+﻿@model StandardFees
+
+<div class="row">
+    <div class="col-md-8 bg-dark text-white offset-md-2">
+        <h3 class="text-white text-center">Add Fees</h3>
+    </div>
+    <div class="col-md-8 offset-md-2">
+        <form asp-action="Create">
+            <div>
+                <input asp-for="ID" value="0" type="hidden" />
+                <input asp-for="SchoolStandardID" value="@ViewBag.SchoolStandardID" type="hidden" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Select Fee Head</label>
+                <select asp-for="FeeHeadID" asp-items="ViewBag.FeeHeads" class="form-select"></select>
+            </div>
+            <div class="mb-5">
+                <label class="form-label" asp-for="Amount"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span class="text-danger" asp-validation-for="Amount"></span>
+            </div>
+            <div class="mb-3">
+                <a asp-action="StandardList" class="btn btn-outline-info">Back</a>
+                <input type="submit" class="btn btn-outline-success float-end" value="Save" />
+            </div>
+        </form>
+    </div>
+</div>

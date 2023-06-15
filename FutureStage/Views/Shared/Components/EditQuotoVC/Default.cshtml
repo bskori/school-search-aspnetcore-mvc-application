@@ -1,0 +1,55 @@
+﻿@model IEnumerable<QuotoVM>
+@*Edit*@
+
+@foreach (var item in Model)
+{
+
+    if (item.Selected)
+    {
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                <input class="form-check-input" checked="checked" type="checkbox" value="@item.Value" name="Quotos" id="quoto">
+                <label class="form-check-label" for="quoto">
+                    @item.Text
+                </label>
+            </div>
+
+            <div class="col">
+                <div class="row">
+
+                    <input class="form-control noofseats w-25" asp-for="@item.NoOfSeats" name="NoOfSeats" id="NoOfSeat">
+
+                    <div class="col-auto">
+                        <label for="NoOfSeat" class="col-form-label">Number of Seats</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+    else
+    {
+        <div class="row align-items-center mb-3">
+            <div class="col">
+                <input class="form-check-input" type="checkbox" value="@item.Value" name="Quotos" id="quoto">
+                <label class="form-check-label" for="quoto">
+                    @item.Text
+                </label>
+            </div>
+
+            <div class="col">
+                <div class="row">
+
+                    <input class="form-control noofseats w-25" name="NoOfSeats" id="NoOfSeat">
+
+                    <div class="col-auto">
+                        <label for="NoOfSeat" class="col-form-label">Number of Seats</label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+}
+

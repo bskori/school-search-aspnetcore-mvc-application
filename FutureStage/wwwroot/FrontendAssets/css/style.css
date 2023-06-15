@@ -1,0 +1,387 @@
+/* Futurestage Logo */
+
+
+.logo {
+    font-family: Arial, sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+    color: #333;
+    text-transform: uppercase;
+  }
+
+  .logo span {
+    color: #ff5e3a;
+  }
+
+/* Navbar */
+.navbar {
+    background-color: #f8f9fa;
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .nav-link {
+    color: #333;
+  }
+  
+  /* Banner */
+  .banner {
+    background-color: #f2f2f2;
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .banner h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .banner p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  /* About */
+  .about {
+    padding: 100px 0;
+    text-align: center;
+  }
+  
+  .about h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .about p {
+    font-size: 18px;
+    margin-bottom: 40px;
+  }
+  
+  /* Services */
+  .services {
+    padding: 100px 0;
+  }
+  
+  .services h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .services p {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  /* Contact */
+  .contact {
+    padding: 100px 0;
+  }
+  
+  .contact h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  
+  .contact form {
+    margin-top: 40px;
+  }
+  
+  /*Scchool details Cover Image*/
+#schoolImage {
+    margin-bottom: -150px; /* 156px is half of #userAvatar's height */
+    border-radius: 20%;
+    border:5px solid white;
+    height: 212px;
+    width: 212px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.divider {
+    text-align: center; /* additional */
+    padding-top: 0px; /* half of #userAvatar's height */
+    width: 100%;
+    height: 10px;
+    background: #FF0A54;
+    box-shadow: 9px 9px 10px rgba(0, 0, 0, 0.25);
+    border-radius: 18px;
+}
+
+.cover-image-container {
+    margin-bottom:200px;
+    top: 30%;
+    transform: translate(0, 30%);
+}
+
+  /* Footer */
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+  }
+
+  .footer p {
+    margin-bottom: 0;
+  }
+
+  .footer ul {
+    list-style: none;
+    padding-left: 0;
+  }
+
+  .footer ul li {
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  .footer ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media (max-width: 767px) {
+    .footer {
+      text-align: center;
+    }
+
+    .footer ul li {
+      display: block;
+      margin-bottom: 10px;
+    }
+  }
+  
+  /* Searches */
+  
+  .filter-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .filter-search .form-group {
+    margin-right: 10px;
+  }
+
+  .filter-search .form-group input {
+    border-radius: 30px;
+  }
+
+  .filter-search .form-group .form-control:focus {
+    box-shadow: none;
+  }
+
+  .filter-search .btn-search {
+    border-radius: 30px;
+  }
+
+  .filter-search .btn-search i {
+    margin-right: 5px;
+  }
+
+  .big-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+  }
+
+  .big-search .search-bar {
+    width: 70%;
+    max-width: 500px;
+    position: relative;
+  }
+
+  .big-search .search-bar input {
+    width: 100%;
+    height: 60px;
+    font-size: 18px;
+    padding: 15px 60px;
+    border: none;
+    border-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .big-search .search-bar input:focus {
+    outline: none;
+  }
+
+  .big-search .search-bar button {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .big-search .search-bar button i {
+    font-size: 24px;
+    color: #999;
+  }
+
+/* backgroun */
+.banner {
+    background: linear-gradient(45deg, #f6d365, #fda085);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+  }
+
+  .banner {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 16px;
+  }
+
+  /* nav sigin button */
+  .btn-signin {
+    color: #ff0000;
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .btn-signin:hover,
+  .btn-signin:focus {
+    color: #fff;
+    background-color: #ff0000;
+    outline: none;
+  }
+
+  /* my-container trend */
+  .card {
+    width: 300px;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+  }
+
+  .card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+  }
+
+  .card h4 {
+    margin-bottom: 10px;
+    color: #333;
+  }
+
+  .card p {
+    color: #666;
+  }
+
+  .slider-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .slider-item {
+    flex: 0 0 300px;
+    margin-right: 20px;
+  }
+
+  .slider-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    z-index: 1;
+  }
+
+  .slider-controls button {
+    border: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-size: 24px;
+    padding: 10px;
+    cursor: pointer;
+    outline: none;
+  }
+
+  .slider-controls button:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  /* Explore Schools Button */
+  .search-button {
+    width: 200px;
+    height: 50px;
+    border: none;
+    border-radius: 25px;
+    background-color: #FF5E3A;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    margin: 0 auto;
+  }
+
+  .search-button:hover {
+    background-color: #E63C1E;
+  }
+
+  @media (max-width: 768px) {
+    .search-button {
+      width: 150px;
+      height: 40px;
+      font-size: 16px;
+    }
+  }
+          
+
+/*List Box*/
+
+.card{
+    width:100%;
+    height:unset;
+    margin:10px;
+    align-items:unset;
+}
+
+    .card img {
+        border-radius: 10%;
+    }

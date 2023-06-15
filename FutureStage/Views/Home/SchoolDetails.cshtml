@@ -1,0 +1,304 @@
+﻿@model School
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Details</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/FrontendAssets/css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+</head>
+<body>
+    <!-- Navbar -->
+
+    @await Html.PartialAsync("_navbar")
+    
+    
+    <div class="container-fluid">
+        <div class="cover-image-container container">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <img src="@Model.ImagePath" alt="@Model.Name" id="schoolImage" />
+
+                    <div class="school-heading" style="width:100%">
+                        <div class="row">
+                            <div class="col-md-3">
+
+                            </div>
+                            <div class="col-md-7">
+                                <h2>@Model.Name</h2>
+                                <p><i class="bi bi-geo-alt-fill text-success"></i>@Model.Area.AreaName, @Model.Area.City.CityName</p>
+                            </div>
+                            <div class="col-md-2 mt-3">
+                                <a class="btn btn-lg btn-primary w-100">? Enquiry</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="divider">
+            </div>
+        </div>
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="card text-center">
+                                <p class="text-secondary">Affiliated to:</p>
+                                <div>
+                                    @{
+                                        int i = 0;
+                                        int len = Model.School_EducationBoards.Count - 1;
+                                    }
+                                    @foreach (var temp in Model.School_EducationBoards)
+                                    {
+                                        @if (i++ < len)
+                                        {
+                                            @temp.EducationBoard.EducationBoardTitle<span>,</span>
+
+                                        }
+                                        else
+                                        {
+                                            @temp.EducationBoard.EducationBoardTitle
+                                        }
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card text-center">
+                                <p>Average monthly fees:</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-md-10 offset-md-1">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="row text-start">
+                                    <div>
+                                        <h3 class="fw-bold mb-4">Quick Facts</h3>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                Board <br />
+                                                <span class="fw-bold text-danger">
+                                                    @{
+                                                        i = 0;
+                                                        len = Model.School_EducationBoards.Count - 1;
+                                                    }
+                                                    @foreach (var temp in Model.School_EducationBoards)
+                                                    {
+                                                        @if (i++ < len)
+                                                        {
+                                                            @temp.EducationBoard.EducationBoardTitle<span>,</span>
+
+                                                        }
+                                                        else
+                                                        {
+                                                            @temp.EducationBoard.EducationBoardTitle
+                                                        }
+
+                                                    }
+
+                                                </span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                Co-ed Status <br />
+                                                <span class="fw-bold text-danger">Coed</span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                Built In Area <br />
+                                                <span class="fw-bold text-danger">2.5 Acres</span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                Student/Teacher Ratio <br />
+                                                                      <span class="fw-bold text-danger">38:1</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                Ownership <br />
+                                                <span class="fw-bold text-danger">Private</span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                Year Established <br />
+                                                <span class="fw-bold text-danger">@Model.EstablishmentDate.ToString("yyyy")</span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                School Medium <br />
+                                                <span class="fw-bold text-danger">English</span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                School Timings <br />
+                                                               <span class="fw-bold text-danger">8 am to 2 pm</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                School Level <br />
+                                                             <span class="fw-bold text-danger">Senior Secondary</span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                School Format <br />
+                                                              <span class="fw-bold text-danger">Day School</span>
+                                            </p>
+                                        </div>
+                                        <div class="mb-4">
+                                            <p class="fs-5">
+                                                Academic Session <br />
+                                                                 <span class="fw-bold text-danger">
+                                                                     April to March
+                                                                 </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="card text-start">
+                                
+                                <h3 class="fw-bold mb-4">  Schedule a School Visit </h3>
+                                <div style="font-size:18px;">
+                                    <div class="mb-4">
+                                        When considering schools for your child, it can be overwhelming to make a decision without visiting the campus in person. A campus tour offers a unique opportunity to gain insight into a school's atmosphere, culture, and facilities. By meeting staff and students and asking questions, you can make a more informed decision about your child's future education.
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <span class="fw-bold">Reporting Timings:</span> 09.00 Am to 12.00 Noon (Monday - Saturday)*
+                                    </div>
+
+                                    <div class="mb-4">
+                                        <span class="fw-bold">Note -</span> Exact timings will be communicated by the school after the visit is scheduled
+                                    </div>
+                                    <div>
+                                        <a class="btn btn-primary btn-lg"><span class="fw-bold">Schedule Now</span></a>
+                                    </div>
+                                </div>
+                               
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="row text-start">
+                                    <h2 class="fw-bold mb-4">Facilities</h2>
+                                    @foreach (var item in Model.SchoolFacilities)
+                                    {
+                                        <div class="col-md-4">
+                                            <div class=" p-3 fs-5 text-dark" style="border:0.2px solid grey;">
+                                                @item.Facility.FacilityTitle
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="row text-start">
+                                    <h2 class="fw-bold mb-4">Languages</h2>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        English
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        Hindi
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        Marathi
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        German
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        French
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        Sanskrit
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="row text-start">
+                                    <h2 class="fw-bold mb-4">Admission Criteria</h2>
+                                    <div class="fs-5">
+                                        Documents required at the time of admission/application
+                                        <ul class="mt-3 ms-3">
+                                            <li>Photo of Applicant</li>
+                                            <li>Photos of Parents/Guardian</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-9">
+                            <div class="card">
+                                <div class="row text-start">
+                                    <h2 class="fw-bold mb-4">Address & Contact</h2>
+                                    <a class="btn btn-success w-25 mb-3">Call Now</a>
+                                    <a class="link-primary mb-3">@Model.EmailID</a>
+                                    <span>@Model.Address</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="card">
+                                <p>Quick Facts</p>
+                                <p>Quick Facts</p>
+                                <p>Quick Facts</p>
+                                <p>Quick Facts</p>
+                                <p>Quick Facts</p>
+                                <p>Quick Facts</p>
+                                <p>Quick Facts</p>
+                                <p>Quick Facts</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

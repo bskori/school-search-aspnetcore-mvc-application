@@ -1,0 +1,80 @@
+﻿@model Parent
+
+@{
+    ViewData["Title"] = "FutureStage - User Registration";
+    Layout = null;
+}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FutureStage</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="~/FrontendAssets/css/style.css">
+
+</head>
+<body>
+
+    @await Html.PartialAsync("_navbar");
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card col-md-12">
+                    <p>
+                        <h2 class="text-primary text-center my-3">
+                            User Registration
+                        </h2>
+                    </p>
+                    <form asp-action="Register">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="form-label" asp-for="Name"></label>
+                                <input class="form-control" asp-for="Name" />
+                                <span class="text-danger" asp-validation-for="Name"></span>
+                            </div>
+                            <div class="col mb-3">
+                                <label class="form-label" asp-for="EmailID"></label>
+                                <input class="form-control" asp-for="EmailID" />
+                                <span class="text-danger" asp-validation-for="EmailID"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="MobileNo"></label>
+                                    <input class="form-control" asp-for="MobileNo" />
+                                    <span class="text-danger" asp-validation-for="MobileNo"></span>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label" asp-for="Password"></label>
+                                    <input class="form-control" asp-for="Password" />
+                                    <span class="text-danger" asp-validation-for="Password"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Address"></label>
+                                <textarea class="form-control" asp-for="Address"></textarea>
+                                <span class="text-danger" asp-validation-for="Address"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3">
+                                <input type="submit" value="Register" class="w-50 btn btn-outline-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+    <div class="mt-5"> 
+        @await Html.PartialAsync("_footer")
+    </div>
+
+</body>
