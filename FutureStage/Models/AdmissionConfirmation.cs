@@ -12,8 +12,11 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
+        [Required]
         public DateTime ConfirmationDate { get; set; }
-        public bool Remark { get; set; }
+
+        public bool Remark  { get; set; }
 
         //AdmissionEnquiry
         [ForeignKey("AdmissionEnquiry")]
