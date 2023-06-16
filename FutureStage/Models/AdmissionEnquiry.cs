@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FutureStage.Data.Base;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,11 +9,17 @@ using System.Threading.Tasks;
 namespace FutureStage.Models
 {
     [Table("AdmissionEnquiryTbl")]
-    public class AdmissionEnquiry
+    public class AdmissionEnquiry : IEntityBase
     {
         [Key]
         public int ID { get; set; }
+
+        [Required]
+        [Display(Name ="Date")]
         public DateTime EnquiryDate { get; set; }
+
+        [Required]
+        [Display(Name ="Description")]
         public string EnquiryDescription { get; set; }
 
         //Relationships

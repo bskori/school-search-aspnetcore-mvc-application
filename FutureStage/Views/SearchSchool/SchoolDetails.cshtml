@@ -32,12 +32,15 @@
                             <div class="col-md-3">
 
                             </div>
-                            <div class="col-md-7">
+                            <div class="col-md-5">
                                 <h2>@Model.Name</h2>
                                 <p><i class="bi bi-geo-alt-fill text-success"></i>@Model.Area.AreaName, @Model.Area.City.CityName</p>
                             </div>
                             <div class="col-md-2 mt-3">
-                                <a class="btn btn-lg btn-primary w-100">? Enquiry</a>
+                                <a class="btn btn-lg btn-primary w-100" asp-action="GetEnquiry" asp-route-id="@Model.ID">? Enquiry</a>
+                            </div>
+                            <div class="col-md-2 mt-3">
+                                <a class="btn btn-lg btn-success w-100"> Apply</a>
                             </div>
                         </div>
                     </div>
@@ -76,7 +79,21 @@
                         </div>
                         <div class="col-md">
                             <div class="card text-center">
+                                @{
+                                    int sum = 0;
+                                    int count = 0;
+                                    foreach (var item in Model.SchoolStandards)
+                                    {
+                                        @foreach (var item2 in item.StandardFees)
+                                        {
+                                            sum += item2.Amount;
+                                            count++;
+                                        }
+                                    }
+                                    int averageFees = sum / count;
+                                }
                                 <p>Average monthly fees:</p>
+                                <div>Rs.@averageFees</div>
                             </div>
                         </div>
                     </div>

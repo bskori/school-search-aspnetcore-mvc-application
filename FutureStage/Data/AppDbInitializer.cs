@@ -476,7 +476,275 @@ namespace FutureStage.Data
                     context.SaveChanges(); 
                 }
 
-                
+                //School_Standard
+                if (!context.SchoolStandards.Any())
+                {
+                    context.SchoolStandards.AddRange(new List<SchoolStandard>()
+                    {
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 23,
+                            StandardID = 1,
+                            SchoolID = 7
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 33,
+                            StandardID = 2,
+                            SchoolID = 7
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 13,
+                            StandardID = 3,
+                            SchoolID = 7
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 45,
+                            StandardID = 4,
+                            SchoolID = 7
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 37,
+                            StandardID = 5,
+                            SchoolID = 8
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 48,
+                            StandardID = 4,
+                            SchoolID = 8
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 28,
+                            StandardID = 2,
+                            SchoolID = 8
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 48,
+                            StandardID = 1,
+                            SchoolID = 8
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 48,
+                            StandardID = 3,
+                            SchoolID = 8
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 42,
+                            StandardID = 3,
+                            SchoolID = 9
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 55,
+                            StandardID = 2,
+                            SchoolID = 9
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 46,
+                            StandardID = 6,
+                            SchoolID = 9
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 39,
+                            StandardID = 4,
+                            SchoolID = 10
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 41,
+                            StandardID = 2,
+                            SchoolID = 10
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 36,
+                            StandardID = 3,
+                            SchoolID = 10
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 66,
+                            StandardID = 5,
+                            SchoolID = 11
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 56,
+                            StandardID = 4,
+                            SchoolID = 11
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 44,
+                            StandardID = 2,
+                            SchoolID = 11
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 21,
+                            StandardID = 3,
+                            SchoolID = 12
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 28,
+                            StandardID = 5,
+                            SchoolID = 12
+                        },
+                        new SchoolStandard
+                        {
+                            IntakeCapacity = 48,
+                            StandardID = 6,
+                            SchoolID = 12
+                        }
+                    });
+                    context.SaveChanges();
+                }
+
+                //Standard_Fees
+                if (!context.StandardFees.Any())
+                {
+                    context.StandardFees.AddRange(new List<StandardFees>() { 
+                        new StandardFees()
+                        {
+                            Amount = 4400,
+                            SchoolStandardID = 11,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 4000,
+                            SchoolStandardID = 12,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 5000,
+                            SchoolStandardID = 13,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 5800,
+                            SchoolStandardID = 14,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 6000,
+                            SchoolStandardID = 15,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 4500,
+                            SchoolStandardID = 16,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 4800,
+                            SchoolStandardID = 17,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 4900,
+                            SchoolStandardID = 18,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 5100,
+                            SchoolStandardID = 19,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 5400,
+                            SchoolStandardID = 20,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 3400,
+                            SchoolStandardID = 21,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 4700,
+                            SchoolStandardID = 22,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 7000,
+                            SchoolStandardID = 23,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 2500,
+                            SchoolStandardID = 24,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 3200,
+                            SchoolStandardID = 25,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 9500,
+                            SchoolStandardID = 26,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 8200,
+                            SchoolStandardID = 27,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 9700,
+                            SchoolStandardID = 28,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 7700,
+                            SchoolStandardID = 29,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 8200,
+                            SchoolStandardID = 30,
+                            FeeHeadID = 1
+                        },
+                        new StandardFees()
+                        {
+                            Amount = 9900,
+                            SchoolStandardID = 31,
+                            FeeHeadID = 1
+                        }
+                    });
+                    context.SaveChanges();
+                }
+
                 
             }
         }

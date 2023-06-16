@@ -300,18 +300,23 @@ namespace FutureStage.Migrations
                         .UseIdentityColumn();
 
                     b.Property<string>("Address")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailID")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MobileNo")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -473,6 +478,9 @@ namespace FutureStage.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("EducationBoardID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ID")
                         .HasColumnType("int");
 
                     b.HasKey("SchoolID", "EducationBoardID");

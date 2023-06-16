@@ -21,15 +21,5 @@ namespace FutureStage.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ExploreSchools()
-        {
-            return View(await _schoolService.GetAllAsync());
-        }
-
-        public async Task<IActionResult> SchoolDetails(int id)
-        {
-            School school = await _schoolService.GetByIdAsync(id);
-            return View(school);
-        }
     }
 }

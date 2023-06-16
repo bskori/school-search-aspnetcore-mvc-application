@@ -70,14 +70,41 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-6">
-                                                    <div class="text-secondary">Title</div>
-                                                    <div>value</div>
+                                                    <div class="text-secondary">
+                                                        Monthly Fees
+                                                    </div>
+
+                                                    <div>
+                                                        @{
+                                                            int count = 0;
+                                                            int sum = 0;
+                                                            int monthlyFees;
+                                                            foreach (var item2 in item.SchoolStandards)
+                                                            {
+                                                                foreach (var item3 in item2.StandardFees)
+                                                                {
+                                                                    sum += item3.Amount;
+                                                                    count++;
+                                                                }
+                                                            }
+                                                            if(sum == 0 || count == 0)
+                                                            {
+                                                                monthlyFees = 4800;
+                                                            }
+                                                            else
+                                                            {
+                                                                monthlyFees = sum / count;
+                                                            }
+
+                                                        }
+                                                        @monthlyFees
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div>
                                                 <p class="card-text">
                                                     <small class="text-muted">
-                                                        <a asp-action="SchoolDetails" asp-route-id="@item.ID" class="btn btn-outline-success mt-4 btn-sm">View Details</a>
+                                                        <a asp-action="SchoolDetails" asp-controller="SearchSchool" asp-route-id="@item.ID" class="btn btn-outline-success mt-4 btn-sm">View Details</a>
                                                     </small>
                                                 </p>
                                             </div>

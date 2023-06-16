@@ -194,7 +194,6 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\SiteAdmin\Views
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\_ViewStart.cshtml.g.cs
-D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Home\ExploreSchools.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Shared\_navbar.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Shared\Components\EditQuotoVC\Default.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Shared\Components\QuotoVC\Default.cshtml.g.cs
@@ -215,7 +214,10 @@ D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\A
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Admission\Index.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Admission\Edit.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Areas\Schools\Views\Admission\Delete.cshtml.g.cs
-D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Home\SchoolDetails.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\ManageParent\doLogin.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\Shared\_footer.cshtml.g.cs
 D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\ManageParent\Register.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\SearchSchool\ExploreSchools.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\SearchSchool\SchoolDetails.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\SearchSchool\GetEnquiry.cshtml.g.cs
+D:\PROJECTS\FutureStage\FutureStage\obj\Debug\net5.0\Razor\Views\SearchSchool\EnquirySubmitted.cshtml.g.cs
