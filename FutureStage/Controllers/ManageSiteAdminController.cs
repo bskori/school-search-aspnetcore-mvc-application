@@ -29,16 +29,20 @@ namespace FutureStage.Controllers
         {
             if (ModelState.IsValid)
             {
-                SiteAdmin record =  _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == loginVM.EmailAddress && n.Password == loginVM.Password);
+                SiteAdmin record = _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == loginVM.EmailAddress && n.Password == loginVM.Password);
                 if (record != null)
                 {
                     HttpContext.Session.SetString("ID", record.ID.ToString());
-                    return RedirectToAction("Index","Home", new { area= "SiteAdmin"});
+
+                    TempData["SuccessMessage"] = "Succesfully logged In!"; 
+
+                    return RedirectToAction("Index", "Home", new { area = "SiteAdmin" });
                 }
-                
+                ViewData["ErrorMessage"]= "Invalid credentials! Please try again.";
             }
 
-            return View(loginVM);   
+
+            return View(loginVM);
         }
 
 
