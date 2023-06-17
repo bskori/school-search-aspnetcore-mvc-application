@@ -35,7 +35,7 @@ namespace FutureStage.Controllers
                     HttpContext.Session.SetString("ID", record.ID.ToString());
                     return RedirectToAction("Index","Home", new { area= "SiteAdmin"});
                 }
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                
             }
 
             return View(loginVM);   
