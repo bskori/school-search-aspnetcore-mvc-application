@@ -41,7 +41,6 @@ namespace FutureStage.Controllers
                 ViewData["ErrorMessage"]= "Invalid credentials! Please try again.";
             }
 
-
             return View(loginVM);
         }
 
