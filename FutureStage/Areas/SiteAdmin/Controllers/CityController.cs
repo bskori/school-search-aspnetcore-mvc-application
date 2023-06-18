@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
-    [SiteAdminAuthorization]
+    //[SiteAdminAuthorization]
     public class CityController : Controller
     {
         private readonly ICityService _cityService;

@@ -33,6 +33,7 @@ namespace FutureStage.Controllers
                 if (record != null)
                 {
                     HttpContext.Session.SetString("ID", record.ID.ToString());
+                    HttpContext.Session.SetString("Name", record.Name.ToString());
 
                     TempData["SuccessMessage"] = "Succesfully logged In!"; 
 
@@ -44,6 +45,11 @@ namespace FutureStage.Controllers
             return View(loginVM);
         }
 
-
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            TempData["LogoutMessage"] = "You have been logged out successfully.";
+            return RedirectToAction(nameof(doLogin)); 
+        }
     }
 }

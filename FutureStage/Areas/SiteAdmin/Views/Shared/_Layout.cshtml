@@ -18,14 +18,18 @@
 <body>
 
     <div class="wrapper">
+       
+
+
         <nav id="sidebar">
             <div class="sidebar-header">
-                <h4 class="shadow py-2">
-                    <img class="bg-white shadow p-1" src="~/SiteAdminAssets/img/logo1.png" height="30" />
-                    futureStage
-                </h4>
+
+                    <div class="logo">
+                        <h4 class="shadow bg-light p-1 ps-3">FUTURE<span>STAGE</span></h4>
+                    </div>
+               
             </div>
-            <p>Welcome - Admin</p>
+            <p class="text-center">Welcome - @Context.Session.GetString("Name")</p>
             <ul class="list-unstyled components">
                 <li>
                     <a href="#homeSubmenu" aria-controls="homeSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown font-weight-bold">
@@ -80,8 +84,10 @@
             <nav class="navbar navbar-expand-lg navbar-light">
 
                 <button type="button" id="sidebarCollapse" class="btn">
-                    <i class="fa fa-align-justify"></i>
+                    <span class="toggle-icon"></span>
                 </button>
+
+
 
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -92,7 +98,10 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link text-primary">SITE ADMIN</a>
+                            <a asp-action="Logout" asp-controller="ManageSiteAdmin" asp-area="" id="logoutButton" class="btn">
+                                <i class="fa fa-sign-out-alt"></i> 
+                            </a>
+
                         </li>
                     </ul>
                 </div>
@@ -108,6 +117,12 @@
 
 
 
+
+
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+
     <script>
         $(document).ready(function () {
             $("#sidebarCollapse").on('click', function () {
@@ -115,10 +130,6 @@
             })
         })
     </script>
-
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/toastr/toastr.min.js"></script>
 
     @if (TempData["SuccessMessage"] != null)
     {

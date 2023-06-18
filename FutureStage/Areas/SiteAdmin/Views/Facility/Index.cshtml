@@ -6,7 +6,7 @@
 
 <div class="row">
     <div class="col-md-8 offset-md-2 mt-5">
-        <h2 class="text-success text-center py-3 my-5 shadow">List of facilities</h2>
+        <h4 class=" table-title shadow py-3 mt-5">FACILITIES</h4>
     </div>
     <div class="col-md-8 offset-md-2">
         <table class="table">
@@ -24,12 +24,12 @@
                         <td class="align-middle">@item.FacilityTitle</td>
                         <td class="align-middle">@item.FacilityDescription</td>
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.ID" class="btn btn-outline-primary">
-                            <i class="fa-regular fa-pen-to-square"></i>
+                            <a class="btn btn-primary action-btn" asp-action="Edit" asp-route-id="@item.ID">
+                                <i class="fa-regular fa-pen-to-square"></i> Edit
                             </a>
-                            |
-                            <a asp-action="Delete" asp-route-id="@item.ID" class="btn text-white btn-danger">
-                            <i class="fa-regular fa-trash-can"></i></a>
+                            <a class="btn btn-danger text-white action-btn" asp-action="Delete" asp-route-id="@item.ID">
+                                <i class="fa-regular fa-trash-can"></i> Delete
+                            </a>
                         </td>
                     </tr>
                 }

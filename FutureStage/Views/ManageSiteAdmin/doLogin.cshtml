@@ -49,5 +49,13 @@
             }
         });
     </script>
+    @if(TempData["LogoutMessage"] != null)
+            {
+<script>
+                    $(function () {
+                        toastr.info('@TempData["LogoutMessage"]', 'Succes Alert', { timeOut: 3000, "closeButton": true });
+                    })
+</script>
+            }
     }
 </body>
