@@ -13,9 +13,12 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
-        public string EducationBoardTitle { get; set; }
-        public string EducationBoardDescription { get; set; }
-        public virtual List<School_EducationBoard> School_EducationBoards { get; set; }
+
+        [Display(Name ="Education Board Name")]
+        [Required(ErrorMessage ="Please enter the education board name.")]
+        public string EducationBoardName { get; set; }
+
+        public virtual ICollection<School_EducationBoard> School_EducationBoards { get; set; }
 
     }
 }

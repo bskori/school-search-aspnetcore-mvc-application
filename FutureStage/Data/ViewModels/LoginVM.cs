@@ -9,12 +9,12 @@ namespace FutureStage.Data.ViewModels
     public class LoginVM
     {
         [Display(Name ="Email address")]
-        [Required(ErrorMessage ="Email address is required")]
-        [EmailAddress(ErrorMessage ="Invalid email address")]
+        [Required(ErrorMessage ="Please enter a email address.")]
+        [EmailAddress(ErrorMessage ="Invalid email address type.")]
         public string EmailAddress { get; set; }
 
         [DataType(DataType.Password)]
-        [Required(ErrorMessage ="Password is required")]
+        [Required(ErrorMessage ="Please enter a password.")]
         public string Password { get; set; }
     }
 }

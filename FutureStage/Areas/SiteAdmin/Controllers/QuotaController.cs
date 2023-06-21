@@ -1,6 +1,7 @@
 ﻿using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
-    [SiteAdminAuthorization]
+    //[SiteAdminAuthorization]
     public class QuotaController : Controller
     {
         IQuotaService _service;
@@ -20,12 +21,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         }
         public async Task<IActionResult>  Index()
         {
-            
-            return View(await _service.GetAllAsync());
-        }
-
-        public IActionResult Create()
-        {
+            ViewBag.Quotos = await _service.GetAllAsync();
             return View();
         }
 
@@ -37,6 +33,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
                 return View(quoto);
             }
             await _service.AddAsync(quoto);
+            TempData["AlertMessage"] = "Record created successfully.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -46,7 +43,9 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
 
             if (quoto == null) return View("NotFound");
 
-            return View(quoto);
+            return Json(new { 
+                quotoName = quoto.QuotoName
+            });
         }
 
         [HttpPost]
@@ -58,24 +57,22 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
             }
 
             await _service.UpdateAsync(quoto);
+            TempData["AlertMessage"] = "Record updated successfully.";
             return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> Delete(int id)
-        {
-            Quoto quoto = await _service.GetByIdAsync(id);
-
-            if (quoto == null) return View("NotFound");
-
-            return View(quoto);
         }
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _service.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _service.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                return RedirectToAction(nameof(Index));
+            }catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while deleting the entity.");
+            }
         }
     }
 }

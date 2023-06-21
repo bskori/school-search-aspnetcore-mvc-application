@@ -1,40 +1,180 @@
-﻿@model IEnumerable<State>
+﻿@model State
 
-@{ 
+@{
     ViewData["Title"] = "List of states";
 }
 
 <div class="row">
     <div class="col-md-8 offset-md-2 mt-5">
-        <h2 class="text-center text-success shadow my-5 py-3">List of States</h2>
+        <h4 class=" table-title shadow py-3 mt-5">STANDARDS</h4>
     </div>
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="col-md-8 offset-md-2 my-2">
+            <div class="alert alert-hide alert-success alert-dismissible fade show" role="alert">
+                <strong>Success!</strong>  @TempData["AlertMessage"]
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        </div>
+    }
     <div class="col-md-8 offset-md-2">
         <table class="table">
             <thead>
                 <tr class="text-center">
+                    <th class="align-middle">Sr. No</th>
                     <th class="align-middle">@Html.DisplayNameFor(m => m.StateName)</th>
                     <th class="align-middle">Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach(var item in Model)
-            {
-                <tr class="text-center">
-                    <td class="align-middle">@item.StateName</td>
-                    <td class="align-middle">
-                        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.ID">
-                            <i class="fa-regular fa-pen-to-square"></i>
-                        </a>
-                        |
-                        <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.ID">
-                            <i class="fa-regular fa-trash-can"></i>
-                        </a>
-                    </td>
-                </tr>
-            }
+                @{int srno = 1;
+                    foreach (var item in ViewBag.States)
+                    {
+                        <tr class="text-center">
+                            <td class="align-middle">@srno</td>
+                            <td class="align-middle">@item.StateName</td>
+                            <td class="align-middle">
+                                <div class="d-flex justify-content-center">
+                                    <a data-bs-toggle="modal" data-bs-target="#updateModal" class="btn btn-primary action-btn update-btn me-1" data-item-id="@item.ID">
+                                        <span class="d-md-none"><i class="fa-regular fa-pen-to-square"></i></span>
+                                        <span class="d-none d-md-inline">
+                                            <i class="fa-regular fa-pen-to-square"></i> Edit
+                                        </span>
+                                    </a>
+                                    <a data-bs-toggle="modal" data-bs-target="#deleteModal" class="btn btn-danger text-white action-btn delete-btn" data-item-id="@item.ID">
+                                        <span class="d-md-none"><i class="fa-regular fa-trash-can"></i></span>
+                                        <span class="d-none d-md-inline">
+                                            <i class="fa-regular fa-trash-can"></i> Delete
+                                        </span>
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                        srno++;
+                    } }
             </tbody>
         </table>
     </div>
 </div>
+
+<!--Create Modal-->
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Add New State</h5>
+                <button type="button" class="btn-close form-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Create">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="StateName"></label>
+                        <input class="form-control" asp-for="StateName" />
+                        <span class="text-danger" asp-validation-for="StateName"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary form-close-btn" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input class="btn btn-success float-end" type="submit" value="Create" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Create Modal-->
+<!--Update Modal-->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Update State</h5>
+                <button type="button" class="btn-close form-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form asp-action="Edit">
+                    <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                    <div>
+                        <input type="hidden" asp-for="ID" />
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="StateName"></label>
+                        <input class="form-control" asp-for="StateName" />
+                        <span class="text-danger" asp-validation-for="StateName"></span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary form-close-btn" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input class="btn btn-primary float-end" type="submit" value="Update" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Update Modal-->
+<!--Delete Modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="updateModalLabel">Delete State</h5>
+                <button type="button" class="btn-close form-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <h4 class="py-3">Are you sure you want to delete this item?</h4>
+                <form asp-action="Delete">
+                    <input type="hidden" asp-for="ID" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            Cancel
+                        </button>
+                        <input class="btn btn-danger float-end" type="submit" value="Delete" />
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--Delete Modal-->
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.update-btn').click(function () {
+            var itemId = $(this).data('item-id');
+
+            $.ajax({
+                url: '/SiteAdmin/State/Edit',
+                type: 'GET',
+                data: { id: itemId },
+                dataType: 'json',
+                success: function (data) {
+                    $('#updateModal #StateName').val(data.stateName);
+                    $('#updateModal #ID').val(itemId);
+                },
+                error: function (err) {
+                    alert(err)
+                }
+            });
+        });
+
+        $('.delete-btn').click(function () {
+            var itemId = $(this).data('item-id');
+
+            $('#deleteModal #ID').val(itemId);
+        })
+
+        $('.form-close-btn').click(function () {
+            $('#updateModal .text-danger').text('');
+            $('#createModal .text-danger').text('');
+        })
+    });
+</script>
 
 @await Html.PartialAsync("_CreateItem", "State")

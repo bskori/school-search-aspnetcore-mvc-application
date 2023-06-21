@@ -7,30 +7,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <title>crud dashboard</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css">
-    <!----css3---->
-    <link rel="stylesheet" href="~/SchoolsAssets/css/custom.css">
 
 
-
-    <!--google fonts -->
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-
-
-
-    <!--google material icon-->
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="~/SchoolsAssets/css/custom.css" />
 
-    <!-------complete html----------->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="~/lib/jquery/jquery.slim.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/SchoolsAssets/js/popper.min.js"></script>
-    <script src="~/SchoolsAssets/js/bootstrap.min.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
 
 </head>
 <body>
@@ -191,7 +183,14 @@
 
 
 
-    
+    @if(TempData["SuccessMessage"] != null)
+            {
+                <script>
+                    $(function () {
+                        toastr.success('@TempData["SuccessMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+                    });
+                </script>
+            }
 
 
 

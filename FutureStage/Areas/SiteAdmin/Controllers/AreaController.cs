@@ -1,6 +1,7 @@
 ﻿using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
-    [SiteAdminAuthorization]
+    //[SiteAdminAuthorization]
     public class AreaController : Controller
     {
         private readonly IAreaService _areaService;
@@ -24,12 +25,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allAreas = await _areaService.GetAllAsync();
-            return View(allAreas);
-        }
-
-        public async Task<IActionResult> Create()
-        {
+            ViewBag.Areas = await _areaService.GetAllAsync();
             ViewBag.Cities = new SelectList(await _cityService.GetAllAsync(), "ID", "CityName");
             return View();
         }
@@ -39,11 +35,11 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Cities = new SelectList(await _cityService.GetAllAsync(), "ID", "CityName");
                 return View(data);
             }
 
             await _areaService.AddAsync(data);
+            TempData["AlertMessage"] = "Record Created Succesfully.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -51,8 +47,10 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             var area = await _areaService.GetByIdAsync(id);
             if (area == null) return View("NotFound");
-            ViewBag.Cities = new SelectList(await _cityService.GetAllAsync(), "ID", "CityName");
-            return View(area);
+            return Json(new { 
+                areaName = area.AreaName,
+                cityID = area.CityID
+            });
         }
 
         [HttpPost]
@@ -60,26 +58,28 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Cities = new SelectList(await _cityService.GetAllAsync(), "ID", "CityName");
                 return View(data);
             }
             await _areaService.UpdateAsync(data);
+            TempData["AlertMessage"] = "Record updated succesfully.";
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Delete(int id)
-        {
-            var area = await _areaService.GetByIdAsync(id);
-            if (area == null) return View("NotFound");
-            return View(area);
-        }
+       
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _areaService.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _areaService.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted succesfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while deleting the entity.");
+            }
         }
     }
 }

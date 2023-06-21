@@ -15,54 +15,55 @@ namespace FutureStage.Models
         [Key]
         public int ID { get; set; }
 
-        [Required(ErrorMessage = "School name is required")]
+        [Required(ErrorMessage = "Please enter a school name.")]
         [Display(Name = "School Name")]
         public string Name { get; set; }
 
         public string ImagePath { get; set; }
 
-        [Display(Name = "Choose Image")]
-        [Required(ErrorMessage = "School Image is required")]
+        [Display(Name = "School Image")]
+        [Required(ErrorMessage = "Please choose a school image.")]
         [NotMapped]
         public IFormFile Image { get; set; }
 
-        [Required(ErrorMessage ="Address is required")]
+        [Required(ErrorMessage ="Please enter a school address.")]
         public string Address { get; set; }
 
-        [Required(ErrorMessage = "Email address is required")]
-        [DataType(DataType.EmailAddress, ErrorMessage ="Please enter a valid Email address")]
+        [Required(ErrorMessage = "Please enter a address.")]
+        [DataType(DataType.EmailAddress, ErrorMessage ="Please enter a valid email address.")]
         [Display(Name ="Email Address")]
         public string EmailID { get; set; }
 
-        [Required(ErrorMessage ="Contact no is required")]
-        [RegularExpression(@"^\d{10}$",ErrorMessage ="Please enter a 10-digit valid Contact Number")]
+        [Required(ErrorMessage ="Please enter a contact number.")]
+        [RegularExpression(@"^\d{10}$",ErrorMessage ="Please enter a 10-digit valid contact number.")]
         [Display(Name ="Contact No.")]
         public string ContactNo { get; set; }
 
-        [Required(ErrorMessage = "Establishment date is equired")]
+        [Required(ErrorMessage = "Please enter a establishment date.")]
         [Display(Name="Establishment Date")]
         public DateTime EstablishmentDate { get; set; }
 
-        [Required(ErrorMessage ="Password is required")]
+        [Required(ErrorMessage ="Please enter a password.")]
         [Compare("ConfirmPassword",ErrorMessage ="Password and confirm password are not same!")]
         public string Password { get; set; }
 
-        [Required(ErrorMessage ="Confirm password is required")]
+        [Required(ErrorMessage ="Please enter a confirm password.")]
         public string ConfirmPassword { get; set; }
 
         [NotMapped]
+        [Required(ErrorMessage ="Please select boards from the list.")]
         public List<int> EducationBoardID { get; set; }
 
         //Relationships
         public virtual List<SchoolFacility> SchoolFacilities { get; set; }
         public virtual List<SchoolAchivement> SchoolAchivements { get; set; }
-        public virtual List<School> Schools { get; set; }
         public virtual List<Enquiry> Enquiries { get; set; }
         public virtual List<SchoolStandard> SchoolStandards { get; set; }
-        public virtual List<School_EducationBoard> School_EducationBoards { get; set; }
+        public virtual ICollection<School_EducationBoard> School_EducationBoards { get; set; }
 
         //Area
         [ForeignKey("Area")]
+        [Required(ErrorMessage ="Please select a area.")]
         public int AreaID { get; set; }
         public virtual Area Area { get; set; }
     }

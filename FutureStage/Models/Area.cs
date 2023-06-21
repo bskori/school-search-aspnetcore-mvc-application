@@ -15,7 +15,7 @@ namespace FutureStage.Models
         public int ID { get; set; }
 
         [Display(Name ="Area Name")]
-        [Required(ErrorMessage ="Area name required")]
+        [Required(ErrorMessage ="Please enter area name.")]
         public string AreaName { get; set; }
 
         //Relationships
@@ -23,6 +23,7 @@ namespace FutureStage.Models
 
         //City
         [ForeignKey("City")]
+        [Required(ErrorMessage = "Please select a city.")]
         public int CityID { get; set; }
         public virtual City City { get; set; }
     }

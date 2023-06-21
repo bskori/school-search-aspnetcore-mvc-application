@@ -1,6 +1,7 @@
 ﻿using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
-    [SiteAdminAuthorization]
+    //[SiteAdminAuthorization]
     public class FacilityController : Controller
     {
         IFacilityService _service;
@@ -20,12 +21,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         }
         public async Task<IActionResult>  Index()
         {
-            var allFacilities = await _service.GetAllAsync();
-            return View(allFacilities);
-        }
-
-        public IActionResult Create()
-        {
+            ViewBag.Facilities = await _service.GetAllAsync();
             return View();
         }
 
@@ -37,6 +33,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
                 return View(facility);
             }
             await _service.AddAsync(facility);
+            TempData["AlertMessage"] = "Record created successfully.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -46,7 +43,11 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
 
             if (facility == null) return View("NotFound");
 
-            return View(facility);
+            return Json(new
+            {
+                facilityName = facility.FacilityName,
+                facilityIcon = facility.FacilityIcon
+            });
         }
 
         [HttpPost]
@@ -58,24 +59,22 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
             }
 
             await _service.UpdateAsync(facility);
+            TempData["AlertMessage"] = "Record updated successfully.";
             return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> Delete(int id)
-        {
-            Facility facility = await _service.GetByIdAsync(id);
-
-            if (facility == null) return View("NotFound");
-
-            return View(facility);
         }
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _service.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _service.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch(Exception ex) {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error ocurred while deleting the entity.");
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
-    [SiteAdminAuthorization]
+    //[SiteAdminAuthorization]
     public class StandardController : Controller
     {
         IStandardService _service;
@@ -21,12 +22,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allStandards = await _service.GetAllAsync();
-            return View(allStandards);
-        }
-
-        public IActionResult Create()
-        {
+            ViewBag.Standards = await _service.GetAllAsync();
             return View();
         }
 
@@ -39,6 +35,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
             }
 
             await _service.AddAsync(standard);
+            TempData["AlertMessage"] = "Record created successfully.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -47,7 +44,9 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
             Standard standard = await _service.GetByIdAsync(id);
 
             if (standard == null) return View("NotFound");
-            return View(standard);
+            return Json(new { 
+                standardName = standard.StandardName
+            });
         }
 
         [HttpPost]
@@ -59,24 +58,25 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
             }
 
             await _service.UpdateAsync(standard);
+            TempData["AlertMessage"] = "Record updated successfully.";
             return RedirectToAction(nameof(Index));
         }
 
-        public  async Task<IActionResult> Delete(int id)
-        {
-            Standard standard = await _service.GetByIdAsync(id);
-
-            if (standard == null) return View("NotFound");
-
-            return View(standard);
-        }
+        
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _service.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _service.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while deleting the entity.");
+            }
         }
     }
 }

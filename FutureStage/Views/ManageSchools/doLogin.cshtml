@@ -9,7 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Login - Future Stage</title>
-    <link rel="stylesheet" href="/SchoolsAssets/css/bootstrap.css">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/SchoolsAssets/css/loginstyle.css">
 </head>
 <body>
@@ -23,7 +24,7 @@
         <div class="row p-3 bg-white shadow box-area" style="border-radius: 30px;">
 
             <!-- ---------------------------------------Left Box---------------------------- -->
-            
+
             <div class="col-md-6 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe; border-radius: 15px; ">
                 <div class="featured-image mb-3">
                     <img src="~/SchoolsAssets/img/1.png" class="img-fluid" style="width:250px">
@@ -36,37 +37,117 @@
 
             <div class="col-md-6 right-box">
                 <div class="row align-items-center">
-                    @if(TempData["Error"] != null)
-            {
-                        <div class="alert alert-danger">
-                            <h2>@TempData["Error"]</h2>
-                        </div>
-            }
-                    <div class="header-text mb-4">
-                        <h5 class="text-center">Shool Login</h5>
-                        <p>Hello, School</p>
-                        <p>We are happy to back you</p>
+
+                    <div class="header-text mb-3">
+                        <h5 class="text-center mb-3">School Login</h5>
+                        <p class="text-muted">Hello, School</p>
+                        <p class="text-muted">We are happy to welcome you back</p>
                     </div>
+
                     <form asp-action="doLogin">
-                        <div class="input-group mb-3">
-                            <input asp-for="EmailAddress" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+
+                        <div>
+                            <div class="input-group ">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input asp-for="EmailAddress" id="inputEmail" type="text" class="form-control form-control-lg bg-light fs-6 " placeholder="Email address">
+                            </div>
+                            <div class="mb-3">
+                                <small><span class="text-danger" asp-validation-for="EmailAddress"></span></small>
+                            </div>
                         </div>
-                        <div class="input-group mb-5">
-                            <input asp-for="Password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="password">
+                        <div>
+                            <div class="input-group ">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input asp-for="Password" id="inputPassword" type="password" class="form-control form-control-lg bg-light fs-6 " placeholder="Password">
+                            </div>
+                            <div class="mb-4">
+                                <small><span class="text-danger" asp-validation-for="Password"></span></small>
+                            </div>
                         </div>
                         <div class="input-group mb-3">
                             <input class="btn btn-lg btn-primary w-100 fs-6" type="submit" value="Login" />
                         </div>
-                        <div class="row">
-                            <small>Don't have account? <a asp-action="Register">Register</a></small>
+                        <div class="row mt-3">
+                            <div class="col text-center">
+                                <small class="text-muted">Don't have an account?</small>
+                                <a asp-action="Register" class="text-primary fw-bold ms-1">Register</a>
+                            </div>
                         </div>
+
                     </form>
+
                 </div>
             </div>
 
         </div>
 
     </div>
+
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+    <script>
+       var errorMessage = '@Html.Raw(ViewData["ErrorMessage"])';
+       if (errorMessage) {
+           toastr.error('@ViewData["ErrorMessage"]', 'Error Alert', { timeOut: 3000, "closeButton": true });
+       }
+    </script>
+
+    @if(TempData["LogoutMessage"] != null)
+            {
+                <script>
+                    $(function () {
+                        toastr.info('@TempData["LogoutMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+                    });
+                </script>
+            }
+    @if(TempData["RegisterMessage"] != null)
+            {
+                <script>
+                    $(function () {
+                        toastr.success('@TempData["RegisterMessage"]', "Success Alert", { timeOut: 3000, "closeButton": true });
+                    });
+                </script>
+            }
+
+
+
+<script>
+    $(document).ready(function () {
+        $('form').submit(function (event) {
+            var inputEmail = $('#inputEmail');
+            var inputPassword = $('#inputPassword');
+
+
+            if (inputEmail.val() === '') {
+                inputEmail.addClass('is-invalid');
+                event.preventDefault();
+            } else {
+                inputEmail.removeClass('is-invalid');
+            }
+
+            if (inputPassword.val() === '') {
+                inputPassword.addClass('is-invalid');
+                event.preventDefault();
+            } else {
+                inputPassword.removeClass('is-invalid');
+            }
+        });
+        $('#inputEmail').on('input', function () {
+            $('#inputEmail').removeClass('is-invalid');
+
+        });
+        $('#inputPassword').on('input', function () {
+            $('#inputPassword').removeClass('is-invalid');
+        });
+    });
+
+</script>
 
 </body>
 </html>

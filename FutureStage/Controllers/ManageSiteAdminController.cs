@@ -29,18 +29,27 @@ namespace FutureStage.Controllers
         {
             if (ModelState.IsValid)
             {
-                SiteAdmin record =  _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == loginVM.EmailAddress && n.Password == loginVM.Password);
+                SiteAdmin record = _context.SiteAdmins.SingleOrDefault(n => n.EmailAddress == loginVM.EmailAddress && n.Password == loginVM.Password);
                 if (record != null)
                 {
                     HttpContext.Session.SetString("ID", record.ID.ToString());
-                    return RedirectToAction("Index","Home", new { area= "SiteAdmin"});
+                    HttpContext.Session.SetString("Name", record.Name.ToString());
+
+                    TempData["SuccessMessage"] = "Succesfully logged In!"; 
+
+                    return RedirectToAction("Index", "Home", new { area = "SiteAdmin" });
                 }
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                ViewData["ErrorMessage"]= "Invalid credentials. Please check your username and password and try again.";
             }
 
-            return View(loginVM);   
+            return View(loginVM);
         }
 
-
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            TempData["LogoutMessage"] = "Logout Successful! You have been securely logged out.";
+            return RedirectToAction(nameof(doLogin)); 
+        }
     }
 }
