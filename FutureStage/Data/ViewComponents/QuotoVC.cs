@@ -23,7 +23,7 @@ namespace FutureStage.Data.ViewComponents
                        {
                            Selected = false,
                            Value = t.ID,
-                           Text = t.QuotoTitle
+                           Text = t.QuotoName
                        };
             return View(data.ToList());
         }

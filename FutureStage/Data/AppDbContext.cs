@@ -16,20 +16,23 @@ namespace FutureStage.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<School_EducationBoard>()
+            .HasKey(sb => new { sb.SchoolID, sb.EducationBoardID });
+
+            modelBuilder.Entity<School_EducationBoard>()
+                .HasOne(sb => sb.School)
+                .WithMany(s => s.School_EducationBoards)
+                .HasForeignKey(sb => sb.SchoolID);
+
+            modelBuilder.Entity<School_EducationBoard>()
+                .HasOne(sb => sb.EducationBoard)
+                .WithMany(b => b.School_EducationBoards)
+                .HasForeignKey(sb => sb.EducationBoardID);
 
             foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(n => n.GetForeignKeys()))
             {
                 relation.DeleteBehavior = DeleteBehavior.Restrict;
             }
-
-            modelBuilder.Entity<School_EducationBoard>().HasKey(p => new
-            {
-                p.SchoolID,
-                p.EducationBoardID
-            });
-
-            modelBuilder.Entity<School_EducationBoard>().HasOne(p => p.School).WithMany(p => p.School_EducationBoards).HasForeignKey(p => p.SchoolID);
-            modelBuilder.Entity<School_EducationBoard>().HasOne(p => p.EducationBoard).WithMany(p => p.School_EducationBoards).HasForeignKey(p => p.EducationBoardID);
 
             base.OnModelCreating(modelBuilder);
 
@@ -60,6 +63,7 @@ namespace FutureStage.Data
         public DbSet<StandardFees> StandardFees { get; set; }
         public DbSet<StandardSeatQuoto> StandardSeatQuotos { get; set; }
         public DbSet<School_EducationBoard> School_EducationBoards { get; set; }
+
 
         //Parent
         public DbSet<Parent> Parents { get; set; }

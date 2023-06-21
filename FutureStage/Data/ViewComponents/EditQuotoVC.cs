@@ -21,7 +21,7 @@ namespace FutureStage.Data.ViewComponents
                       select new QuotoVM
                       {
                           Value = t.ID,
-                          Text = t.QuotoTitle,
+                          Text = t.QuotoName,
                           Selected = _context.StandardSeatQuotos.Where(p => p.SchoolStandardID == id).Any(p => p.QuotoID == t.ID),
                           NoOfSeats = _context.StandardSeatQuotos.Where(p => p.QuotoID == t.ID).Select(p => p.NumberOfSeats).SingleOrDefault()
                       };

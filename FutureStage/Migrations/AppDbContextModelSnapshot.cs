@@ -53,6 +53,7 @@ namespace FutureStage.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("EnquiryDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ParentID")
@@ -170,10 +171,8 @@ namespace FutureStage.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("EducationBoardDescription")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EducationBoardTitle")
+                    b.Property<string>("EducationBoardName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
@@ -216,11 +215,11 @@ namespace FutureStage.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("FacilityDescription")
+                    b.Property<string>("FacilityIcon")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FacilityTitle")
+                    b.Property<string>("FacilityName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -331,11 +330,7 @@ namespace FutureStage.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("QuotoDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("QuotoTitle")
+                    b.Property<string>("QuotoName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -384,14 +379,9 @@ namespace FutureStage.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("SchoolID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("AreaID");
-
-                    b.HasIndex("SchoolID");
 
                     b.ToTable("SchoolTbl");
                 });
@@ -480,9 +470,6 @@ namespace FutureStage.Migrations
                     b.Property<int>("EducationBoardID")
                         .HasColumnType("int");
 
-                    b.Property<int>("ID")
-                        .HasColumnType("int");
-
                     b.HasKey("SchoolID", "EducationBoardID");
 
                     b.HasIndex("EducationBoardID");
@@ -526,11 +513,7 @@ namespace FutureStage.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("StandardDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("StandardTitle")
+                    b.Property<string>("StandardName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -733,11 +716,6 @@ namespace FutureStage.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("FutureStage.Models.School", null)
-                        .WithMany("Schools")
-                        .HasForeignKey("SchoolID")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.Navigation("Area");
                 });
 
@@ -901,8 +879,6 @@ namespace FutureStage.Migrations
                     b.Navigation("SchoolAchivements");
 
                     b.Navigation("SchoolFacilities");
-
-                    b.Navigation("Schools");
 
                     b.Navigation("SchoolStandards");
                 });

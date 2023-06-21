@@ -175,89 +175,89 @@ namespace FutureStage.Data
                     {
                         new Facility()
                         {
-                            FacilityTitle = "AC Classes",
-                            FacilityDescription = "AC Classes"
+                            FacilityName = "AC Classes",
+                            FacilityIcon = "AC Classes"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Wifi",
-                            FacilityDescription = "Wifi"
+                            FacilityName = "Wifi",
+                            FacilityIcon = "Wifi"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Smart Classes",
-                            FacilityDescription = "Smart Classes"
+                            FacilityName = "Smart Classes",
+                            FacilityIcon = "Smart Classes"
                             
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Boys Hostel",
-                            FacilityDescription = "Boys Hostel"
+                            FacilityName = "Boys Hostel",
+                            FacilityIcon = "Boys Hostel"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Girls Hostel",
-                            FacilityDescription = "Girls Hostel"
+                            FacilityName = "Girls Hostel",
+                            FacilityIcon = "Girls Hostel"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Indoor Sports",
-                            FacilityDescription = "Indoor Sports"
+                            FacilityName = "Indoor Sports",
+                            FacilityIcon = "Indoor Sports"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Outdoor Sports",
-                            FacilityDescription = "Outdoor Sports"
+                            FacilityName = "Outdoor Sports",
+                            FacilityIcon = "Outdoor Sports"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Transportation",
-                            FacilityDescription = "Transportation"
+                            FacilityName = "Transportation",
+                            FacilityIcon = "Transportation"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Gym",
-                            FacilityDescription = "Gym"
+                            FacilityName = "Gym",
+                            FacilityIcon = "Gym"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Cafeteria/Canteen",
-                            FacilityDescription="Cafeteria/Canteen"
+                            FacilityName = "Cafeteria/Canteen",
+                            FacilityIcon="Cafeteria/Canteen"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Computer Lab",
-                            FacilityDescription="Computer Lab"
+                            FacilityName = "Computer Lab",
+                            FacilityIcon="Computer Lab"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Science Lab",
-                            FacilityDescription="Science Lab"
+                            FacilityName = "Science Lab",
+                            FacilityIcon="Science Lab"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "CCTV",
-                            FacilityDescription = "CCTV"
+                            FacilityName = "CCTV",
+                            FacilityIcon = "CCTV"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Playground",
-                            FacilityDescription = "Playground"
+                            FacilityName = "Playground",
+                            FacilityIcon = "Playground"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Library/Reading Room",
-                            FacilityDescription = "Library/Reading Room"
+                            FacilityName = "Library/Reading Room",
+                            FacilityIcon = "Library/Reading Room"
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Day Care",
-                            FacilityDescription = "Day Care" 
+                            FacilityName = "Day Care",
+                            FacilityIcon = "Day Care" 
                         },
                         new Facility()
                         {
-                            FacilityTitle = "Dance",
-                            FacilityDescription = "Dance"
+                            FacilityName = "Dance",
+                            FacilityIcon = "Dance"
                         },
                     });
                     context.SaveChanges();
@@ -269,33 +269,33 @@ namespace FutureStage.Data
                     context.Standards.AddRange(new List<Standard>() { 
                         new Standard()
                         {
-                            StandardTitle = "Pre Nursery",
-                            StandardDescription = "Pre Nursery"
+                            StandardName = "Pre Nursery",
+
                         },
                         new Standard()
                         {
-                            StandardTitle = "LKG",
-                            StandardDescription = "LKG"
+                            StandardName = "LKG",
+                          
                         },
                         new Standard()
                         {
-                            StandardTitle = "UKG",
-                            StandardDescription = "UKG"
+                            StandardName = "UKG",
+                           
                         },
                         new Standard()
                         {
-                            StandardTitle = "Class 1",
-                            StandardDescription = "Class 1"
+                            StandardName = "Class 1",
+                          
                         },
                         new Standard()
                         {
-                            StandardTitle = "Class 2",
-                            StandardDescription = "Class 2"
+                            StandardName = "Class 2",
+                           
                         },
                         new Standard()
                         {
-                            StandardTitle = "Class 3",
-                            StandardDescription = "Class 3"
+                            StandardName = "Class 3",
+                           
                         },
                     });
                     context.SaveChanges();
@@ -307,28 +307,28 @@ namespace FutureStage.Data
                     context.EducationBoards.AddRange(new List<EducationBoard>() { 
                         new EducationBoard()
                         {
-                            EducationBoardTitle = "CBSE",
-                            EducationBoardDescription = "CBSE"
+                            EducationBoardName = "CBSE",
+                           
                         },
                         new EducationBoard()
                         {
-                            EducationBoardTitle = "ICSE",
-                            EducationBoardDescription = "ICSE"
+                            EducationBoardName = "ICSE",
+                           
                         },
                         new EducationBoard()
                         {
-                            EducationBoardTitle = "State Board",
-                            EducationBoardDescription = "State Board"
+                            EducationBoardName = "State Board",
+                            
                         },
                         new EducationBoard()
                         {
-                            EducationBoardTitle = "CISCE",
-                            EducationBoardDescription = "CISCE"
+                            EducationBoardName = "CISCE",
+                           
                         },
                         new EducationBoard()
                         {
-                            EducationBoardTitle = "IB Board",
-                            EducationBoardDescription = "IB Board"
+                            EducationBoardName = "IB Board",
+                            
                         },
                     });
                     context.SaveChanges();
@@ -374,33 +374,33 @@ namespace FutureStage.Data
                     {
                         new Quoto()
                         {
-                            QuotoTitle = "General/Open Category",
-                            QuotoDescription = "This category comprises applicants who do not fall under any specific reserved category. They compete for admission based on general merit or specific admission criteria set by the institution."
+                            QuotoName = "General/Open Category"
+                           
                         },
                         new Quoto()
                         {
-                            QuotoTitle = "Scheduled Castes (SC)",
-                            QuotoDescription = "Reserved for individuals belonging to historically disadvantaged castes or Dalits in India."
+                            QuotoName = "Scheduled Castes (SC)"
+                          
                         },
                          new Quoto()
                         {
-                            QuotoTitle = "Scheduled Tribes (ST)",
-                            QuotoDescription = "Reserved for individuals belonging to specific indigenous or tribal communities in India."
+                            QuotoName = "Scheduled Tribes (ST)"
+                           
                         },
                           new Quoto()
                         {
-                            QuotoTitle = "Economically Weaker Section (EWS)",
-                            QuotoDescription = "Introduced in some countries to provide reservations for economically disadvantaged sections of society, irrespective of their caste or ethnicity."
+                            QuotoName = "Economically Weaker Section (EWS)"
+                          
                         },
                            new Quoto()
                         {
-                            QuotoTitle = "Other Backward Classes (OBC)",
-                            QuotoDescription = "Reserved for individuals belonging to socially and educationally disadvantaged groups, excluding SCs and STs, in India"
+                            QuotoName = "Other Backward Classes (OBC)"
+                           
                         },
                             new Quoto()
                         {
-                            QuotoTitle = "Persons with Disabilities (PWD)",
-                            QuotoDescription = "Reserved for individuals with physical or mental disabilities, with appropriate provisions for accessibility and support."
+                            QuotoName = "Persons with Disabilities (PWD)"
+                         
                         },
 
                     });

@@ -14,13 +14,9 @@ namespace FutureStage.Models
         [Key]
         public int ID { get; set; }
 
-        [Display(Name ="Quota Title")]
-        [Required(ErrorMessage ="Quota Title is required")]
-        public string QuotoTitle { get; set; }
-
-        [Display(Name ="Quota Description")]
-        [Required(ErrorMessage ="Quota Description is required")]
-        public string QuotoDescription { get; set; }
+        [Display(Name ="Quota Name")]
+        [Required(ErrorMessage ="Please enter a quoto name.")]
+        public string QuotoName { get; set; }
 
         //Relationships
         public virtual List<StandardSeatQuoto> StandardSeatQuotos { get; set; }

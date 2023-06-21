@@ -1,6 +1,7 @@
 ﻿using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -24,12 +25,7 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var allCities = await _cityService.GetAllAsync();
-            return View(allCities);
-        }
-
-        public async Task<IActionResult> Create()
-        {
+            ViewBag.Cities = await _cityService.GetAllAsync();
             ViewBag.States = new SelectList(await _stateService.GetAllAsync(), "ID", "StateName");
             return View();
         }
@@ -39,10 +35,10 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.States = new SelectList(await _stateService.GetAllAsync(), "ID", "StateName");
                 return View(city);
             }
             await _cityService.AddAsync(city);
+            TempData["AlertMessage"] = "Record created succesfully.";
             return RedirectToAction(nameof(Index));
         }
 
@@ -50,8 +46,11 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             var city = await _cityService.GetByIdAsync(id);
             if (city == null) return View("NotFound");
-            ViewBag.States = new SelectList(await _stateService.GetAllAsync(), "ID", "StateName");
-            return View(city);
+            
+            return Json(new { 
+                cityName = city.CityName,
+                stateID = city.StateID
+            });
         }
 
         [HttpPost]
@@ -59,26 +58,28 @@ namespace FutureStage.Areas.SiteAdmin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.States = new SelectList(await _stateService.GetAllAsync(), "ID", "StateName");
                 return View(city);
             }
             await _cityService.UpdateAsync(city);
+            TempData["AlertMessage"] = "Record updated successfully";
             return RedirectToAction(nameof(Index));
         }
 
-        public async Task<IActionResult> Delete(int id)
-        {
-            var city = await _cityService.GetByIdAsync(id);
-            if (city == null) return View("NotFound");
-            return View(city);
-        }
+        
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _cityService.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _cityService.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                return RedirectToAction(nameof(Index));
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error ocurred while deleting the entity.");
+            }
         }
     }
 }

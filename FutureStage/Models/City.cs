@@ -12,10 +12,11 @@ namespace FutureStage.Models
     public class City : IEntityBase
     {
         [Key]
+        
         public int ID { get; set; }
 
         [Display(Name ="City Name")]
-        [Required(ErrorMessage ="City name required")]
+        [Required(ErrorMessage ="Please enter city name.")]
         public string CityName { get; set; }
 
         //Rlationships
@@ -23,6 +24,7 @@ namespace FutureStage.Models
 
         //Area
         [ForeignKey("State")]
+        [Required(ErrorMessage ="Please select a state.")]
         public int StateID { get; set; }
         public virtual State State { get; set; }
     }

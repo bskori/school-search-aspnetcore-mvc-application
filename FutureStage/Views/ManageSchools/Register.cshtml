@@ -1,18 +1,22 @@
 ﻿@model School
 
-@{ 
+@{
     Layout = null;
 }
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>School Register - Future Stage</title>
-    <link rel="stylesheet" href="/SchoolsAssets/css/bootstrap.css">
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="/SchoolsAssets/css/loginstyle.css">
 </head>
+
 <body>
 
     <!-- --------------------------------Main Container----------------------- -->
@@ -25,100 +29,172 @@
 
             <!-- ---------------------------------------Left Box---------------------------- -->
 
-            <div class="col-md-6 d-flex justify-content-center align-items-center flex-column left-box" style="background: #103cbe; border-radius: 15px; ">
+            <div class="col-md-12 d-flex justify-content-center align-items-center flex-column left-box"
+                 style="background: #103cbe; border-radius: 15px; height: 30vh;">
                 <div class="featured-image mb-3">
-                    <img src="~/SchoolsAssets/img/1.png" class="img-fluid" style="width:250px">
+                    <img src="~/SchoolsAssets/img/1.png" class="img-fluid" style="width: 100px">
                 </div>
-                <p class="text-white fs-2" style="font-family: 'Courier New', Courier, monospace;">Future Stage</p>
-                <small class="text-white text-center text-wrap" style="width: 20rem;font-family: 'Courier New', Courier, monospace;">Future is a platform for collabortaion between schools & parents</small>
+                <p class="text-white fs-4"
+                   style="font-family: 'Courier New', Courier, monospace;">Future Stage</p>
+                <small class="text-white text-center text-wrap"
+                       style="width: 20rem;font-family: 'Courier New', Courier, monospace;">
+                    Future is a platform for
+                    collaboration between schools & parents
+                </small>
             </div>
 
             <!-- --------------------------------------Right Box------------------------------ -->
 
-            <div class="col-md-6 right-box">
-                <div class="row align-items-center">
+            <div class="col-md-12 p-4 rounded-end">
+                <h2 class="text-center mb-4">School Register</h2>
+                <form asp-action="Register" enctype="multipart/form-data">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">
+                                    <i class="bi bi-building"></i> School Name
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="Name" type="text"
+                                           class="form-control form-control-lg bg-light fs-6" placeholder="Enter school name">
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="Name"></span></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">
+                                    <i class="bi bi-envelope-fill"></i> Email Address
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="EmailID" type="text"
+                                           class="form-control form-control-lg bg-light fs-6" placeholder="Enter email address">
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="EmailID"></span></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="contact" class="form-label">
+                                    <i class="bi bi-telephone-fill"></i> Contact No
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="ContactNo" type="text"
+                                           class="form-control form-control-lg bg-light fs-6" placeholder="Enter contact number">
+                                </div>
+                                <small> <span class="text-danger" asp-validation-for="ContactNo"></span></small>
+                            </div>
+                        </div>
 
-                    <div class="header-text mb-4">
-                        <h5 class="text-center">School Register</h5>
+                        <div class="col-md-6">
+
+                            <div class="mb-3">
+                                <label for="area" class="form-label">
+                                    <i class="bi bi-geo-alt-fill"></i> Area
+                                </label>
+                                <div class="input-group">
+                                    <select asp-for="AreaID" asp-items="ViewBag.Areas"
+                                            class="form-select form-select-lg bg-light fs-6" placeholder="Select area">
+                                        <option value="">- select area -</option>
+                                    </select>
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="AreaID"></span></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="establishment" class="form-label">
+                                    <i class="bi bi-calendar3-fill"></i> Establishment Date
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="EstablishmentDate" type="date"
+                                           class="form-control form-control-lg bg-light fs-6" placeholder="Enter establishment date">
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="EstablishmentDate"></span></small>
+                            </div>
+                            <div class="mb-3">
+                                <label for="image" class="form-label">
+                                    <i class="bi bi-file-image-fill"></i> Choose Image
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="Image" type="file"
+                                           class="form-control form-control-lg bg-light fs-6" placeholder="Choose an image">
+                                </div>
+                                <small> <span class="text-danger" asp-validation-for="Image"></span></small>
+                            </div>
+                           
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="address" class="form-label">
+                                    <i class="bi bi-house-fill"></i> Address
+                                </label>
+                                <div class="input-group">
+                                    <textarea asp-for="Address" class="form-control form-control-lg bg-light fs-6" placeholder="Enter address"></textarea>
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="Address"></span></small>
+                            </div>
+                        </div>
                     </div>
-                    <form asp-action="Register" enctype="multipart/form-data">
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <input asp-for="Name" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="School name">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="education" class="form-label">
+                                    <i class="bi bi-book-fill"></i> Education Boards
+                                </label>
+                                <div class="input-group">
+                                    <select asp-for="EducationBoardID" asp-items="ViewBag.EducationBoards"
+                                            class="form-select form-select-lg bg-light fs-6" multiple placeholder="Select education boards"></select>
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="EducationBoardID"></span></small>
                             </div>
-                            <span class="text-danger" asp-validation-for="Name"></span>
                         </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <input asp-for="EmailID" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Email address">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="password" class="form-label">
+                                    <i class="bi bi-lock-fill"></i> Password
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="Password" type="password"
+                                           class="form-control form-control-lg bg-light fs-6" placeholder="Enter password">
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="Password"></span></small>
                             </div>
-                            <span class="text-danger" asp-validation-for="EmailID"></span>
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <input asp-for="ContactNo" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Contact no">
+                            <div class="mb-5">
+                                <label for="confirm-password" class="form-label">
+                                    <i class="bi bi-shield-lock-fill"></i> Confirm Password
+                                </label>
+                                <div class="input-group">
+                                    <input asp-for="ConfirmPassword" type="password"
+                                           class="form-control form-control-lg bg-light fs-6" placeholder="Confirm password">
+                                </div>
+                                <small><span class="text-danger" asp-validation-for="ConfirmPassword"></span></small>
                             </div>
-                            <span class="text-danger" asp-validation-for="ContactNo"></span>
                         </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <textarea asp-for="Address" type="text" class="form-control form-control-lg bg-light fs-6" placeholder="Address"></textarea>
-                            </div>
-                            <span class="text-danger" asp-validation-for="Address"></span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-lg btn-primary w-100 fs-6 register-button" type="submit">
+                            Register
+                        </button>
+                    </div>
+
+                    <div class="row">
+                        <div class="login-section">
+                            <small>Already have an account?</small>
+                            <a asp-action="doLogin" class="login-link">Log In</a>
                         </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <select asp-for="AreaID" asp-items="ViewBag.Areas" class="form-select form-select-lg bg-light fs-6">
-                                </select>
-                            </div>
-                            <span class="text-danger" asp-validation-for="Area.AreaName"></span>
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <select asp-for="EducationBoardID" asp-items="ViewBag.EducationBoards" class="form-select form-select-lg bg-light fs-6" multiple>
-                                </select>
-                            </div>
-                            <span class="text-danger" asp-validation-for="Area.AreaName"></span>
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <input asp-for="EstablishmentDate" type="date" class="form-control form-control-lg bg-light fs-6" placeholder="Establishment date">
-                            </div>
-                            <span class="text-danger" asp-validation-for="EstablishmentDate"></span>
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <input asp-for="Image" type="file" class="form-control form-control-lg bg-light fs-6" placeholder="Choose image">
-                            </div>
-                            <span class="text-danger" asp-validation-for="Image"></span>
-                        </div>
-                        <div class="mb-3">
-                            <div class="input-group">
-                                <input asp-for="Password" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Password">
-                            </div>
-                            <span class="text-danger" asp-validation-for="Password"></span>
-                        </div>
-                        <div class="mb-5">
-                            <div class="input-group">
-                                <input asp-for="ConfirmPassword" type="password" class="form-control form-control-lg bg-light fs-6" placeholder="Confirm password">
-                            </div>
-                            <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
-                        </div>
-                        <div class="input-group mb-3">
-                            <input class="btn btn-lg btn-primary w-100 fs-6" type="submit" value="Register" />
-                        </div>
-                        <div class="row">
-                            <small>Aready Have an account? <a asp-action="doLogin" class="fs-6">Log In</a></small>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
 
         </div>
 
     </div>
 
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
 </body>
+
 </html>
 
 @section Scripts {

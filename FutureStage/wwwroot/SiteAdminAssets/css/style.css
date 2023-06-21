@@ -351,12 +351,48 @@ body {
 
 /*CreateItem Button*/
 
-/*table responsive*/
 
-/* Responsive Styles */
+/*Modal Popup*/
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #2c3e50;
+    border-bottom: 1px solid #dee2e6;
+    color:white;
+}
 
 
 
-/*table responsive*/
+.modal-title {
+    margin: 0;
+}
 
+.close {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+    .close:hover {
+        color: #ff0000;
+    }
+
+    .close:focus {
+        outline: none;
+    }
+
+/*Modal Popup*/
+
+#displayIcon{
+    font-size:3rem;
+}
+
+#displayCreateIcon {
+    font-size: 3rem;
+}
 

@@ -14,14 +14,14 @@ namespace FutureStage.Models
         [Key]
         public int ID { get; set; }
 
-        [Required(ErrorMessage ="Title is required")]
-        [Display(Name ="Title")]
-        public string FacilityTitle { get; set; }
+        [Required(ErrorMessage ="Please enter facility name.")]
+        [Display(Name ="Facility Name")]
+        public string FacilityName { get; set; }
 
 
-        [Required(ErrorMessage ="Description is required")]
-        [Display(Name ="Description")]
-        public string FacilityDescription { get; set; }
+        [Required(ErrorMessage ="Please provide icon.")]
+        [Display(Name ="Facility Icon")]
+        public string FacilityIcon { get; set; }
 
         //Relationships
         public virtual List<SchoolFacility> SchoolFacilities { get; set; }

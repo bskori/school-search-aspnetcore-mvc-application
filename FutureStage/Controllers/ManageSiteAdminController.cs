@@ -39,7 +39,7 @@ namespace FutureStage.Controllers
 
                     return RedirectToAction("Index", "Home", new { area = "SiteAdmin" });
                 }
-                ViewData["ErrorMessage"]= "Invalid credentials! Please try again.";
+                ViewData["ErrorMessage"]= "Invalid credentials. Please check your username and password and try again.";
             }
 
             return View(loginVM);
@@ -48,7 +48,7 @@ namespace FutureStage.Controllers
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
-            TempData["LogoutMessage"] = "You have been logged out successfully.";
+            TempData["LogoutMessage"] = "Logout Successful! You have been securely logged out.";
             return RedirectToAction(nameof(doLogin)); 
         }
     }

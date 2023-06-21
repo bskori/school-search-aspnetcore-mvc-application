@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <Folder Include="Data\Enums\" />
-    <Folder Include="wwwroot\SiteAdminAssets\img\" />
   </ItemGroup>
 
 </Project>

@@ -47,19 +47,20 @@ namespace FutureStage.Controllers
                 if(record != null)
                 {
                     HttpContext.Session.SetString("ID", record.ID.ToString());
+                    TempData["SuccessMessage"] = "Login successful! Enjoy your experience.";
                     return RedirectToAction("Index", "Home", new { area = "Schools" });
                 }
 
-                TempData["Error"] = "Wrong credentials. Please, try again!";
+                ViewData["ErrorMessage"] = "Invalid credentials. Please check your username and password and try again.";
             }
-
+           
             return View(loginVM);
         }
 
         public async Task<IActionResult> Register()
         {
             ViewBag.Areas = new SelectList(await _areaService.GetAllAsync(), "ID", "AreaName");
-            ViewBag.EducationBoards = new SelectList(await _educationBoardService.GetAllAsync(), "ID", "EducationBoardTitle");
+            ViewBag.EducationBoards = new SelectList(await _educationBoardService.GetAllAsync(), "ID", "EducationBoardName");
             return View();
         }
 
@@ -69,7 +70,7 @@ namespace FutureStage.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.Areas = new SelectList(await _areaService.GetAllAsync(), "ID", "AreaName");
-                ViewBag.EducationBoards = new SelectList(await _educationBoardService.GetAllAsync(), "ID", "EducationBoardTitle");
+                ViewBag.EducationBoards = new SelectList(await _educationBoardService.GetAllAsync(), "ID", "EducationBoardName");
 
                 return View(school);
             }
@@ -101,13 +102,14 @@ namespace FutureStage.Controllers
                 await _context.School_EducationBoards.AddAsync(school_EducationBoard);
             }
             await _context.SaveChangesAsync();
-
+            TempData["RegisterMessage"] = "Registration Successful! You can now log in with your credentials.";
             return RedirectToAction(nameof(doLogin));
         }
 
         public  IActionResult Logout()
         {
             HttpContext.Session.Clear();
+            TempData["LogoutMessage"] = "Logout Successful! You have been securely logged out.";
             return RedirectToAction(nameof(doLogin));
         }
 
