@@ -132,7 +132,7 @@
                                                 <li>
                                                     <a asp-action="SchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
                                                         <span class="material-icons">person_outline</span>
-                                                        Profile
+                                                        My Profile
                                                     </a>
                                                 </li>
                                                 <li>
@@ -142,9 +142,9 @@
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a asp-action="ChangePassword" asp-controller="ManageSchools" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
-                                                        <span class="material-icons">edit</span>
-                                                        Edit Profile
+                                                    <a asp-action="ChangePassword" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
+                                                        <span class="material-icons">lock</span>
+                                                        Password
                                                     </a>
                                                 </li>
                                                 <li>
@@ -196,8 +196,17 @@
             {
                 <script>
                     $(function () {
-                        toastr.info('@TempData["UpdateProfileMessage"]', "Success Alert", { timeOut: 3000, "closeButton": true });
+                        toastr.success('@TempData["UpdateProfileMessage"]', "Success Alert", { timeOut: 3000, "closeButton": true });
                     })
+                </script>
+            }
+
+    @if(TempData["ChangePasswordMessage"] != null)
+            {
+                <script>
+                    $(function () {
+                        toastr.success('@TempData["ChangePasswordMessage"]', "Success Alert", { timeOut: 3000, "closeButton": true });
+                    });
                 </script>
             }
 

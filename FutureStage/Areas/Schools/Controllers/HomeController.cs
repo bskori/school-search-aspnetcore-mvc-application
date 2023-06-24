@@ -1,12 +1,12 @@
 ﻿using FutureStage.Data;
 using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
+using FutureStage.Data.ViewModels;
 using FutureStage.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -102,12 +102,6 @@ namespace FutureStage.Areas.Schools.Controllers
             school.EstablishmentDate = school.EstablishmentDate.Date;
             await _schoolService.UpdateAsync(school);
 
-            foreach (int educationBoardID in school.EducationBoardID)
-            {
-                School_EducationBoard school_EducationBoard = _context.School_EducationBoards.Where(p => p.EducationBoardID == educationBoardID).FirstOrDefault();
-                _context.School_EducationBoards.Remove(school_EducationBoard);
-            }
-
             var existingEducationBoards = _context.School_EducationBoards.Where(p => p.SchoolID == school.ID);
             _context.School_EducationBoards.RemoveRange(existingEducationBoards);
 
@@ -124,6 +118,30 @@ namespace FutureStage.Areas.Schools.Controllers
 
             TempData["UpdateProfileMessage"] = "Profile updated successfully.";
 
+            return RedirectToAction(nameof(Index));
+        }
+
+        public IActionResult ChangePassword(int id)
+        {
+            ChangePasswordVM changePasswordVM = new ChangePasswordVM();
+            changePasswordVM.ID = id;
+
+            return View(changePasswordVM);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordVM changePasswordVM)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(changePasswordVM);
+            }
+
+            School school = await _schoolService.GetByIdAsync(changePasswordVM.ID);
+            school.Password = changePasswordVM.Password;
+            school.ConfirmPassword = changePasswordVM.ConfirmPassword;
+            await _schoolService.UpdateAsync(school);
+            TempData["ChangePasswordMessage"] = "Password changed successfully!";
             return RedirectToAction(nameof(Index));
         }
     }
