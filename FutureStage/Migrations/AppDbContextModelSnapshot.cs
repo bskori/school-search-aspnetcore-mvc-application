@@ -235,11 +235,7 @@ namespace FutureStage.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("FeeHeadDescription")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FeeHeadTitle")
+                    b.Property<string>("FeeHeadName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

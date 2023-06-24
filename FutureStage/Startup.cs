@@ -59,6 +59,15 @@ namespace FutureStage
                 options.Cookie.IsEssential = true;
                 options.Cookie.HttpOnly = true;
             });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -84,6 +93,8 @@ namespace FutureStage
                     );
                 endpoints.MapDefaultControllerRoute();
             });
+
+            app.UseCors("AllowOrigin");
 
             //Seed Database
             AppDbInitializer.Seed(app);

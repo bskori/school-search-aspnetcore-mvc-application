@@ -22,12 +22,8 @@ namespace FutureStage.Areas.Schools.Controllers
         }
 
         public async Task<IActionResult> Index()
-        {           
-            return View(await _service.GetAllAsync());
-        }
-
-        public IActionResult Create()
         {
+           ViewBag.FeeHeads =await _service.GetAllAsync();
             return View();
         }
 
@@ -40,6 +36,7 @@ namespace FutureStage.Areas.Schools.Controllers
             }
 
             await _service.AddAsync(feeHead);
+            TempData["AlertMessage"] = "New record created successfully!";
             return RedirectToAction(nameof(Index));
         }
 

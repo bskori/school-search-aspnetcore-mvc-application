@@ -13,13 +13,9 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
-        [Display(Name ="Fee Head Title")]
-        [Required(ErrorMessage =" Fee Head Title is required")]
-        public string FeeHeadTitle { get; set; }
-
-        [Display(Name ="Fee Head Description")]
-        [Required(ErrorMessage = "Fee Head Description is required")]
-        public string FeeHeadDescription { get; set; }
+        [Display(Name ="FeeHead Name")]
+        [Required(ErrorMessage ="Please enter a feehead name.")]
+        public string FeeHeadName { get; set; }
 
         //Relationships
         public virtual List<StandardFees> StandardFees { get; set; }
