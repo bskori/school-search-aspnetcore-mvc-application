@@ -47,13 +47,13 @@
                     </a>
                     <ul class="collapse list-unstyled menu" id="homeSubmenu1">
                         <li>
-                            <a asp-action="Index" asp-controller="AdmissionEnquiry" asp-area="Schools">
+                            <a asp-action="NewEnquiry" asp-controller="Enquiry" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
                                 <i class="fas fa-envelope"></i>
                                 New Enquiry
                             </a>
                         </li>
                         <li>
-                            <a asp-action="EnquiryConfirmed" asp-controller="AdmissionEnquiry" asp-area="Schools">
+                            <a asp-action="ConfirmedEnquires" asp-controller="Enquiry" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
                                 <i class="fas fa-check-circle"></i>
                                 Confirmed Enquiry
                             </a>
@@ -130,19 +130,19 @@
                                             </a>
                                             <ul class="dropdown-menu small-menu">
                                                 <li>
-                                                    <a asp-action="SchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
+                                                    <a asp-action="SchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
                                                         <span class="material-icons">person_outline</span>
                                                         My Profile
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a asp-action="UpdateSchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
+                                                    <a asp-action="UpdateSchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
                                                         <span class="material-icons">edit</span>
                                                         Edit Profile
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a asp-action="ChangePassword" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
+                                                    <a asp-action="ChangePassword" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
                                                         <span class="material-icons">lock</span>
                                                         Password
                                                     </a>

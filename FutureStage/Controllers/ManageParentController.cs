@@ -31,7 +31,7 @@ namespace FutureStage.Controllers
                 Parent parent = _context.Parents.SingleOrDefault(p => p.EmailID == loginVM.EmailAddress && p.Password == loginVM.Password);
                 if(parent != null)
                 {
-                    HttpContext.Session.SetString("ID", parent.ID.ToString());
+                    HttpContext.Session.SetInt32("ID", parent.ID);
                     return RedirectToAction("Index", "Home");
                 }
                 TempData["Error"] = "Invalid Credentials...!";

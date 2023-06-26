@@ -19,7 +19,7 @@ namespace FutureStage.Models
         public DateTime EnquiryDate { get; set; }
 
         [Required]
-        [Display(Name ="Description")]
+        [Display(Name ="Enquiry")]
         public string EnquiryDescription { get; set; }
 
         //Relationships

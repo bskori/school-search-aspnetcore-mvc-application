@@ -39,7 +39,7 @@ namespace FutureStage
             services.AddScoped<IStandardService, StandardService>();
             services.AddScoped<IEducationBoardService, EducationBoardService>();
             services.AddScoped<IQuotaService, QuotaService>();
-            //Schools services
+               //Schools services
             services.AddScoped<ISchoolService, SchoolService>();
             services.AddScoped<IFeeHeadService, FeeHeadService>();
             services.AddScoped<ISchoolStandardService, SchoolStandardService>();
@@ -49,6 +49,7 @@ namespace FutureStage
             services.AddScoped<IAdmissionPrerequisiteService, AdmissionPrerequisiteService>();
             services.AddScoped<IAdmissionProcessService, AdmissionProcessService>();
             services.AddScoped<IAdmissionEnquiryService, AdmissionEnquiryService>();
+            services.AddScoped<IAdmissionConfirmationService, AdmissionConfirmationService>();
 
             services.AddControllersWithViews();
 

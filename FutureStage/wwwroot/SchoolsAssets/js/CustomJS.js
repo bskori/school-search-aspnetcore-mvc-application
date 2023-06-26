@@ -1,5 +1,9 @@
-﻿window.setTimeout(function () {
-    $(".alert").fadeTo(500, 0).slideUp(500, function () {
-        $(this).remove();
-    });
-});
+﻿ function hideAlert() {
+        $("#myAlert").alert('close');
+    }
+
+
+    var delay = 3000; 
+
+
+    setTimeout(hideAlert, delay);

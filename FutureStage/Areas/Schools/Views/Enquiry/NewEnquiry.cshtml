@@ -1,0 +1,143 @@
+﻿@model AdmissionEnquiry
+
+@{
+    ViewData["Title"] = "List of admission enquiries.";
+}
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="col-md-13 my-2">
+        <div id="myAlert" class="alert alert-hide alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>  @TempData["AlertMessage"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+}
+<div class="table-wrapper">
+
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                <h2 class="ml-lg-2">New  Enquiry</h2>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="text-center">
+                <th class="align-items-center">
+                    Sr. No
+                </th>
+                <th class="align-items-center">Enquiry Date</th>
+
+                <th class="align-items-center">Enquirer Name</th>
+
+                <th class="align-items-center">For Class</th>
+
+                <th class="align-items-center">Enquirer Email</th>
+
+                <th class="align-items-center">Enquirer Contact No.</th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{ int no = 1;
+                foreach (var item in ViewBag.AdmissionEnquiries)
+                {
+                    if (item.AdmissionConfirmations.Count == 0)
+                    {
+                        <tr class="text-center">
+                            <td class="align-items-center">
+                                @no
+                            </td>
+                            <td>@item.EnquiryDate.ToString("dd-MM-yyyy")</td>
+                            <td>@item.Parent.Name</td>
+                            <td>@item.SchoolStandard.Standard.StandardName</td>
+                            <td>@item.Parent.EmailID</td>
+                            <td>@item.Parent.MobileNo</td>
+
+                            <td>
+                                <a data-toggle="modal" data-target="#confirmEnquiryModal" data-item-id="@item.ID" class="btn custom-btn-primary confirm-btn text-white">
+                                    Confirm
+                                </a>
+                            </td>
+                        </tr>
+
+                        no++;
+                    }
+                }
+            }
+
+
+
+
+
+        </tbody>
+
+
+    </table>
+
+    <div class="clearfix">
+        <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
+        <ul class="pagination">
+            <li class="page-item disabled"><a href="#">Previous</a></li>
+            <li class="page-item "><a href="#" class="page-link">1</a></li>
+            <li class="page-item "><a href="#" class="page-link">2</a></li>
+            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+            <li class="page-item "><a href="#" class="page-link">4</a></li>
+            <li class="page-item "><a href="#" class="page-link">5</a></li>
+            <li class="page-item "><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </div>
+
+
+    <div class="modal fade" id="confirmEnquiryModal" tabindex="-1" aria-labelledby="confirmEnquiryModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="confirmEnquiryModalLabel">Enquiry Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form asp-action="ConfirmEnquiry">
+
+                        <div class="modal-body">
+                            <div class="text-center">
+                                <span style="font-weight:bold">Today's Date : </span>@DateTime.Now.ToString("dd-MM-yyyy")
+                                <input id="enquiry-id" asp-for="ID" type="hidden" />
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <input type="submit" class="btn btn-danger" id="confirm-enquiry-btn" value="Confirm Enquiry" />
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.confirm-btn').click(function () {
+            var enquiryId = $(this).data('item-id');
+            $('#enquiry-id').val(enquiryId);
+        });
+
+        $('#confirm-enquiry-btn').click(function () {
+            $('form').submit();
+        });
+    });
+
+</script>

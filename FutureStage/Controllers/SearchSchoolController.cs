@@ -30,13 +30,13 @@ namespace FutureStage.Controllers
 
         public IActionResult GetEnquiry(int id)
         {
-            int parentId = Convert.ToInt32(HttpContext.Session.GetString("ID"));
+            int parentId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
             List<SchoolStandard> schoolStandards =  _context.SchoolStandards.Where(p => p.SchoolID == id).ToList();
             if(parentId != 0)
             {
                 ViewBag.ParentID = parentId;
                 ViewBag.SchoolID = id;
-                ViewBag.Standards = new SelectList(schoolStandards, "ID", "Standard.StandardTitle");
+                ViewBag.Standards = new SelectList(schoolStandards, "ID", "Standard.StandardName");
                 return View();
             }
 

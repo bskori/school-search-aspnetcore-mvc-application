@@ -1,0 +1,165 @@
+﻿@model IEnumerable<AdmissionConfirmation>
+
+@{
+    ViewData["Title"] = "List of confirmed enquiries.";
+}
+
+<div class="table-wrapper">
+
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
+                <h2 class="ml-lg-2">Confirmed  Enquiry</h2>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr class="text-center">
+                <th class="align-items-center">
+                    Sr. No
+                </th>
+                <th class="align-items-center">Enquirer Name</th>
+
+                <th class="align-items-center">Enquiry Date</th>
+
+                <th class="align-items-center">Confirmed Date</th>
+
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{ int no = 1;
+                foreach (var item in Model)
+                {
+                        <tr class="text-center">
+                            <td class="align-items-center">
+                                @no
+                            </td>
+                            <td>@item.AdmissionEnquiry.Parent.Name</td>
+                            <td>@item.AdmissionEnquiry.EnquiryDate.ToString("dd-MM-yyyy")</td>
+                            <td>@item.ConfirmationDate.ToString("dd-MM-yyyy")</td>
+                            <td>
+                                <a data-toggle="modal" data-target="#enquiryDetailsModal" data-item-id="@item.AdmissionEnquiry.ID" class="btn btn-info text-white view-details-btn" >
+                                    View Details
+                                </a>
+                            </td>
+                        </tr>
+
+                        no++;
+                }
+            }
+
+
+
+
+
+        </tbody>
+
+
+    </table>
+
+    <div class="clearfix">
+        <div class="hint-text">showing <b>5</b> out of <b>25</b></div>
+        <ul class="pagination">
+            <li class="page-item disabled"><a href="#">Previous</a></li>
+            <li class="page-item "><a href="#" class="page-link">1</a></li>
+            <li class="page-item "><a href="#" class="page-link">2</a></li>
+            <li class="page-item active"><a href="#" class="page-link">3</a></li>
+            <li class="page-item "><a href="#" class="page-link">4</a></li>
+            <li class="page-item "><a href="#" class="page-link">5</a></li>
+            <li class="page-item "><a href="#" class="page-link">Next</a></li>
+        </ul>
+    </div>
+
+
+    <div class="modal fade" id="enquiryDetailsModal" tabindex="-1" aria-labelledby="enquiryDetailsModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="max-width:500px;" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="enquiryDetailsModalLabel">Confirmed Enquiry Details</h5>
+                    <button type="button" class="close close-btn" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">                    
+
+                        <div class="modal-body">
+                            <div class="text-center">
+
+                                <table class="table table-stripped" >
+                                    <tr >
+                                        <th style="width:50%">Enquirer Name</th>
+                                        <td id="enquirer-name"></td>
+                                    </tr> 
+                                    <tr>
+                                        <th>Enquiry Date</th>
+                                        <td id="enquiry-date"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>For Class</th>
+                                        <td id="for-class"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Enquirer Email</th>
+                                        <td id="enquirer-email"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Enquirer Contact</th>
+                                        <td id="enquirer-contact"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Confirmed Date</th>
+                                        <td id="confirmed-date"></td>
+                                    </tr>
+                                </table>
+                                    
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('.view-details-btn').click(function () {
+            var enquiryId = $(this).data('item-id');
+
+            $('.modal-table td').empty();
+
+            $.ajax({
+                url: '/Schools/Enquiry/ConfirmedEnquiryDetails',
+                type: 'GET',
+                data: { id: enquiryId },
+                success: function (response) {
+                    $('#enquirer-name').text(response.enquirerName).css("font-size", "16px");
+                    $('#enquiry-date').text(response.enquiryDate).css("font-size", "16px");
+                    $('#for-class').text(response.forClass).css("font-size", "16px");
+                    $('#enquirer-email').text(response.enquirerEmail).css("font-size", "16px");
+                    $('#enquirer-contact').text(response.enquirerContact).css("font-size", "16px");
+                    $('#confirmed-date').text(response.confirmedDate).css("font-size", "16px");
+                },
+                error: function () {
+                    alert('Error occured while getting enquiry details.');
+                }
+            });
+            $('.modal-table td');
+        });
+
+        $('.close-btn').click(function () {
+            $('.modal-table td').empty();
+        });
+    });
+    
+</script>

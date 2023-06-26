@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -13,7 +15,7 @@
 
 <body>
     <!-- Navbar -->
-   @await Html.PartialAsync("_navbar")
+    @await Html.PartialAsync("_navbar")
 
     <!-- Banner -->
     <section class="banner">
@@ -43,14 +45,15 @@
                 </div>
                 <div class="col-md-6">
                     <h1>
-                        We make School Admissions easy!</h1>
-                        <p>
-                            At FutureStage, we help you find the perfect school for your child. With our easy-to-use interface, you
-                            can search for schools by location, type, and more. We also offer you a single application form to apply
-                            to multiple schools with a single click.
-                        </p>
-                        <a asp-action="ExploreSchools" asp-controller="SearchSchool" > <button class="search-button">Explore</button> </a>
-                        
+                        We make School Admissions easy!
+                    </h1>
+                    <p>
+                        At FutureStage, we help you find the perfect school for your child. With our easy-to-use interface, you
+                        can search for schools by location, type, and more. We also offer you a single application form to apply
+                        to multiple schools with a single click.
+                    </p>
+                    <a asp-action="ExploreSchools" asp-controller="SearchSchool"> <button class="search-button">Explore</button> </a>
+
                 </div>
             </div>
         </div>

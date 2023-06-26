@@ -18,7 +18,7 @@
             </div>
 
             <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-                <a data-bs-target="#addEmployeeModal" data-bs-toggle="modal" class="btn btn-lg btn-success">
+                <a data-target="#addEmployeeModal" data-toggle="modal" class="btn btn-lg btn-success">
                     <i class="material-icons">&#xE147;</i>
                     <span>Add New Facility</span>
                 </a>
@@ -85,32 +85,17 @@
         </ul>
     </div>
 
-
-
-    <!----add-modal start--------->
-    @*<div class="modal fade" tabindex="-1" id="addEmployeeModal" role="dialog">
+     
+    <!-- Modal -->
+    <!-- add - model - start -->
+    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add FeeHead</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <h5 class="modal-title" id="addModalLabel">Add Facility</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                
-            </div>
-        </div>
-    </div>*@
-
-    
-
-    <!-- Modal -->
-    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addModalLabel">Add Facility</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form asp-action="Create">
                     <div class="modal-body">
@@ -126,7 +111,7 @@
 
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                         <input type="submit" class="btn btn-success" value="Add" />
                     </div>
                 </form>
@@ -134,10 +119,40 @@
         </div>
     </div>
 
-    <!----add-modal end--------->
+    <!----edit-modal end--------->
+    <!-- Modal -->
+    <div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Add Facility</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form asp-action="Edit">
+                    <div class="modal-body">
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label asp-for="FeeHeadName"></label>
+                                <input asp-for="FeeHeadName" class="form-control">
+                                <small><span class="text-danger" asp-validation-for="FeeHeadName"></span></small>
+                            </div>
+                        </div>
 
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-success" value="Add" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
+    <!----edit-modal end--------->
 
 
 </div>
