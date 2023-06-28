@@ -10,7 +10,7 @@ namespace FutureStage.Data.ViewModels
     {
         [Display(Name ="Email address")]
         [Required(ErrorMessage ="Please enter a email address.")]
-        [EmailAddress(ErrorMessage ="Invalid email address type.")]
+        [EmailAddress(ErrorMessage ="Please enter a valid email address.")]
         public string EmailAddress { get; set; }
 
         [DataType(DataType.Password)]
