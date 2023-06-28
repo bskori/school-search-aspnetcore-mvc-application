@@ -1,4 +1,4 @@
-﻿@model IEnumerable<StandardFees>
+﻿@model StandardFees
 
 @if (TempData["AlertMessage"] != null)
 {
@@ -85,4 +85,81 @@
     </div>
 
 
+    <!----edit-modal start--------->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Update FeeHead</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form asp-action="Edit">
+                    <div class="modal-body">
+                        <div>
+                            <input asp-for="ID" type="hidden" />
+                        </div>
+                        <div class="form-group">
+                            <label>Class Name</label>
+                            <select asp-for="SchoolStandardID" asp-items="ViewBag.Standards" class="form-control">
+                                <option disabled>- select class -</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>FeeHead</label>
+                            <select asp-for="FeeHeadID" asp-items="ViewBag.FeeHeads" class="form-control">
+                                <option disabled>- select feehead -</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Amount"></label>
+                            <input asp-for="Amount" class="form-control">
+                            <small><span class="text-danger" asp-validation-for="Amount"></span></small>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-primary" value="Upadte" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!----edit-modal end--------->
+
 </div>
+
+<script>
+const { error } = require("toastr");
+
+    $(document).ready(function () {
+        $('.update-btn').click(function () {
+            var itemId = $(this).data('item-id');
+
+            $.ajax({
+                url: '/Schools/StandardFees/Edit',
+                type: 'GET',
+                data: { id: itemId },
+                dataType: 'json',
+                success: function (response) {
+                    $('#updateModal #ID').val(itemId);
+                    $('#updateModal #SchoolStandardID').val(response.schoolStandardId);
+                    $('#updateModal #FeeHeadID').val(response.feeHeadId);
+                    $('#updateModal #Amount').val(response.amount);
+                },
+                error: function () {
+                    alert("An error occured while retrieving the data.");
+                }
+            })
+        });
+
+        $('.delete-btn').click(function () {
+            var itemId = $(this).data('item-id');
+
+            $('#deleteModal #ID').val(itemId);
+        })
+    })
+</script>
