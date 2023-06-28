@@ -10,11 +10,11 @@
     <div class="table-title">
         <div class="row">
             <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                <h2 class="ml-lg-2">Manage School Admission Prerequisite</h2>
+                <h2 class="ml-lg-2">Manage Admission Prerequisite</h2>
             </div>
 
             <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-                <a asp-action="Create" class="btn btn-success">
+                <a data-toggle="modal" data-target="#addModal" class="btn btn-lg btn-success">
                     <i class="material-icons">&#xE147;</i>
                     <span>Add New </span>
                 </a>
@@ -40,21 +40,21 @@
                 foreach (var item in Model)
                 {
                     <tr>
-                        <th>
+                        <td>
                             @no
-                        </th>
-                        <th>@item.PrerequisiteTitle</th>
-                        <th>@item.PrerequisiteDescription</th>
-                        <th>@item.SchoolStandard.Standard.StandardName</th>
-                        <th>
-                            <a asp-action="Edit" asp-route-id="@item.SchoolStandardID" class="edit text-primary">
+                        </td>
+                        <td>@item.PrerequisiteTitle</td>
+                        <td>@item.PrerequisiteDescription</td>
+                        <td>@item.SchoolStandard.Standard.StandardName</td>
+                        <td>
+                            <a data-toggle="modal" data-target="#updateModal" data-item-id="@item.ID" class="edit text-primary">
                                 <i class="material-icons" title="Edit">&#xE254;</i>
                             </a>
 
-                            <a asp-action="Delete" asp-route-id="@item.SchoolStandardID" class="delete text-danger">
+                            <a data-toggle="modal" data-target="#deleteModal" data-item-id="@item.ID" class="delete text-danger">
                                 <i class="material-icons" title="Delete">&#xE872;</i>
                             </a>
-                        </th>
+                        </td>
                     </tr>
 
                     no++;

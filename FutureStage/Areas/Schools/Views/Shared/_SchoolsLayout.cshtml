@@ -91,15 +91,9 @@
                     </a>
                 </li>
                 <li class="">
-                    <a asp-action="Index" asp-controller="Admission" asp-area="Schools" class="">
+                    <a asp-action="Index" asp-controller="Admission" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")" class="">
                         <i class="fas fa-user-graduate"></i>
                         Admissions
-                    </a>
-                </li>
-                <li class="">
-                    <a asp-action="Index" asp-controller="SchoolEducationBoards" asp-area="Schools"  class="">
-                        <i class="fas fa-university"></i>
-                        Boards
                     </a>
                 </li>
             </ul>
