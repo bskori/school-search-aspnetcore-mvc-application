@@ -27,9 +27,12 @@ namespace FutureStage.Areas.Schools.Controllers
             _context = context;
         }
 
-        public IActionResult Index(int id)
+        public async Task<IActionResult> Index(int id)
         {
             ViewBag.StandardFees = _context.StandardFees.Where(sf => sf.SchoolStandard.SchoolID == id).ToList();
+            List<Standard> standards = _context.SchoolStandards.Where(ss => ss.SchoolID == id).Select(s => s.Standard).ToList();
+            ViewBag.Standards = new SelectList(standards, "ID", "StandardName");
+            ViewBag.FeeHeads = new SelectList(await _feeHeadService.GetAllAsync(), "ID", "FeeHeadName");
             return View();
         }
 
@@ -60,9 +63,12 @@ namespace FutureStage.Areas.Schools.Controllers
 
             if (standardFees == null) return View("NotFound");
 
-            ViewBag.FeeHeads = new SelectList(await _feeHeadService.GetAllAsync(), "ID", "FeeHeadTitle");
-            ViewBag.SchoolStandards = new SelectList(await _schoolStandardService.GetAllAsync(), "ID", "Standard.StandardTitle");
-            return View(standardFees);
+            return Json(new {
+                schoolStandardId = standardFees.SchoolStandardID,
+                feeHeadId = standardFees.FeeHeadID,
+                amount = standardFees.Amount,
+                standardId = standardFees.SchoolStandard.Standard.ID
+            });
         }
 
         [HttpPost]
