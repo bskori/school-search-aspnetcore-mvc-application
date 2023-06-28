@@ -76,29 +76,28 @@ namespace FutureStage.Areas.Schools.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.FeeHeads = new SelectList(await _feeHeadService.GetAllAsync(), "ID", "FeeHeadTitle");
-                ViewBag.SchoolStandards = new SelectList(await _schoolStandardService.GetAllAsync(), "ID", "Standard.StandardTitle");
                 return View(standardFees);
             }
             await _standardFeesService.UpdateAsync(standardFees);
-            return View();
+            TempData["AlertMessage"] = "Record updated successfully.";
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            return View("Index",new { id= schoolId });
         }
 
-        public async Task<IActionResult> Delete(int id)
-        {
-            StandardFees standardFees = await _standardFeesService.GetByIdAsync(id);
-
-            if (standardFees == null) return View("NotFound");
-
-            return View(standardFees);
-        }
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _standardFeesService.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _standardFeesService.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+                return RedirectToAction("Index", new { id = schoolId });
+            }catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurd while deleting the entity");
+            }
         }
     }
 }
