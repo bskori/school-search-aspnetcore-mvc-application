@@ -25,21 +25,19 @@ namespace FutureStage.Areas.Schools.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
-        {           
-            return View(await _schoolStandardService.GetAllAsync());
-        }
-
-        public async Task<IActionResult> Create()
+        public IActionResult Index(int id)
         {
-            ViewBag.Standards = new SelectList(await _standardService.GetAllAsync(), "ID", "StandardTitle");
+            ViewBag.SchoolStandards = _context.SchoolStandards.Where(ss => ss.SchoolID == id).ToList();
+            List<Standard> standards = _context.SchoolStandards.Where(ss => ss.SchoolID == id).Select(s => s.Standard).ToList();
+            ViewBag.Standards = new SelectList( standards, "ID", "StandardName");
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> Create(SchoolStandard schoolStandard, int[] Quotos, int[] NoOfSeats)
         {
-            schoolStandard.SchoolID = Convert.ToInt32(HttpContext.Session.GetString("ID"));
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            schoolStandard.SchoolID = schoolId;
             await _schoolStandardService.AddAsync(schoolStandard);
 
             int tempId = _context.SchoolStandards.OrderByDescending(m => m.ID).Select(m => m.ID).FirstOrDefault();
@@ -54,8 +52,8 @@ namespace FutureStage.Areas.Schools.Controllers
             }
 
             await _schoolStandardService.UpdateAsync(schoolStandard);
-
-            return RedirectToAction(nameof(Index));
+            TempData["AlertMessage"] = "Record added successfully.";
+            return RedirectToAction("Index", new { id = schoolId});
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -63,10 +61,13 @@ namespace FutureStage.Areas.Schools.Controllers
             SchoolStandard schoolStandard = await _schoolStandardService.GetByIdAsync(id);
 
             if (schoolStandard == null) return View("NotFound");
+          
+            TempData["SchoolStandardId"] = id;
 
-            ViewBag.Standards = new SelectList(await _standardService.GetAllAsync(), "ID", "StandardTitle");
-
-            return View(schoolStandard);
+            return Json(new { 
+                intakeCapacity = schoolStandard.IntakeCapacity,
+                standardId = schoolStandard.Standard.ID,
+        });
         }
 
         [HttpPost]
@@ -94,32 +95,31 @@ namespace FutureStage.Areas.Schools.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        public  async Task<IActionResult> Delete(int id)
-        {
-            SchoolStandard schoolStandard = await _schoolStandardService.GetByIdAsync(id);
-
-            if (schoolStandard == null) return View("NotFound");
-
-            return View(schoolStandard);
-        }
-
-        [ActionName("Delete")]
         [HttpPost]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            
-            IQueryable<StandardSeatQuoto> standardSeatQuotos =  _context.StandardSeatQuotos.Where(p => p.SchoolStandardID == id);
-
-            foreach(var item in standardSeatQuotos)
+            try
             {
-                _context.StandardSeatQuotos.Remove(item);
+                IQueryable<StandardSeatQuoto> standardSeatQuotos = _context.StandardSeatQuotos.Where(p => p.SchoolStandardID == id);
+
+                foreach (var item in standardSeatQuotos)
+                {
+                    _context.StandardSeatQuotos.Remove(item);
+                }
+
+                await _context.SaveChangesAsync();
+
+                await _schoolStandardService.DeleteAsync(id);
+
+                int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                
+                return RedirectToAction("Index",schoolId);
+            }catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while deleting the entity.");
             }
-
-            await _context.SaveChangesAsync();
-
-            await _schoolStandardService.DeleteAsync(id);
-
-            return RedirectToAction(nameof(Index));
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using FutureStage.Data.Services.SchoolsServices;
+﻿using FutureStage.Data;
+using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,19 +13,17 @@ namespace FutureStage.Areas.Schools.Controllers
     [Area("Schools")]
     public class SchoolAchivementController : Controller
     {
-        ISchoolAchivementService _schoolAchivementService;
-        public SchoolAchivementController(ISchoolAchivementService schoolAchivementService)
+        private readonly ISchoolAchivementService _schoolAchivementService;
+        private readonly AppDbContext _context;
+        public SchoolAchivementController(ISchoolAchivementService schoolAchivementService, AppDbContext context)
         {
             _schoolAchivementService = schoolAchivementService;
+            _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int id)
         {
-            return View(await _schoolAchivementService.GetAllAsync());
-        }
-
-        public IActionResult Create()
-        {
+            ViewBag.Achivements = _context.SchoolAchivements.Where(sa => sa.SchoolID == id).ToList();
             return View();
         }
 
@@ -35,9 +34,11 @@ namespace FutureStage.Areas.Schools.Controllers
             {
                 return View(schoolAchivement);
             }
-            schoolAchivement.SchoolID = Convert.ToInt32(HttpContext.Session.GetString("ID"));
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            schoolAchivement.SchoolID = schoolId;
             await _schoolAchivementService.AddAsync(schoolAchivement);
-            return RedirectToAction(nameof(Index));
+            TempData["AlertMessage"] = "Record added successfully";
+            return RedirectToAction("Index", new { id = schoolId});
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -45,7 +46,14 @@ namespace FutureStage.Areas.Schools.Controllers
             SchoolAchivement schoolAchivement = await _schoolAchivementService.GetByIdAsync(id);
 
             if (schoolAchivement == null) return View("NotFound");
-            return View(schoolAchivement);
+
+            return Json(new {
+                achivementTitle = schoolAchivement.AchivementTitle,
+                achivementDescription = schoolAchivement.AchivementDescription,
+                achivementDate = schoolAchivement.AchivementDate,
+                displayDate = schoolAchivement.AchivementDate.ToString("dd-MM-yyyy"),
+                schoolId = schoolAchivement.SchoolID
+            });;
         }
 
         [HttpPost]
@@ -57,24 +65,25 @@ namespace FutureStage.Areas.Schools.Controllers
             }
 
             await _schoolAchivementService.UpdateAsync(schoolAchivement);
-            return RedirectToAction(nameof(Index));
+            TempData["AlertMessage"] = "Record updated successfully.";
+            return RedirectToAction("Index", new { id = schoolAchivement.SchoolID});
         }
 
-        public async Task<IActionResult> Delete(int id)
-        {
-            SchoolAchivement schoolAchivement = await _schoolAchivementService.GetByIdAsync(id);
-
-            if (schoolAchivement == null) return View("NotFound");
-
-            return View(schoolAchivement);
-        }
+       
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _schoolAchivementService.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _schoolAchivementService.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+                return RedirectToAction("Index", new { id = schoolId });
+            }catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while deleting the entity.");
+            }
         }
     }
 }

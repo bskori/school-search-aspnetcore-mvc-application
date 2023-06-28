@@ -17,8 +17,15 @@ namespace FutureStage.Models
         [Required(ErrorMessage ="Please enter a feehead name.")]
         public string FeeHeadName { get; set; }
 
+        //SchoolStandard
+        [ForeignKey("SchoolStandard")]
+        [Required(ErrorMessage ="Please select a class.")]
+        public int SchoolStandardID { get; set; }
+        public virtual SchoolStandard  SchoolStandard { get; set; }
+
         //Relationships
         public virtual List<StandardFees> StandardFees { get; set; }
+        
         
     }
 }

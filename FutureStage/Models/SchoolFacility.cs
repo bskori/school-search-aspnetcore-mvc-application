@@ -13,7 +13,6 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
-        public string FacilityDescription { get; set; }
 
         //School
         [ForeignKey("School")]

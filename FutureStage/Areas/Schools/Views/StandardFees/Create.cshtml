@@ -11,17 +11,18 @@
                 <input asp-for="SchoolStandardID" value="@ViewBag.SchoolStandardID" type="hidden" />
             </div>
             <div class="mb-3">
-                <label class="form-label">Select Fee Head</label>
-                <select asp-for="FeeHeadID" asp-items="ViewBag.FeeHeads" class="form-select"></select>
+                <label class="form-label">Fee Head</label>
+                <select asp-for="FeeHeadID" asp-items="ViewBag.FeeHeads" class="form-control"></select>
+                
             </div>
             <div class="mb-5">
                 <label class="form-label" asp-for="Amount"></label>
                 <input asp-for="Amount" class="form-control" />
-                <span class="text-danger" asp-validation-for="Amount"></span>
+                
             </div>
             <div class="mb-3">
-                <a asp-action="StandardList" class="btn btn-outline-info">Back</a>
-                <input type="submit" class="btn btn-outline-success float-end" value="Save" />
+                <a asp-action="StandardList" class="btn btn-secondary">Cancel</a>
+                <input type="submit" class="btn btn-success" value="Add" />
             </div>
         </form>
     </div>

@@ -1,4 +1,5 @@
-﻿using FutureStage.Data.Services.SchoolsServices;
+﻿using FutureStage.Data;
+using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
 using Microsoft.AspNetCore.Http;
@@ -14,22 +15,20 @@ namespace FutureStage.Areas.Schools.Controllers
     [Area("Schools")]
     public class SchoolFacilityController : Controller
     {
-        ISchoolFacilityService _schoolFacilityService;
-        IFacilityService _facilityService;
-        public SchoolFacilityController(ISchoolFacilityService schoolFacilityService, IFacilityService facilityService)
+        private readonly ISchoolFacilityService _schoolFacilityService;
+        private readonly IFacilityService _facilityService;
+        private readonly AppDbContext _context;
+        public SchoolFacilityController(ISchoolFacilityService schoolFacilityService, IFacilityService facilityService, AppDbContext context)
         {
             _schoolFacilityService = schoolFacilityService;
             _facilityService = facilityService;
+            _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int id)
         {
-            return View(await _schoolFacilityService.GetAllAsync());
-        }
-
-        public async Task<IActionResult> Create()
-        {
-            ViewBag.Facilities = new SelectList(await _facilityService.GetAllAsync(), "ID", "FacilityTitle");
+            ViewBag.SchoolFacilities = _context.SchoolFacilities.Where(sf => sf.SchoolID == id).ToList();
+            ViewBag.Facilities = new SelectList(await _facilityService.GetAllAsync(), "ID", "FacilityName");
             return View();
         }
 
@@ -38,13 +37,14 @@ namespace FutureStage.Areas.Schools.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Facilities = new SelectList(await _facilityService.GetAllAsync(), "ID", "FacilityTitle");
+                return View();
             }
 
-            schoolFacility.SchoolID = Convert.ToInt32(HttpContext.Session.GetString("ID"));
-
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            schoolFacility.SchoolID = schoolId;
             await _schoolFacilityService.AddAsync(schoolFacility);
-            return RedirectToAction(nameof(Index));
+            TempData["AlertMessage"] = "Record added successfully.";
+            return RedirectToAction("Index", new { id = schoolId });
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -53,9 +53,10 @@ namespace FutureStage.Areas.Schools.Controllers
 
             if (schoolFacility == null) return View("NotFound");
 
-            ViewBag.Facilities = new SelectList(await _facilityService.GetAllAsync(), "ID", "FacilityTitle");
-
-            return View(schoolFacility);
+            return Json(new { 
+                facilityId = schoolFacility.FacilityID,
+                schoolId = schoolFacility.SchoolID
+            });
         }
 
         [HttpPost]
@@ -63,28 +64,27 @@ namespace FutureStage.Areas.Schools.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.Facilities = new SelectList(await _facilityService.GetAllAsync(), "ID", "FacilityTitle");
+                return View();
             }
-
+           
             await _schoolFacilityService.UpdateAsync(schoolFacility);
-            return RedirectToAction(nameof(Index));
-        }
-
-        public async Task<IActionResult> Delete(int id)
-        {
-            SchoolFacility schoolFacility = await _schoolFacilityService.GetByIdAsync(id);
-
-            if (schoolFacility == null) return View("NotFound");
-
-            return View();
+            TempData["AlertMessage"] = "Record updated successfully.";
+            return RedirectToAction("Index", new { id = schoolFacility.SchoolID });
         }
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _schoolFacilityService.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _schoolFacilityService.DeleteAsync(id);
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+                return RedirectToAction("Index", new { id = schoolId });
+            }catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occurred while deleting the entity.");
+            }
         }
     }
 }

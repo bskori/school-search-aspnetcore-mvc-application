@@ -1,26 +1,28 @@
 ﻿@model FeeHead
 
-
-<div class="table-wrapper">
-    @if (TempData["AlertMessage"] != null)
-    {
-        <div class="col-md-12 my-2">
-            <div class="alert alert-hide alert-success alert-dismissible fade show" role="alert">
-                <strong>Success!</strong>  @TempData["AlertMessage"]
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="col-md-12 my-2">
+        <div id="myAlert" class="alert alert-hide alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>  @TempData["AlertMessage"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
         </div>
-    }
+    </div>
+}
+<div class="table-wrapper">
+
     <div class="table-title">
         <div class="row">
             <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                <h2 class="ml-lg-2">Manage  Facilities</h2>
+                <h2 class="ml-lg-2">Manage  FeeHeads</h2>
             </div>
 
             <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-                <a data-target="#addEmployeeModal" data-toggle="modal" class="btn btn-lg btn-success">
+                <a data-target="#addModal" data-toggle="modal" class="btn btn-lg btn-success">
                     <i class="material-icons">&#xE147;</i>
-                    <span>Add New Facility</span>
+                    <span>Add New FeeHead</span>
                 </a>
             </div>
         </div>
@@ -32,7 +34,8 @@
                 <th class="align-items-center">
                     Sr. No
                 </th>
-                <th class="align-items-center">Title</th>
+                <th class="align-items-center">FeeHead Name</th>
+                <th class="align-items-center">Class</th>
 
                 <th class="align-items-center">Actions</th>
             </tr>
@@ -47,13 +50,14 @@
                             @no
                         </td>
                         <td>@item.FeeHeadName</td>
+                        <td>@item.SchoolStandard.Standard.StandardName</td>
 
                         <td>
-                            <a asp-action="Edit" asp-route-id="@item.ID" class="edit text-primary">
+                            <a data-toggle="modal" data-target="#updateModal" class="edit text-primary update-btn" data-item-id="@item.ID">
                                 <i class="material-icons" title="Edit">&#xE254;</i>
                             </a>
 
-                            <a asp-action="Delete" asp-route-id="@item.ID" class="delete text-danger">
+                            <a data-toggle="modal" data-target="#deleteModal" class="delete text-danger delete-btn" data-item-id="@item.ID">
                                 <i class="material-icons" title="Delete">&#xE872;</i>
                             </a>
                         </td>
@@ -85,10 +89,10 @@
         </ul>
     </div>
 
-     
+
     <!-- Modal -->
     <!-- add - model - start -->
-    <div class="modal fade" id="addEmployeeModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -99,16 +103,18 @@
                 </div>
                 <form asp-action="Create">
                     <div class="modal-body">
-
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label asp-for="FeeHeadName"></label>
-                                <input asp-for="FeeHeadName" class="form-control">
-                                <small><span class="text-danger" asp-validation-for="FeeHeadName"></span></small>
-                            </div>
+                        <div class="form-group">
+                            <label asp-for="FeeHeadName"></label>
+                            <input asp-for="FeeHeadName" class="form-control">
+                            <small><span class="text-danger" asp-validation-for="FeeHeadName"></span></small>
                         </div>
-
-
+                        <div class="form-group">
+                            <label>Class Name</label>
+                            <select asp-for="SchoolStandardID" asp-items="ViewBag.Standards" class="form-control">
+                                <option disabled>- select class -</option>
+                            </select>
+                            <small><span class="text-danger" asp-validation-for="SchoolStandardID"></span></small>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -118,34 +124,38 @@
             </div>
         </div>
     </div>
-
-    <!----edit-modal end--------->
-    <!-- Modal -->
-    <div class="modal fade" id="updateEmployeeModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+    <!-- add - model - end -->
+    <!----edit-modal start--------->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="updateModalLabel">Add Facility</h5>
+                    <h5 class="modal-title" id="updateModalLabel">Update FeeHead</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form asp-action="Edit">
                     <div class="modal-body">
-
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label asp-for="FeeHeadName"></label>
-                                <input asp-for="FeeHeadName" class="form-control">
-                                <small><span class="text-danger" asp-validation-for="FeeHeadName"></span></small>
-                            </div>
+                        <div>
+                            <input asp-for="ID" type="hidden" />
                         </div>
-
-
+                        <div class="form-group">
+                            <label asp-for="FeeHeadName"></label>
+                            <input asp-for="FeeHeadName" class="form-control">
+                            <small><span class="text-danger" asp-validation-for="FeeHeadName"></span></small>
+                        </div>
+                        <div class="form-group">
+                            <label>Class Name</label>
+                            <select asp-for="SchoolStandardID" asp-items="ViewBag.Standards" class="form-control">
+                                <option disabled>- select class -</option>
+                            </select>
+                            <small><span class="text-danger" asp-validation-for="SchoolStandardID"></span></small>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                        <input type="submit" class="btn btn-success" value="Add" />
+                        <input type="submit" class="btn btn-primary" value="Upadte" />
                     </div>
                 </form>
             </div>
@@ -154,5 +164,64 @@
 
     <!----edit-modal end--------->
 
+    <!----delete-modal start--------->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form asp-action="Delete">
+                    <div class="modal-body">
+                        <div>
+                            <input asp-for="ID" type="hidden" />
+                        </div>
+                    </div>
+                    <h5 class="mx-3 mb-3">Are you sure you want to delete this?</h5>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-danger" value="Confirm" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!----delete-modal end--------->
+    <!-- Modal -->
 
 </div>
+
+<script>
+    
+
+    $(document).ready(function () {
+        $('.update-btn').click(function () {
+            var feeHeadId = $(this).data('item-id');
+
+            $.ajax({
+                url: '/Schools/FeeHead/Edit',
+                type: 'GET',
+                data: { id: feeHeadId },
+                dataType: 'json',
+                success: function (response) {
+                    $('#updateModal #ID').val(feeHeadId);
+                    $('#updateModal #FeeHeadName').val(response.feeHeadName);
+                    $('#updateModal select').val(response.schoolStandardId);
+                },
+                error: function () {
+                    alert('Error occured while getting feehead values.')
+                }
+            })
+        });
+
+        $('.delete-btn').click(function () {
+            var feeHeadId = $(this).data('item-id');
+            $('#deleteModal #ID').val(feeHeadId);
+        });
+    });
+
+</script>

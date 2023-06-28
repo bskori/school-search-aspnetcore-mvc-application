@@ -1,6 +1,8 @@
-﻿using FutureStage.Data.Services.SchoolsServices;
+﻿using FutureStage.Data;
+using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -13,30 +15,29 @@ namespace FutureStage.Areas.Schools.Controllers
     [Area("Schools")]
     public class StandardFeesController : Controller
     {
-        IStandardFeesService _standardFeesService;
-        ISchoolStandardService _schoolStandardService;
-        IFeeHeadService _feeHeadService;
-        public StandardFeesController(IStandardFeesService standardFeesService, ISchoolStandardService schoolStandardService, IFeeHeadService feeHeadService)
+        private readonly IStandardFeesService _standardFeesService;
+        private readonly ISchoolStandardService _schoolStandardService;
+        private readonly IFeeHeadService _feeHeadService;
+        private readonly AppDbContext _context;
+        public StandardFeesController(IStandardFeesService standardFeesService, ISchoolStandardService schoolStandardService, IFeeHeadService feeHeadService, AppDbContext context)
         {
             _standardFeesService = standardFeesService;
             _schoolStandardService = schoolStandardService;
             _feeHeadService = feeHeadService;
+            _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int id)
         {
-            return View(await _standardFeesService.GetAllAsync());
+            ViewBag.StandardFees = _context.StandardFees.Where(sf => sf.SchoolStandard.SchoolID == id).ToList();
+            return View();
         }
 
         public async Task<IActionResult> StandardList()
         {
-            return View(await _schoolStandardService.GetAllAsync());
-        }
-
-        public async Task<IActionResult> Create(int id)
-        {
-            ViewBag.SchoolStandardID = id;
-            ViewBag.FeeHeads = new SelectList(await _feeHeadService.GetAllAsync(), "ID", "FeeHeadTitle");
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            ViewBag.SchoolStandards = _context.SchoolStandards.Where(ss => ss.SchoolID == schoolId).ToList();
+            ViewBag.FeeHeads = new SelectList(await _feeHeadService.GetAllAsync(), "ID", "FeeHeadName");
             return View();
         }
 
@@ -44,14 +45,13 @@ namespace FutureStage.Areas.Schools.Controllers
         public async Task<IActionResult> Create(StandardFees standardFees)
         {
             if (!ModelState.IsValid)
-            {
-                ViewBag.SchoolStandardID = standardFees.SchoolStandardID;
-                ViewBag.FeeHeads = new SelectList(await _feeHeadService.GetAllAsync(), "ID", "FeeHeadTitle");
+            { 
                 return View(standardFees);
             }
-
              await _standardFeesService.AddAsync(standardFees);
-            return RedirectToAction(nameof(Index));
+            TempData["AlertMessage"] = "Record added successfully.";
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            return RedirectToAction("Index",new { id =schoolId });
         }
 
         public async Task<IActionResult> Edit(int id)

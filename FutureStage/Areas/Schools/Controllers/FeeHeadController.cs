@@ -1,6 +1,7 @@
 ﻿using FutureStage.Data;
 using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -15,15 +16,20 @@ namespace FutureStage.Areas.Schools.Controllers
     {
         
         private readonly IFeeHeadService _service;
+        private readonly AppDbContext _context;
         
-        public FeeHeadController(IFeeHeadService service)
+        public FeeHeadController(IFeeHeadService service, AppDbContext context)
         {
             _service = service;
+            _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int id)
         {
-           ViewBag.FeeHeads =await _service.GetAllAsync();
+            ViewBag.FeeHeads = _context.FeeHeads.Where(fh => fh.SchoolStandard.SchoolID == id).ToList();
+            List<SchoolStandard> schoolStandards = _context.SchoolStandards.Where(ss => ss.SchoolID == id).ToList();
+            List<Standard> standards = schoolStandards.Select(ss => ss.Standard).ToList();
+            ViewBag.Standards = new SelectList(standards, "ID", "StandardName");
             return View();
         }
 
@@ -35,9 +41,16 @@ namespace FutureStage.Areas.Schools.Controllers
                 return View(feeHead);
             }
 
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+
+            int schoolStandardId = _context.SchoolStandards.Where(ss => ss.SchoolID == schoolId && ss.StandardID == feeHead.SchoolStandardID).Select(ss => ss.ID).FirstOrDefault();
+
+            feeHead.SchoolStandardID = schoolStandardId;
+
             await _service.AddAsync(feeHead);
-            TempData["AlertMessage"] = "New record created successfully!";
-            return RedirectToAction(nameof(Index));
+
+            TempData["AlertMessage"] = "Record added successfully!";
+            return RedirectToAction("Index",new { id = schoolId});
         }
 
         public async Task<IActionResult> Edit(int id)
@@ -46,7 +59,10 @@ namespace FutureStage.Areas.Schools.Controllers
 
             if (feeHead == null) return View("NotFound");
 
-            return View(feeHead);
+            return Json(new { 
+                feeHeadName = feeHead.FeeHeadName,
+                schoolStandardId = feeHead.SchoolStandard.Standard.ID
+            });
         }
 
         [HttpPost]
@@ -57,25 +73,31 @@ namespace FutureStage.Areas.Schools.Controllers
                 return View(feeHead);
             }
 
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+
+            int schoolStandardId = _context.SchoolStandards.Where(ss => ss.SchoolID == schoolId && ss.Standard.ID == feeHead.SchoolStandardID).Select(ss => ss.ID).FirstOrDefault();
+
+            feeHead.SchoolStandardID = schoolStandardId;
+
             await _service.UpdateAsync(feeHead);
-            return RedirectToAction(nameof(Index));
+            TempData["AlertMessage"] = "Record updated successfully.";
+            return RedirectToAction("Index", new { id = schoolId});
         }
 
-        public  async Task<IActionResult> Delete(int id)
-        {
-            FeeHead feeHead = await _service.GetByIdAsync(id);
-
-            if (feeHead == null) return View("NotFound");
-
-            return View(feeHead);
-        }
-
-        [ActionName("Delete")]
         [HttpPost]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _service.DeleteAsync(id);
-            return RedirectToAction(nameof(Index));
+            try
+            {
+                await _service.DeleteAsync(id);
+                int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                return RedirectToAction("Index",new { id = schoolId});
+            }
+            catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,"An error occured while deleting the entity.");
+            }
         }
     }
 }
