@@ -32,11 +32,12 @@ namespace FutureStage.Controllers
                 if(parent != null)
                 {
                     HttpContext.Session.SetInt32("ID", parent.ID);
+                    TempData["SuccessMessage"] = "Login successful! Enjoy your experience.";
                     return RedirectToAction("Index", "Home");
                 }
-                TempData["Error"] = "Invalid Credentials...!";
+                TempData["ErrorMessage"] = "Invalid credentials. Please check your username and password and try again.";
             }
-
+            
             return View(loginVM);
         }
 
@@ -56,6 +57,7 @@ namespace FutureStage.Controllers
             await _context.Parents.AddAsync(parent);
             await _context.SaveChangesAsync();
 
+            TempData["RegisterMessage"] = "Registration Successful! You can now log in with your credentials.";
             return RedirectToAction(nameof(doLogin));
         }
     }

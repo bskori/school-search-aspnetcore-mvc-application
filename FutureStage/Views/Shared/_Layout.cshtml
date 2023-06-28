@@ -7,9 +7,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutureStage</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/SchoolsAssets/css/loginstyle.css">
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css">
+
+
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+
+
 
 </head>
 
@@ -210,6 +222,15 @@
     <script src="~/FrontendAssets/js/script.js"></script>
 
     <!-- card-slider -->
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+                    $(function () {
+                        toastr.success('@TempData["SuccessMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+                    })
+        </script>
+    }
 
 </body>
 
