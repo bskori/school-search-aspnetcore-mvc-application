@@ -32,12 +32,12 @@
         <form asp-action="doLogin">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input asp-for="EmailAddress" type="email" id="email" placeholder="enter email" >
+                <input asp-for="EmailAddress" type="email" id="email" placeholder="enter email">
                 <small><span asp-validation-for="EmailAddress" class="text-danger"></span></small>
             </div>
             <div class="form-group mt-4">
                 <label for="password">Password</label>
-                <input type="password" id="password" asp-for="Password" placeholder="enter password" >
+                <input type="password" id="password" asp-for="Password" placeholder="enter password">
                 <small><span asp-validation-for="Password" class="text-danger"></span></small>
             </div>
             <button type="submit" class="btn btn-login">Sign In</button>
@@ -52,14 +52,23 @@
     </div>
 
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
-   
-    @if(TempData["ErrorMessage"] != null)
-            {
-                <script>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
                     $(function () {
                         toastr.error('@TempData["ErrorMessage"]', 'Error Alert', { timeOut: 3000, "closeButton": true });
                     })
-                </script>
-            }
-    
+        </script>
+    }
+    @if (TempData["RegisterMessage"] != null)
+    {
+        <script>
+                     $(function () {
+                         toastr.success('@TempData["RegisterMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+                     })
+        </script>
+
+    }
+
 </body>
