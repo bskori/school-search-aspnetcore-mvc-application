@@ -31,7 +31,7 @@ namespace FutureStage.Controllers
                 Parent parent = _context.Parents.SingleOrDefault(p => p.EmailID == loginVM.EmailAddress && p.Password == loginVM.Password);
                 if(parent != null)
                 {
-                    HttpContext.Session.SetString("ID", parent.ID.ToString());
+                    HttpContext.Session.SetInt32("ID", parent.ID);
                     HttpContext.Session.SetString("Name", parent.Name);
                     TempData["SuccessMessage"] = "Login successful! Enjoy your experience.";
                     return RedirectToAction("Index", "Home");
@@ -60,6 +60,33 @@ namespace FutureStage.Controllers
 
             TempData["RegisterMessage"] = "Registration Successful! You can now log in with your credentials.";
             return RedirectToAction(nameof(doLogin));
+        }
+
+        public async Task<IActionResult> EditProfile(int id)
+        {
+            Parent parent = await _context.Parents.FindAsync(id);
+            return View(parent);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(Parent parent)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(parent);
+            }
+
+            _context.Parents.Update(parent);
+            _context.SaveChanges();
+            TempData["EditProfileMessage"] = "Profile Updated Successfully!";
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            TempData["LogoutMessage"] = "Logout Successful! You have been securely logged out.";
+            return RedirectToAction("Index", "Home");
         }
     }
 }

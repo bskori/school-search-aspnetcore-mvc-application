@@ -19,7 +19,7 @@
             </div>
         </div>*@
         <ul class="navbar-nav ms-auto">
-            @if (Context.Session.GetString("ID") != null)
+            @if (Context.Session.GetInt32("ID") != null)
             {
                 <li>
                     <div class="dropdown">
@@ -28,8 +28,8 @@
                         </button>
                         <span class="fw-bold ">Hi @Context.Session.GetString("Name")!</span>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                            <li><a class="dropdown-item" href="#"> <i class="fas fa-user-edit"></i> Edit Profile</a></li>
-                            <li><a class="dropdown-item" href="#"> <i style="color:red;" class="fas fa-sign-out-alt"></i> Log Out</a></li>
+                            <li><a class="dropdown-item" asp-action="EditProfile" asp-controller="ManageParent" asp-area="" asp-route-id="@Context.Session.GetInt32("ID")"> <i class="fas fa-user-edit"></i> Edit Profile</a></li>
+                            <li><a class="dropdown-item" asp-action="LogOut" asp-controller="ManageParent" asp-area=""> <i style="color:red;" class="fas fa-sign-out-alt"></i> Log Out</a></li>
                         </ul>
                     </div>
                 </li>

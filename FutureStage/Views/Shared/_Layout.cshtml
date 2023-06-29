@@ -238,7 +238,23 @@
         </script>
     }
 
+    @if (TempData["LogoutMessage"] != null)
+    {
+        <script>
+                    $(function () {
+                        toastr.success('@TempData["LogoutMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+                    })
+        </script>
+    }
 
+
+    @if (TempData["EditProfileMessage"] != null) { 
+<script>
+             $(function () {
+                        toastr.success('@TempData["EditProfileMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+                    })
+</script>
+    }
     <script>
 
         const hamburger = document.querySelector('.hamburger');
