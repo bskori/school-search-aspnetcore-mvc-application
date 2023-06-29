@@ -48,4 +48,9 @@ $(document).ready(function () {
     });
 
     startAutoSlide();
-  });
+});
+
+
+
+
+

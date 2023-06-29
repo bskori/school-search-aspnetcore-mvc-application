@@ -31,7 +31,8 @@ namespace FutureStage.Controllers
                 Parent parent = _context.Parents.SingleOrDefault(p => p.EmailID == loginVM.EmailAddress && p.Password == loginVM.Password);
                 if(parent != null)
                 {
-                    HttpContext.Session.SetInt32("ID", parent.ID);
+                    HttpContext.Session.SetString("ID", parent.ID.ToString());
+                    HttpContext.Session.SetString("Name", parent.Name);
                     TempData["SuccessMessage"] = "Login successful! Enjoy your experience.";
                     return RedirectToAction("Index", "Home");
                 }
