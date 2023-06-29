@@ -13,12 +13,14 @@
     <title>Explore Schools</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
     <link href="~/FrontendAssets/css/filter_card.css" rel="stylesheet" />
 
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>
-<script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -105,82 +107,111 @@
 
             @foreach (var item in Model)
             {
-                <div class="card">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <img src="@item.ImagePath" class="" alt="@item.Name">
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
+            <div class="card">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="@item.ImagePath" class="" alt="@item.Name">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
 
-                                <h5 class="card-title">@item.Name</h5>
-                                <p class="card-text"> <i class="bi bi-geo-alt-fill text-success"></i> @item.Area.AreaName, @item.Area.City.CityName</p>
-                                <div class="row">
-                                    <div class="col-6">
-                                        <div class="text-secondary">Affiliated To</div>
-                                        <div>
-                                            <span></span>
-                                            @{
-                                                int i = 0;
-                                                int len = item.School_EducationBoards.Count - 1;
-                                            }
-                                            @foreach (var temp in item.School_EducationBoards)
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text"> <i class="bi bi-geo-alt-fill text-success"></i> @item.Area.AreaName, @item.Area.City.CityName</p>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="text-secondary">Affiliated To</div>
+                                    <div>
+                                        <span></span>
+                                        @{
+                                            int i = 0;
+                                            int len = item.School_EducationBoards.Count - 1;
+                                        }
+                                        @foreach (var temp in item.School_EducationBoards)
+                                        {
+                                            if (i++ < len)
                                             {
-                                                if (i++ < len)
-                                                {
-                                                    @temp.EducationBoard.EducationBoardName<span>,</span>
-
-                                                }
-                                                else
-                                                {
-                                                    @temp.EducationBoard.EducationBoardName
-                                                }
-                                            }
-                                        </div>
-                                    </div>
-                                    <div class="col-6">
-                                        <div class="text-secondary">
-                                            Monthly Fees
-                                        </div>
-
-                                        <div>
-                                            @{
-                                                int count = 0;
-                                                int sum = 0;
-                                                int monthlyFees;
-                                                foreach (var item2 in item.SchoolStandards)
-                                                {
-                                                    foreach (var item3 in item2.StandardFees)
-                                                    {
-                                                        sum += item3.Amount;
-                                                        count++;
-                                                    }
-                                                }
-                                                if (sum == 0 || count == 0)
-                                                {
-                                                    monthlyFees = 4800;
-                                                }
-                                                else
-                                                {
-                                                    monthlyFees = sum / count;
-                                                }
+                                                @temp.EducationBoard.EducationBoardName<span>,</span>
 
                                             }
-                                            @monthlyFees
-                                        </div>
+                                            else
+                                            {
+                                                @temp.EducationBoard.EducationBoardName
+                                            }
+                                        }
                                     </div>
                                 </div>
-                                <div>
-                                    <p class="card-text">
-                                        <small class="text-muted">
-                                            <a asp-action="SchoolDetails" asp-controller="SearchSchool" asp-route-id="@item.ID" class="btn btn-outline-success mt-4 btn-sm">View Details</a>
-                                        </small>
-                                    </p>
+                                <div class="col-6">
+                                    <div class="text-secondary">
+                                        Monthly Fees
+                                    </div>
+
+                                    <div>
+                                        @{
+                                            int count = 0;
+                                            int sum = 0;
+                                            int monthlyFees;
+                                            foreach (var item2 in item.SchoolStandards)
+                                            {
+                                                foreach (var item3 in item2.StandardFees)
+                                                {
+                                                    sum += item3.Amount;
+                                                    count++;
+                                                }
+                                            }
+                                            if (sum == 0 || count == 0)
+                                            {
+                                                monthlyFees = 4800;
+                                            }
+                                            else
+                                            {
+                                                monthlyFees = sum / count;
+                                            }
+
+                                        }
+                                        <i class="fas fa-rupee-sign"></i>
+
+                                        @monthlyFees
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <div class="text-secondary">School Level</div>
+                                    <div>
+                                        Upto 12th
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="text-secondary">
+                                        Admission Status
+                                    </div>
+
+                                    <div>
+                                        <span class="text-success">OPEN</span> <i class="fas fa-info-circle"></i>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-6">
+
+                        </div>
+                        <div class="col-6">
+                            <p class="card-text">
+                                <small class="text-muted fs-6">
+                                    <a asp-action="SchoolDetails" asp-controller="SearchSchool" asp-route-id="@item.ID" class="view-details-btn">View Details <i class="fas fa-eye"></i> </a>
+                                </small>
+                            </p>
+                        </div>
+                    </div>
                 </div>
+                <span class="text-success me-auto card-bottom-text" style="margin-top: -21px; margin-bottom: -13px;">
+                    <i class="fas fa-handshake"></i>
+                    Authorized Application Partner
+                </span>
+            </div>
             }
 
         </div>
@@ -200,22 +231,18 @@
             var filterIcon = $(".filter-icon");
             var applyBtn = $(".apply-btn");
 
-            // Function to show the filter card
             function showFilterCard() {
                 filterCard.fadeIn();
             }
 
-            // Function to hide the filter card
             function hideFilterCard() {
                 filterCard.fadeOut();
             }
 
-            // Function to toggle the filter card visibility
             function toggleFilterCard() {
                 filterCard.fadeToggle();
             }
 
-            // Function to show/hide filter card based on screen size
             function updateFilterCardVisibility() {
                 if ($(window).width() < 768) {
                     hideFilterCard();
@@ -224,22 +251,18 @@
                 }
             }
 
-            // Event listener for filter icon click
             filterIcon.on("click", function () {
                 toggleFilterCard();
             });
 
-            // Event listener for apply button click (on small screens)
             applyBtn.on("click", function () {
                 hideFilterCard();
             });
 
-            // Event listener for window resize
             $(window).on("resize", function () {
                 updateFilterCardVisibility();
             });
 
-            // Initial setup
             updateFilterCardVisibility();
         });
 
