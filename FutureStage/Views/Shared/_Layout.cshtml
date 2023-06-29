@@ -14,13 +14,12 @@
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css">
     <link href="~/FrontendAssets/css/search_bar.css" rel="stylesheet" />
 
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/popper.js/cjs/popper.min.js"></script>
     <script src="~/lib/jquery-validate/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
     <script src="~/lib/toastr/toastr.min.js"></script>
-
-
 
 </head>
 
@@ -34,16 +33,6 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1>What are you looking for ?</h1>
-
-                    @*<div class="filter-search">
-            <div class="form-group">
-
-                <input type="text" class="form-control" placeholder="City">
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Area">
-            </div>
-        </div>*@
                     <div class="container-filter">
                         <div class="search-bar">
                             <select class="custom-select">
@@ -67,7 +56,6 @@
                             <button type="submit">Search</button>
                         </div>
                     </div>
-
                     <div class="big-search">
                         <div class="search-bar">
                             <input type="text" class="form-control" placeholder="Search for schools...">
@@ -75,24 +63,79 @@
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h1>
-                        We make School Admissions easy!
-                    </h1>
-                    <p>
-                        At FutureStage, we help you find the perfect school for your child. With our easy-to-use interface, you
-                        can search for schools by location, type, and more. We also offer you a single application form to apply
-                        to multiple schools with a single click.
-                    </p>
-                    <a asp-action="ExploreSchools" asp-controller="SearchSchool"> <button class="search-button">Explore</button> </a>
-
+                    <h1>We make School Admissions easy!</h1>
+                    <div class="hero-section-text">
+                        <p>
+                            At FutureStage, we help you find the perfect school for your child. With our easy-to-use interface,
+                            you can search for schools by location, type, and more. We also offer you a single application form
+                            to apply to multiple schools with a single click.
+                        </p>
+                    </div>
+                    <a asp-action="ExploreSchools" asp-controller="SearchSchool">
+                        <button class="search-button">Explore</button>
+                    </a>
                 </div>
             </div>
         </div>
     </section>
+    @*<section class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h1>What are you looking for ?</h1>
+
+                        <div class="container-filter">
+                            <div class="search-bar">
+                                <select class="custom-select">
+                                    <option selected>Choose a city</option>
+                                    <option value="city1">City 1</option>
+                                    <option value="city2">City 2</option>
+                                    <option value="city3">City 3</option>
+                                </select>
+                                <select class="custom-select">
+                                    <option selected>Choose an area</option>
+                                    <option value="area1">Area 1</option>
+                                    <option value="area2">Area 2</option>
+                                    <option value="area3">Area 3</option>
+                                </select>
+                                <select class="custom-select">
+                                    <option selected>Choose an area</option>
+                                    <option value="area1">Area 1</option>
+                                    <option value="area2">Area 2</option>
+                                    <option value="area3">Area 3</option>
+                                </select>
+                                <button type="submit">Search</button>
+                            </div>
+                        </div>
+
+                        <div class="big-search">
+                            <div class="search-bar">
+                                <input type="text" class="form-control" placeholder="Search for schools...">
+                                <button>
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h1>
+                            We make School Admissions easy!
+                        </h1>
+                        <p>
+                            At FutureStage, we help you find the perfect school for your child. With our easy-to-use interface, you
+                            can search for schools by location, type, and more. We also offer you a single application form to apply
+                            to multiple schools with a single click.
+                        </p>
+                        <a asp-action="ExploreSchools" asp-controller="SearchSchool"> <button class="search-button">Explore</button> </a>
+
+                    </div>
+                </div>
+            </div>
+        </section>*@
 
     @RenderBody()
 
@@ -255,7 +298,7 @@
         </script>
     }
 
-  
+
 
 
 </body>

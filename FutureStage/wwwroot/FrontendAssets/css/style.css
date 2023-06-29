@@ -389,3 +389,17 @@
         border-radius: 10%;
     }
 
+
+
+@media (max-width: 576px) {
+    .container-filter {
+        display: none;
+    }
+
+    .big-search {
+        margin-top: 20px;
+    }
+    .hero-section-text{
+        display:none;
+    }
+}
