@@ -68,6 +68,8 @@ namespace FutureStage.Controllers
             return View(parent);
         }
 
+     
+
         [HttpPost]
         public IActionResult EditProfile(Parent parent)
         {
