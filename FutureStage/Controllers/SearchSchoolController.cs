@@ -5,6 +5,7 @@ using FutureStage.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,9 +61,25 @@ namespace FutureStage.Controllers
             return RedirectToAction(nameof(EnquirySubmitted));
         }
 
-        public async Task<IActionResult> ExploreSchools()
+        public IActionResult ExploreSchools(int StateId, int CityId, int AreaId)
         {
-            return View(await _schoolService.GetAllAsync());
+            List<School> schools = new List<School>();
+
+            if (StateId != 0 && CityId == 0 && AreaId == 0)
+            {
+                schools = _context.Schools.Where(s => s.Area.City.StateID == StateId).ToList();
+            }else if (CityId != 0 && AreaId == 0)
+            {
+                schools = _context.Schools.Where(s => s.Area.CityID == CityId).ToList();
+            }else if(AreaId != 0)
+            {
+                schools = _context.Schools.Where(s => s.AreaID == AreaId).ToList();
+            }else
+            {
+                schools = _context.Schools.ToList();
+            }
+
+            return View(schools);
         }
 
         public IActionResult EnquirySubmitted()
