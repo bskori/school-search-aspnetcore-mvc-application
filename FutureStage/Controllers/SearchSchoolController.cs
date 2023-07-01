@@ -63,6 +63,7 @@ namespace FutureStage.Controllers
 
         public IActionResult ExploreSchools(int StateId, int CityId, int AreaId)
         {
+            
             List<School> schools = new List<School>();
 
             if (StateId != 0 && CityId == 0 && AreaId == 0)
