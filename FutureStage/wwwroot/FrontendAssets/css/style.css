@@ -450,3 +450,76 @@
 
 
     /*user icon*/
+
+
+/*Admission process steps*/
+
+.steps-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    .steps-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.steps-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.step-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .step-card:hover {
+        background-color:white;
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.step-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: #17a2b8;
+}
+
+.step-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background-color: #17a2b8;
+    color: #fff;
+    font-size: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+    .step-card {
+        margin-bottom: 20px;
+    }
+}
+/*Admission process steps*/
