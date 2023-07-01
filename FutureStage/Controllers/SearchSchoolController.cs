@@ -15,16 +15,14 @@ namespace FutureStage.Controllers
 {
     public class SearchSchoolController : Controller
     {
-        AppDbContext _context;
-        ISchoolStandardService _schoolStandardService;
-        IStandardService _standardService;
-        ISchoolService _schoolService;
-        IAdmissionEnquiryService _admissionEnquiryService;
-        public SearchSchoolController(ISchoolService schoolService, IStandardService standardService, IAdmissionEnquiryService admissionEnquiryService, ISchoolStandardService schoolStandardService, AppDbContext context)
+        private readonly AppDbContext _context;
+        private readonly ISchoolStandardService _schoolStandardService;
+        private readonly ISchoolService _schoolService;
+        private readonly IAdmissionEnquiryService _admissionEnquiryService;
+        public SearchSchoolController(ISchoolService schoolService, IAdmissionEnquiryService admissionEnquiryService, AppDbContext context, ISchoolStandardService schoolStandardService)
         {
             _context = context;
             _schoolService = schoolService;
-            _standardService = standardService;
             _admissionEnquiryService = admissionEnquiryService;
             _schoolStandardService = schoolStandardService;
         }
@@ -109,6 +107,48 @@ namespace FutureStage.Controllers
             }
 
             return View("ExploreSchools", allSchools);
+        }
+
+        public async Task<IActionResult> ApplyMultipleFilters(int boardId, int cityId, int areaId, int monthlyFees, int standardId)
+        {
+            IEnumerable<School> schools = await _schoolService.GetAllAsync();
+            if(boardId > 0)
+            {
+                schools = schools.Where(s => s.School_EducationBoards.Any(seb => seb.EducationBoard.ID == boardId)).ToList();
+            }
+            if(cityId > 0)
+            {
+                schools = schools.Where(s => s.Area.CityID == cityId).ToList();
+            }
+            if(areaId > 0)
+            {
+                schools = schools.Where(s => s.AreaID == areaId).ToList();
+            }
+            if(standardId > 0)
+            {
+                schools = schools.Where(s => s.SchoolStandards.Any(s => s.Standard.ID == standardId)).ToList();
+            }
+            if(monthlyFees > 0)
+            {
+                if(monthlyFees == 1)
+                {
+                    schools = schools.Where(s => s.SchoolStandards.Any(ss => ss.StandardFees.Any(fee => fee.Amount >= 0 && fee.Amount <= 3000))).ToList();
+                }else if (monthlyFees == 2)
+                {
+                    schools = schools.Where(s => s.SchoolStandards.Any(ss => ss.StandardFees.Any(fee => fee.Amount >= 3000 && fee.Amount <= 6000))).ToList();
+                }else if (monthlyFees == 3)
+                {
+                    schools = schools.Where(s => s.SchoolStandards.Any(ss => ss.StandardFees.Any(fee => fee.Amount >= 6000 && fee.Amount <= 10000))).ToList();
+                }else if (monthlyFees == 4)
+                {
+                    schools = schools.Where(s => s.SchoolStandards.Any(ss => ss.StandardFees.Any(fee => fee.Amount >= 10000 && fee.Amount <= 15000))).ToList();
+                }else
+                {
+                    schools = schools.Where(s => s.SchoolStandards.Any(ss => ss.StandardFees.Any(fee => fee.Amount >= 15000))).ToList();
+                }
+            }
+            
+            return View("ExploreSchools", schools);
         }
 
     }
