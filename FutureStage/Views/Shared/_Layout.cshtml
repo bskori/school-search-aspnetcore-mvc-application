@@ -37,10 +37,12 @@
                     @await Component.InvokeAsync("AdvanceSearchVC")
                     <div class="big-search">
                         <div class="search-bar">
-                            <input type="text" class="form-control" placeholder="Search for schools...">
-                            <button>
-                                <i class="fas fa-search"></i>
-                            </button>
+                            <form asp-action="SchoolSearch" asp-controller="SearchSchool">
+                                <input type="text" name="searchString" class="form-control" placeholder="Search for schools...">
+                                <button type="submit">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>

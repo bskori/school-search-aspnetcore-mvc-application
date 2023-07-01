@@ -92,5 +92,23 @@ namespace FutureStage.Controllers
             School school = await _schoolService.GetByIdAsync(id);
             return View(school);
         }
+
+
+        public async Task<IActionResult> SchoolSearch(string searchString)
+        {
+            var allSchools = await _schoolService.GetAllAsync();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                var filteredResult = allSchools.Where(s => s.Name.Contains(searchString)).ToList();
+                if(filteredResult.Count > 0)
+                {
+                    return View("ExploreSchools", filteredResult);
+                }
+            }
+
+            return View("ExploreSchools", allSchools);
+        }
+
     }
 }
