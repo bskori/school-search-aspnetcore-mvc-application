@@ -65,62 +65,10 @@
 
     @RenderBody()
 
+
     <!-- My Trend -->
-    <div class="my-container_trend">
-        <div class="slider-container">
-            <div class="slider-wrapper">
-                <div class="slider-item">
-                    <div class="card">
-                        <img src="image1.jpg" alt="Image 1">
-                        <h4>Card 1</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="card">
-                        <img src="image2.jpg" alt="Image 2">
-                        <h4>Card 2</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="card">
-                        <img src="image3.jpg" alt="Image 3">
-                        <h4>Card 3</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="card">
-                        <img src="image3.jpg" alt="Image 3">
-                        <h4>Card 3</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="card">
-                        <img src="image3.jpg" alt="Image 3">
-                        <h4>Card 3</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <div class="slider-item">
-                    <div class="card">
-                        <img src="image3.jpg" alt="Image 3">
-                        <h4>Card 3</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                </div>
-                <!-- Add more cards here -->
-            </div>
-
-            <div class="slider-controls">
-                <button class="prev-btn">&lt;</button>
-                <button class="next-btn">&gt;</button>
-            </div>
-        </div>
-    </div>
-
+    
+    @await Component.InvokeAsync("PopularSchoolsVC");
 
     <!-- About -->
     <section class="about">
