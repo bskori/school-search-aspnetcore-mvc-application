@@ -523,3 +523,64 @@
     }
 }
 /*Admission process steps*/
+
+/*Review Section*/
+.review-section {
+    margin-top:2rem;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    
+
+.section-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.parent-card {
+    background-color: #fff;
+    border-radius: 50px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 4px aqua;
+    margin-bottom: 30px;
+}
+
+.parent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.parent-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #17a2b8;
+}
+
+.parent-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.parent-review {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.stars {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+    .stars i {
+        font-size: 16px;
+    }
+/*Review Section*/
