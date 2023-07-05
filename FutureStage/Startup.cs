@@ -56,9 +56,9 @@ namespace FutureStage
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(10);
-                options.Cookie.IsEssential = true;
                 options.Cookie.HttpOnly = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
             });
 
             services.AddCors(options =>

@@ -32,11 +32,13 @@ namespace FutureStage.Controllers
                 if(parent != null)
                 {
                     HttpContext.Session.SetInt32("ID", parent.ID);
+                    HttpContext.Session.SetString("Name", parent.Name);
+                    TempData["SuccessMessage"] = "Login successful! Enjoy your experience.";
                     return RedirectToAction("Index", "Home");
                 }
-                TempData["Error"] = "Invalid Credentials...!";
+                TempData["ErrorMessage"] = "Invalid credentials. Please check your username and password and try again.";
             }
-
+            
             return View(loginVM);
         }
 
@@ -56,7 +58,37 @@ namespace FutureStage.Controllers
             await _context.Parents.AddAsync(parent);
             await _context.SaveChangesAsync();
 
+            TempData["RegisterMessage"] = "Registration Successful! You can now log in with your credentials.";
             return RedirectToAction(nameof(doLogin));
+        }
+
+        public async Task<IActionResult> EditProfile(int id)
+        {
+            Parent parent = await _context.Parents.FindAsync(id);
+            return View(parent);
+        }
+
+     
+
+        [HttpPost]
+        public IActionResult EditProfile(Parent parent)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(parent);
+            }
+
+            _context.Parents.Update(parent);
+            _context.SaveChanges();
+            TempData["EditProfileMessage"] = "Profile Updated Successfully!";
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            TempData["LogoutMessage"] = "Logout Successful! You have been securely logged out.";
+            return RedirectToAction("Index", "Home");
         }
     }
 }
