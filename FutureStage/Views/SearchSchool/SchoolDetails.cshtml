@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
 
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -252,7 +254,7 @@
                                     Need Help ?
                                 </h3>
                                 <p>Have any questions about this school while applying.</p>
-                                <button class="btn btn-primary">Request a Callback</button>
+                                <button data-item-id="@Model.ID" class="enquiry-btn btn btn-primary">Request a Callback</button>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -272,7 +274,7 @@
                                         <span class="fw-bold">Note -</span> Exact timings will be communicated by the school after the visit is scheduled
                                     </div>
                                     <div>
-                                        <a class="btn btn-primary btn-lg"><span class="fw-bold">Schedule Now</span></a>
+                                        <a data-item-id="@Model.ID" class="enquiry-btn btn btn-primary btn-lg"><span class="fw-bold">Schedule Now</span></a>
                                     </div>
                                 </div>
 
@@ -286,8 +288,17 @@
                                     @foreach (var item in Model.SchoolFacilities)
                                     {
                                         <div class="col-md-4">
-                                            <div class=" p-3 fs-5 text-dark" style="border:0.2px solid grey;">
-                                                @item.Facility.FacilityName
+                                            <div class=" p-3 fs-5 text-dark">
+                                                <div class="row" id="facility">
+                                                    <div class="col-10">
+                                                        @item.Facility.FacilityName
+                                                    </div>
+
+                                                    <div class="col-2">
+                                                        <i class="text-success @item.Facility.FacilityIcon"></i>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     }
@@ -318,7 +329,7 @@
                             <div id="AddressContact" class="card">
                                 <div class="row text-start">
                                     <h2 class="fw-bold mb-4">Address & Contact</h2>
-                                    <a class="btn btn-success w-25 mb-3">Call Now</a>
+                                    <a data-item-id="@Model.ID" class="enquiry-btn btn btn-success w-25 mb-3">Call Now</a>
                                     <a class="link-primary mb-3">@Model.EmailID</a>
                                     <span>@Model.Address</span>
                                 </div>
@@ -396,6 +407,7 @@
         @await Html.PartialAsync("_footer")
     </div>
 
+    
 
     <script>
         $(document).ready(function () {

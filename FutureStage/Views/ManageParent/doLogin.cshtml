@@ -71,4 +71,13 @@
 
     }
 
+    @if (TempData["UserNotLoggedIn"] != null)
+            {
+                <script>
+                    $(function () {
+                        toastr.info('@TempData["UserNotLoggedIn"]', 'Information Alert', { timeOut: 3000, "closeButton": true });
+                    })
+                </script>
+            }
+
 </body>

@@ -71,6 +71,7 @@ namespace FutureStage.Controllers
                     isUserLoggedIn = "Yes"
                 }) ;
             }
+            TempData["UserNotLoggedIn"] = "Kindly login using your credentials to proceed with the enquiry submission. Thank you!";
             return RedirectToAction("doLogin", "ManageParent");
         }
 
