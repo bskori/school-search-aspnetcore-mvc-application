@@ -13,22 +13,21 @@ namespace FutureStage.Models
         [Key]
         public int ID { get; set; }
 
-        [Required(ErrorMessage ="Please enter a name.")]
+        [Required]
         public string Name { get; set; }
 
-        [Required(ErrorMessage ="Please enter a address.")]
+        [Required]
         public string Address { get; set; }
 
-        [Required(ErrorMessage ="Please enter a email address.")]
+        [Required]
         [Display(Name="Email Address")]
         public string EmailID { get; set; }
 
-        [Required(ErrorMessage ="Please enter a mobile number.")]
+        [Required]
         [Display(Name ="Mobile Number")]
-        [RegularExpression(@"^\d{10}$",ErrorMessage ="Please enter a 10 digit valid mobile number.")]
         public string MobileNo { get; set; }
 
-        [Required(ErrorMessage ="Please enter a password.")]
+        [Required]
         public string Password { get; set; }
 
         //Relationships
