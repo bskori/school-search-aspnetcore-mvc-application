@@ -27,36 +27,13 @@ namespace FutureStage.Controllers
             _schoolStandardService = schoolStandardService;
         }
 
-        public IActionResult GetEnquiry(int id)
-        {
-            int parentId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
-            List<SchoolStandard> schoolStandards =  _context.SchoolStandards.Where(p => p.SchoolID == id).ToList();
-            if(parentId != 0)
-            {
-                ViewBag.ParentID = parentId;
-                ViewBag.SchoolID = id;
-                ViewBag.Standards = new SelectList(schoolStandards, "ID", "Standard.StandardName");
-                return View();
-            }
-
-            return RedirectToAction("doLogin", "ManageParent");
-        }
-
         [HttpPost]
         public async Task<IActionResult> GetEnquiry(AdmissionEnquiry admissionEnquiry)
-        {
-            List<SchoolStandard> schoolStandards = _context.SchoolStandards.Where(p => p.SchoolID == admissionEnquiry.SchoolID).ToList();
-            if (!ModelState.IsValid)
-            {
-                ViewBag.ParentID = admissionEnquiry.ParentID;
-                ViewBag.SchoolID = admissionEnquiry.SchoolID;
-                ViewBag.Standards = new SelectList(schoolStandards, "ID", "Standard.StandardTitle");
-                return View(admissionEnquiry);
-            }
-            
+        {   
             await _context.AdmissionEnquiries.AddAsync(admissionEnquiry);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(EnquirySubmitted));
+            TempData["EnquiryMessage"] = "Enquiry submitted successfully.";
+            return RedirectToAction("Index","Home");
         }
 
         public IActionResult ExploreSchools(int StateId, int CityId, int AreaId)
@@ -81,14 +58,27 @@ namespace FutureStage.Controllers
             return View(schools);
         }
 
-        public IActionResult EnquirySubmitted()
+        public IActionResult IsUserLoggedIn(int id)
         {
-            return View();
+            int parentId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            if (parentId != 0)
+            {
+                ViewBag.ParentID = parentId;
+                ViewBag.SchoolID = id;
+                return Json(new
+                {
+                    parentId = parentId,
+                    isUserLoggedIn = "Yes"
+                }) ;
+            }
+            return RedirectToAction("doLogin", "ManageParent");
         }
 
         public async Task<IActionResult> SchoolDetails(int id)
         {
             School school = await _schoolService.GetByIdAsync(id);
+            ViewBag.Standards = _context.SchoolStandards.Where(ss => ss.SchoolID == id).ToList();
+
             return View(school);
         }
 

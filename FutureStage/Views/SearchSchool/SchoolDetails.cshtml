@@ -1,4 +1,5 @@
-﻿@model School
+﻿@using Microsoft.AspNetCore.Http
+@model School
 
 @{
     Layout = null;
@@ -14,6 +15,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
     <!-- Navbar -->
@@ -37,7 +42,9 @@
                                 <p><i class="bi bi-geo-alt-fill text-success"></i>@Model.Area.AreaName, @Model.Area.City.CityName</p>
                             </div>
                             <div class="col-md-2 mt-3">
-                                <a class="btn btn-lg btn-primary w-100" asp-action="GetEnquiry" asp-route-id="@Model.ID">? Enquiry</a>
+                                <button type="button" class="enquiry-btn btn btn-lg btn-primary w-100" data-item-id="@Model.ID">
+                                    ? Enquiry
+                                </button>
                             </div>
                             <div class="col-md-2 mt-3">
                                 <a class="btn btn-lg btn-success w-100"> Apply</a>
@@ -204,6 +211,29 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="card mt-2">
+                                <div class="row text-start">
+                                    <h2 class="fw-bold mb-4">Languages</h2>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        English
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        Hindi
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        Marathi
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        German
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        French
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        Sanskrit
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-md-3 sticky-top">
                             <div class="card">
@@ -265,29 +295,7 @@
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card">
-                                <div class="row text-start">
-                                    <h2 class="fw-bold mb-4">Languages</h2>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        English
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        Hindi
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        Marathi
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        German
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        French
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        Sanskrit
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
                         <div class="col-md-9">
@@ -332,12 +340,111 @@
     </div>
 
 
-
+    <!--Enquiry modal-->
+   
+        <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="enquiryModalLabel">
+                            <i class="bi bi-telephone-fill"></i> Request a Callback
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="myForm" asp-action="GetEnquiry">
+                        <div class="modal-body">
+                            <div>
+                                <input type="hidden" name="AdmissionEnquiryID" value="0" />
+                                <input type="hidden" id="schoolId" name="SchoolID"  />
+                                <input type="hidden" id="parentId" name="ParentID" />
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label">Enquiry Date</label>
+                                    <input type="date" id="enquiryDate" name="EnquiryDate" class="form-control" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Class</label>
+                                    <select id="schoolStandard" name="SchoolStandardID" class="form-control">
+                                        @foreach (var item in ViewBag.Standards)
+                                        {
+                                            <option value="@item.ID">@item.Standard.StandardName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Enquiry Description</label>
+                                <textarea id="enquiryDescription" class="form-control" name="EnquiryDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!--Enquiry modal-->
 
 
     <div style="margin-top:50px;">
         @await Html.PartialAsync("_footer")
     </div>
+
+
+    <script>
+        $(document).ready(function () {
+            $('.enquiry-btn').click(function () {
+                var  schoolId = @Model.ID
+                $.ajax({
+                    url: "/SearchSchool/IsUserLoggedIn",
+                    type: "GET",
+                    data: { id: schoolId },
+                    success: function (result) {
+                        if (result.isUserLoggedIn != null) {
+                            $('#enquiryModal #schoolId').val(schoolId);
+                            $('#enquiryModal #parentId').val(result.parentId);
+                            $('#enquiryModal').modal("show");
+                        } else {
+                            $('body').html(result);
+                        }
+                    },
+                    error: function(err){
+                        alert("Error while checking is user is logged in.");
+                    }
+                })
+            });
+            $('#myForm').submit(function (event) {
+                event.preventDefault();
+
+                $('.text-danger').remove();
+
+                var enquiryDate = $('#enquiryDate').val();
+                if (enquiryDate.trim() === '') {
+                    $('#enquiryDate').after('<span class="text-danger"> Enquiry date is required</span>');
+                }
+
+                var enquiryDescription = $('#enquiryDescription').val();
+                if (enquiryDescription.trim() === '') {
+                    $('#enquiryDescription').after('<span class="text-danger"> Enquiry description is required</span>');
+                }
+
+               
+
+                if ($('.text-danger').length === 0) {
+                    $('#myForm')[0].submit();
+                }
+            });
+
+            $('#enquiryDate, #enquiryDescription').on('input', function () {
+                $(this).next('.text-danger').remove();
+            });
+        });
+    </script>
 
 </body>
 
