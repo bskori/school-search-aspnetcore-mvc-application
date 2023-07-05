@@ -1,0 +1,42 @@
+﻿@model IEnumerable<School>
+
+<div class="my-container_trend">
+    <div class="text-center py-3 mt-3 py-md-5">
+        <h2>Most applied Schools</h2>
+        <p>Apply to our parent's top applied schools</p>
+    </div>
+    <div class="slider-container">
+        <div class="slider-wrapper">
+
+            @foreach (var item in Model)
+            {
+                <div class="slider-item">
+                    <div class="card">
+                        <img src="@item.ImagePath" class="mx-auto" alt="Image 1">
+                        <div class="text-start">
+                            <h6>@item.Name</h6>
+                            <p class="text-secondary">@item.Area.AreaName, @item.Area.City.CityName</p>
+                            <div>
+                                @{
+                                    string boradName = item.School_EducationBoards.Select(eb => eb.EducationBoard.EducationBoardName).FirstOrDefault();}
+                                <span class="fw-bolder mb-2">Affiliated To: </span> @boradName
+                                @*@foreach (var board in item.School_EducationBoards)
+                                {
+                                    <span> @board.EducationBoard.EducationBoardName, </span>
+                                }*@
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <button class="btn btn-primary text-white">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+        <div class="slider-controls">
+            <button class="prev-btn">&lt;</button>
+            <button class="next-btn">&gt;</button>
+        </div>
+    </div>
+</div>

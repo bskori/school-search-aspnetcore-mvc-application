@@ -1,0 +1,26 @@
+﻿<div class="container-filter">
+    <div class="search-bar">
+        <select id="state" class="custom-select advance-search">
+            <option value="-1" selected>Choose a state</option>
+            @foreach (var state in ViewBag.States)
+            {
+                <option value="@state.ID">@state.StateName</option>
+            }
+        </select>
+        <select id="city" class="custom-select advance-search">
+            <option value="-1" selected>Choose an city</option>
+            @foreach (var city in ViewBag.Cities)
+            {
+                <option value="@city.ID">@city.CityName</option>
+            }
+        </select>
+        <select id="area" class="custom-select advance-search">
+            <option value="-1" selected>Choose an area</option>
+            @foreach (var area in ViewBag.Areas)
+            {
+                <option value="@area.ID">@area.AreaName</option>
+            }
+        </select>
+        <button type="button"s id="advanceSearchBtn">Search</button>
+    </div>
+</div>

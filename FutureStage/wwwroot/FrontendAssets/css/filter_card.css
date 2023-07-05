@@ -1,0 +1,99 @@
+﻿.container-filter {
+
+    margin: 50px auto;
+}
+
+.reset-btn{
+    border-radius:0px;
+    font-size:18px;
+}
+
+.filter-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+    .filter-card h4 {
+        margin-bottom: 20px;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-select {
+    width:90%;
+    margin: 0px 0.5rem;
+    padding: 10px;
+    font-size: 17px;
+    color: #80808094;
+}
+
+.form-group label{
+    font-size:20px;
+}
+
+
+
+.filter-icon {  
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: black;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .filter-icon:hover {
+        background-color: #f8f8f8;
+        color: #555;
+    }
+
+
+.apply-btn {
+    margin-top: 10px;
+}
+
+/*ExploreSchools viewdetails btn*/
+
+.view-details-btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+    .view-details-btn:hover {
+        background-color: #45a049;
+    }
+
+/*ExploreSchools viewdetails btn*/
+
+@media (max-width: 892px){
+    .card-bottom-text{
+        font-size:12px;
+        
+    }
+    .view-details-btn{
+
+    }
+}
+
+
+
+
+
+
+
