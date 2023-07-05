@@ -11,110 +11,69 @@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css">
-    <link href="~/FrontendAssets/css/login_register.css" rel="stylesheet" />
+
 </head>
 <body>
 
     @await Html.PartialAsync("_navbar");
 
-    @*<div class="container">
-            <div class="row">
-                <div class="col-md-6 offset-md-3">
-                    <div class="card col-md-12">
-                        <p>
-                            <h2 class="text-primary text-center my-3">
-                                User Registration
-                            </h2>
-                        </p>
-                        <form asp-action="Register">
-                            <div class="row">
-                                <div class="col mb-3">
-                                    <label class="form-label" asp-for="Name"></label>
-                                    <input class="form-control" asp-for="Name" />
-                                    <span class="text-danger" asp-validation-for="Name"></span>
-                                </div>
-                                <div class="col mb-3">
-                                    <label class="form-label" asp-for="EmailID"></label>
-                                    <input class="form-control" asp-for="EmailID" />
-                                    <span class="text-danger" asp-validation-for="EmailID"></span>
-                                </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card col-md-12">
+                    <p>
+                        <h2 class="text-primary text-center my-3">
+                            User Registration
+                        </h2>
+                    </p>
+                    <form asp-action="Register">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label class="form-label" asp-for="Name"></label>
+                                <input class="form-control" asp-for="Name" />
+                                <span class="text-danger" asp-validation-for="Name"></span>
                             </div>
-                            <div class="row">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" asp-for="MobileNo"></label>
-                                        <input class="form-control" asp-for="MobileNo" />
-                                        <span class="text-danger" asp-validation-for="MobileNo"></span>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label" asp-for="Password"></label>
-                                        <input class="form-control" asp-for="Password" />
-                                        <span class="text-danger" asp-validation-for="Password"></span>
-                                    </div>
-                                </div>
+                            <div class="col mb-3">
+                                <label class="form-label" asp-for="EmailID"></label>
+                                <input class="form-control" asp-for="EmailID" />
+                                <span class="text-danger" asp-validation-for="EmailID"></span>
                             </div>
-                            <div class="row">
+                        </div>
+                        <div class="row">
+                            <div class="col">
                                 <div class="mb-3">
-                                    <label class="form-label" asp-for="Address"></label>
-                                    <textarea class="form-control" asp-for="Address"></textarea>
-                                    <span class="text-danger" asp-validation-for="Address"></span>
+                                    <label class="form-label" asp-for="MobileNo"></label>
+                                    <input class="form-control" asp-for="MobileNo" />
+                                    <span class="text-danger" asp-validation-for="MobileNo"></span>
                                 </div>
                             </div>
-                            <div class="row">
+                            <div class="col">
                                 <div class="mb-3">
-                                    <input type="submit" value="Register" class="w-50 btn btn-outline-primary" />
+                                    <label class="form-label" asp-for="Password"></label>
+                                    <input class="form-control" asp-for="Password" />
+                                    <span class="text-danger" asp-validation-for="Password"></span>
                                 </div>
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3">
+                                <label class="form-label" asp-for="Address"></label>
+                                <textarea class="form-control" asp-for="Address"></textarea>
+                                <span class="text-danger" asp-validation-for="Address"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3">
+                                <input type="submit" value="Register" class="w-50 btn btn-outline-primary" />
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>*@
-
-    <div class="login-form" style="max-width:600px">
-        <h2>Register</h2>
-        <form asp-action="Register">
-            <div class="row">
-                <div class="col form-group mb-3">
-                    <label class="form-label" asp-for="Name"></label>
-                    <input asp-for="Name" placeholder="enter name" />
-                    <small><span class="text-danger" asp-validation-for="Name"></span></small>
-                </div>
-                <div class="col form-group mb-3">
-                    <label class="form-label" asp-for="EmailID"></label>
-                    <input asp-for="EmailID" placeholder="enter email" />
-                    <small><span class="text-danger" asp-validation-for="EmailID"></span></small>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col form-group mb-3">
-                    <label class="form-label" asp-for="MobileNo"></label>
-                    <input asp-for="MobileNo" placeholder="enter name" />
-                    <small><span class="text-danger" asp-validation-for="MobileNo"></span></small>
-                </div>
-                <div class="col form-group mb-3">
-                    <label class="form-label" asp-for="Password"></label>
-                    <input asp-for="Password" placeholder="enter email" />
-                    <small><span class="text-danger" asp-validation-for="Password"></span></small>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group mb-3">
-                    <label class="mb-2">Address</label>
-                    <textarea class="form-control" asp-for="Address" placeholder="enter address"></textarea>
-                    <small><span asp-validation-for="Address" class="text-danger"></span></small>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-login">Register</button>
-            <div class="register-link">
-                <p>Already have an account? <a asp-action="doLogin">Sign In</a></p>
-            </div>
-        </form>
+        </div>
     </div>
-
-    <div class="mt-5">
+     
+    <div class="mt-5"> 
         @await Html.PartialAsync("_footer")
     </div>
 

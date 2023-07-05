@@ -7,20 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FutureStage</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="~/FrontendAssets/css/style.css" />
-    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
-    <link href="~/FrontendAssets/css/search_bar.css" rel="stylesheet" />
-
-    <script src="~/lib/jquery/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
-    <script src="~/lib/toastr/toastr.min.js"></script>
-    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-    <script src="~/FrontendAssets/js/script.js"></script>
-
-
+    <link rel="stylesheet" href="~/FrontendAssets/css/style.css">
 
 </head>
 
@@ -34,30 +23,37 @@
             <div class="row">
                 <div class="col-md-6">
                     <h1>What are you looking for ?</h1>
-                    @await Component.InvokeAsync("AdvanceSearchVC")
+
+                    <div class="filter-search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="City">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Area">
+                        </div>
+                    </div>
+
                     <div class="big-search">
                         <div class="search-bar">
-                            <form asp-action="SchoolSearch" asp-controller="SearchSchool">
-                                <input type="text" name="searchString" class="form-control" placeholder="Search for schools...">
-                                <button type="submit">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </form>
+                            <input type="text" class="form-control" placeholder="Search for schools...">
+                            <button>
+                                <i class="fas fa-search"></i>
+                            </button>
                         </div>
+
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <h1>We make School Admissions easy!</h1>
-                    <div class="hero-section-text">
-                        <p>
-                            At FutureStage, we help you find the perfect school for your child. With our easy-to-use interface,
-                            you can search for schools by location, type, and more. We also offer you a single application form
-                            to apply to multiple schools with a single click.
-                        </p>
-                    </div>
-                    <a asp-action="ExploreSchools" asp-controller="SearchSchool">
-                        <button class="search-button">Explore</button>
-                    </a>
+                    <h1>
+                        We make School Admissions easy!
+                    </h1>
+                    <p>
+                        At FutureStage, we help you find the perfect school for your child. With our easy-to-use interface, you
+                        can search for schools by location, type, and more. We also offer you a single application form to apply
+                        to multiple schools with a single click.
+                    </p>
+                    <a asp-action="ExploreSchools" asp-controller="SearchSchool"> <button class="search-button">Explore</button> </a>
+
                 </div>
             </div>
         </div>
@@ -65,248 +61,156 @@
 
     @RenderBody()
 
-
     <!-- My Trend -->
+    <div class="my-container_trend">
+        <div class="slider-container">
+            <div class="slider-wrapper">
+                <div class="slider-item">
+                    <div class="card">
+                        <img src="image1.jpg" alt="Image 1">
+                        <h4>Card 1</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="card">
+                        <img src="image2.jpg" alt="Image 2">
+                        <h4>Card 2</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="card">
+                        <img src="image3.jpg" alt="Image 3">
+                        <h4>Card 3</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="card">
+                        <img src="image3.jpg" alt="Image 3">
+                        <h4>Card 3</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="card">
+                        <img src="image3.jpg" alt="Image 3">
+                        <h4>Card 3</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <div class="slider-item">
+                    <div class="card">
+                        <img src="image3.jpg" alt="Image 3">
+                        <h4>Card 3</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                    </div>
+                </div>
+                <!-- Add more cards here -->
+            </div>
 
-
-
-    <div>
-        @await Component.InvokeAsync("PopularSchoolsVC")
+            <div class="slider-controls">
+                <button class="prev-btn">&lt;</button>
+                <button class="next-btn">&gt;</button>
+            </div>
+        </div>
     </div>
 
 
+    <!-- About -->
+    <section class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>About Us</h2>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis velit nec turpis bibendum,
+                        sollicitudin eleifend elit malesuada.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!--Admission process steps-->
-    <div class="container" style="margin-top:3rem">
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-10">
-                <div class="steps-container">
-                    <h2 class="steps-title">How to apply with FutureStage?</h2>
-                    <div class="row w-100">
-                        <div class="col-md-4">
-                            <div class="step-card">
-                                <div class="step-number">1</div>
-                                <h4 class="step-title">Register Yourself</h4>
-                                <p>Create an account to start the admission process.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="step-card">
-                                <div class="step-number">2</div>
-                                <h4 class="step-title">Put Enquiry for School</h4>
-                                <p>Put enquiry to appropriate school to you.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="step-card">
-                                <div class="step-number">3</div>
-                                <h4 class="step-title">School will Contact You</h4>
-                                <p>Your enquired schools will contact you</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row w-100">
-                        <div class="col-md-4">
-                            <div class="step-card">
-                                <div class="step-number">4</div>
-                                <h4 class="step-title">Fill Application Form</h4>
-                                <p>Complete the application form for the selected schools.</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="step-card">
-                                <div class="step-number">5</div>
-                                <h4 class="step-title">Track Application</h4>
-                                <p>Track the status of your application.</p>
-                            </div>
+
+    <!-- Services -->
+    <section class="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Service 1</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis velit nec turpis bibendum,
+                                sollicitudin eleifend elit malesuada.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-1"></div>
-        </div>
-    </div>
-    <!--Admission process steps-->
-    <!--Parent Review section-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="review-section">
-                    <h2 class="section-title">What our parents have to say?</h2>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="parent-card">
-                                <i class="fas fa-user parent-icon"></i>
-                                <h4 class="parent-name">Mr. Vikas</h4>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star-half-alt"></i>
-                                </div>
-                                <p class="parent-review">"I am amazed by the exceptional support provided by the team at Ezyschooling. They have made the admission process a breeze for me and my child. Highly recommended!"</p>
-                            </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Service 2</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis velit nec turpis bibendum,
+                                sollicitudin eleifend elit malesuada.
+                            </p>
                         </div>
-                        <div class="col-md-4">
-                            <div class="parent-card">
-                                <i class="fas fa-user parent-icon"></i>
-                                <h4 class="parent-name">Mrs. Isha</h4>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <p class="parent-review">The platform is user-friendly, and the team is always available to address our concerns. Thank you for making the school search and application process so convenient!</p>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="parent-card">
-                                <i class="fas fa-user parent-icon"></i>
-                                <h4 class="parent-name">Mr. Ramesh</h4>
-                                <div class="stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                    <i class="far fa-star"></i>
-                                </div>
-                                <p class="parent-review">The platform offers a wide range of schools to choose from, and their personalized recommendations helped us find the perfect match for our child.</p>
-                            </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Service 3</h3>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lobortis velit nec turpis bibendum,
+                                sollicitudin eleifend elit malesuada.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!--Parent Review section-->
-    <!-- footer -->
-    <div style="margin-top:2rem">
-        @await Html.PartialAsync("_footer")
-    </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Contact Us</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea class="form-control" id="message" rows="5" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    //footer
+    @await Html.PartialAsync("_footer")
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="~/FrontendAssets/js/script.js"></script>
+
     <!-- card-slider -->
 
-    @if (TempData["SuccessMessage"] != null)
-    {
-        <script>
-                    $(function () {
-                        toastr.success('@TempData["SuccessMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
-                    })
-        </script>
-    }
-
-    @if (TempData["LogoutMessage"] != null)
-    {
-        <script>
-                    $(function () {
-                        toastr.success('@TempData["LogoutMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
-                    })
-        </script>
-    }
-
-
-    @if (TempData["EditProfileMessage"] != null)
-    {
-        <script>
-             $(function () {
-                        toastr.success('@TempData["EditProfileMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
-                    })
-        </script>
-    }
-
-    @if(TempData["EnquiryMessage"] != null)
-            {
-                <script>
-                    $(function () {
-                        toastr.success('@TempData["EnquiryMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
-                    });
-                </script>
-            }
-    <script type="text/javascript">
-
-        $(document).ready(function () {
-
-            $("#advanceSearchBtn").click(function () {
-                var stateId = $("#state").val();
-                var cityId = $("#city").val();
-                var areaId = $("#area").val();
-
-                if (stateId != -1 || cityId != -1 || areaId != -1) {
-                    $.ajax({
-                        url: "/SearchSchool/ExploreSchools",
-                        type: "POST",
-                        data: {
-                            StateId: stateId,
-                            CityId: cityId,
-                            AreaId: areaId
-                        },
-                        success: function (result) {
-                            $("body").html(result)
-                        },
-                        error: function (error) {
-                            // Handle the error response
-                        }
-                    });
-                }
-            });
-
-            $('#state').on('change', function () {
-                var stateId = $(this).val();
-                if (stateId) {
-                    $.ajax({
-                        url: '/AdvanceSearch/LoadCities',
-                        type: 'GET',
-                        data: { stateId: stateId },
-                        success: function (response) {
-                            $('#city option').remove();
-                            var res = '<option selected> Choose an city </option>';
-                            for (var i = 0; i < response.length; i++) {
-                                res += '<option value ="' + response[i].cityId + '"> ' + response[i].cityName + ' </option>';
-                            }
-                            $('#city').html(res);
-                        },
-                        error: function () {
-                            alert('An error occured while retrieving the data.');
-                        }
-                    });
-
-                }
-            });
-
-            $('#city').on('change', function () {
-                var cityId = $(this).val();
-                if (cityId) {
-                    $.ajax({
-                        url: '/AdvanceSearch/LoadAreas',
-                        type: 'GET',
-                        data: { cityId: cityId },
-                        success: function (response) {
-                            $('#area option').remove();
-                            var res = '<option selected> Choose an area </option>';
-                            for (var i = 0; i < response.length; i++) {
-                                res += '<option value ="' + response[i].areaId + '"> ' + response[i].areaName + ' </option>';
-                            }
-                            $('#area').html(res);
-                        },
-                        error: function () {
-                            alert('An error occured while retrieving the data.');
-                        }
-                    })
-
-                }
-            })
-        });
-
-
-
-
-    </script>
-
 </body>
-
-
 
 </html>
