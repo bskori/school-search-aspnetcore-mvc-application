@@ -40,7 +40,7 @@ namespace FutureStage.Controllers
             }
             
             return View(loginVM);
-        }
+            }
 
         public IActionResult Register()
         {
