@@ -26,7 +26,9 @@
         border-right: 1px solid #e5e5e5;
     }
 
-
+    .search-bar form{
+        width:80%;
+    }
 
     .search-bar button {
         padding: 14px 20px;
@@ -44,4 +46,9 @@
 
         .search-bar button:focus {
             outline: none;
+        }
+
+
+        .big-search{
+            margin-top:2rem;
         }
