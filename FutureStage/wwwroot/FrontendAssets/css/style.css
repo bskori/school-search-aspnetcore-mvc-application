@@ -44,50 +44,7 @@
     margin-bottom: 40px;
   }
   
-  /* About */
-  .about {
-    padding: 100px 0;
-    text-align: center;
-  }
   
-  .about h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .about p {
-    font-size: 18px;
-    margin-bottom: 40px;
-  }
-  
-  /* Services */
-  .services {
-    padding: 100px 0;
-  }
-  
-  .services h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .services p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  /* Contact */
-  .contact {
-    padding: 100px 0;
-  }
-  
-  .contact h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .contact form {
-    margin-top: 40px;
-  }
   
   /*Scchool details Cover Image*/
 #schoolImage {
@@ -296,7 +253,7 @@ margin-bottom:3rem;
         margin-bottom: 20px;
     }
 
-.card-text {
+.slider-card-text {
     padding-left:10px;
     width:100%;
     text-align:start;
@@ -383,14 +340,14 @@ overflow: hidden;
 
 /*List Box*/
 
-.card{
+.list-card{
     width:100%;
     height:unset;
     margin:10px;
     align-items:unset;
 }
 
-    .card img {
+    .list-card img {
         border-radius: 10%;
     }
 
