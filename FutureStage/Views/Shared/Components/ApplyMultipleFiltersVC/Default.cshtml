@@ -2,49 +2,61 @@
 <div class="filter-card sticky-top">
     <h4>Filters</h4>
     <div class="form-group">
-        <button type="button" class="btn btn-primary">Apply Filters</button>
-        <button type="button" class="btn btn-outline-dark btn-reset btn">
+        <button type="button" class="btn apply-btn btn-primary">Apply Filters</button>
+        <button type="button" class="btn btn-outline-dark reset-btn">
             <i class="bi bi-arrow-counterclockwise"></i> Reset All
         </button>
     </div>
     <div class="form-group">
         <label for="schoolBoard">School Board</label>
         <select id="schoolBoard" class="form-select">
-            <option selected disabled class="text-secondary">Choose School Board</option>
-            <option value="board1">Board 1</option>
-            <option value="board2">Board 2</option>
-            <option value="board3">Board 3</option>
+            <option selected disabled class="text-secondary">Filter by board</option>
+            @foreach (var board in ViewBag.Boards)
+            {
+                <option value="@board.ID">@board.EducationBoardName</option>
+            }
         </select>
     </div>
     <div class="form-group">
         <label for="city">City</label>
         <select id="city" class="form-select">
-            <option selected disabled class="text-secondary">Choose City</option>
-            <option value="city1">City 1</option>
-            <option value="city2">City 2</option>
-            <option value="city3">City 3</option>
+            <option selected disabled class="text-secondary">Filter by city</option>
+            @foreach (var board in ViewBag.Cities)
+            {
+                <option value="@board.ID">@board.CityName</option>
+            }
         </select>
     </div>
     <div class="form-group">
         <label for="area">Area</label>
         <select id="area" class="form-select">
-            <option selected disabled class="text-secondary">Choose Area</option>
-            <option value="area1">Area 1</option>
-            <option value="area2">Area 2</option>
-            <option value="area3">Area 3</option>
+            <option selected disabled class="text-secondary">Filter by area</option>
+            @foreach (var board in ViewBag.Areas)
+            {
+                <option value="@board.ID">@board.AreaName</option>
+            }
         </select>
     </div>
     <div class="form-group">
         <label for="monthlyFees">Monthly Fees</label>
-        <input id="monthlyFees" type="text" class="form-control" placeholder="Enter Monthly Fees">
+        <select id="area" class="form-select">
+            <option selected disabled class="text-secondary">Filter by fees range</option>
+            <option value="1">Below 3,000</option>
+            <option value="2">3,000 to 6,000</option>
+            <option value="3">6,000 to 10,000</option>
+            <option value="4">10,000 to 15,000</option>
+            <option value="5">More than 15,000</option>
+           
+        </select>
     </div>
     <div class="form-group">
         <label for="schoolClass">School Class</label>
         <select id="schoolClass" class="form-select">
-            <option selected disabled class="text-secondary">Choose School Class</option>
-            <option value="class1">Class 1</option>
-            <option value="class2">Class 2</option>
-            <option value="class3">Class 3</option>
+            <option selected disabled class="text-secondary">Filter by class</option>
+            @foreach (var board in ViewBag.Standards)
+            {
+                <option value="@board.ID">@board.StandardName</option>
+            }
         </select>
     </div>
 </div>
