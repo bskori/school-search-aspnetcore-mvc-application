@@ -35,7 +35,7 @@
 
   
 
-    <div class="row" style="margin-right:unset">
+    <div class="row mt-5" style="margin-right:unset">
         <div class="col-md-1">
 
         </div>
@@ -44,13 +44,13 @@
             @await Component.InvokeAsync("ApplyMultipleFiltersVC")
         </div>
 
-        <div class="col-md-7 mt-5">
+        <div class="col-md-7 ">
 
 
 
             @foreach (var item in Model)
             {
-                <div class="card">
+                <div class="list-card">
                     <div class="row">
                         <div class="col-md-4">
                             <img src="@item.ImagePath" class="" alt="@item.Name">
@@ -144,7 +144,7 @@
                             <div class="col-6">
                                 <p class="card-text">
                                     <small class="text-muted fs-6">
-                                        <a asp-action="SchoolDetails" asp-controller="SearchSchool" asp-route-id="@item.ID" class="view-details-btn">View Details <i class="fas fa-eye"></i> </a>
+                                        <a asp-action="SchoolDetails" asp-controller="SearchSchool" asp-route-id="@item.ID" class="btn btn-success view-details-btn">View Details <i class="fas fa-eye"></i> </a>
                                     </small>
                                 </p>
                             </div>
