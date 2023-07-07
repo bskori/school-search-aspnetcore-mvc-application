@@ -618,3 +618,102 @@ overflow: hidden;
 }
 
 /*Multiple filters card*/
+
+
+/*SchoolDetails page*/
+.card {
+    border: none;
+
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+    .card h2,
+    .card h3,
+    .card p {
+        margin: 0;
+    }
+
+    .card .text-center {
+        text-align: center;
+    }
+
+    .card .row {
+        align-items: center;
+    }
+
+    .card .divider {
+        height: 1px;
+        background-color: #ccc;
+        margin: 20px 0;
+    }
+
+    .card .enquiry-btn {
+        font-size: 16px;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+        .card .enquiry-btn.btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+            .card .enquiry-btn.btn-primary:hover {
+                background-color: #0069d9;
+                border-color: #0062cc;
+            }
+
+        .card .enquiry-btn.btn-success {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+            .card .enquiry-btn.btn-success:hover {
+                background-color: #218838;
+                border-color: #1e7e34;
+            }
+
+    .card #facility {
+        align-items: center;
+    }
+
+        .card #facility i {
+            font-size: 20px;
+            color: #28a745;
+        }
+
+        .card #facility .col-10 {
+            padding-right: 0;
+        }
+
+        .card #facility .col-2 {
+            text-align: right;
+        }
+
+
+.enquiry-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 12px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    color: #fff;
+}
+
+    .enquiry-btn i {
+        margin-right: 8px;
+    }
+
+    .enquiry-btn:hover {
+        background-color: #4e78ff;
+    }
+
+    
+/*SchoolDetails page*/
