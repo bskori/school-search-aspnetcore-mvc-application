@@ -623,10 +623,9 @@ overflow: hidden;
 /*SchoolDetails page*/
 .card {
     border: none;
-
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 3rem;
 }
 
     .card h2,
@@ -649,14 +648,14 @@ overflow: hidden;
         margin: 20px 0;
     }
 
-    .card .enquiry-btn {
+    /*.card .enquiry-btn {
         font-size: 16px;
         padding: 10px 20px;
         border-radius: 5px;
         font-weight: bold;
-    }
+    }*/
 
-        .card .enquiry-btn.btn-primary {
+        /*.card .enquiry-btn.btn-primary {
             background-color: #007bff;
             border-color: #007bff;
         }
@@ -674,7 +673,7 @@ overflow: hidden;
             .card .enquiry-btn.btn-success:hover {
                 background-color: #218838;
                 border-color: #1e7e34;
-            }
+            }*/
 
     .card #facility {
         align-items: center;
@@ -699,13 +698,15 @@ overflow: hidden;
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    padding: 12px;
+    padding: 10px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border: none;
     color: #fff;
 }
+
+
 
     .enquiry-btn i {
         margin-right: 8px;
@@ -714,6 +715,15 @@ overflow: hidden;
     .enquiry-btn:hover {
         background-color: #4e78ff;
     }
+
+.call-btn {
+    background-color: forestgreen;
+    width:18%;
+}
+
+.call-btn:hover{
+    background-color:darkgreen;
+}
 
     
 /*SchoolDetails page*/
