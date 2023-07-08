@@ -119,7 +119,7 @@
                 <div class="col-md-10 offset-md-1">
                     <div class="row">
                         <div class="col-md-9">
-                            <div class="card shadow">
+                            <div id="QuickFacts" class="card shadow">
                                 <div class="row text-start">
                                     <div>
                                         <h3 class="fw-bold mb-4">Quick Facts</h3>
@@ -220,7 +220,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card mt-4">
+                            <div id="Languages" class="card mt-4">
                                 <div class="row text-start">
                                     <h2 class="fw-bold mb-4">Languages</h2>
                                     <div class="col-md-3 fs-5 text-secondary">
@@ -251,17 +251,17 @@
                             </div>
                         </div>
                         <div class="col-md-3 sticky-top">
-                            <div class="card shadow">
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
+                            <div class="link-card shadow mt-1">
+                                <p class="fw-bold">ON THIS PAGE</p>
+                                <p><a href="#QuickFacts" class="link-item">Quick Facts</a></p>
+                                <p><a href="#Languages" class="link-item">Languages</a></p>
+                                <p><a href="#SchoolVisit" class="link-item">Schedule a School Visit</a></p>
+                                <p><a href="#Facilities" class="link-item">Facilities</a></p>
+                                <p><a href="#AdmissionCriteria" class="link-item">Admission Criteria</a></p>
+                                <p><a href="#AddressContact" class="link-item">Address & Contact</a></p>
+                                <p><a href="#About" class="link-item">About</a></p>
                             </div>
-                            <div class="card shadow">
+                            <div class="link-card shadow mt-2">
                                 <h3>
                                     Need Help <i style="font-size:2rem;" class="fas fa-question-circle text-danger"></i>
                                 </h3>
@@ -270,7 +270,7 @@
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <div class="card shadow text-start">
+                            <div id="SchoolVisit" class="card shadow text-start">
 
                                 <h3 class="fw-bold mb-4">  Schedule a School Visit </h3>
                                 <div style="font-size:18px;">
@@ -296,7 +296,7 @@
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card shadow">
+                            <div id="Facilities" class="card shadow">
                                 <div class="row text-start">
                                     <h2 class="fw-bold mb-4">Facilities</h2>
                                     @foreach (var item in Model.SchoolFacilities)
@@ -325,7 +325,7 @@
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card shadow">
+                            <div id="AdmissionCriteria" class="card shadow">
                                 <div class="row text-start">
                                     <h2 class="fw-bold mb-4">Admission Criteria</h2>
                                     <div class="fs-5">
@@ -340,7 +340,7 @@
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card shadow">
+                            <div id="AddressContact" class="card shadow">
                                 <div class="row text-start ">
                                     <h2 class="fw-bold mb-4">Address & Contact</h2>
                                     <div class="ms-2">
@@ -349,11 +349,11 @@
                                             Call Now
                                         </a>
                                         <a class="link-primary mb-3 fs-5" style="text-decoration:none">
-                                            <i class="far fa-envelope text-dark fa-lg mx-2"></i>
+                                            <i class="far fa-envelope text-dark fa-lg me-2"></i>
                                             @Model.EmailID
                                         </a>
                                         <div class="my-2">
-                                            <i class="fas fa-paper-plane fa-lg mx-2"></i>
+                                            <i class="fas fa-paper-plane fa-lg me-2"></i>
                                             <span class="fs-5">@Model.Address, @Model.Area.AreaName, @Model.Area.City.CityName, @Model.Area.City.State.StateName</span>
                                         </div>
                                     </div>
@@ -361,10 +361,10 @@
                             </div>
                         </div>
                         <div class="col-md-9">
-                            <div class="card shadow">
+                            <div id="About" class="card shadow">
                                 <div class="row text-start">
                                     <h2 class="fw-bold mb-4">About</h2>
-                                    <p>Empros International School is one of the best CBSE schools in Pune. With 2 sprawling campuses, one in Talegaon and another in Chinchwad, the schools boast of lush green settings in juxtaposition with state-of-the-art learning facilities to help nurture the minds of our students.Our team of highly trained and experienced educators, works in collaboration with the students, to provide truly experiential learning. In keeping with our commitment to provide holistic education to students, our curriculum has been designed to keep in pace with modern sensibilities while inspiring an intrinsic motivation to learn. We believe each child is unique and we want to help them discover their own true potential and talents.</p>
+                                    <p style="font-size:1.1rem;">Empros International School is one of the best CBSE schools in Pune. With 2 sprawling campuses, one in Talegaon and another in Chinchwad, the schools boast of lush green settings in juxtaposition with state-of-the-art learning facilities to help nurture the minds of our students.Our team of highly trained and experienced educators, works in collaboration with the students, to provide truly experiential learning. In keeping with our commitment to provide holistic education to students, our curriculum has been designed to keep in pace with modern sensibilities while inspiring an intrinsic motivation to learn. We believe each child is unique and we want to help them discover their own true potential and talents.</p>
                                 </div>
                             </div>
                         </div>
