@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-﻿using Microsoft.AspNetCore.Mvc;
-=======
-﻿using FutureStage.Data.Services.SiteAdminServices;
 using Microsoft.AspNetCore.Mvc;
->>>>>>> Fixing_Merged_Issue
+﻿using FutureStage.Data.Services.SiteAdminServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +14,7 @@ namespace FutureStage.Data.ViewComponents
         {
             _context = context;
         }
-<<<<<<< HEAD
-       public IViewComponentResult Invoke()
-        {
-            ViewBag.States = _context.States.ToList(); 
-            ViewBag.Cities = _context.Cities.ToList(); 
-            ViewBag.Areas = _context.Areas.ToList();
-=======
+
 
         public IViewComponentResult Invoke()
         {
@@ -32,7 +22,7 @@ namespace FutureStage.Data.ViewComponents
             ViewBag.Cities = _context.Cities.ToList();
             ViewBag.Areas = _context.Areas.ToList();
          
->>>>>>> Fixing_Merged_Issue
+
             return View();
         }
     }
