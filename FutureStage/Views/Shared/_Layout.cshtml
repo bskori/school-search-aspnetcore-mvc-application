@@ -217,14 +217,14 @@
         </script>
     }
 
-    @if(TempData["EnquiryMessage"] != null)
-            {
-                <script>
+    @if (TempData["EnquiryMessage"] != null)
+    {
+        <script>
                     $(function () {
                         toastr.success('@TempData["EnquiryMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
                     });
-                </script>
-            }
+        </script>
+    }
     <script type="text/javascript">
 
         $(document).ready(function () {
