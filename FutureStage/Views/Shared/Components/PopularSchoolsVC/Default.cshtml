@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<School>
 
+<<<<<<< HEAD
 <div class="my-container_trend">
     <div class="text-center py-3 mt-3 py-md-5">
         <h2>Most applied Schools</h2>
@@ -28,11 +29,39 @@
                         </div>
                         <div class="mt-4">
                             <button class="btn btn-primary text-white">View Details</button>
+=======
+    <div class="text-center" style="margin-top:5rem;margin-bottom:2rem;">
+        <h2>Most Applied Schools</h2>
+        <p class="fs-5 text-secondary">Apply to our parent’s top applied schools</p>
+    </div>
+
+    <div class="slider-container mb-4">
+        <div class="slider-wrapper">
+            @foreach (var school in Model)
+            {
+                <div class="slider-item ">
+                    <div class="slider-card">
+                        <img src="@school.ImagePath" alt="Image 1">
+                        <div class="slider-card-text">
+                            <h6>@school.Name</h6>
+                            <p>@school.Area.AreaName, @school.Area.City.CityName</p>
+                            <div style="margin-top:2rem">
+                                <span class="fw-bold">Affiliated To:</span>
+                                @foreach(var board in school.School_EducationBoards)
+                {
+                            <span>@board.EducationBoard.EducationBoardName,  </span>
+                }
+                            </div>
+                            <div class="text-center" style="margin: 2rem 0">
+                                <a asp-action="ExploreSchools" asp-controller="SearchSchool" asp-route-id="@school.ID" class="btn btn-primary w-50 fw-bold">View Details</a>
+                            </div>
+>>>>>>> Fixing_Merged_Issue
                         </div>
                     </div>
                 </div>
             }
         </div>
+<<<<<<< HEAD
 
         <div class="slider-controls">
             <button class="prev-btn">&lt;</button>
@@ -40,3 +69,12 @@
         </div>
     </div>
 </div>
+=======
+        <div class="slider-controls">
+            <button class="slider-prev-btn">&#8249;</button>
+            <button class="slider-next-btn">&#8250;</button>
+        </div>
+    </div>
+    
+
+>>>>>>> Fixing_Merged_Issue

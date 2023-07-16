@@ -1,51 +1,79 @@
-//Card Slider
+
 $(document).ready(function () {
-    var sliderWrapper = $('.slider-wrapper');
-    var sliderItems = $('.slider-item');
-    var totalItems = sliderItems.length;
-    var currentIndex = 0;
-    var slideInterval = setInterval(nextSlide, 3000);
+    var sliderwrapper = $('.slider-wrapper');
+    var slideritems = $('.slider-item');
+    var slidewidth = slideritems.first().outerWidth();
+    var currentindex = 0;
+    var totalitems = slideritems.length;
 
-    $('.next-btn').click(function () {
-      nextSlide();
+    function clonecards() {
+        var cloneditems = slideritems.clone();
+        sliderwrapper.append(cloneditems);
+    }
+
+    function slidetocurrent() {
+        var translatex = -currentindex * slidewidth;
+        sliderwrapper.css('transition', 'transform 0.6s ease');
+        sliderwrapper.css('transform', 'translateX(' + translatex + 'px)');
+    }
+
+    function nextslide() {
+        currentindex++;
+        if (currentindex >= totalitems) {
+            
+            currentindex = 0;
+            
+            sliderwrapper.css('transition', 'none');
+            sliderwrapper.css('transform', 'translateX(0)');
+            
+            setTimeout(function () {
+                
+                sliderwrapper.css('transition', 'transform 0.6s ease');
+                
+                slidetocurrent();
+            }, 0);
+        } else {
+            slidetocurrent();
+        }
+    }
+
+    function prevslide() {
+        currentindex--;
+        if (currentindex < 0) {
+            
+            currentindex = totalitems - 1;
+            
+            var translatex = -totalitems * slidewidth;
+            sliderwrapper.css('transition', 'none');
+            sliderwrapper.css('transform', 'translateX(' + translatex + 'px)');
+           
+            setTimeout(function () {
+              
+                sliderwrapper.css('transition', 'transform 0.6s ease');
+                
+                slidetocurrent();
+            }, 0);
+        } else {
+            slidetocurrent();
+        }
+    }
+
+    function startautoslide() {
+        setInterval(function () {
+            clonecards();
+            nextslide();
+        }, 3000);
+    }
+
+    $('.slider-next-btn').click(function () {
+        clonecards();
+        nextslide();
     });
 
-    $('.prev-btn').click(function () {
-      prevSlide();
+    $('.slider-prev-btn').click(function () {
+        clonecards();
+        prevslide();
     });
 
-    function nextSlide() {
-      currentIndex = (currentIndex + 1) % totalItems;
-      updateSlider();
-    }
-
-    function prevSlide() {
-      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-      updateSlider();
-    }
-
-    function updateSlider() {
-      var marginLeft = -currentIndex * 320;
-      sliderWrapper.css('transform', 'translateX(' + marginLeft + 'px)');
-    }
-
-    function autoSlide() {
-      nextSlide();
-    }
-
-    function startAutoSlide() {
-      slideInterval = setInterval(autoSlide, 3000);
-    }
-
-    function stopAutoSlide() {
-      clearInterval(slideInterval);
-    }
-
-    sliderWrapper.hover(function () {
-      stopAutoSlide();
-    }, function () {
-      startAutoSlide();
-    });
-
-    startAutoSlide();
-  });
+    startautoslide();
+});

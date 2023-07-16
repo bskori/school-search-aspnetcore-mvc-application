@@ -32,6 +32,8 @@ namespace FutureStage.Models
         public int StandardID { get; set; }
         public virtual Standard Standard { get; set; }
 
+       
+
         //School
         [ForeignKey("School")]
         public int SchoolID { get; set; }

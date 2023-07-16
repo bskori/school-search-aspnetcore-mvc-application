@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 ﻿using FutureStage.Data.Services.SiteAdminServices;
 using Microsoft.AspNetCore.Mvc;
+=======
+﻿using Microsoft.AspNetCore.Mvc;
+>>>>>>> Fixing_Merged_Issue
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +13,7 @@ namespace FutureStage.Data.ViewComponents
 {
     public class ApplyMultipleFiltersVC : ViewComponent
     {
+<<<<<<< HEAD
         private readonly IEducationBoardService _educationBoardService;
         private readonly ICityService _cityService;
         private readonly IAreaService _areaService;
@@ -32,5 +37,22 @@ namespace FutureStage.Data.ViewComponents
             ViewBag.Standards = _context.Standards.ToList();
             return View();
         }
+=======
+        private readonly AppDbContext _context;
+        public ApplyMultipleFiltersVC(AppDbContext context)
+        {
+            _context = context;
+        }
+        public IViewComponentResult Invoke()
+        {
+            ViewBag.Boards = _context.EducationBoards.ToList();
+            ViewBag.Cities = _context.Cities.ToList();
+            ViewBag.Areas = _context.Areas.ToList();
+            ViewBag.States = _context.States.ToList();
+            ViewBag.Standards = _context.Standards.ToList();
+            return View();
+        }
+
+>>>>>>> Fixing_Merged_Issue
     }
 }

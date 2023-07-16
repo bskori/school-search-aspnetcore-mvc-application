@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
     <title>crud dashboard</title>
 
+<<<<<<< HEAD
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -17,45 +19,74 @@
     <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/SchoolsAssets/css/custom.css" />
 
+=======
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
+    <link href="~/SchoolsAssets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+    <link href="~/SchoolsAssets/css/custom.css" rel="stylesheet" />
+>>>>>>> Fixing_Merged_Issue
+
+    
     <script src="~/SchoolsAssets/js/jquery-3.3.1.min.js"></script>
+    <script src="~/SchoolsAssets/js/popper.min.js"></script>
     <script src="~/SchoolsAssets/js/bootstrap.min.js"></script>
     <script src="~/lib/jquery-validate/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-    <script src="~/SchoolsAssets/js/popper.min.js"></script>
     <script src="~/lib/toastr/toastr.min.js"></script>
+<<<<<<< HEAD
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+=======
+    <script src="~/SchoolsAssets/js/CustomJS.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+>>>>>>> Fixing_Merged_Issue
 </head>
 <body>
-
-
-
     <div class="wrapper">
-
         <div class="body-overlay"></div>
-
-        <!-------sidebar--design------------>
-
+        <!-- Sidebar Design -->
         <div id="sidebar">
             <div class="sidebar-header">
-                <h3><img src="~/SchoolsAssets/img/logo1.png" class="img-fluid" /><span>Future Stage</span></h3>
+                <div class="logo">
+                    <h4 class="shadow bg-light p-1 m-0">FUTURE<span>STAGE</span></h4>
+                </div>
             </div>
-            <ul class="list-unstyled component m-0">
+            <ul class="list-unstyled components m-0">
                 <li class="active">
+<<<<<<< HEAD
                     <a href="#" class="dashboard"><i class="fas fa-tachometer-alt"></i> dashboard </a>
+=======
+                    <a href="#" class="dashboard"><i class="fas fa-tachometer-alt"></i> dashboard</a>
+                    <div style="margin-top:10px;"><hr /></div>
+>>>>>>> Fixing_Merged_Issue
                 </li>
-
                 <li class="dropdown">
                     <a href="#homeSubmenu1" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-question-circle"></i> Enquiry
                     </a>
                     <ul class="collapse list-unstyled menu" id="homeSubmenu1">
+<<<<<<< HEAD
                         <li><a asp-action="Index" asp-controller="AdmissionEnquiry" asp-area="Schools"><i class="fas fa-envelope"></i> New Enquiry</a></li>
                         <li><a asp-action="EnquiryConfirmed" asp-controller="AdmissionEnquiry" asp-area="Schools"><i class="fas fa-check-circle"></i> Confirmed Enquiry</a></li>
+=======
+                        <li>
+                            <a asp-action="NewEnquiry" asp-controller="Enquiry" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                                <i class="fas fa-envelope"></i>
+                                New Enquiry
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-action="ConfirmedEnquires" asp-controller="Enquiry" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                                <i class="fas fa-check-circle"></i>
+                                Confirmed Enquiry
+                            </a>
+                        </li>
+>>>>>>> Fixing_Merged_Issue
                     </ul>
                 </li>
-
                 <li>
+<<<<<<< HEAD
                     <a asp-action="Index" asp-controller="FeeHead" asp-area="Schools"><i class="fas fa-money-bill"></i> FeeHead </a>
                 </li>
                 <li class="">
@@ -79,17 +110,50 @@
                 </li>
 
                
+=======
+                    <a asp-action="Index" asp-controller="FeeHead" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                        <i class="fas fa-dollar-sign"></i>
+                        FeeHead
+                    </a>
+                </li>
+                <li class="">
+                    <a asp-action="Index" asp-controller="SchoolStandard" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                        <i class="fas fa-chalkboard"></i>
+                        School Standard
+                    </a>
+                </li>
+                <li class="">
+                    <a asp-action="Index" asp-controller="SchoolFacility" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                        <i class="fas fa-building"></i>
+                        Facility
+                    </a>
+                </li>
+                <li class="">
+                    <a asp-action="Index" asp-controller="SchoolAchivement" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                        <i class="fas fa-ribbon"></i>
+                        Achivements
+                    </a>
+                </li>
+                <li class="">
+                    <a asp-action="Index" asp-controller="StandardFees" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                        <i class="fas fa-credit-card"></i>
+                        Standard Fees
+                    </a>
+                </li>
+                <li class="">
+                    <a asp-action="Index" asp-controller="Admission" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")" class="">
+                        <i class="fas fa-user-graduate"></i>
+                        Admissions
+                    </a>
+                </li>
+>>>>>>> Fixing_Merged_Issue
             </ul>
 
         </div>
-
-        <!-------sidebar--design- close----------->
-        <!-------page-content start----------->
-
+        <!-- Sidebar Design - Close -->
+        <!-- Page Content Start -->
         <div id="content">
-
-            <!------top-navbar-start----------->
-
+            <!-- Top Navbar -->
             <div class="top-navbar">
                 <div class="xd-topbar">
                     <div class="row">
@@ -106,21 +170,27 @@
 
                                         <li class="dropdown nav-item">
                                             <a class="nav-link" href="#" data-toggle="dropdown">
-                                                <span class="material-icons" style="font-size:30px">
+                                                <span class="material-icons" style="font-size:30px;">
                                                     person
                                                 </span>
                                             </a>
                                             <ul class="dropdown-menu small-menu">
                                                 <li>
-                                                    <a asp-action="SchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetString("ID")">
+                                                    <a asp-action="SchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
                                                         <span class="material-icons">person_outline</span>
                                                         My Profile
                                                     </a>
                                                 </li>
                                                 <li>
-                                                    <a asp-action="ChangePassword" asp-controller="ManageSchools" asp-area="">
-                                                        <span class="material-icons">settings</span>
-                                                        Settings
+                                                    <a asp-action="UpdateSchoolProfile" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                                                        <span class="material-icons">edit</span>
+                                                        Edit Profile
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a asp-action="ChangePassword" asp-controller="Home" asp-area="Schools" asp-route-id="@Context.Session.GetInt32("ID")">
+                                                        <span class="material-icons">lock</span>
+                                                        Password
                                                     </a>
                                                 </li>
                                                 <li>
@@ -129,66 +199,62 @@
                                                         Logout
                                                     </a>
                                                 </li>
-
                                             </ul>
                                         </li>
-
-
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
-            <!------top-navbar-end----------->
-            <!------main-content-start----------->
-
-
-
+            <!-- Top Navbar - End -->
+            <!-- Main Content Start -->
             <div class="main-content">
                 <div class="row">
                     <div class="col-md-12">
-
                         @RenderBody()
-
-                        
                     </div>
                 </div>
             </div>
-
-            <!------main-content-end----------->
-            <!----footer-design------------->
-
+            <!-- Main Content End -->
+            <!-- Footer Design -->
             <footer class="footer">
                 <div class="container-fluid">
                     <div class="footer-in">
-                        <p class="mb-0">&copy 2023 Future Stage. All Rights Reserved.</p>
+                        <p class="mb-0">&copy; 2023 Future Stage. All Rights Reserved.</p>
                     </div>
                 </div>
             </footer>
-
-
-
-
+            <!-- Footer Design - End -->
         </div>
-
     </div>
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <script>
+            $(function () {
+                toastr.success('@TempData["SuccessMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+            });
+        </script>
+    }
 
-
-
-    @if(TempData["SuccessMessage"] != null)
+    @if(TempData["UpdateProfileMessage"] != null)
             {
                 <script>
                     $(function () {
-                        toastr.success('@TempData["SuccessMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
-                    });
+                        toastr.success('@TempData["UpdateProfileMessage"]', "Success Alert", { timeOut: 3000, "closeButton": true });
+                    })
                 </script>
             }
 
-
+    @if(TempData["ChangePasswordMessage"] != null)
+            {
+                <script>
+                    $(function () {
+                        toastr.success('@TempData["ChangePasswordMessage"]', "Success Alert", { timeOut: 3000, "closeButton": true });
+                    });
+                </script>
+            }
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -196,18 +262,11 @@
                 $("#sidebar").toggleClass('active');
                 $("#content").toggleClass('active');
             });
-
             $('.xp-menubar,.body-overlay').on('click', function () {
                 $("#sidebar,.body-overlay").toggleClass('show-nav');
             });
-
         });
     </script>
-
-
-
-
-
 </body>
 
 

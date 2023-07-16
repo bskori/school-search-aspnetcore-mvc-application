@@ -13,7 +13,9 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
         public string ProcessTitle { get; set; }
+  
         public string ProcessDescription { get; set; }
 
         //SchoolStandard

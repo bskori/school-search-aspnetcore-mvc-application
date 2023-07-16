@@ -1,4 +1,5 @@
-﻿@model School
+﻿@using Microsoft.AspNetCore.Http
+@model School
 
 @{
     Layout = null;
@@ -14,13 +15,20 @@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 </head>
 <body>
     <!-- Navbar -->
 
     @await Html.PartialAsync("_navbar")
-    
-    
+
+
     <div class="container-fluid">
         <div class="cover-image-container container">
             <div class="row">
@@ -36,11 +44,11 @@
                                 <h2>@Model.Name</h2>
                                 <p><i class="bi bi-geo-alt-fill text-success"></i>@Model.Area.AreaName, @Model.Area.City.CityName</p>
                             </div>
-                            <div class="col-md-2 mt-3">
-                                <a class="btn btn-lg btn-primary w-100" asp-action="GetEnquiry" asp-route-id="@Model.ID">? Enquiry</a>
-                            </div>
-                            <div class="col-md-2 mt-3">
-                                <a class="btn btn-lg btn-success w-100"> Apply</a>
+                            <div class="col-md-3 offset-md-1 mt-3">
+                                <button type="button" class="enquiry-btn btn btn-lg btn-primary w-100" data-item-id="@Model.ID">
+                                    <i class="fas fa-question-circle"></i> Enquiry
+                                </button>
+
                             </div>
                         </div>
                     </div>
@@ -49,14 +57,17 @@
             <div class="divider">
             </div>
         </div>
-        <div class="container" >
+        <div class="container">
             <div class="row">
                 <div class="col-md-10 offset-md-1">
                     <div class="row">
                         <div class="col-md">
                             <div class="card text-center">
-                                <p class="text-secondary">Affiliated to:</p>
                                 <div>
+                                    <i class="fas fa-chalkboard-teacher text-secondary fs-4"></i>
+                                </div>
+                                <p class="text-secondary fs-6 m-1">Affiliated to:</p>
+                                <div class="fs-5">
                                     @{
                                         int i = 0;
                                         int len = Model.School_EducationBoards.Count - 1;
@@ -92,8 +103,12 @@
                                     }
                                     int averageFees = sum / count;
                                 }
-                                <p>Average monthly fees:</p>
-                                <div>Rs.@averageFees</div>
+                                <div>
+                                    <i class="fas fa-wallet text-secondary fs-4"></i>
+
+                                </div>
+                                <p class="fs-6 m-1 text-secondary">Average monthly fees:</p>
+                                <div class="fs-5">Rs.@averageFees</div>
                             </div>
                         </div>
                     </div>
@@ -104,7 +119,7 @@
                 <div class="col-md-10 offset-md-1">
                     <div class="row">
                         <div class="col-md-9">
-                            <div class="card">
+                            <div id="QuickFacts" class="card shadow">
                                 <div class="row text-start">
                                     <div>
                                         <h3 class="fw-bold mb-4">Quick Facts</h3>
@@ -112,7 +127,7 @@
                                     <div class="col-md">
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                Board <br />
+                                                <span class="text-secondary"> Board</span> <br />
                                                 <span class="fw-bold text-danger">
                                                     @{
                                                         i = 0;
@@ -137,78 +152,126 @@
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                Co-ed Status <br />
+                                                <span class="text-secondary"> Co-ed Status</span> <br />
                                                 <span class="fw-bold text-danger">Coed</span>
                                             </p>
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                Built In Area <br />
+                                                <span class="text-secondary">Built In Area</span> <br />
                                                 <span class="fw-bold text-danger">2.5 Acres</span>
                                             </p>
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                Student/Teacher Ratio <br />
-                                                                      <span class="fw-bold text-danger">38:1</span>
+                                                <span class="text-secondary"> Student/Teacher Ratio</span> <br />
+                                                <span class="fw-bold text-danger">38:1</span>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-md">
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                Ownership <br />
+                                                <span class="text-secondary">Ownership</span> 
+                                                 <br />
                                                 <span class="fw-bold text-danger">Private</span>
                                             </p>
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                Year Established <br />
+                                                <span class="text-secondary">Year Established</span> <br />
                                                 <span class="fw-bold text-danger">@Model.EstablishmentDate.ToString("yyyy")</span>
                                             </p>
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                School Medium <br />
+                                                <span class="text-secondary">School Medium</span> <br />
                                                 <span class="fw-bold text-danger">English</span>
                                             </p>
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                School Timings <br />
-                                                               <span class="fw-bold text-danger">8 am to 2 pm</span>
+                                                <span class="text-secondary">School Timings</span> <br />
+                                                <span class="fw-bold text-danger">8 am to 2 pm</span>
                                             </p>
                                         </div>
                                     </div>
                                     <div class="col-md">
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                School Level <br />
-                                                             <span class="fw-bold text-danger">Senior Secondary</span>
+                                                <span class="text-secondary">School Level</span> <br />
+                                                <span class="fw-bold text-danger">Senior Secondary</span>
                                             </p>
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                School Format <br />
-                                                              <span class="fw-bold text-danger">Day School</span>
+                                                <span class="text-secondary">School Format</span> <br />
+                                                <span class="fw-bold text-danger">Day School</span>
                                             </p>
                                         </div>
                                         <div class="mb-4">
                                             <p class="fs-5">
-                                                Academic Session <br />
-                                                                 <span class="fw-bold text-danger">
-                                                                     April to March
-                                                                 </span>
+                                                <span class="text-secondary">Academic Session</span> <br />
+                                                <span class="fw-bold text-danger">
+                                                    April to March
+                                                </span>
                                             </p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            <div id="Languages" class="card mt-4">
+                                <div class="row text-start">
+                                    <h2 class="fw-bold mb-4">Languages</h2>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        <i class="far fa-check-circle text-success"></i>
+                                        English
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        <i class="far fa-check-circle text-success"></i>
+                                        Hindi
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        <i class="far fa-check-circle text-success"></i>
+                                        Marathi
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        <i class="far fa-check-circle text-success"></i>
+                                        German
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        <i class="far fa-check-circle text-success"></i>
+                                        French
+                                    </div>
+                                    <div class="col-md-3 fs-5 text-secondary">
+                                        <i class="far fa-check-circle text-success"></i>
+                                        Sanskrit
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
+                        <div class="col-md-3 sticky-top">
+                            <div class="link-card shadow mt-1">
+                                <p class="fw-bold">ON THIS PAGE</p>
+                                <p><a href="#QuickFacts" class="link-item">Quick Facts</a></p>
+                                <p><a href="#Languages" class="link-item">Languages</a></p>
+                                <p><a href="#SchoolVisit" class="link-item">Schedule a School Visit</a></p>
+                                <p><a href="#Facilities" class="link-item">Facilities</a></p>
+                                <p><a href="#AdmissionCriteria" class="link-item">Admission Criteria</a></p>
+                                <p><a href="#AddressContact" class="link-item">Address & Contact</a></p>
+                                <p><a href="#About" class="link-item">About</a></p>
+                            </div>
+                            <div class="link-card shadow mt-2">
+                                <h3>
+                                    Need Help <i style="font-size:2rem;" class="fas fa-question-circle text-danger"></i>
+                                </h3>
+                                <p class="text-secondary m-2">Have any questions about this school while applying.</p>
+                                <button data-item-id="@Model.ID" class="mt-2 enquiry-btn btn btn-primary"><i class="fas fa-question-circle"></i> Request a Callback</button>
+                            </div>
+                        </div>
                         <div class="col-md-9">
-                            <div class="card text-start">
-                                
+                            <div id="SchoolVisit" class="card shadow text-start">
+
                                 <h3 class="fw-bold mb-4">  Schedule a School Visit </h3>
                                 <div style="font-size:18px;">
                                     <div class="mb-4">
@@ -222,23 +285,34 @@
                                     <div class="mb-4">
                                         <span class="fw-bold">Note -</span> Exact timings will be communicated by the school after the visit is scheduled
                                     </div>
-                                    <div>
-                                        <a class="btn btn-primary btn-lg"><span class="fw-bold">Schedule Now</span></a>
+                                    <div class="col-md-3">
+                                        <a data-item-id="@Model.ID" class="enquiry-btn btn btn-primary"><span class="fw-bold">
+    Schedule Now <i class="fas fa-arrow-circle-right text-white"></i>
+</span>  </a>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card">
+                            <div id="Facilities" class="card shadow">
                                 <div class="row text-start">
                                     <h2 class="fw-bold mb-4">Facilities</h2>
                                     @foreach (var item in Model.SchoolFacilities)
                                     {
                                         <div class="col-md-4">
-                                            <div class=" p-3 fs-5 text-dark" style="border:0.2px solid grey;">
-                                                @item.Facility.FacilityName
+                                            <div class=" p-3 fs-5 text-dark">
+                                                <div class="row" id="facility">
+                                                    <div class="col-10">
+                                                        @item.Facility.FacilityName
+                                                    </div>
+
+                                                    <div class="col-2">
+                                                        <i class="text-success @item.Facility.FacilityIcon"></i>
+                                                    </div>
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     }
@@ -247,40 +321,18 @@
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card">
-                                <div class="row text-start">
-                                    <h2 class="fw-bold mb-4">Languages</h2>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        English
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        Hindi
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        Marathi
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        German
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        French
-                                    </div>
-                                    <div class="col-md-3 fs-5 text-secondary">
-                                        Sanskrit
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card">
+                            <div id="AdmissionCriteria" class="card shadow">
                                 <div class="row text-start">
                                     <h2 class="fw-bold mb-4">Admission Criteria</h2>
                                     <div class="fs-5">
                                         Documents required at the time of admission/application
                                         <ul class="mt-3 ms-3">
-                                            <li>Photo of Applicant</li>
-                                            <li>Photos of Parents/Guardian</li>
+                                            <li style="list-style:none"> <i class="text-success fas fa-check-circle"></i> Photo of Applicant</li>
+                                            <li style="list-style:none"> <i class="text-success fas fa-check-circle"></i> Photos of Parents/Guardian</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -288,33 +340,149 @@
                         </div>
 
                         <div class="col-md-9">
-                            <div class="card">
-                                <div class="row text-start">
+                            <div id="AddressContact" class="card shadow">
+                                <div class="row text-start ">
                                     <h2 class="fw-bold mb-4">Address & Contact</h2>
-                                    <a class="btn btn-success w-25 mb-3">Call Now</a>
-                                    <a class="link-primary mb-3">@Model.EmailID</a>
-                                    <span>@Model.Address</span>
+                                    <div class="ms-2">
+                                        <a data-item-id="@Model.ID" class="call-btn enquiry-btn btn btn-success mb-3">
+                                            <i class="fas fa-phone-alt fa-lg text-white"></i>
+                                            Call Now
+                                        </a>
+                                        <a class="link-primary mb-3 fs-5" style="text-decoration:none">
+                                            <i class="far fa-envelope text-dark fa-lg me-2"></i>
+                                            @Model.EmailID
+                                        </a>
+                                        <div class="my-2">
+                                            <i class="fas fa-paper-plane fa-lg me-2"></i>
+                                            <span class="fs-5">@Model.Address, @Model.Area.AreaName, @Model.Area.City.CityName, @Model.Area.City.State.StateName</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div id="About" class="card shadow">
+                                <div class="row text-start">
+                                    <h2 class="fw-bold mb-4">About</h2>
+                                    <p style="font-size:1.1rem;">Empros International School is one of the best CBSE schools in Pune. With 2 sprawling campuses, one in Talegaon and another in Chinchwad, the schools boast of lush green settings in juxtaposition with state-of-the-art learning facilities to help nurture the minds of our students.Our team of highly trained and experienced educators, works in collaboration with the students, to provide truly experiential learning. In keeping with our commitment to provide holistic education to students, our curriculum has been designed to keep in pace with modern sensibilities while inspiring an intrinsic motivation to learn. We believe each child is unique and we want to help them discover their own true potential and talents.</p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-3">
-                            <div class="card">
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                                <p>Quick Facts</p>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
+    <!--Enquiry modal-->
+   
+        <div class="modal fade" id="enquiryModal" tabindex="-1" aria-labelledby="enquiryModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="enquiryModalLabel">
+                            <i class="bi bi-telephone-fill"></i> Request a Callback
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form id="myForm" asp-action="GetEnquiry">
+                        <div class="modal-body">
+                            <div>
+                                <input type="hidden" name="AdmissionEnquiryID" value="0" />
+                                <input type="hidden" id="schoolId" name="SchoolID"  />
+                                <input type="hidden" id="parentId" name="ParentID" />
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label class="form-label">Enquiry Date</label>
+                                    <input type="date" id="enquiryDate" name="EnquiryDate" class="form-control" />
+                                </div>
+                                <div class="col">
+                                    <label class="form-label">Class</label>
+                                    <select id="schoolStandard" name="SchoolStandardID" class="form-control">
+                                        @foreach (var item in ViewBag.Standards)
+                                        {
+                                            <option value="@item.ID">@item.Standard.StandardName</option>
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Enquiry Description</label>
+                                <textarea id="enquiryDescription" class="form-control" name="EnquiryDescription"></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <div class="mb-3">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                                <input type="submit" value="Submit" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!--Enquiry modal-->
+
+
+    <div style="margin-top:50px;">
+        @await Html.PartialAsync("_footer")
+    </div>
+
+    
+
+    <script>
+        $(document).ready(function () {
+            $('.enquiry-btn').click(function () {
+                var  schoolId = @Model.ID
+                $.ajax({
+                    url: "/SearchSchool/IsUserLoggedIn",
+                    type: "GET",
+                    data: { id: schoolId },
+                    success: function (result) {
+                        if (result.isUserLoggedIn != null) {
+                            $('#enquiryModal #schoolId').val(schoolId);
+                            $('#enquiryModal #parentId').val(result.parentId);
+                            $('#enquiryModal').modal("show");
+                        } else {
+                            $('body').html(result);
+                        }
+                    },
+                    error: function(err){
+                        alert("Error while checking is user is logged in.");
+                    }
+                })
+            });
+            $('#myForm').submit(function (event) {
+                event.preventDefault();
+
+                $('.text-danger').remove();
+
+                var enquiryDate = $('#enquiryDate').val();
+                if (enquiryDate.trim() === '') {
+                    $('#enquiryDate').after('<span class="text-danger"> Enquiry date is required</span>');
+                }
+
+                var enquiryDescription = $('#enquiryDescription').val();
+                if (enquiryDescription.trim() === '') {
+                    $('#enquiryDescription').after('<span class="text-danger"> Enquiry description is required</span>');
+                }
+
+               
+
+                if ($('.text-danger').length === 0) {
+                    $('#myForm')[0].submit();
+                }
+            });
+
+            $('#enquiryDate, #enquiryDescription').on('input', function () {
+                $(this).next('.text-danger').remove();
+            });
+        });
+    </script>
 
 </body>
 

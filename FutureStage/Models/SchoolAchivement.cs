@@ -13,8 +13,17 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
+        [Required(ErrorMessage ="Please enter the achivement title.")]
+        [Display(Name = "Achivement Title")]
         public string AchivementTitle { get; set; }
+
+        [Required(ErrorMessage = "Please enter the achivement description.")]
+        [Display(Name = "Achivement Description")]
         public string AchivementDescription { get; set; }
+
+        [Required(ErrorMessage = "Please enter the achivement date.")]
+        [Display(Name = "Achivement Date")]
         public DateTime AchivementDate { get; set; }
 
         //School

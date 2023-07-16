@@ -1,66 +1,67 @@
-﻿<div class="col-md-3">
-    <div class="container-filter sticky-top">
-        <div class="filter-card">
-            <h4>Filters</h4>
-            <div class="form-group">
-                <button type="button" class="btn btn-outline-dark reset-btn">
-                    Reset All  <i class="bi bi-arrow-counterclockwise"></i>
-                </button>
+﻿
+<div class="filter-card sticky-top">
+    <h4>Filters</h4>
+    <div class="form-group">
+        <button type="button" class="btn apply-btn btn-primary">Apply Filters</button>
+        <button type="button" class="btn btn-outline-dark reset-btn">
+            <i class="bi bi-arrow-counterclockwise"></i> Reset All
+        </button>
                 <button type="button" class="btn btn-primary apply-btn">
                     Apply Filters
                 </button>
-            </div>
-            <div class="form-group">
-                <label for="schoolBoard">School Board</label>
-                <select id="schoolBoard" class="form-select mt-2">
-                    <option selected disabled>Filter by board</option>
-                    @foreach (var educationBoard in ViewBag.EducationBoards)
-                    {
-                        <option class="text-dark" value="@educationBoard.ID">@educationBoard.EducationBoardName</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="city">City</label>
-                <select id="city" class="form-select mt-2">
-                    <option selected disabled>Filter by city</option>
-                    @foreach (var city in ViewBag.Cities)
-                    {
-                        <option class="text-dark" value="@city.ID">@city.CityName</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="area">Area</label>
-                <select id="area" class="form-select mt-2">
-                    <option selected disabled>Filter by area</option>
-                    @foreach (var area in ViewBag.Areas)
-                    {
-                        <option class="text-dark" value="@area.ID">@area.AreaName</option>
-                    }
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="monthlyFees">Monthly Fees</label>
-                <select id="monthlyFees" class="form-select mt-2">
-                    <option selected disabled>Filter by monthly fees</option>
-                    <option class="text-dark" value="1">Below 3,000</option>
-                    <option class="text-dark" value="2">3,000 to 6,000</option>
-                    <option class="text-dark" value="3">6,000 to 10,000</option>
-                    <option class="text-dark" value="4">10,000 to 15,000</option>
-                    <option class="text-dark" value="5">More than 15,000</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="schoolClass">School Class</label>
-                <select id="schoolClass" class="form-select mt-2">
-                    <option selected disabled>Filter by school class</option>
-                    @foreach (var standard in ViewBag.Standards)
-                    {
-                        <option class="text-dark" value="@standard.ID">@standard.StandardName</option>
-                    }
-                </select>
-            </div>
+    </div>
+    <div class="form-group">
+        <label for="schoolBoard">School Board</label>
+        <select id="schoolBoard" class="form-select">
+            <option selected disabled class="text-secondary">Filter by board</option>
+            @foreach (var board in ViewBag.Boards)
+            {
+                <option value="@board.ID">@board.EducationBoardName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <select id="city" class="form-select">
+            <option selected disabled class="text-secondary">Filter by city</option>
+            @foreach (var board in ViewBag.Cities)
+            {
+                <option value="@board.ID">@board.CityName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="area">Area</label>
+        <select id="area" class="form-select">
+            <option selected disabled class="text-secondary">Filter by area</option>
+            @foreach (var board in ViewBag.Areas)
+            {
+                <option value="@board.ID">@board.AreaName</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="monthlyFees">Monthly Fees</label>
+        <select id="monthlyFees" class="form-select">
+            <option selected disabled class="text-secondary">Filter by fees range</option>
+            <option value="1">Below 3,000</option>
+            <option value="2">3,000 to 6,000</option>
+            <option value="3">6,000 to 10,000</option>
+            <option value="4">10,000 to 15,000</option>
+            <option value="5">More than 15,000</option>
+           
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="schoolClass">School Class</label>
+        <select id="schoolClass" class="form-select">
+            <option selected disabled class="text-secondary">Filter by class</option>
+            @foreach (var board in ViewBag.Standards)
+            {
+                <option value="@board.ID">@board.StandardName</option>
+            }
+        </select>
+    </div>
 
         </div>
 

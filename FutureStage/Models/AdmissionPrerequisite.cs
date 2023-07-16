@@ -13,7 +13,11 @@ namespace FutureStage.Models
     {
         [Key]
         public int ID { get; set; }
+
+        
         public string PrerequisiteTitle { get; set; }
+
+        
         public string PrerequisiteDescription { get; set; }
 
         //SchoolStandard

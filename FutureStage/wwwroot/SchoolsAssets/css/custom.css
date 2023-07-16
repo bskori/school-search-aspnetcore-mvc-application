@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
 body,html{
 	line-height:1.8;
 	font-family:'Poppins',sans-serif;
@@ -9,6 +11,22 @@ body,html{
 	height:100%;
 }
 
+/* Futurestage Logo */
+
+
+.logo {
+	font-family: Arial, sans-serif;
+	font-size: 40px;
+	text-align: center;
+	font-weight: bold;
+	color: #333;
+	text-transform: uppercase;
+}
+
+	.logo span {
+		color: #ff5e3a;
+	}
+
 
 /*==========================================================
   material-icon font-style
@@ -16,42 +34,35 @@ body,html{
 
 
 @font-face {
-  font-family: 'Material Icons';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
-  src: local('Material Icons'),
-    local('MaterialIcons-Regular'),
-    url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'),
-    url(https://example.com/MaterialIcons-Regular.woff) format('woff'),
-    url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
+	font-family: 'Material Icons';
+	font-style: normal;
+	font-weight: 400;
+	src: url(https://example.com/MaterialIcons-Regular.eot); /* For IE6-8 */
+	src: local('Material Icons'), local('MaterialIcons-Regular'), url(https://example.com/MaterialIcons-Regular.woff2) format('woff2'), url(https://example.com/MaterialIcons-Regular.woff) format('woff'), url(https://example.com/MaterialIcons-Regular.ttf) format('truetype');
 }
 
 
 
 .material-icons {
-  font-family: 'Material Icons';
-  font-weight: normal;
-  font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
-  display: inline-block;
-  line-height: 1;
-  text-transform: none;
-  letter-spacing: normal;
-  word-wrap: normal;
-  white-space: nowrap;
-  direction: ltr;
-
-  /* Support for all WebKit browsers. */
-  -webkit-font-smoothing: antialiased;
-  /* Support for Safari and Chrome. */
-  text-rendering: optimizeLegibility;
-
-  /* Support for Firefox. */
-  -moz-osx-font-smoothing: grayscale;
-
-  /* Support for IE. */
-  font-feature-settings: 'liga';
+	font-family: 'Material Icons';
+	font-weight: normal;
+	font-style: normal;
+	font-size: 24px; /* Preferred icon size */
+	display: inline-block;
+	line-height: 1;
+	text-transform: none;
+	letter-spacing: normal;
+	word-wrap: normal;
+	white-space: nowrap;
+	direction: ltr;
+	/* Support for all WebKit browsers. */
+	-webkit-font-smoothing: antialiased;
+	/* Support for Safari and Chrome. */
+	text-rendering: optimizeLegibility;
+	/* Support for Firefox. */
+	-moz-osx-font-smoothing: grayscale;
+	/* Support for IE. */
+	font-feature-settings: 'liga';
 }
 
 /*==========================================================
@@ -60,9 +71,9 @@ body,html{
   
   
   
-  h1,h2,h3,h4,h5,h6,.h1,.21,.h3,.h4{
+  h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4{
 	   font-weight:400;
-	   line-height;1.5em;
+	   line-height:1.5em;
   }
   
   p{
@@ -174,7 +185,7 @@ overflow:auto;
   }
   
   #sidebar .sidebar-header{
-	  padding:20px;
+	  padding:16px;
 	  background-color:#fff;
 	  border-bottom:1px solid #eee;
   }
@@ -198,6 +209,7 @@ overflow:auto;
   }
   
    #sidebar ul li.active> a{
+	   margin-top:13px;
 	   color:#4c7cf3;
 	   background-color:#DBE5FD;
    }
@@ -234,7 +246,7 @@ overflow:auto;
    #sidebar ul li a{
 	   padding:5px 10px 5px 20px;
 	   line-height:30px;
-	   font-size:15px;
+	   font-size:16px;
 	   position:relative;
 	   font-weight:400;
 	   display:block;
@@ -253,12 +265,21 @@ overflow:auto;
 	
 	
 	 /*========main-content- navbardesign -start-----*/
+<<<<<<< HEAD
 
 #content {
 	position: relative;
 	transition: all 0.5s;
 	background-attachment: #103cbe;
 }
+=======
+	
+	  #content{
+		  position:relative;
+		  transition:all 0.5s;
+		  background-attachment:#f9fafc;
+	  }
+>>>>>>> Fixing_Merged_Issue
 
 
 .top-navbar {
@@ -266,7 +287,11 @@ overflow:auto;
 	z-index: 9;
 	position: relative;
 	padding: 15px 30px;
+<<<<<<< HEAD
 	background-color: #103cbe;
+=======
+	background-color: #3c6382;
+>>>>>>> Fixing_Merged_Issue
 }
 	 
 	 .xd-topbar{
@@ -329,7 +354,11 @@ overflow:auto;
 	   }
 
 .navbar {
+<<<<<<< HEAD
 	background-color: #103cbe;
+=======
+	background-color: #3c6382;
+>>>>>>> Fixing_Merged_Issue
 	color: #fff;
 }
 	   
@@ -486,7 +515,11 @@ background-color:rgba(0,0,0,0.09);
 }
 
 .table-title {
+<<<<<<< HEAD
 	background: #103cbe;
+=======
+	background: #3c6382;
+>>>>>>> Fixing_Merged_Issue
 	color: #fff;
 	position: sticky;
 	top: 0;
@@ -532,10 +565,13 @@ background-color:rgba(0,0,0,0.09);
 			font-size:16px;
 			font-weight: 400;
 		}
+			table.table tr th{
+				font-weight:bold;
+			}
 
 
 			table.table tr th:first-child {
-				width: 7%;
+				width: 8%;
 			}
 		table.table tr th:last-child{
 			width:10%;
@@ -561,16 +597,8 @@ background-color:rgba(0,0,0,0.09);
 		   margin:0px 5px;
 	   }
 	   
-	   table.table td a{
-		   font-weight:bold;
-		   color:#566787;
-		   display:inline-block;
-		   text-decoration:none;
-		   outline:none!important;
-	   }
-	    table.table td a:hover{
-			color:#2196F3;
-		}
+	 
+	   
 		
 		
 		table.table td  i{
@@ -622,67 +650,6 @@ background-color:rgba(0,0,0,0.09);
 				font-size:13px;
 			}
 			
-			.custom-checkbox{
-				position:relative;
-			}
-			
-			
-			.custom-checkbox input[type="checkbox"]{
-				opacity:0;
-				position:absolute;
-				margin:5px 0 0  3px;
-				z-index:9;
-			}
-			
-			
-			.custom-checkbox label:before{
-				width:18px;
-				height:18px;
-			}
-			.custom-checkbox label:before{
-				content:"";
-				margin-right:10px;
-				display:inline-block;
-				vertical-align:text-top;
-				  background-color:#fff;
-				  border:1px solid #bbb;
-				  border-radius:2px;
-				  box-sizing:border-box;
-				  z-index:2;
-			}
-			
-			
-			.custom-checkbox input[type="checkbox"]:checked + label:after{
-				content:"";
-				position:absolute;
-				left:6px;
-				top:3px;
-				width:6px;
-				height:11px;
-				border:solid #000;
-				border-width:0 3px 3px 0;
-				transform:inherit;
-				z-index:3;
-				transform:rotatez(45deg);
-			}
-			
-				.custom-checkbox input[type="checkbox"]:checked + label:before{
-					border-color:#03A9F4;
-					background:#03A9F4;
-				}
-			
-			
-			.custom-checkbox input[type="checkbox"]:checked + label:after{
-				border-color:#fff;
-			}
-			
-			
-			.custom-checkbox input[type="checkbox"]:disabled + label:before{
-				color:#b8b8b8;
-				cursor:auto;
-				box-shadow:none;
-				background:#ddd;
-			}
 			
 	      /*--table design end----*/ 
 	   
@@ -691,9 +658,9 @@ background-color:rgba(0,0,0,0.09);
 	   .modal .modal-dialog{
 		   max-width:400px;
 	   }
-	   .modal .modal-header, .modal .modal-body,.modal .modal-footer{
+	   /*.modal .modal-header, .modal .modal-body,.modal .modal-footer{
 		   padding:20px 30px;
-	   }
+	   }*/
 	   .modal .modal-content{
 		   border-radius:3px;
 	   }
@@ -735,11 +702,18 @@ background-color:rgba(0,0,0,0.09);
 	   
 	   	   /*-------modal-style end------*/
 		   
+<<<<<<< HEAD
 		   
 		   
 		      /*-------footer design start------*/
 footer {
 	background-color: #103cbe;
+=======
+
+/*-------footer design start------*/
+footer {
+	background-color: #3c6382;
+>>>>>>> Fixing_Merged_Issue
 	color: #fff;
 	text-align: center;
 	padding: 10px 30px;
@@ -797,12 +771,143 @@ footer {
 	
 	
 	
+	/*School Profile*/
+.school-profile {
+	background-color: #f9f9f9;
+	padding: 50px;
+}
+
+.school-image {
+	width: 200px;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 50%;
+	margin-bottom: 20px;
+}
+
+.school-name {
+	font-size: 28px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.school-info {
+	font-size: 18px;
+	color: #777;
+}
+
+	.school-info span {
+		font-weight: bold;
+	}
+	/*School Profile*/
+
+
+/*Update School Profile*/
+.form-container {
+	max-width: 600px;
+	margin: 0 auto;
+	margin-bottom:100px;
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+	.form-container h2 {
+		text-align: center;
+		margin-bottom: 20px;
+	}
+
+	.form-container .form-group label {
+		font-weight: bold;
+	}
+
+	.form-container .custom-file-label {
+		overflow: hidden;
+	}
+
+	.form-container .image-preview {
+		text-align: center;
+		margin-top: 20px;
+	}
+
+		.form-container .image-preview img {
+			max-height: 150px;
+			width: auto;
+			border-radius: 5px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+	.form-container .btn-primary {
+		display: block;
+		width: 100%;
+		margin-top: 20px;
+	}
+/*Update School Profile*/
 	
 	
-	
-	
-	
-	
+	/*Change Password*/
+
+body {
+	background-color: #f8f9fa;
+}
+
+.container {
+	margin-top: 50px;
+	margin-bottom:100px;
+}
+
+.card {
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+	font-size: 28px;
+	font-weight: bold;
+	color: #333;
+	margin-bottom: 30px;
+	text-align: center;
+}
+
+.form-group label {
+	font-weight: bold;
+	color: #555;
+}
+
+.form-control {
+	border: 1px solid #ced4da;
+	border-radius: 5px;
+	transition: box-shadow 0.3s ease-in-out;
+	height: 40px;
+	font-size: 14px;
+}
+
+	.form-control:focus {
+		border-color: #80bdff;
+		box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+	}
+
+.text-danger {
+	color: #dc3545;
+}
+
+.custom-btn-primary {
+	background-color: #007bff;
+	border-color: #007bff;
+	transition: background-color 0.3s ease-in-out;
+	/* height: 40px; */
+	font-size: 15px;
+	padding: 8px 18px;
+}
+
+	.custom-btn-primary:hover {
+		background-color: #0069d9;
+		border-color: #0062cc;
+	}
+
+	/*Change Password*/
 	
 	
 	

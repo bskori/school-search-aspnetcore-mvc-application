@@ -235,15 +235,11 @@ namespace FutureStage.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("FeeHeadDescription")
+                    b.Property<string>("FeeHeadName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FeeHeadTitle")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("SchoolStandardID")
+                    b.Property<int>("SchoolStandardID")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
@@ -418,9 +414,6 @@ namespace FutureStage.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
-
-                    b.Property<string>("FacilityDescription")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("FacilityID")
                         .HasColumnType("int");
@@ -691,10 +684,13 @@ namespace FutureStage.Migrations
 
             modelBuilder.Entity("FutureStage.Models.FeeHead", b =>
                 {
-                    b.HasOne("FutureStage.Models.SchoolStandard", null)
+                    b.HasOne("FutureStage.Models.SchoolStandard", "SchoolStandard")
                         .WithMany("FeeHeads")
                         .HasForeignKey("SchoolStandardID")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("SchoolStandard");
                 });
 
             modelBuilder.Entity("FutureStage.Models.GeneralEnquiryReply", b =>

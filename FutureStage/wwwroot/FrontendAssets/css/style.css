@@ -44,50 +44,7 @@
     margin-bottom: 40px;
   }
   
-  /* About */
-  .about {
-    padding: 100px 0;
-    text-align: center;
-  }
   
-  .about h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .about p {
-    font-size: 18px;
-    margin-bottom: 40px;
-  }
-  
-  /* Services */
-  .services {
-    padding: 100px 0;
-  }
-  
-  .services h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .services p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-  
-  /* Contact */
-  .contact {
-    padding: 100px 0;
-  }
-  
-  .contact h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .contact form {
-    margin-top: 40px;
-  }
   
   /*Scchool details Cover Image*/
 #schoolImage {
@@ -182,28 +139,31 @@
     margin-right: 5px;
   }
 
-  .big-search {
+.big-search {
     display: flex;
+    flex-grow: 1;
     align-items: center;
     justify-content: center;
     margin-bottom: 40px;
-  }
+}
 
   .big-search .search-bar {
-    width: 70%;
-    max-width: 500px;
+    display:flex;
+    width: 400px;
     position: relative;
   }
 
-  .big-search .search-bar input {
-    width: 100%;
-    height: 60px;
-    font-size: 18px;
-    padding: 15px 60px;
-    border: none;
-    border-radius: 30px;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  }
+    .big-search .search-bar input {
+        width: 100%;
+        height: 60px;
+        font-size: 18px;
+        padding: 15px 60px;
+        border: none;
+        border-radius: 30px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        flex-grow: 1;
+    }
+
 
   .big-search .search-bar input:focus {
     outline: none;
@@ -253,15 +213,15 @@
   }
 
   /* nav sigin button */
-  .btn-signin {
+.btn-signin {
     color: #ff0000;
     background-color: transparent;
     border: 2px solid #ff0000;
     border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 11px 29px;
+    font-size: 19px;
     transition: all 0.3s ease-in-out;
-  }
+}
 
   .btn-signin:hover,
   .btn-signin:focus {
@@ -271,41 +231,46 @@
   }
 
   /* my-container trend */
-  .card {
-    width: 300px;
-    height: 400px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 20px;
-    margin: 0 auto;
-  }
+.slider-card {
+width: 350px;
+background-color: #ffffff;
+box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.2);
+display: flex;
+border-radius:30px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 1rem auto;
+margin-bottom:3rem;
+}
 
-  .card img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 20px;
-  }
+    .slider-card img {
+        width: 100%;
+        height: 200px;
+        border-top-left-radius:30px;
+        border-top-right-radius:30px;
+        object-fit: cover;
+        margin-bottom: 20px;
+    }
 
-  .card h4 {
-    margin-bottom: 10px;
+.slider-card-text {
+    padding-left:10px;
+    width:100%;
+    text-align:start;
+}
+
+.slider-card h6 {
+    font-weight:bold;
     color: #333;
-  }
+}
 
-  .card p {
+.slider-card p {
     color: #666;
-  }
+}
 
-  .slider-container {
-    width: 100%;
-    overflow: hidden;
+.slider-container {
+width: 100%;
+overflow: hidden;
     position: relative;
   }
 
@@ -375,13 +340,363 @@
 
 /*List Box*/
 
-.card{
-    width:100%;
-    height:unset;
-    margin:10px;
-    align-items:unset;
+.list-card img {
+    width: 200px;
+    height: 200px;
+    border-radius: 10%;
+    object-fit: cover;
+    margin-bottom: 20px;
 }
 
-    .card img {
-        border-radius: 10%;
+.list-card {
+    width: 300px;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.list-card {
+    width: 100%;
+    height: unset;
+    margin: 10px;
+    align-items: unset;
+}
+
+
+
+@media (max-width: 576px) {
+    .container-filter {
+        display: none;
     }
+
+    .big-search {
+        margin-top: 20px;
+    }
+    .hero-section-text{
+        display:none;
+    }
+}
+
+/*user icon*/
+
+.dropdown-menu[data-bs-popper] {
+    left: -56px;
+}
+.dropdown-toggle {
+    background-color: transparent;
+    border: none;
+    color: #212529;
+}
+
+    .dropdown-toggle:focus {
+        box-shadow: none;
+    }
+
+.dropdown-menu {
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+}
+
+    .dropdown-menu a {
+        color: #212529;
+        display: block;
+        padding: 10px 15px;
+        text-decoration: none;
+    }
+
+        .dropdown-menu a:hover {
+            background-color: #e9ecef;
+        }
+
+    .dropdown-menu .btn-danger {
+        color: #fff;
+        background-color: #dc3545;
+        border: none;
+        text-decoration: none;
+    }
+
+        .dropdown-menu .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+
+
+    /*user icon*/
+
+
+/*Admission process steps*/
+
+.steps-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    .steps-container:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.steps-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.step-card {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+    .step-card:hover {
+        background-color:white;
+        transform: translateY(-5px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+.step-icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: #17a2b8;
+}
+
+.step-title {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.step-number {
+    width: 60px;
+    height: 60px;
+    background-color: #17a2b8;
+    color: #fff;
+    font-size: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 576px) {
+    .step-card {
+        margin-bottom: 20px;
+    }
+}
+/*Admission process steps*/
+
+/*Review Section*/
+.review-section {
+    margin-top:2rem;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+    
+
+.section-title {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.parent-card {
+    background-color: #fff;
+    border-radius: 50px;
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 4px aqua;
+    margin-bottom: 30px;
+}
+
+.parent-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.parent-icon {
+    font-size: 40px;
+    margin-bottom: 20px;
+    color: #17a2b8;
+}
+
+.parent-name {
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.parent-review {
+    margin-bottom: 20px;
+    color: #555;
+}
+
+.stars {
+    color: #ffc107;
+    margin-bottom: 10px;
+}
+
+    .stars i {
+        font-size: 16px;
+    }
+
+/*Review Section*/
+
+/*SchoolDetails LinkCard*/
+
+.link-card {
+    margin-left: 0.5rem;
+    background-color: #ffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.link-card p {
+    margin: 0;
+    padding: 10px 0;
+}
+
+.fw-bold {
+    font-weight: bold;
+}
+
+.link-item {
+    text-decoration: none;
+    color: black;
+    transition: color 0.3s ease-in-out;
+    font-size:1.1rem;
+}
+
+    .link-item:hover {
+        color: #0d6efd;
+        margin-left: 0.1rem;
+        font-weight:bold;
+    }
+
+/*SchoolDetails LinkCard*/
+
+/*Multiple filters card*/
+.filter-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+    .filter-card h4 {
+        margin-bottom: 20px;
+    }
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+/*Multiple filters card*/
+
+
+/*SchoolDetails page*/
+.card {
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 3rem;
+}
+
+    .card h2,
+    .card h3,
+    .card p {
+        margin: 0;
+    }
+
+    .card .text-center {
+        text-align: center;
+    }
+
+    .card .row {
+        align-items: center;
+    }
+
+    .card .divider {
+        height: 1px;
+        background-color: #ccc;
+        margin: 20px 0;
+    }
+
+    .card #facility {
+        align-items: center;
+    }
+
+        .card #facility i {
+            font-size: 20px;
+            color: #28a745;
+        }
+
+        .card #facility .col-10 {
+            padding-right: 0;
+        }
+
+        .card #facility .col-2 {
+            text-align: right;
+        }
+
+
+.enquiry-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    color: #fff;
+}
+
+
+
+    .enquiry-btn i {
+        margin-right: 8px;
+    }
+
+    .enquiry-btn:hover {
+        background-color: #4e78ff;
+    }
+
+.call-btn {
+    background-color: forestgreen;
+    width:18%;
+}
+
+.call-btn:hover{
+    background-color:darkgreen;
+}
+
+    
+/*SchoolDetails page*/

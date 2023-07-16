@@ -39,7 +39,7 @@ namespace FutureStage
             services.AddScoped<IStandardService, StandardService>();
             services.AddScoped<IEducationBoardService, EducationBoardService>();
             services.AddScoped<IQuotaService, QuotaService>();
-            //Schools services
+               //Schools services
             services.AddScoped<ISchoolService, SchoolService>();
             services.AddScoped<IFeeHeadService, FeeHeadService>();
             services.AddScoped<ISchoolStandardService, SchoolStandardService>();
@@ -49,15 +49,25 @@ namespace FutureStage
             services.AddScoped<IAdmissionPrerequisiteService, AdmissionPrerequisiteService>();
             services.AddScoped<IAdmissionProcessService, AdmissionProcessService>();
             services.AddScoped<IAdmissionEnquiryService, AdmissionEnquiryService>();
+            services.AddScoped<IAdmissionConfirmationService, AdmissionConfirmationService>();
 
             services.AddControllersWithViews();
 
             services.AddDistributedMemoryCache();
             services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(10);
-                options.Cookie.IsEssential = true;
                 options.Cookie.HttpOnly = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.IsEssential = true;
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowOrigin",
+                    builder => builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
             });
         }
 
@@ -84,6 +94,8 @@ namespace FutureStage
                     );
                 endpoints.MapDefaultControllerRoute();
             });
+
+            app.UseCors("AllowOrigin");
 
             //Seed Database
             AppDbInitializer.Seed(app);

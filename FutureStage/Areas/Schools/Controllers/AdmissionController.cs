@@ -2,6 +2,7 @@
 using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.ViewModels;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -27,14 +28,11 @@ namespace FutureStage.Areas.Schools.Controllers
             _schoolStandardService = schoolStandardService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index(int id)
         {
-            return View(await _admissionPrerequisiteService.GetAllAsync());
-        }
-
-        public async Task<IActionResult> Create()
-        {
-            ViewBag.SchoolStandards = new SelectList(await _schoolStandardService.GetAllAsync(),"ID","Standard.StandardTitle");
+            ViewBag.AdmissionPrerequisites = _context.AdmissionPrerequisites.Where(ap => ap.SchoolStandard.SchoolID == id).ToList();
+            List<SchoolStandard> schoolStandards = _context.SchoolStandards.Where(ss => ss.SchoolID == id).ToList();
+            ViewBag.SchoolStandards = new SelectList(schoolStandards, "ID", "Standard.StandardName");
             return View();
         }
 
@@ -43,7 +41,6 @@ namespace FutureStage.Areas.Schools.Controllers
         {
             if (!ModelState.IsValid)
             {
-                ViewBag.SchoolStandards = new SelectList(await _schoolStandardService.GetAllAsync(), "ID", "Standard.StandardTitle");
                 return View(admissionVM);
             }
 
@@ -64,43 +61,38 @@ namespace FutureStage.Areas.Schools.Controllers
             await _admissionPrerequisiteService.AddAsync(admissionPrerequisite);
             await _admissionProcessService.AddAsync(admissionProcess);
 
-            return RedirectToAction(nameof(Index));
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            TempData["AlertMessage"] = "Record added successfully.";
+            return RedirectToAction("Index", new { id = schoolId});
         }
 
-        public async Task<IActionResult> Edit(int id)
+        public IActionResult Edit(int id)
         {
-            AdmissionPrerequisite admissionPrerequisite = _context.AdmissionPrerequisites.Where(p => p.SchoolStandardID == id).FirstOrDefault();
-            AdmissionProcess admissionProcess = _context.AdmissionProcesses.Where(p => p.SchoolStandardID == id).FirstOrDefault();
+            AdmissionPrerequisite admissionPrerequisite = _context.AdmissionPrerequisites.Where(p => p.ID == id).FirstOrDefault();
+            AdmissionProcess admissionProcess = _context.AdmissionProcesses.Where(p => p.ID == id).FirstOrDefault();
 
-            ViewBag.SchoolStandards = new SelectList(await _schoolStandardService.GetAllAsync(), "ID", "Standard.StandardTitle");
-
-            AdmissionVM admissionVM = new AdmissionVM()
+            return Json(new
             {
-                SchoolStandardID = admissionPrerequisite.SchoolStandardID,
-                PrequisiteTitle = admissionPrerequisite.PrerequisiteTitle,
-                PrerequisiteDescription = admissionPrerequisite.PrerequisiteDescription,
-                ProcessTitle = admissionProcess.ProcessTitle,
-                ProcessDescription = admissionProcess.ProcessDescription
-            };
-
-            return View(admissionVM); 
+                prerequisiteAndProcessId = id,
+                schoolStandardId = admissionPrerequisite.SchoolStandardID,
+                prequisiteTitle = admissionPrerequisite.PrerequisiteTitle,
+                prerequisiteDescription = admissionPrerequisite.PrerequisiteDescription,
+                processTitle = admissionProcess.ProcessTitle,
+                processDescription = admissionProcess.ProcessDescription
+            }) ; 
         }
 
         [HttpPost]
         public async Task<IActionResult> Edit(AdmissionVM admissionVM)
         {
             if (!ModelState.IsValid)
-            {
-                ViewBag.SchoolStandards = new SelectList(await _schoolStandardService.GetAllAsync(), "ID", "Standard.StandardTitle");
+            { 
                 return View(admissionVM);
             }
 
-            int admissionProcessID =  _context.AdmissionProcesses.Where(p => p.SchoolStandardID == admissionVM.SchoolStandardID).Select(p => p.ID).FirstOrDefault();
-            int admissionPrerequisiteID = _context.AdmissionPrerequisites.Where(p => p.SchoolStandardID == admissionVM.SchoolStandardID).Select(p => p.ID).FirstOrDefault();
-
             AdmissionProcess admissionProcess = new AdmissionProcess()
             {
-                ID = admissionProcessID,
+                ID = admissionVM.PrerequisiteAndProcessID,
                 SchoolStandardID = admissionVM.SchoolStandardID,
                 ProcessTitle = admissionVM.PrequisiteTitle,
                 ProcessDescription = admissionVM.ProcessDescription
@@ -108,7 +100,7 @@ namespace FutureStage.Areas.Schools.Controllers
 
             AdmissionPrerequisite admissionPrerequisite = new AdmissionPrerequisite() 
             { 
-                ID = admissionPrerequisiteID,
+                ID = admissionVM.PrerequisiteAndProcessID,
                 SchoolStandardID =admissionVM.SchoolStandardID,
                 PrerequisiteTitle = admissionVM.PrequisiteTitle,
                 PrerequisiteDescription = admissionVM.PrerequisiteDescription
@@ -116,28 +108,27 @@ namespace FutureStage.Areas.Schools.Controllers
 
             await _admissionProcessService.UpdateAsync(admissionProcess);
             await _admissionPrerequisiteService.UpdateAsync(admissionPrerequisite);
-
-            return RedirectToAction(nameof(Index));
+            int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            TempData["AlertMessage"] = "Record updated successfully";
+            return RedirectToAction("Index", new { id = schoolId});
         }
         
-        public IActionResult Delete(int id)
-        {
-            AdmissionVM admissionVM = new AdmissionVM();
-            admissionVM.SchoolStandardID = id;
-
-            return View(admissionVM);
-        }
+      
 
         [HttpPost]
-        [ActionName("Delete")]
-        public async Task<IActionResult> DeleteConfirmed( int id)
+        public async Task<IActionResult> Delete( int PrerequisiteAndProcessID)
         {
-            int admissionPrerequisiteID = _context.AdmissionPrerequisites.Where(p => p.SchoolStandardID == id).Select(p => p.ID).FirstOrDefault();
-            int admissionProcessID = _context.AdmissionProcesses.Where(p => p.SchoolStandardID == id).Select(p => p.ID).FirstOrDefault();
-
-            await _admissionPrerequisiteService.DeleteAsync(admissionPrerequisiteID);
-            await _admissionProcessService.DeleteAsync(admissionProcessID);
-            return RedirectToAction(nameof(Index));
+            try
+            { 
+                await _admissionPrerequisiteService.DeleteAsync(PrerequisiteAndProcessID);
+                await _admissionProcessService.DeleteAsync(PrerequisiteAndProcessID);
+                int schoolId = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+                TempData["AlertMessage"] = "Record deleted successfully.";
+                return RedirectToAction("Index", new { id = schoolId });
+            }catch(Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "An error occured while deleting the entity.");
+            }
         }
     }
 }

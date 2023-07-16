@@ -1,60 +1,100 @@
 ﻿@model School
 
-@{ 
+@{
     ViewData["Title"] = "Update School Profile";
 }
 
-<div class="row">
-    <div class="text-center">
-        <h3 class="alert alert-primary py-2">Update School Profile</h3>
-    </div>
 
-    <form asp-action="UpdateSchoolProfile">
-        <div class="row">
+
+
+<div class="container">
+    <div class="form-container shadow">
+        <h2>Update Profile</h2>
+        <form asp-action="UpdateSchoolProfile" enctype="multipart/form-data">
             <div>
+                <input type="hidden" asp-for="ID" />
                 <input type="hidden" asp-for="Password" />
                 <input type="hidden" asp-for="ConfirmPassword" />
             </div>
-            <div class="mb-3 mt-3">
-                <label class="form-label" asp-for="Name"></label>
-                <input class="form-control" asp-for="Name" />
-                <span class="text-danger" asp-validation-for="Name"></span>
+            <div class="form-group">
+                <label>School Name</label>
+                <input class="form-control" asp-for="Name" placeholder="Enter School Name">
+                <small> <span class="text-danger" asp-validation-for="Name"></span> </small>
             </div>
-
-            <div class="col-md-6 mb-3">
-                <label class="form-label" asp-for="EmailID"></label>
-                <input class="form-control" asp-for="EmailID" />
-                <span class="text-danger" asp-validation-for="EmailID"></span>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Email Address</label>
+                    <input class="form-control" asp-for="EmailID" placeholder="Enter Email Address">
+                    <small> <span class="text-danger" asp-validation-for="EmailID"></span> </small>
+                </div>
+                <div class="form-group col">
+                    <label>Contact No.</label>
+                    <input class="form-control" id="email" asp-for="ContactNo" placeholder="Enter Contact No.">
+                    <small><span class="text-danger" asp-validation-for="ContactNo"></span></small>
+                </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label" asp-for="ContactNo"></label>
-                <input class="form-control" asp-for="ContactNo" />
-                <span class="text-danger" asp-validation-for="ContactNo"></span>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Establishment Date</label>
+                    <input type="date" class="form-control" asp-for="EstablishmentDate" placeholder="Enter Establishment Date">
+                    <small><span class="text-danger" asp-validation-for="EstablishmentDate"></span></small>
+                </div>
+                <div class="form-group col">
+                    <label>Area</label>
+                    <select class="form-control" asp-for="AreaID" asp-items="ViewBag.Areas">
+                        <option disabled selected>Select Area Name</option>
+                    </select>
+                    <small><span class="text-danger" asp-validation-for="AreaID"></span></small>
+                </div>
             </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label" asp-for="EstablishmentDate"></label>
-                <input class="form-control" asp-for="EstablishmentDate" type="date" />
-                <span class="text-danger" asp-validation-for="EstablishmentDate"></span>
-            </div>
-            <div class="col-md-6 mb-3">
-                <label class="form-label">Choose Area</label>
-                <select class="form-select" asp-for="AreaID" asp-items="ViewBag.Areas">
-                    <option selected> - select area -</option>
+           
+            <div class="form-group">
+                <label>Education Board</label>
+                <select class="form-control" asp-for="EducationBoardID" placeholder="Select Education Boards" multiple>
+                    @foreach (var eduBoard in ViewBag.EducationBoards)
+                    {
+                        bool isSelected = ViewBag.SelectedEducationBoardIds.Contains(eduBoard.ID);
+                        <option value="@eduBoard.ID" selected="@isSelected">@eduBoard.EducationBoardName</option>
+                    }
                 </select>
-                <span class="text-danger" asp-validation-for="Area.AreaName"></span>
+                <small><span class="text-danger" asp-validation-for="EducationBoardID"></span></small>
+            </div>
+            <div class="form-group">
+                <label>Address</label>
+                <textarea class="form-control" asp-for="Address" placeholder="Enter Address"></textarea>
+                <small><span class="text-danger" asp-validation-for="Address"></span></small>
+            </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <label>School Image</label>
+                    <input asp-for="Image" type="file" id="imageInput" class="form-control-file"  placeholder="Choose new Image">
+                    <small><span class="text-danger" asp-validation-for="Image"></span></small>
+                </div>
+                <div class="image-preview">
+                    <img src="@Model.ImagePath" id="previewImage" alt="School Image" class="img-fluid" />
+                </div>
             </div>
 
-            <div class="mb-5">
-
-                <label class="form-label" asp-for="Address"></label>
-                <textarea class="form-control" asp-for="Address"></textarea>
-                <span class="text-danger" asp-validation-for="Name"></span>
-            </div>
-
-            <div>
-
-                <input type="submit" value="Update Profile" class="btn btn-lg w-100 btn-primary text-white" />
-            </div>
-        </div>
-    </form>
+            <input value="Update Profile" class="btn btn-primary" type="submit" />
+        </form>
+    </div>
 </div>
+
+<script type="text/javascript">
+    const imageInput = document.getElementById('imageInput');
+    const previewImage = document.getElementById('previewImage');
+
+    imageInput.addEventListener('change', function () {
+        const file = imageInput.files[0];
+        const reader = new FileReader();
+
+        reader.addEventListener('load', function () {
+            previewImage.src = reader.result;
+        });
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+
+</script>

@@ -1,8 +1,20 @@
-﻿@model IEnumerable<AdmissionPrerequisite>
+﻿@model AdmissionVM
 
 
 @{
     ViewData["Title"] = "List of AdmissionPrerequisite";
+}
+
+@if (TempData["AlertMessage"] != null)
+{
+    <div class="col-md-12 my-2">
+        <div id="myAlert" class="alert alert-hide alert-success alert-dismissible fade show" role="alert">
+            <strong>Success!</strong>  @TempData["AlertMessage"]
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
 }
 
 <div class="table-wrapper">
@@ -10,11 +22,11 @@
     <div class="table-title">
         <div class="row">
             <div class="col-sm-6 p-0 flex justify-content-lg-start justify-content-center">
-                <h2 class="ml-lg-2">Manage School Admission Prerequisite</h2>
+                <h2 class="ml-lg-2">Manage Admission Prerequisite</h2>
             </div>
 
             <div class="col-sm-6 p-0 flex justify-content-lg-end justify-content-center">
-                <a asp-action="Create" class="btn btn-success">
+                <a data-toggle="modal" data-target="#addModal" class="btn btn-lg btn-success">
                     <i class="material-icons">&#xE147;</i>
                     <span>Add New </span>
                 </a>
@@ -37,24 +49,24 @@
 
         <tbody>
             @{ int no = 1;
-                foreach (var item in Model)
+                foreach (var item in ViewBag.AdmissionPrerequisites)
                 {
                     <tr>
-                        <th>
+                        <td>
                             @no
-                        </th>
-                        <th>@item.PrerequisiteTitle</th>
-                        <th>@item.PrerequisiteDescription</th>
-                        <th>@item.SchoolStandard.Standard.StandardName</th>
-                        <th>
-                            <a asp-action="Edit" asp-route-id="@item.SchoolStandardID" class="edit text-primary">
+                        </td>
+                        <td>@item.PrerequisiteTitle</td>
+                        <td>@item.PrerequisiteDescription</td>
+                        <td>@item.SchoolStandard.Standard.StandardName</td>
+                        <td>
+                            <a data-toggle="modal" data-target="#updateModal" data-item-id="@item.ID" class="edit text-primary update-btn">
                                 <i class="material-icons" title="Edit">&#xE254;</i>
                             </a>
 
-                            <a asp-action="Delete" asp-route-id="@item.SchoolStandardID" class="delete text-danger">
+                            <a data-toggle="modal" data-target="#deleteModal" data-item-id="@item.ID" class="delete text-danger delete-btn">
                                 <i class="material-icons" title="Delete">&#xE872;</i>
                             </a>
-                        </th>
+                        </td>
                     </tr>
 
                     no++;
@@ -78,12 +90,170 @@
         </ul>
     </div>
 
+    <!-- add - model - start -->
+    <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addModalLabel">Add Prerequisite & Process</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form asp-action="Create">
+                    <div class="modal-body">
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Select Standard</label>
+                            <select class="form-control" asp-for="SchoolStandardID" asp-items="ViewBag.SchoolStandards">
+                                <option value="@null" selected>- select standard -</option>
+                            </select>
+                            <small><span class="text-danger" asp-validation-for="SchoolStandardID"></span></small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="PrequisiteTitle"></label>
+                            <input asp-for="PrequisiteTitle" class="form-control" />
+                            <small><span class="text-danger" asp-validation-for="PrequisiteTitle"></span></small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="PrerequisiteDescription"></label>
+                            <textarea class="form-control" asp-for="PrerequisiteDescription"></textarea>
+                            <small><span class="text-danger" asp-validation-for="PrerequisiteDescription"></span></small>
+                        </div>
 
 
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="ProcessTitle"></label>
+                            <input class="form-control" asp-for="ProcessTitle" />
+                            <small><span class="text-danger" asp-validation-for="ProcessTitle"></span></small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="ProcessDescription"></label>
+                            <textarea class="form-control" asp-for="ProcessDescription"></textarea>
+                            <small><span class="text-danger" asp-validation-for="ProcessDescription"></span></small>
+                        </div>
 
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-success" value="Add" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- add - model - end -->
+    <!-- update - model - start -->
+    <div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="updateModalLabel">Update Prerequisite & Process</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form asp-action="Edit">
+                    <div class="modal-body">
+                        <input type="hidden" asp-for="PrerequisiteAndProcessID" />
+                        <div class="mb-3 form-group">
+                            <label class="form-label">Select Standard</label>
+                            <select class="form-control" asp-for="SchoolStandardID" asp-items="ViewBag.SchoolStandards">
+                                <option value="@null" selected>- select standard -</option>
+                            </select>
+                            <small><span class="text-danger" asp-validation-for="SchoolStandardID"></span></small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="PrequisiteTitle"></label>
+                            <input asp-for="PrequisiteTitle" class="form-control" />
+                            <small><span class="text-danger" asp-validation-for="PrequisiteTitle"></span></small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="PrerequisiteDescription"></label>
+                            <textarea class="form-control" asp-for="PrerequisiteDescription"></textarea>
+                            <small><span class="text-danger" asp-validation-for="PrerequisiteDescription"></span></small>
+                        </div>
 
 
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="ProcessTitle"></label>
+                            <input class="form-control" asp-for="ProcessTitle" />
+                            <small><span class="text-danger" asp-validation-for="ProcessTitle"></span></small>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="form-label" asp-for="ProcessDescription"></label>
+                            <textarea class="form-control" asp-for="ProcessDescription"></textarea>
+                            <small><span class="text-danger" asp-validation-for="ProcessDescription"></span></small>
+                        </div>
 
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-primary" value="Update" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- update - model - end -->
+    <!----delete-modal start--------->
+    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form asp-action="Delete">
+                    <div class="modal-body">
+                        <div>
+                            <input asp-for="PrerequisiteAndProcessID" type="hidden" />
+                        </div>
+                    </div>
+                    <h5 class="mx-3 mb-3">Are you sure you want to delete this?</h5>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <input type="submit" class="btn btn-danger" value="Confirm" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!----delete-modal end--------->
 
 </div>
+
+<script>
+    $(document).ready(function () {
+        $('.update-btn').click(function () {
+            var itemId = $(this).data('item-id');
+
+            $.ajax({
+                url: '/Schools/Admission/Edit',
+                type: 'GET',
+                data: { id: itemId },
+                dataType: 'json',
+                success: function (response) {
+                    $('#updateModal #SchoolStandardID').val(response.schoolStandardId);
+                    $('#updateModal #PrerequisiteAndProcessID').val(response.prerequisiteAndProcessId);
+                    $('#updateModal #PrequisiteTitle').val(response.prequisiteTitle);
+                    $('#updateModal #PrerequisiteDescription').val(response.prerequisiteDescription);
+                    $('#updateModal #ProcessTitle').val(response.processTitle);
+                    $('#updateModal #ProcessDescription').val(response.processDescription);
+                },
+                error: function () {
+                    alert("An error occured while retreving the data.");
+                }
+            });
+        });
+
+        $('.delete-btn').click(function () {
+            var itemId = $(this).data('item-id');
+            $('#deleteModal #PrerequisiteAndProcessID').val(itemId);
+        });
+    })
+</script>

@@ -10,48 +10,74 @@
     <title>FutureStage</title>
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/toastr/toastr.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/SchoolsAssets/css/loginstyle.css">
+
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="~/lib/toastr/toastr.min.js"></script>
+
     <link rel="stylesheet" href="~/FrontendAssets/css/style.css">
-    
+    <link href="~/FrontendAssets/css/login_register.css" rel="stylesheet" />
 </head>
 <body>
-
     @await Html.PartialAsync("_navbar")
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 offset-md-3 mt-3">
-                <div class="card col-md-8 offset-md-2 p-3 px-5">
-                    <h2 class="text-primary text-center">User SignIn</h2>
-                    @if(TempData["Error"] != null)
-            {
-                <div class="col-md-12 alert alert-danger my-3">
-                    <span> <b>Sorry!</b> - @TempData["Error"] </span>
-                </div>
-            }
-                    <form asp-action="doLogin">
-
-                        <div class="form-group mt-3">
-                            <label class="form-label">Email or UserName</label>
-                            <input asp-for="EmailAddress" class="form-control" />
-                            <span class="text-danger" asp-validation-for="EmailAddress"></span>
-                        </div>
-                        <div class="form-group mt-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" asp-for="Password" class="form-control" />
-                            <span class="text-danger" asp-validation-for="Password"></span>
-                        </div>
-                        <div class="form-group mt-4">
-                            <input type="submit" value="Sign In" class="btn btn-success w-100 justify-content-center" />
-                            <span>Dont't have an account? <a asp-action="Register" class="btn btn-link">Register</a></span>
-                        </div>
-                    </form>
-                </div>
+    <div class="login-form">
+        <h2>Sign In</h2>
+        <form asp-action="doLogin">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input asp-for="EmailAddress" type="email" id="email" placeholder="enter email">
+                <small><span asp-validation-for="EmailAddress" class="text-danger"></span></small>
             </div>
-        </div>
+            <div class="form-group mt-4">
+                <label for="password">Password</label>
+                <input type="password" id="password" asp-for="Password" placeholder="enter password">
+                <small><span asp-validation-for="Password" class="text-danger"></span></small>
+            </div>
+            <button type="submit" class="btn btn-login">Sign In</button>
+            <div class="register-link">
+                <p>Don't' have an account? <a asp-action="Register">Register</a></p>
+            </div>
+        </form>
     </div>
 
     <div class="mt-4">
         @await Html.PartialAsync("_footer")
     </div>
+
+    <script src="~/lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+                    $(function () {
+                        toastr.error('@TempData["ErrorMessage"]', 'Error Alert', { timeOut: 3000, "closeButton": true });
+                    })
+        </script>
+    }
+    @if (TempData["RegisterMessage"] != null)
+    {
+        <script>
+                     $(function () {
+                         toastr.success('@TempData["RegisterMessage"]', 'Success Alert', { timeOut: 3000, "closeButton": true });
+                     })
+        </script>
+
+    }
+
+    @if (TempData["UserNotLoggedIn"] != null)
+            {
+                <script>
+                    $(function () {
+                        toastr.info('@TempData["UserNotLoggedIn"]', 'Information Alert', { timeOut: 3000, "closeButton": true });
+                    })
+                </script>
+            }
 
 </body>
