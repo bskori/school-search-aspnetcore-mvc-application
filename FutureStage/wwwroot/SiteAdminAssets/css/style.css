@@ -396,3 +396,51 @@ body {
     font-size: 3rem;
 }
 
+
+/*Dasboard circl cards*/
+.dashboard-circle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 13rem;
+    height: 11rem;
+    border-radius: 50%;
+    background-color: #f2f2f2;
+    margin: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+    .dashboard-circle:hover {
+        background-color: #e0e0e0;
+    }
+
+.circle-icon {
+    font-size: 4.5rem;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.circle-label {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.circle-value {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #007bff;
+    margin-top: 5px;
+}
+
+.blocked {
+    background-color: #ff0000;
+    color: #fff;
+}
+
+    .blocked:hover {
+        background-color: #cc0000;
+    }
+/*Dasboard circl cards*/
