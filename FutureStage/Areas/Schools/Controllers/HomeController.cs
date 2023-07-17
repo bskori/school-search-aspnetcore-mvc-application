@@ -4,9 +4,11 @@ using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Data.ViewModels;
 using FutureStage.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,6 +34,10 @@ namespace FutureStage.Areas.Schools.Controllers
         }
         public IActionResult Index()
         {
+            int id = Convert.ToInt32(HttpContext.Session.GetInt32("ID"));
+            ViewBag.NewEnquiries = _context.AdmissionConfirmations.Where(x => x.Remark == false).Select(x => x.AdmissionEnquiry).Where(x => x.SchoolID == id).ToList().Count;
+
+            ViewBag.ConfirmedEnquiries = _context.AdmissionConfirmations.Where(x => x.Remark == true).Select(x => x.AdmissionEnquiry).Where(x => x.SchoolID == id).ToList().Count;
             return View();
         }
 
