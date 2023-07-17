@@ -257,7 +257,7 @@
                 var stateId = $(this).val();
                 if (stateId) {
                     $.ajax({
-                        url: '/AdvanceSearch/LoadCities',
+                        url: '/SearchSchool/LoadCities',
                         type: 'GET',
                         data: { stateId: stateId },
                         success: function (response) {
@@ -280,7 +280,7 @@
                 var cityId = $(this).val();
                 if (cityId) {
                     $.ajax({
-                        url: '/AdvanceSearch/LoadAreas',
+                        url: '/SearchSchool/LoadAreas',
                         type: 'GET',
                         data: { cityId: cityId },
                         success: function (response) {

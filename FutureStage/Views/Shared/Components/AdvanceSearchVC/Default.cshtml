@@ -1,26 +1,26 @@
-<div class="container" style="margin-top:2rem;">
+﻿<div class="container" style="margin-top:2rem;">
     <div class="search-bar">
-        <select class="custom-select">
-            <option selected disabled>Choose a area</option>
-            @foreach (var area in ViewBag.Areas)
-            {
-                <option value="@area.ID">@area.AreaName</option>
-            }
-        </select>
-        <select class="custom-select">
-            <option selected disabled>Choose an city</option>
-            @foreach (var city in ViewBag.Cities)
-            {
-                <option value="@city.ID">@city.CityName</option>
-            }
-        </select>
-        <select class="custom-select">
+        <select id="state" class="custom-select">
             <option selected disabled>Choose an state</option>
             @foreach (var state in ViewBag.States)
             {
                 <option value="@state.ID">@state.StateName</option>
             }
         </select>
-        <button type="submit">Search</button>
+        <select id="city" class="custom-select">
+            <option selected disabled>Choose an city</option>
+            @foreach (var city in ViewBag.Cities)
+            {
+                <option value="@city.ID">@city.CityName</option>
+            }
+        </select>
+        <select id="area" class="custom-select">
+            <option selected disabled>Choose a area</option>
+            @foreach (var area in ViewBag.Areas)
+            {
+                <option value="@area.ID">@area.AreaName</option>
+            }
+        </select>
+        <button id="advanceSearchBtn">Search</button>
     </div>
 </div>

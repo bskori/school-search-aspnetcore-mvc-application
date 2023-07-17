@@ -909,6 +909,89 @@ body {
 
 	/*Change Password*/
 	
+
+/*Dashboard Card*/
+
+.card-dashboard {
+	height:90%;
+	padding: 30px;
+	margin: 5px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	transition: transform 0.3s ease;
+}
+
+	.card-dashboard:hover {
+		transform: scale(1.05);
+	}
+
+	.card-dashboard card-title {
+		font-size: 20px;
+		font-weight: 700;
+		color: #333333;
+	}
+
+	.card-dashboard .enquiries {
+		font-size: 45px;
+		font-weight: 700;
+
+	}
+
+	.card-dashboard .icon {
+		font-size: 35px;
+		color: #ffffff;
+		border-radius: 50%;
+		padding: 25px;
+		margin-bottom: 20px;
+		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+		.card-dashboard .icon i {
+			transform: rotate(45deg);
+		}
+
+/* Custom card colors */
+.new-enquiries-card {
+	background-color: #007bff;
+}
+
+.confirmed-enquiries-card {
+	background-color: #28a745;
+}
+
+.new-admission-card {
+	background-color: #ffc107;
+}
+
+.confirmed-admission-card {
+	background-color: #dc3545;
+}
+
+/* Custom text colors */
+.new-enquiries-card .card-title,
+.new-enquiries-card .enquiries {
+	color: #ffffff;
+}
+
+.confirmed-enquiries-card .card-title,
+.confirmed-enquiries-card .enquiries {
+	color: #ffffff;
+}
+
+.new-admission-card .card-title,
+.new-admission-card .enquiries {
+	color: #ffffff;
+}
+
+.confirmed-admission-card .card-title,
+.confirmed-admission-card .enquiries {
+	color: #ffffff;
+}
+/*Dashboard Card*/
 	
 	
 	
