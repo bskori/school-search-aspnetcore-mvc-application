@@ -38,9 +38,14 @@
                 </div>
 
             </div>
-            <p class="text-center">Welcome - @Context.Session.GetString("Name")</p>
+            <p class="text-center">Welcome - <span class="text-dark bg-white fw-bold">@Context.Session.GetString("Name")</span></p>
             <ul class="list-unstyled components">
                 <li>
+                    <a asp-action="Index" asp-controller="Home" asp-area="SiteAdmin" class="bg-white text-primary mb-3 text-center">
+                        <i class="fas fa-chart-line"></i>
+                        Dashboard
+
+                    </a>
                     <a href="#homeSubmenu" role="button" aria-controls="homeSubmenu" data-bs-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown font-weight-bold">
                         Config <i class="fas fa-gear ms-1"></i>
                     </a>
