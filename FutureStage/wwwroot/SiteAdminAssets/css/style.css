@@ -443,4 +443,16 @@ body {
     .blocked:hover {
         background-color: #cc0000;
     }
+
+@media only screen and (max-width: 767px) {
+    .row {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashboard-circle {
+        margin: 10px;
+        margin-left:33%;
+    }
+}
 /*Dasboard circl cards*/
