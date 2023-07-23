@@ -17,6 +17,30 @@
 .navbar {
     background-color: #f8f9fa;
   }
+
+.navbar ul li{
+    margin-bottom:-1rem;
+}
+
+/* nav sigin button */
+.btn-signin {
+    color: #ff0000;
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    border-radius: 50px;
+    padding: 11px 29px;
+    font-size: 19px;
+    margin-bottom: -1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-signin:hover,
+    .btn-signin:focus {
+        color: #fff;
+        background-color: #ff0000;
+        outline: none;
+    }
+
   
   .navbar-brand {
     font-weight: bold;
@@ -26,7 +50,48 @@
   .nav-link {
     color: #333;
   }
-  
+
+@media (max-width: 700px) {
+   
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .navbar ul li {
+        font-size:0.7rem;
+    }
+
+    .navbar ul li button {
+        padding:0px 7px;
+    }
+
+    .navbar ul li i{
+        font-size: 0.7rem;
+    }
+
+    .logo {
+        font-size: 25px;
+        
+    }
+
+    .btn-signin {
+        border-radius: 50px;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .navbar-nav li {
+        margin-bottom: 10px;
+    }
+
+    .dropdown {
+        display: inline-block;
+        margin-left: 10px; 
+    }
+}
+
+
   /* Banner */
   .banner {
     background-color: #f2f2f2;
@@ -212,23 +277,6 @@
     font-size: 16px;
   }
 
-  /* nav sigin button */
-.btn-signin {
-    color: #ff0000;
-    background-color: transparent;
-    border: 2px solid #ff0000;
-    border-radius: 50px;
-    padding: 11px 29px;
-    font-size: 19px;
-    transition: all 0.3s ease-in-out;
-}
-
-  .btn-signin:hover,
-  .btn-signin:focus {
-    color: #fff;
-    background-color: #ff0000;
-    outline: none;
-  }
 
   /* my-container trend */
 .slider-card {

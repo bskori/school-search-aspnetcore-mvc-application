@@ -15,10 +15,10 @@
     .search-bar select,
     .search-bar input[type="text"] {
         flex: 1;
-        padding: 10px;
+        padding: 7px;
         border: none;
         outline: none;
-        font-size: 15px;
+        font-size: 13px;
         color: #555;
     }
 
