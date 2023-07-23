@@ -17,6 +17,28 @@
 .navbar {
     background-color: #f8f9fa;
   }
+
+
+
+/* nav sigin button */
+.btn-signin {
+    color: #ff0000;
+    background-color: transparent;
+    border: 2px solid #ff0000;
+    border-radius: 50px;
+    padding: 11px 29px;
+    font-size: 19px;
+    margin-bottom: -1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+    .btn-signin:hover,
+    .btn-signin:focus {
+        color: #fff;
+        background-color: #ff0000;
+        outline: none;
+    }
+
   
   .navbar-brand {
     font-weight: bold;
@@ -26,7 +48,48 @@
   .nav-link {
     color: #333;
   }
-  
+
+@media (max-width: 700px) {
+   
+    .navbar-nav {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    .navbar ul li {
+        font-size:0.7rem;
+    }
+
+    .navbar ul li button {
+        padding:0px 7px;
+    }
+
+    .navbar ul li i{
+        font-size: 0.7rem;
+    }
+
+    .logo {
+        font-size: 25px;
+        
+    }
+
+    .btn-signin {
+        border-radius: 50px;
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+    .navbar-nav li {
+        margin-bottom: 10px;
+    }
+
+    .dropdown {
+        display: inline-block;
+        margin-left: 10px; 
+    }
+}
+
+
   /* Banner */
   .banner {
     background-color: #f2f2f2;
@@ -212,23 +275,6 @@
     font-size: 16px;
   }
 
-  /* nav sigin button */
-.btn-signin {
-    color: #ff0000;
-    background-color: transparent;
-    border: 2px solid #ff0000;
-    border-radius: 50px;
-    padding: 11px 29px;
-    font-size: 19px;
-    transition: all 0.3s ease-in-out;
-}
-
-  .btn-signin:hover,
-  .btn-signin:focus {
-    color: #fff;
-    background-color: #ff0000;
-    outline: none;
-  }
 
   /* my-container trend */
 .slider-card {
@@ -579,7 +625,7 @@ overflow: hidden;
 
 .link-card p {
     margin: 0;
-    padding: 10px 0;
+    padding: 6px 0;
 }
 
 .fw-bold {
@@ -670,7 +716,7 @@ overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 14px;
     padding: 10px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
@@ -691,7 +737,7 @@ overflow: hidden;
 
 .call-btn {
     background-color: forestgreen;
-    width:18%;
+    width:140px;
 }
 
 .call-btn:hover{
@@ -700,3 +746,66 @@ overflow: hidden;
 
     
 /*SchoolDetails page*/
+
+
+@media(max-width:580px) {
+
+    .banner{
+        height:60vh;
+    }
+
+    .banner h1{
+        font-size:1.5rem;
+    }
+}
+
+
+.col-school-name {
+    width: 50%;
+    margin-left: 15rem;
+}
+
+.col-enquiry-btn {
+    width: 24%;
+}
+
+@media(max-width:1200px){
+    .col-school-name {
+        width: 48%;
+        margin-left: 15rem;
+    }
+
+    .col-enquiry-btn {
+        width: 22%;
+    }
+}
+
+
+@media(max-width:1000px){
+    #schoolImage {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 0px;
+    }
+
+    .col-school-name {
+        text-align: center;
+        width: 100%;
+        margin-left:0px;
+    }
+
+    .col-enquiry-btn {
+        margin-bottom: 1rem;
+        margin-right: auto;
+        margin-left: auto;
+        width: 50%;
+    }
+
+    .sticky-top{
+        display:none;
+    }
+}
+
+
+
