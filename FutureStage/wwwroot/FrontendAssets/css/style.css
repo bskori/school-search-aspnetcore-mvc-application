@@ -18,9 +18,7 @@
     background-color: #f8f9fa;
   }
 
-.navbar ul li{
-    margin-bottom:-1rem;
-}
+
 
 /* nav sigin button */
 .btn-signin {
@@ -748,3 +746,16 @@ overflow: hidden;
 
     
 /*SchoolDetails page*/
+
+
+@media(max-width:580px) {
+
+    .banner{
+        height:60vh;
+    }
+
+    .banner h1{
+        font-size:1.5rem;
+    }
+}
+
