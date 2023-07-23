@@ -39,12 +39,12 @@
         <div class="col-md-1">
 
         </div>
-        
+
         <div class="col-md-3">
             @await Component.InvokeAsync("ApplyMultipleFiltersVC")
         </div>
 
-        <div class="col-md-7 ">
+        <div class="col-md-7">
 
 
 
@@ -162,9 +162,6 @@
         <div class="col-md-1">
 
         </div>
-
-
-
     </div>
 
     <div style="margin-top:50px;">
@@ -180,10 +177,7 @@
             var selectedMonthlyFees;
             var selectedSchoolClass;
 
-            $('select').change(function () {
-
-            })
-
+            
             $('.apply-btn').click(function () {
 
                 selectedBoard = $('#schoolBoard').val();
@@ -218,11 +212,11 @@
             });
 
             $(".filter-icon").click(function () {
-                $(".container-filter").toggle();
+                $(".filter-card").toggle();
             });
 
             $(".filter-card-toggle").click(function () {
-                $(".container-filter").toggle();
+                $(".filter-card").toggle();
             });
 
             

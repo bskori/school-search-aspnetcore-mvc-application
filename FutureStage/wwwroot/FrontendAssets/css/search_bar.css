@@ -15,10 +15,10 @@
     .search-bar select,
     .search-bar input[type="text"] {
         flex: 1;
-        padding: 10px;
+        padding: 7px;
         border: none;
         outline: none;
-        font-size: 15px;
+        font-size: 13px;
         color: #555;
     }
 
@@ -52,3 +52,41 @@
         .big-search{
             margin-top:2rem;
         }
+
+@media (max-width: 1200px) {
+    .search-bar select,
+    .search-bar input[type="text"] {
+        flex: 1;
+        padding: 2px;
+        border: none;
+        outline: none;
+        font-size: 12px;
+        color: #555;
+    }
+
+    .search-bar button {
+        padding: 13px 9px;
+        background-color: #FF5E3A;
+        color: #fff;
+        border: none;
+        border-radius: 0 30px 30px 0;
+        font-size: 12px;
+        cursor: pointer;
+    }
+
+    .big-search .search-bar input{
+        height:55px;
+    }
+    .big-search .search-bar{
+        width:340px;
+    }
+}
+
+
+
+
+@media( max-width:1018px){
+    .search-bar{
+        display:none;
+    }
+}
