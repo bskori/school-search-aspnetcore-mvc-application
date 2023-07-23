@@ -465,7 +465,7 @@ input[type="search"] {
 
 .nav-item .nav-link .material-icons {
     position: relative;
-    top: 10px;
+    top: 5px;
     font-size: 19px;
 }
 
@@ -503,7 +503,7 @@ input[type="search"] {
     top: 0;
     width: 100%;
     left: 0;
-    padding: 10px 30px;
+    padding: 8px 28px;
     border-radius: 0px 0px 0 0;
 }
 
@@ -522,7 +522,7 @@ input[type="search"] {
         font-size: 13px;
         border: none;
         min-width: 50px;
-        border-radius: 2px;
+        border-radius: 5px;
         border: none;
         outline: none !important;
         margin-left: 10px;
@@ -552,7 +552,7 @@ table.table tr th {
 
 
     table.table tr th:first-child {
-        width: 8%;
+        width: 10%;
     }
 
     table.table tr th:last-child {
@@ -748,6 +748,7 @@ footer {
 .school-profile {
     background-color: #f9f9f9;
     padding: 50px;
+    margin-bottom:4rem;
 }
 
 .school-image {
@@ -777,7 +778,12 @@ footer {
 
 
 /*Update School Profile*/
+.update-profile-container{
+   margin-top:2rem;
+}
+
 .form-container {
+    margin-top: 2rem;
     max-width: 600px;
     margin: 0 auto;
     margin-bottom: 100px;
@@ -830,13 +836,13 @@ body {
     margin-bottom: 100px;
 }
 
-.card {
+.password-card {
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-.card-title {
+.password-card card-title {
     font-size: 28px;
     font-weight: bold;
     color: #333;
@@ -857,10 +863,10 @@ body {
     font-size: 14px;
 }
 
-    .form-control:focus {
-        border-color: #80bdff;
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-    }
+        .form-control:focus {
+            border-color: #80bdff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
 
 .text-danger {
     color: #dc3545;
@@ -887,7 +893,7 @@ body {
 
 .card-dashboard {
     height: 90%;
-    padding: 30px;
+    padding: 7px;
     margin: 5px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -963,6 +969,46 @@ body {
 .confirmed-admission-card .enquiries {
     color: #ffffff;
 }
+
+@media (max-width: 576px) {
+    .card-dashboard {
+        padding: 15px;
+    }
+
+        .card-dashboard .card-title {
+            font-size: 18px;
+        }
+
+        .card-dashboard .enquiries {
+            font-size: 30px;
+        }
+
+        .card-dashboard .icon {
+            font-size: 30px;
+            padding: 15px;
+        }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-dashboard {
+        padding: 20px;
+    }
+
+        .card-dashboard .card-title {
+            font-size: 20px;
+        }
+
+        .card-dashboard .enquiries {
+            font-size: 35px;
+        }
+
+        .card-dashboard .icon {
+            font-size: 32px;
+            padding: 20px;
+        }
+}
+
+
 /*Dashboard Card*/
 
 

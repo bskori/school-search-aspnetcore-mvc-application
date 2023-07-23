@@ -34,8 +34,21 @@ body{
 
 }
 
-/*Register*/
+.login-button {
+    font-size: 12px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 4px;
+    background-color: #3c6382;
+}
 
+    .login-button:hover {
+        background-color: #283d4e;
+        color: #fff;
+    }
+
+
+/*Register*/
 .login-section {
     display: flex;
     align-items: center;
@@ -64,10 +77,11 @@ body{
     font-weight: bold;
     padding: 12px 20px;
     border-radius: 4px;
+    background-color: #3c6382;
 }
 
     .register-button:hover {
-        background-color: #0069d9;
+        background-color: #283d4e;
         color: #fff;
     }
 
