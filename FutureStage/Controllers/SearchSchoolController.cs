@@ -141,5 +141,27 @@ namespace FutureStage.Controllers
             return View("ExploreSchools", schools);
         }
 
+        public IActionResult LoadCities(int stateId)
+        {
+            var cities = _context.Cities.Where(x => x.StateID == stateId).Select(City => new
+            {
+                cityId = City.ID,
+                cityName = City.CityName
+            }).ToList();
+
+            return new JsonResult(cities);
+        }
+
+        public IActionResult LoadAreas(int cityId)
+        {
+            var areas = _context.Areas.Where(x => x.CityID == cityId).Select(Area => new
+            {
+                areaId = Area.ID,
+                areaName = Area.AreaName
+            }).ToList();
+
+            return new JsonResult(areas);
+        }
+
     }
 }
