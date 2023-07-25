@@ -393,9 +393,11 @@ namespace FutureStage.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("AchivementDescription")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("AchivementTitle")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("SchoolID")
