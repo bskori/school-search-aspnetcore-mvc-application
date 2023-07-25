@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
-    //[SiteAdminAuthorization]
+    [SiteAdminAuthorization]
     public class HomeController : Controller
     {
         private readonly AppDbContext _context;

@@ -3,6 +3,7 @@ using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Data.ViewModels;
 using FutureStage.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.Schools.Controllers
 {
     [Area("Schools")]
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ISchoolService _schoolService;

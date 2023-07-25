@@ -33,6 +33,7 @@ namespace FutureStage.Controllers
                 if (record != null)
                 {
                     HttpContext.Session.SetString("ID", record.ID.ToString());
+                    HttpContext.Session.SetString("SiteAdminID", record.ID.ToString());
                     HttpContext.Session.SetString("Name", record.Name.ToString());
 
                     TempData["SuccessMessage"] = "Succesfully logged In!"; 

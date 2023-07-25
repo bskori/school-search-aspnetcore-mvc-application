@@ -13,7 +13,7 @@ namespace FutureStage.Data.CustomFilter
     {
         public void OnAuthorization(AuthorizationFilterContext context)
         {
-            if(context.HttpContext.Session.GetString("ID") == null)
+            if(context.HttpContext.Session.GetString("SiteAdminID") == null)
             {
                 context.Result = new RedirectToRouteResult(new RouteValueDictionary(new
                 {

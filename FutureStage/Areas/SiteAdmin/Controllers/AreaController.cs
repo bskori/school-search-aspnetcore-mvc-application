@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.SiteAdmin.Controllers
 {
     [Area("SiteAdmin")]
-    //[SiteAdminAuthorization]
+    [SiteAdminAuthorization]
     public class AreaController : Controller
     {
         private readonly IAreaService _areaService;
