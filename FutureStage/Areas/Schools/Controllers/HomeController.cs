@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data;
+using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Data.ViewModels;
@@ -17,7 +18,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.Schools.Controllers
 {
     [Area("Schools")]
-    [Authorize]
+    [SchoolAuthorization]
     public class HomeController : Controller
     {
         private readonly ISchoolService _schoolService;

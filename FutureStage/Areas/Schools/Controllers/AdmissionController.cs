@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data;
+using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.ViewModels;
 using FutureStage.Models;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.Schools.Controllers
 {
     [Area("Schools")]
+    [SchoolAuthorization]
     public class AdmissionController : Controller
     {
         private readonly AppDbContext _context;

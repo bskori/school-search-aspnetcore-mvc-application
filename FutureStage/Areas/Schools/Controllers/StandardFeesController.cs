@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data;
+using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Data.Services.SiteAdminServices;
 using FutureStage.Models;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.Schools.Controllers
 {
     [Area("Schools")]
-    [Authorize]
+    [SchoolAuthorization]
     public class StandardFeesController : Controller
     {
         private readonly IStandardFeesService _standardFeesService;

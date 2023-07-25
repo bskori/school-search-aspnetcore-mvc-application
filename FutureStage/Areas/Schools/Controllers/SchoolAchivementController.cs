@@ -1,4 +1,5 @@
 ﻿using FutureStage.Data;
+using FutureStage.Data.CustomFilter;
 using FutureStage.Data.Services.SchoolsServices;
 using FutureStage.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +13,7 @@ using System.Threading.Tasks;
 namespace FutureStage.Areas.Schools.Controllers
 {
     [Area("Schools")]
-    [Authorize]
+    [SchoolAuthorization]
     public class SchoolAchivementController : Controller
     {
         private readonly ISchoolAchivementService _schoolAchivementService;

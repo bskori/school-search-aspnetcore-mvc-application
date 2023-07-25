@@ -47,6 +47,7 @@ namespace FutureStage.Controllers
                 if(record != null)
                 {
                     HttpContext.Session.SetInt32("ID", record.ID);
+                    HttpContext.Session.SetString("SchoolSiteID", record.ID.ToString());
                     TempData["SuccessMessage"] = "Login successful! Enjoy your experience.";
                     return RedirectToAction("Index", "Home", new { area = "Schools" });
                 }
