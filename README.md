@@ -1,4 +1,4 @@
-# Full Stack .NET Project
+#                                                                         FUTURE STAGE
 
 ![Project Banner](project_banner.gif)
 
