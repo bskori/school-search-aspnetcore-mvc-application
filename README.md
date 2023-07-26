@@ -8,15 +8,7 @@ This full-stack .NET project is a web application that provides a platform for m
 
 ## Tech Stack
 
-- ![ASP.NET Core](https://img.icons8.com/color/48/000000/asp.png) ASP.NET Core
-- ![C#](https://img.icons8.com/color/48/000000/c-sharp-logo.png) C#
-- ![Entity Framework Core](https://img.icons8.com/color/48/000000/entity-framework.png) Entity Framework Core
-- ![SQL Server](https://img.icons8.com/color/48/000000/microsoft-sql-server.png) SQL Server
-- ![HTML/CSS](https://img.icons8.com/color/48/000000/html-5.png) HTML/CSS
-- ![JavaScript](https://img.icons8.com/color/48/000000/javascript.png) JavaScript
-- ![React](https://img.icons8.com/plasticine/48/000000/react.png) React
-- ![Redux](https://img.icons8.com/color/48/000000/redux.png) Redux
-- ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png) Bootstrap
+![C#](https://img.icons8.com/color/48/000000/c-sharp-logo.png) ![.NET Framework 5](https://img.icons8.com/color/48/000000/dot-net.png) ![ASP.NET Core MVC](https://img.icons8.com/color/48/000000/asp-net.png) ![Entity Framework Core](https://img.icons8.com/color/48/000000/entity-framework.png) ![SQL](https://img.icons8.com/color/48/000000/sql.png) ![MS-SQL Server](https://img.icons8.com/color/48/000000/microsoft-sql-server.png) ![LINQ](https://img.icons8.com/color/48/000000/linq.png) ![HTML](https://img.icons8.com/color/48/000000/html-5.png) ![CSS](https://img.icons8.com/color/48/000000/css3.png) ![JavaScript](https://img.icons8.com/color/48/000000/javascript.png) ![jQuery](https://img.icons8.com/color/48/000000/jquery.png) ![Bootstrap](https://img.icons8.com/color/48/000000/bootstrap.png)
 
 ## Screenshots
 
