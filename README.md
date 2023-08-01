@@ -97,15 +97,14 @@ Follow these steps to get the project up and running:
 
 - Visual Studio 2019
 - SQL Server Management Studio
-- Postman (for API testing)
 - Git (version control)
 
 ## Contact
 
 For any inquiries or support, feel free to contact us at:
 
-- Email: project@example.com
-- Website: [https://www.example.com](https://www.example.com)
+- Email: bipinkori82@gmail.com
+- LinkedIn: https://www.linkedin.com/in/bipinkori/
 
 ## Show Your Support
 
